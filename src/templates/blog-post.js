@@ -1,12 +1,13 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Bio from "../components/bio"
+import WeightBox from "../components/boxes/WeightBox"
 import Layout from "../components/layout"
 import Settings from "../components/sections/Settings"
 import Seo from "../components/seo"
-import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
@@ -30,6 +31,10 @@ const BlogPostTemplate = ({ data, location }) => {
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
             <p>{post.frontmatter.date}</p>
           </header>
+
+          <h1>Infos</h1>
+          <WeightBox value={post.frontmatter.weight} />
+          <hr />
           <MDXRenderer>{post.body}</MDXRenderer>
           <hr />
           <footer>
@@ -88,6 +93,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        weight
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {
