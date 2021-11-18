@@ -7,13 +7,14 @@ import Bio from "../components/bio"
 import WeightBox from "../components/boxes/WeightBox"
 import Layout from "../components/layout"
 import Settings from "../components/sections/Settings"
+import Spotify from "../components/misc/Spoify"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const shortcodes = { Settings }
+  const shortcodes = { Settings, Spotify }
 
   return (
     <MDXProvider components={shortcodes}>
