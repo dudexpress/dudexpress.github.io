@@ -4,6 +4,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Bio from "../components/bio"
+import DesignBox from "../components/boxes/DesignBox"
 import WeightBox from "../components/boxes/WeightBox"
 import Layout from "../components/layout"
 import Settings from "../components/sections/Settings"
@@ -34,6 +35,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </header>
 
           <h1>Infos</h1>
+          <DesignBox value={post.frontmatter.design} />
           <WeightBox value={post.frontmatter.weight} />
           <hr />
           <MDXRenderer>{post.body}</MDXRenderer>
@@ -94,6 +96,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        design
         weight
       }
     }
