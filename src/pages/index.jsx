@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Seo from "../components/seo"
 import WhoWeAre from "../components/WhoWeAre"
 import GameList from "../components/GameList"
+import Search from "../components/Search"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title
@@ -12,7 +13,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Welcome" />
-
+      <Search {...data.localSearchPages} />
       <h2>Leggi gli ultimi articoli</h2>
 
       <GameList games={data.allMdx.nodes} />
@@ -30,6 +31,10 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    localSearchPages {
+      index
+      store
+    }
     site {
       siteMetadata {
         title
