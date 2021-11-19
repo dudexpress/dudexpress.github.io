@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
@@ -16,6 +16,9 @@ const BlogIndex = ({ data, location }) => {
       <h2>Leggi gli ultimi articoli</h2>
 
       <GameList games={data.allMdx.nodes} />
+      <Link to="/blog/2" rel="next">
+        Scopri di più →
+      </Link>
       <hr />
       <h2>Chi siamo</h2>
       <WhoWeAre />
@@ -32,7 +35,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(limit: 2, sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         excerpt
         fields {
