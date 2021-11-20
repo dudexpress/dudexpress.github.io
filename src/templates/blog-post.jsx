@@ -22,11 +22,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const shortcodes = { Setting, Rules, Feedback, Spotify }
-  //[x] Giocatori,
-  //[x] durata
-  //[x] difficoltà
-  //[x] punteggio nostro
-  //[ ] meccaniche)
 
   return (
     <MDXProvider components={shortcodes}>
