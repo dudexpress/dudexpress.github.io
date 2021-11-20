@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Bio from "../components/bio"
 import DesignBox from "../components/boxes/DesignBox"
 import WeightBox from "../components/boxes/WeightBox"
 import Layout from "../components/Layout"
@@ -13,6 +12,7 @@ import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
 import Seo from "../components/seo"
+import PostWriter from "../components/misc/PostWriter"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
@@ -56,7 +56,7 @@ const BlogPostTemplate = ({ data, location }) => {
             title={post.frontmatter.title}
           />
           <footer>
-            <Bio />
+            <PostWriter writerName={post.frontmatter.writer} />
           </footer>
         </article>
         <nav className="blog-post-nav">
@@ -108,6 +108,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        writer
         title
         description
         designer

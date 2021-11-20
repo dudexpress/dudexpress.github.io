@@ -5,6 +5,18 @@ module.exports = {
       name: `Mattia Larentis`,
       summary: `che fa cose`,
     },
+    authors: [
+      {
+        name: "Tia",
+        summary: "blablabla tia tia iaiaoh",
+        image: "tia.jpg",
+      },
+      {
+        name: "Angelo",
+        summary: "voglio fare la punk rock star",
+        image: "angelo.jpg",
+      },
+    ],
     description: `The dudexpress blog`,
     siteUrl: `https://dudexpress.it/`,
   },

@@ -8,10 +8,10 @@ import GameList from "../components/GameList"
 import Search from "../components/Search"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title
+  const { title, authors } = data.site.siteMetadata
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
       <Seo title="Welcome" />
       <Search {...data.localSearchPages} />
       <h2>Leggi gli ultimi articoli</h2>
@@ -22,7 +22,7 @@ const BlogIndex = ({ data, location }) => {
       </Link>
       <hr />
       <h2>Chi siamo</h2>
-      <WhoWeAre />
+      <WhoWeAre authors={authors} />
     </Layout>
   )
 }
@@ -38,6 +38,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        authors {
+          name
+          summary
+          image
+        }
       }
     }
     allMdx(limit: 2, sort: { fields: [frontmatter___date], order: DESC }) {
