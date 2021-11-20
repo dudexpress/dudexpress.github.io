@@ -102,6 +102,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       designer: String
       publisher: String
+      score: Int
       mechanisms: [String]
       weight: Float
       design: Float

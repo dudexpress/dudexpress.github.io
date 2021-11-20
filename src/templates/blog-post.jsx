@@ -5,6 +5,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import DesignBox from "../components/boxes/DesignBox"
 import WeightBox from "../components/boxes/WeightBox"
+import PlayerCountBox from "../components/boxes/PlayerCountBox"
+import DurationBox from "../components/boxes/DurationBox"
+import ScoreBox from "../components/boxes/ScoreBox"
 import Layout from "../components/Layout"
 import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
@@ -19,6 +22,11 @@ const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const shortcodes = { Setting, Rules, Feedback, Spotify }
+  //[x] Giocatori,
+  //[x] durata
+  //[x] difficoltà
+  //[x] punteggio nostro
+  //[ ] meccaniche)
 
   return (
     <MDXProvider components={shortcodes}>
@@ -42,11 +50,11 @@ const BlogPostTemplate = ({ data, location }) => {
             <p>{post.frontmatter.author}</p>
           </header>
           <h1>Infos</h1>
+          <PlayerCountBox value={post.frontmatter.player_count} />
           <DesignBox value={post.frontmatter.design} />
           <WeightBox value={post.frontmatter.weight} />
-          count: {post.frontmatter.player_count}
-          <br />
-          time: {post.frontmatter.playing_time}
+          <DurationBox value={post.frontmatter.playing_time} />
+          <ScoreBox value={post.frontmatter.score} />
           <hr />
           <MDXRenderer>{post.body}</MDXRenderer>
           <hr />
@@ -113,6 +121,7 @@ export const pageQuery = graphql`
         description
         designer
         publisher
+        score
         mechanisms
         weight
         design
