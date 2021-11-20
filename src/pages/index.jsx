@@ -17,7 +17,7 @@ const BlogIndex = ({ data, location }) => {
       <h2>Leggi gli ultimi articoli</h2>
 
       <GameList games={data.allMdx.nodes} />
-      <Link to="/blog/2" rel="next">
+      <Link to="/blog" rel="next">
         Scopri di più →
       </Link>
       <hr />
