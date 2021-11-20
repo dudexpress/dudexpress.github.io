@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "dudexpress",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Il blog di dudexpress",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "dudexpress",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
@@ -43,16 +40,12 @@
     "gh-pages": "^3.2.3",
     "prettier": "^2.4.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://dudexpress.it/",
   "keywords": [
-    "gatsby"
+    "board games", "review",
+    "giochi da tavolo", "recensioni"
   ],
   "license": "0BSD",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
   "scripts": {
     "build": "gatsby build",
     "develop": "rm -rf .cache/ && gatsby develop",
