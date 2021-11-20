@@ -3,7 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.jsx`)
   const result = await graphql(
     `
       {
@@ -94,11 +94,17 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
+      date: Date @dateformat
       title: String
       description: String
-      date: Date @dateformat
-      design: Float
+      designer: String
+      publisher: String
+      mechanisms: [String]
       weight: Float
+      design: Float
+      player_count: Int
+      playing_time: String
+      unboxing_youtbe_id: String
     }
 
     type Fields {

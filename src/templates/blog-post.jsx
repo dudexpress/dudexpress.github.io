@@ -11,6 +11,7 @@ import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
 import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
+import Youtube from "../components/misc/Youtube"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -33,15 +34,27 @@ const BlogPostTemplate = ({ data, location }) => {
         >
           <header>
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
+            <h4>
+              {post.frontmatter.designer} - {post.frontmatter.publisher}
+            </h4>
+            <h5>{post.frontmatter.mechanisms.join(", ")}</h5>
             <p>{post.frontmatter.date}</p>
+            <p>{post.frontmatter.author}</p>
           </header>
-
           <h1>Infos</h1>
           <DesignBox value={post.frontmatter.design} />
           <WeightBox value={post.frontmatter.weight} />
+          count: {post.frontmatter.player_count}
+          <br />
+          time: {post.frontmatter.playing_time}
           <hr />
           <MDXRenderer>{post.body}</MDXRenderer>
           <hr />
+          <h4>unboxing</h4>
+          <Youtube
+            id={post.frontmatter.unboxing_youtbe_id}
+            title={post.frontmatter.title}
+          />
           <footer>
             <Bio />
           </footer>
@@ -92,14 +105,19 @@ export const pageQuery = graphql`
     }
     mdx(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
       body
       frontmatter {
-        title
         date(formatString: "MMMM DD, YYYY")
+        title
         description
-        design
+        designer
+        publisher
+        mechanisms
         weight
+        design
+        player_count
+        playing_time
+        unboxing_youtbe_id
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {
