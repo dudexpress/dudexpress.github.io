@@ -4,7 +4,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import DesignBox from "../components/boxes/DesignBox"
+import SidebarValues from "../components/sidebar/SidebarVotes"
 import WeightBox from "../components/boxes/WeightBox"
 import PlayerCountBox from "../components/boxes/PlayerCountBox"
 import DurationBox from "../components/boxes/DurationBox"
@@ -17,6 +17,7 @@ import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
 import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
+import Mechanisms from "../components/sidebar/Mechanisms"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
@@ -36,17 +37,15 @@ const BlogPostTemplate = ({ data, location }) => {
           itemScope
           itemType="http://schema.org/Article"
         >
-          <header>
+          <header className="blog-post-header">
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
             <h4>
               {post.frontmatter.designer} - {post.frontmatter.publisher}
             </h4>
-            <h5>{post.frontmatter.mechanisms.join(", ")}</h5>
-            <p>{post.frontmatter.date}</p>
-            <p>{post.frontmatter.author}</p>
+            <em>{post.frontmatter.date}</em>
           </header>
 
-          <Row className="mb-3">
+          <Row className="mb-3 welcome-boxes">
             <Col md={3}>
               <ScoreBox value={post.frontmatter.score} />
             </Col>
@@ -64,21 +63,27 @@ const BlogPostTemplate = ({ data, location }) => {
           <Row>
             <Col md={9}>
               <MDXRenderer>{post.body}</MDXRenderer>
+
+              <Row>
+                <Col md={6}>
+                  <h4>unboxing</h4>
+                  <Youtube
+                    id={post.frontmatter.unboxing_youtbe_id}
+                    title={post.frontmatter.title}
+                  />
+                </Col>
+                <Col md={6}>
+                  <h4>playlist</h4>
+                  <Spotify playlistId="5vymJZWeWphxmQmnRqqutE" />
+                </Col>
+              </Row>
             </Col>
             <Col md={3}>
-              <DesignBox value={post.frontmatter.design} />
-              <DesignBox value={post.frontmatter.design} />
-              <DesignBox value={post.frontmatter.design} />
-              <DesignBox value={post.frontmatter.design} />
-              <DesignBox value={post.frontmatter.design} />
-              <DesignBox value={post.frontmatter.design} />
+              <Mechanisms values={post.frontmatter.mechanisms} />
+              <SidebarValues values={post.frontmatter.sidebar_votes} />
             </Col>
           </Row>
-          <h4>unboxing</h4>
-          <Youtube
-            id={post.frontmatter.unboxing_youtbe_id}
-            title={post.frontmatter.title}
-          />
+
           <footer>
             <PostWriter writerName={post.frontmatter.writer} />
           </footer>
@@ -144,6 +149,10 @@ export const pageQuery = graphql`
         player_count
         playing_time
         unboxing_youtbe_id
+        sidebar_votes {
+          title
+          value
+        }
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {

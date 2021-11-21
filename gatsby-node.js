@@ -109,6 +109,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       player_count: Int
       playing_time: String
       unboxing_youtbe_id: String
+      sidebar_votes: [SidebarVotes]
+    }
+
+    type SidebarVotes {
+      title: String
+      value: Int
     }
 
     type Fields {

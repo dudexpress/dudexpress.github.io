@@ -1,3 +1,3 @@
 import "typeface-roboto"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./src/style.css"
+import "./src/style.scss"
