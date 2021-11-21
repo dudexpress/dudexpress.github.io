@@ -2,7 +2,8 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 import DesignBox from "../components/boxes/DesignBox"
 import WeightBox from "../components/boxes/WeightBox"
 import PlayerCountBox from "../components/boxes/PlayerCountBox"
@@ -44,15 +45,35 @@ const BlogPostTemplate = ({ data, location }) => {
             <p>{post.frontmatter.date}</p>
             <p>{post.frontmatter.author}</p>
           </header>
-          <h1>Infos</h1>
-          <PlayerCountBox value={post.frontmatter.player_count} />
-          <DesignBox value={post.frontmatter.design} />
-          <WeightBox value={post.frontmatter.weight} />
-          <DurationBox value={post.frontmatter.playing_time} />
-          <ScoreBox value={post.frontmatter.score} />
-          <hr />
-          <MDXRenderer>{post.body}</MDXRenderer>
-          <hr />
+
+          <Row className="mb-3">
+            <Col md={3}>
+              <ScoreBox value={post.frontmatter.score} />
+            </Col>
+            <Col md={3}>
+              <DurationBox value={post.frontmatter.playing_time} />
+            </Col>
+            <Col md={3}>
+              <WeightBox value={post.frontmatter.weight} />
+            </Col>
+            <Col md={3}>
+              <PlayerCountBox value={post.frontmatter.player_count} />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={9}>
+              <MDXRenderer>{post.body}</MDXRenderer>
+            </Col>
+            <Col md={3}>
+              <DesignBox value={post.frontmatter.design} />
+              <DesignBox value={post.frontmatter.design} />
+              <DesignBox value={post.frontmatter.design} />
+              <DesignBox value={post.frontmatter.design} />
+              <DesignBox value={post.frontmatter.design} />
+              <DesignBox value={post.frontmatter.design} />
+            </Col>
+          </Row>
           <h4>unboxing</h4>
           <Youtube
             id={post.frontmatter.unboxing_youtbe_id}

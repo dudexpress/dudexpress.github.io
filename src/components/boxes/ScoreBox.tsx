@@ -1,16 +1,20 @@
 import React from "react"
+import BaseBox from "./BaseBox"
 
 interface ScoreBoxProps {
   value: number
 }
 
 export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
+  private renderFooter(): React.ReactNode {
+    return "-"
+  }
+
   public render(): React.ReactNode {
     return (
-      <>
-        <h1>Score</h1>
-        <p>{this.props.value}</p>
-      </>
+      <BaseBox title="Score" footer={this.renderFooter()}>
+        {this.props.value} / 10
+      </BaseBox>
     )
   }
 }
