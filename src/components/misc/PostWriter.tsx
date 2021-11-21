@@ -26,11 +26,10 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
   )
 
   return (
-    <div className="bio">
+    <div className="post-writer p-3 d-flex">
       <img src={`../../people/${author.image}`} alt={author.name} width={100} />
       <p>
-        <strong>{author.name}</strong>
-        <br />
+        <h4>{author.name}</h4>
         {author?.summary}
       </p>
     </div>

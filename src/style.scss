@@ -4,6 +4,7 @@ body {
 
 $white: white;
 $red: red;
+$peach: peachpuff;
 
 .blog-post-header {
   padding: 5rem 0;
@@ -42,4 +43,8 @@ $red: red;
   .values {
     color: $red;
   }
+}
+
+.post-writer {
+  background-color: $peach;
 }
