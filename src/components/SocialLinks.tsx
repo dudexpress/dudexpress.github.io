@@ -1,12 +1,9 @@
+import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 
 const SocialLinks = () => {
-  return (
-    <ol style={{ listStyle: `none` }}>
-      <li>Instagram</li>
-      <li>youtube</li>
-    </ol>
-  )
+  return <FontAwesomeIcon icon={faInstagram} />
 }
 
 export default SocialLinks

@@ -7,7 +7,7 @@ interface DurationBoxProps {
 
 export default class DurationBox extends React.PureComponent<DurationBoxProps> {
   private renderFooter(): React.ReactNode {
-    return "-"
+    return "Dichiarati: 5 - 10 min"
   }
 
   public render(): React.ReactNode {

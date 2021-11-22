@@ -16,7 +16,7 @@ export default class BaseBox extends React.PureComponent<BaseBoxProps> {
 
   public render(): React.ReactNode {
     return (
-      <Card>
+      <Card className="base-box">
         <Card.Body>
           <Card.Title>{this.props.title}</Card.Title>
           <Card.Text>{this.props.children}</Card.Text>

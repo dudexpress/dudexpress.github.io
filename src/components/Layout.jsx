@@ -23,21 +23,20 @@ const Layout = ({ location, title, children }) => {
   }
 
   return (
-    <Container>
-      <div className="global-wrapper" data-is-root-path={isRootPath}>
-        <header className="global-header">{header}</header>
+    <div className="global-wrapper" data-is-root-path={isRootPath}>
+      <header className="global-header">
+        <Container>{header}</Container>
+      </header>
+      <Container>
         <main>{children}</main>
-        <footer>
-          FOOTER
+      </Container>
+      <footer className="footer">
+        <Container className="d-flex justify-content-between">
           <SocialLinks />
-          <ul>
-            <li>© {new Date().getFullYear()}</li>
-            <li>Privacy</li>
-            <li>Dudexpress</li>
-          </ul>
-        </footer>
-      </div>
-    </Container>
+          <span>dudexpress</span>
+        </Container>
+      </footer>
+    </div>
   )
 }
 

@@ -1,17 +1,46 @@
-body {
-  font-family: "Roboto", sans-serif !important;
-}
-
 $white: white;
 $red: red;
-$peach: peachpuff;
+$peach: white;
+// $peach: #fefaf5;
+$dark-peach: white;
+// $dark-peach: #fdf5ed;
+$black: black;
+$spacing-unit: 0.5rem;
+
+body {
+  font-family: "Roboto", sans-serif !important;
+  background-color: $peach;
+}
+
+p {
+  margin: 0;
+}
+
+.global-header {
+  background-color: $dark-peach;
+  padding: 2 * $spacing-unit;
+}
+
+.footer {
+  background-color: $dark-peach;
+  margin-top: 5 * $spacing-unit;
+  padding: 2 * $spacing-unit;
+  color: $black;
+}
+
+.container {
+  max-width: 960px;
+}
+
+h1 {
+  font-weight: 800;
+}
 
 .blog-post-header {
   padding: 5rem 0;
 
   h1 {
     font-size: 5rem;
-    font-weight: 800;
   }
 
   h4 {
@@ -22,19 +51,20 @@ $peach: peachpuff;
 
 .welcome-boxes {
   .card {
+    background-color: $peach;
     border-color: $red;
   }
 
   .card-text {
-    height: 200px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .card-footer {
-    background: $white;
+    background-color: $peach;
     border-top: 0;
   }
 }
@@ -46,5 +76,37 @@ $peach: peachpuff;
 }
 
 .post-writer {
-  background-color: $peach;
+  border-top: 1px solid $red;
+  img {
+    border-radius: 100%;
+    margin-right: 1rem;
+  }
+}
+
+.base-box {
+  svg {
+    color: $red;
+    margin: 2px 2px 2px 0;
+  }
+}
+
+.player-count {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.base-section-column {
+  box-shadow: inset -1px 0px 0px $red;
+}
+
+.base-section {
+  p {
+    line-height: 1.6;
+  }
+}
+
+.blog-post-nav ul {
+  list-style: none;
+  padding: 0;
 }

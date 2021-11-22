@@ -12,6 +12,7 @@ import ScoreBox from "../components/boxes/ScoreBox"
 import Layout from "../components/Layout"
 import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
+import ImageSection from "../components/sections/ImageSection"
 import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
@@ -23,7 +24,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const shortcodes = { Setting, Rules, Feedback, Spotify }
+  const shortcodes = { Setting, ImageSection, Rules, Feedback, Spotify }
 
   return (
     <MDXProvider components={shortcodes}>
@@ -45,7 +46,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <em>{post.frontmatter.date}</em>
           </header>
 
-          <Row className="mb-3 welcome-boxes">
+          <Row className="mb-5 welcome-boxes">
             <Col md={3}>
               <ScoreBox value={post.frontmatter.score} />
             </Col>
@@ -61,59 +62,56 @@ const BlogPostTemplate = ({ data, location }) => {
           </Row>
 
           <Row>
-            <Col md={9}>
+            <Col md={9} className="base-section-column">
               <MDXRenderer>{post.body}</MDXRenderer>
 
-              <Row>
+              <Row className="mb-5">
                 <Col md={6}>
-                  <h4>unboxing</h4>
+                  <h4>Unboxing</h4>
                   <Youtube
                     id={post.frontmatter.unboxing_youtbe_id}
                     title={post.frontmatter.title}
                   />
                 </Col>
                 <Col md={6}>
-                  <h4>playlist</h4>
+                  <h4>Playlist</h4>
                   <Spotify playlistId="5vymJZWeWphxmQmnRqqutE" />
                 </Col>
               </Row>
             </Col>
             <Col md={3}>
               <Mechanisms values={post.frontmatter.mechanisms} />
-              <SidebarValues values={post.frontmatter.sidebar_votes} />
+              <div className="mt-5">
+                <SidebarValues values={post.frontmatter.sidebar_votes} />
+              </div>
+              <div className="mt-5">
+                <h5>Leggi anche</h5>
+                <nav className="blog-post-nav">
+                  <ul>
+                    <li>
+                      {previous && (
+                        <Link to={previous.fields.slug} rel="prev">
+                          {previous.frontmatter.title}
+                        </Link>
+                      )}
+                    </li>
+                    <li>
+                      {next && (
+                        <Link to={next.fields.slug} rel="next">
+                          {next.frontmatter.title}
+                        </Link>
+                      )}
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             </Col>
           </Row>
 
-          <footer>
+          <footer className="mt-5">
             <PostWriter writerName={post.frontmatter.writer} />
           </footer>
         </article>
-        <nav className="blog-post-nav">
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
       </Layout>
     </MDXProvider>
   )
