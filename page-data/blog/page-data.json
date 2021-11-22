@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-blog-list-template-jsx",
+    "path": "/blog",
+    "result": {"data":{"site":{"siteMetadata":{"title":"dudexpress"}},"allMdx":{"edges":[{"node":{"fields":{"slug":"/orchard/"},"frontmatter":{"title":"Orchard"}}}]}},"pageContext":{"limit":5,"skip":0,"numPages":1,"currentPage":1}},
+    "staticQueryHashes": []}
