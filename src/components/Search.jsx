@@ -3,8 +3,8 @@ import { useFlexSearch } from "react-use-flexsearch"
 
 import GameList from "../components/GameList"
 
-const Search = ({ index, store }) => {
-  const { search } = window.location
+const Search = ({ index, store, location }) => {
+  const { search } = location
   const query = new URLSearchParams(search).get("s")
   const [searchQuery, setSearchQuery] = useState(query || "")
   const results = useFlexSearch(searchQuery, index, store)

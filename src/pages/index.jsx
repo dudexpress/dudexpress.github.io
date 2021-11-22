@@ -13,7 +13,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={title}>
       <Seo title="Welcome" />
-      <Search {...data.localSearchPages} />
+      <Search {...data.localSearchPages} location={location} />
       <h2>Leggi gli ultimi articoli</h2>
 
       <GameList games={data.allMdx.nodes} />
