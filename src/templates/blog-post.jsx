@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
@@ -20,13 +19,13 @@ import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
 import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
+import Img from "gatsby-image"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube }
-  // const cover = post.frontmatter.cover.childImageSharp.fluid
 
   return (
     <MDXProvider components={shortcodes}>
@@ -44,7 +43,9 @@ const BlogPostTemplate = ({ data, location }) => {
             <Container>
               <Row>
                 <Col md={3}>
-                  <img src="https://placekitten.com/300/300" alt="" />
+                  <Img
+                    fluid={post.frontmatter.featureImage.childImageSharp.fluid}
+                  />
                 </Col>
                 <Col md={9}>
                   <h4>
@@ -147,7 +148,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         writer
         title
-        cover {
+        featureImage {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid

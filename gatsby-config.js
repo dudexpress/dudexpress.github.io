@@ -21,9 +21,6 @@ module.exports = {
     siteUrl: `https://dudexpress.it/`,
   },
   plugins: [
-    `gatsby-plugin-image`,
-    `gatsby-plugin-fontawesome-css`,
-    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -38,6 +35,9 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-fontawesome-css`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
