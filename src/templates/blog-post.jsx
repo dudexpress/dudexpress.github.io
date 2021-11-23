@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
@@ -12,19 +13,20 @@ import ScoreBox from "../components/boxes/ScoreBox"
 import Layout from "../components/Layout"
 import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
-import ImageSection from "../components/sections/ImageSection"
 import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
 import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
 import Mechanisms from "../components/sidebar/Mechanisms"
+import Container from "react-bootstrap/Container"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const shortcodes = { Setting, ImageSection, Rules, Feedback, Spotify }
+  const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube }
+  // const cover = post.frontmatter.cover.childImageSharp.fluid
 
   return (
     <MDXProvider components={shortcodes}>
@@ -39,74 +41,82 @@ const BlogPostTemplate = ({ data, location }) => {
           itemType="http://schema.org/Article"
         >
           <header className="blog-post-header">
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <h4>
-              {post.frontmatter.designer} - {post.frontmatter.publisher}
-            </h4>
-            <em>{post.frontmatter.date}</em>
-          </header>
-
-          <Row className="mb-5 welcome-boxes">
-            <Col md={3}>
-              <ScoreBox value={post.frontmatter.score} />
-            </Col>
-            <Col md={3}>
-              <DurationBox value={post.frontmatter.playing_time} />
-            </Col>
-            <Col md={3}>
-              <WeightBox value={post.frontmatter.weight} />
-            </Col>
-            <Col md={3}>
-              <PlayerCountBox value={post.frontmatter.player_count} />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={9} className="base-section-column">
-              <MDXRenderer>{post.body}</MDXRenderer>
-
-              <Row className="mb-5">
-                <Col md={6}>
-                  <h4>Unboxing</h4>
-                  <Youtube
-                    id={post.frontmatter.unboxing_youtbe_id}
-                    title={post.frontmatter.title}
-                  />
+            <Container>
+              <Row>
+                <Col md={3}>
+                  <img src="https://placekitten.com/300/300" alt="" />
                 </Col>
-                <Col md={6}>
-                  <h4>Playlist</h4>
-                  <Spotify playlistId="5vymJZWeWphxmQmnRqqutE" />
+                <Col md={9}>
+                  <h4>
+                    <span>{post.frontmatter.designer}</span>
+                    <span>● {post.frontmatter.publisher}</span>
+                  </h4>
+                  <h1 itemProp="headline">{post.frontmatter.title}</h1>
+                  <p>{post.frontmatter.description}</p>
                 </Col>
               </Row>
-            </Col>
-            <Col md={3}>
-              <Mechanisms values={post.frontmatter.mechanisms} />
-              <div className="mt-5">
-                <SidebarValues values={post.frontmatter.sidebar_votes} />
-              </div>
-              <div className="mt-5">
-                <h5>Leggi anche</h5>
-                <nav className="blog-post-nav">
-                  <ul>
-                    <li>
-                      {previous && (
-                        <Link to={previous.fields.slug} rel="prev">
-                          {previous.frontmatter.title}
-                        </Link>
-                      )}
-                    </li>
-                    <li>
-                      {next && (
-                        <Link to={next.fields.slug} rel="next">
-                          {next.frontmatter.title}
-                        </Link>
-                      )}
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </Col>
-          </Row>
+            </Container>
+          </header>
+
+          <div>
+            <Container>
+              <Row className="welcome-boxes">
+                <Col md={3}>
+                  <ScoreBox value={post.frontmatter.score} />
+                </Col>
+                <Col md={3}>
+                  <DurationBox value={post.frontmatter.playing_time} />
+                </Col>
+                <Col md={3}>
+                  <WeightBox value={post.frontmatter.weight} />
+                </Col>
+                <Col md={3}>
+                  <PlayerCountBox value={post.frontmatter.player_count} />
+                </Col>
+              </Row>
+            </Container>
+          </div>
+
+          <div className="main-content">
+            <Container>
+              <Row>
+                <Col
+                  md={{ span: 7, offset: 1 }}
+                  className="base-section-column"
+                >
+                  <MDXRenderer>{post.body}</MDXRenderer>
+                </Col>
+
+                <Col md={{ span: 3, offset: 1 }}>
+                  <Mechanisms values={post.frontmatter.mechanisms} />
+                  <div className="mt-5">
+                    <SidebarValues values={post.frontmatter.sidebar_votes} />
+                  </div>
+                  <div className="mt-5">
+                    <h5>Leggi anche</h5>
+                    <nav className="blog-post-nav">
+                      <ul>
+                        <li>
+                          {previous && (
+                            <Link to={previous.fields.slug} rel="prev">
+                              {previous.frontmatter.title}
+                            </Link>
+                          )}
+                        </li>
+                        <li>
+                          {next && (
+                            <Link to={next.fields.slug} rel="next">
+                              {next.frontmatter.title}
+                            </Link>
+                          )}
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
 
           <footer className="mt-5">
             <PostWriter writerName={post.frontmatter.writer} />
@@ -137,6 +147,13 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         writer
         title
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         description
         designer
         publisher

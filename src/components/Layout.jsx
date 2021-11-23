@@ -27,9 +27,7 @@ const Layout = ({ location, title, children }) => {
       <header className="global-header">
         <Container>{header}</Container>
       </header>
-      <Container>
-        <main>{children}</main>
-      </Container>
+      <main>{children}</main>
       <footer className="footer">
         <Container className="d-flex justify-content-between">
           <SocialLinks />

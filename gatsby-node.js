@@ -99,6 +99,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: Date @dateformat
       writer: String
       title: String
+      cover: File
       description: String
       designer: String
       publisher: String

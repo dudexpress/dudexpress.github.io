@@ -7,8 +7,8 @@ interface BaseSectionProps {
 export default class BaseSection extends React.PureComponent<BaseSectionProps> {
   public render(): React.ReactNode {
     return (
-      <div className="base-section pb-5">
-        <h1>{this.props.title}</h1>
+      <div className="base-section">
+        <h2>{this.props.title}</h2>
         <p>{this.props.children}</p>
       </div>
     )

@@ -1,3 +1,7 @@
-import "typeface-roboto"
+import "@fontsource/sora/400.css"
+import "@fontsource/sora/500.css"
+import "@fontsource/sora/700.css"
+import "@fontsource/lora/400.css"
+import "@fontsource/lora/700.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./src/style.scss"
