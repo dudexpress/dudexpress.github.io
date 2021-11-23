@@ -47,7 +47,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     fluid={post.frontmatter.featureImage.childImageSharp.fluid}
                   />
                 </Col>
-                <Col md={9}>
+                <Col md={9} className="blog-post-title">
                   <h4>
                     <span>{post.frontmatter.designer}</span>
                     <span>● {post.frontmatter.publisher}</span>
@@ -114,14 +114,11 @@ const BlogPostTemplate = ({ data, location }) => {
                       </ul>
                     </nav>
                   </div>
+                  <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
               </Row>
             </Container>
           </div>
-
-          <footer className="mt-5">
-            <PostWriter writerName={post.frontmatter.writer} />
-          </footer>
         </article>
       </Layout>
     </MDXProvider>

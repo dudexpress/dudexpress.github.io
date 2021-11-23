@@ -28,9 +28,32 @@ p {
   margin: 0;
 }
 
+.global-header {
+  padding: 4 * $spacing-unit 0;
+
+  a {
+    font-family: $font-family-title;
+    font-weight: 700;
+    color: $gray300;
+    font-size: 20px;
+    text-decoration: none;
+
+    &:hover {
+      color: $gray400;
+      animation: color 300ms;
+    }
+  }
+}
+
 // BLOG POST HEADER
 .blog-post-header {
   padding: 120px 0;
+
+  .blog-post-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   h1 {
     font-size: 100px;
@@ -73,9 +96,13 @@ p {
   z-index: 1;
   color: $gray300;
 
-  h2 {
+  h2,
+  h5 {
     font-family: $font-family-title;
     font-weight: 500;
+  }
+
+  h2 {
     font-size: 38px;
   }
 
@@ -146,8 +173,9 @@ p {
   z-index: 2;
 
   .card {
-    background: $gray400;
-    color: white;
+    background: $white;
+    color: $gray400;
+    border: 10px solid $gray200;
     border-radius: $border-radius;
     // background-color: $peach;
     // border-color: $red;
@@ -158,6 +186,7 @@ p {
     }
 
     .card-text {
+      font-family: $font-family-title;
       height: 110px;
       display: flex;
       align-items: center;
@@ -166,8 +195,9 @@ p {
     }
 
     .card-footer {
-      // background-color: $peach;
+      background-color: $white;
       border-top: 0;
+      border-radius: $border-radius;
     }
   }
 
@@ -188,13 +218,18 @@ p {
 //   }
 // }
 
-// .post-writer {
-//   border-top: 1px solid $red;
-//   img {
-//     border-radius: 100%;
-//     margin-right: 1rem;
-//   }
-// }
+.post-writer {
+  img {
+    height: 100px;
+    border-radius: $border-radius;
+  }
+  // height: 200px;
+  //   border-top: 1px solid $red;
+  //   img {
+  //     border-radius: 100%;
+  //     margin-right: 1rem;
+  //   }
+}
 
 // .player-count {
 //   display: flex;
@@ -233,3 +268,10 @@ p {
 //     }
 //   }
 // }
+.global-footer {
+  background: $gray400;
+  font-family: "Sora";
+  padding: 4 * $spacing-unit 0;
+  color: $white;
+  font-weight: 700;
+}

@@ -24,6 +24,8 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
   }
 
   private renderContent(): React.ReactNode {
+    return <img src={`../../weight/elephant.png`} alt="elephant" width={96} />
+
     switch (this.props.value) {
       case 1:
         return (

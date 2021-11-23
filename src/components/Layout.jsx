@@ -28,10 +28,10 @@ const Layout = ({ location, title, children }) => {
         <Container>{header}</Container>
       </header>
       <main>{children}</main>
-      <footer className="footer">
+      <footer className="global-footer">
         <Container className="d-flex justify-content-between">
           <SocialLinks />
-          <span>dudexpress</span>
+          <span>{title}</span>
         </Container>
       </footer>
     </div>
