@@ -65,6 +65,10 @@ p {
     font-size: 50px;
     @media (min-width: 768px) {
       // ipad
+      font-size: 75px;
+    }
+    @media (min-width: 992px) {
+      // desktop
       font-size: 100px;
     }
 
