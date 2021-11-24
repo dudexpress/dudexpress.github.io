@@ -24,36 +24,13 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
   }
 
   private renderContent(): React.ReactNode {
-    return <img src={`../../weight/elephant.png`} alt="elephant" width={96} />
-
-    switch (this.props.value) {
-      case 1:
-        return (
-          <>
-            <FontAwesomeIcon icon={faFeather} />
-            <FontAwesomeIcon icon={faFeather} />
-          </>
-        )
-      case 2:
-        return <FontAwesomeIcon icon={faFeather} />
-      case 3:
-        return <FontAwesomeIcon icon={faWeightHanging} />
-      case 4:
-        return (
-          <>
-            <FontAwesomeIcon icon={faWeightHanging} />
-            <FontAwesomeIcon icon={faWeightHanging} />
-          </>
-        )
-      case 5:
-        return (
-          <>
-            <FontAwesomeIcon icon={faWeightHanging} />
-            <FontAwesomeIcon icon={faWeightHanging} />
-            <FontAwesomeIcon icon={faWeightHanging} />
-          </>
-        )
-    }
+    return (
+      <img
+        src={`../../weight/${this.props.value}.png`}
+        alt="weight"
+        height={50}
+      />
+    )
   }
 
   public render(): React.ReactNode {

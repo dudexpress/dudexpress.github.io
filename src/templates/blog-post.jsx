@@ -62,16 +62,16 @@ const BlogPostTemplate = ({ data, location }) => {
           <div>
             <Container>
               <Row className="welcome-boxes">
-                <Col md={3}>
+                <Col md={6} lg={3}>
                   <ScoreBox value={post.frontmatter.score} />
                 </Col>
-                <Col md={3}>
+                <Col md={6} lg={3}>
                   <DurationBox value={post.frontmatter.playing_time} />
                 </Col>
-                <Col md={3}>
+                <Col md={6} lg={3}>
                   <WeightBox value={post.frontmatter.weight} />
                 </Col>
-                <Col md={3}>
+                <Col md={6} lg={3}>
                   <PlayerCountBox value={post.frontmatter.player_count} />
                 </Col>
               </Row>
@@ -82,7 +82,9 @@ const BlogPostTemplate = ({ data, location }) => {
             <Container>
               <Row>
                 <Col
-                  md={{ span: 7, offset: 1 }}
+                  xs={12}
+                  md={8}
+                  lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
                   <MDXRenderer>{post.body}</MDXRenderer>

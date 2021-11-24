@@ -1,6 +1,7 @@
 import React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Author } from "../types"
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
 
 interface WhoWeAreProps {
   authors: Author[]
@@ -9,7 +10,7 @@ interface WhoWeAreProps {
 export default class WhoWeArea extends React.PureComponent<WhoWeAreProps> {
   private renderAuthor(author: Author): React.ReactNode {
     return (
-      <div>
+      <Col>
         <img
           src={`../../people/${author.image}`}
           alt={author.name}
@@ -17,11 +18,11 @@ export default class WhoWeArea extends React.PureComponent<WhoWeAreProps> {
         />
         <h4>{author.name}</h4>
         <p>{author.summary}</p>
-      </div>
+      </Col>
     )
   }
 
   public render(): React.ReactNode {
-    return this.props.authors.map(this.renderAuthor)
+    return <Row>{this.props.authors.map(this.renderAuthor)}</Row>
   }
 }

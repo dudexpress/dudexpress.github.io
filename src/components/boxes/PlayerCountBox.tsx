@@ -20,7 +20,7 @@ export default class PlayerCountBox extends React.PureComponent<PlayerCountBoxPr
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Numero giocatori" footer={this.renderFooter()}>
+      <BaseBox title="Giocatori" footer={this.renderFooter()}>
         <div className="player-count">
           {this.getRandomNumbers(this.props.value).map((id: number) => (
             <img
