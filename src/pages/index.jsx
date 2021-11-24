@@ -13,16 +13,21 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={title}>
       <Seo title="Welcome" />
-      <Search {...data.localSearchPages} location={location} />
+      {/* <Search {...data.localSearchPages} location={location} /> */}
+
+      <Container className="text-center welcome-title">
+        <h1>{title}</h1>
+        <h5>Recensioni semplici, immediate e immersive</h5>
+      </Container>
 
       <div className="main-content">
         <Container>
           <h2>Leggi gli ultimi articoli</h2>
 
           <GameList games={data.allMdx.nodes} />
-          <Link to="/blog" rel="next">
+          {/* <Link to="/blog" rel="next">
             Scopri di più →
-          </Link>
+          </Link> */}
           <hr />
           <h2>Chi siamo</h2>
           <WhoWeAre authors={authors} />

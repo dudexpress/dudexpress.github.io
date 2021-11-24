@@ -58,7 +58,6 @@ const BlogPostTemplate = ({ data, location }) => {
               </Row>
             </Container>
           </header>
-
           <div>
             <Container>
               <Row className="welcome-boxes">
@@ -72,12 +71,14 @@ const BlogPostTemplate = ({ data, location }) => {
                   <WeightBox value={post.frontmatter.weight} />
                 </Col>
                 <Col md={6} lg={3}>
-                  <PlayerCountBox value={post.frontmatter.player_count} />
+                  <PlayerCountBox
+                    value={post.frontmatter.player_count}
+                    officialValue={post.frontmatter.player_count_official}
+                  />
                 </Col>
               </Row>
             </Container>
           </div>
-
           <div className="main-content article-main-content">
             <Container>
               <Row>
@@ -88,6 +89,7 @@ const BlogPostTemplate = ({ data, location }) => {
                   className="base-section-column"
                 >
                   <MDXRenderer>{post.body}</MDXRenderer>
+                  <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
 
                 <Col md={{ span: 3, offset: 1 }}>
@@ -95,7 +97,7 @@ const BlogPostTemplate = ({ data, location }) => {
                   <div className="mt-5">
                     <SidebarValues values={post.frontmatter.sidebar_votes} />
                   </div>
-                  <div className="mt-5">
+                  {/* <div className="mt-5">
                     <h5>Leggi anche</h5>
                     <nav className="blog-post-nav">
                       <ul>
@@ -115,12 +117,31 @@ const BlogPostTemplate = ({ data, location }) => {
                         </li>
                       </ul>
                     </nav>
-                  </div>
-                  <PostWriter writerName={post.frontmatter.writer} />
+                  </div> */}
                 </Col>
               </Row>
             </Container>
           </div>
+          <Container>
+            <Row className="welcome-boxes">
+              <Col md={6} lg={3}>
+                <ScoreBox value={post.frontmatter.score} />
+              </Col>
+              <Col md={6} lg={3}>
+                <DurationBox value={post.frontmatter.playing_time} />
+              </Col>
+              <Col md={6} lg={3}>
+                <WeightBox value={post.frontmatter.weight} />
+              </Col>
+              <Col md={6} lg={3}>
+                <PlayerCountBox
+                  value={post.frontmatter.player_count}
+                  officialValue={post.frontmatter.player_count_official}
+                />
+              </Col>
+            </Row>
+          </Container>
+          asdsad
         </article>
       </Layout>
     </MDXProvider>
@@ -162,6 +183,7 @@ export const pageQuery = graphql`
         weight
         design
         player_count
+        player_count_official
         playing_time
         unboxing_youtbe_id
         sidebar_votes {

@@ -7,21 +7,14 @@ interface BaseBoxProps {
 }
 
 export default class BaseBox extends React.PureComponent<BaseBoxProps> {
-  private renderFooter(): React.ReactNode {
-    if (this.props.footer == null) {
-      return null
-    }
-    return <Card.Footer>{this.props.footer}</Card.Footer>
-  }
-
   public render(): React.ReactNode {
     return (
       <Card className="base-box">
         <Card.Body>
-          <Card.Title>{this.props.title}</Card.Title>
+          <Card.Title className="mb-0">{this.props.title}</Card.Title>
           <Card.Text>{this.props.children}</Card.Text>
+          <Card.Footer className="p-0">{this.props.footer}</Card.Footer>
         </Card.Body>
-        {this.renderFooter()}
       </Card>
     )
   }

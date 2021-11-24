@@ -28,14 +28,14 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
       <img
         src={`../../weight/${this.props.value}.png`}
         alt="weight"
-        height={50}
+        height={100}
       />
     )
   }
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Difficoltà" footer={this.renderFooter()}>
+      <BaseBox title="Impegno richiesto" footer={this.renderFooter()}>
         {this.renderContent()}
       </BaseBox>
     )

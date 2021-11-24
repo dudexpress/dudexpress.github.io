@@ -14,7 +14,9 @@ export default class Mechanisms extends React.PureComponent<MechanismsProps> {
     return (
       <>
         <h5>Meccaniche</h5>
-        {this.props.values.map(this.renderTag)}
+        <div className="mechanisms">
+          {this.props.values.map(this.renderTag)}
+        </div>
       </>
     )
   }

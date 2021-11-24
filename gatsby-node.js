@@ -107,6 +107,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       weight: Float
       design: Float
       player_count: Int
+      player_count_official: String
       playing_time: String
       unboxing_youtbe_id: String
       sidebar_votes: [SidebarVotes]

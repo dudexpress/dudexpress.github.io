@@ -1,22 +1,22 @@
 $font-family-body: "Lora";
 $font-family-title: "Sora";
 
-$gray400: #17161a;
+$gray400: #27272d;
+// #17161a;
 $gray300: #454548;
 $gray200: #f2f5f8;
 $white: white;
 
+$spacing-unit: 8px;
 $border-radius: 16px;
 $box-height: 240px;
 
-// $red: red;
-// $peach: white;
-// // $peach: #fefaf5;
-// $dark-peach: white;
-// // $dark-peach: #fdf5ed;
-// $black: black;
-// $blue: linear-gradient(45deg, #f200ff 0%, #ffba42 100%);
-$spacing-unit: 8px;
+// https://coolors.co/fe4655-ffa059-b6f986-ff9aaf-517ebd
+$red: #fe4655;
+$pink: #ff9aaf;
+$orange: #ffa059;
+$green: #99d856;
+$blue: #7371a8;
 
 body {
   font-family: $font-family-body;
@@ -26,6 +26,33 @@ body {
 
 p {
   margin: 0;
+}
+
+.welcome-title {
+  padding: 5rem;
+
+  h1,
+  h5 {
+    font-family: $font-family-title;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 50px;
+    @media (min-width: 768px) {
+      // ipad
+      font-size: 75px;
+    }
+    @media (min-width: 992px) {
+      // desktop
+      font-size: 100px;
+    }
+  }
+
+  h5 {
+    text-transform: uppercase;
+    color: $gray300;
+  }
 }
 
 .global-header {
@@ -122,22 +149,56 @@ p {
     letter-spacing: -0.3px;
   }
 
-  .gatsby-resp-image-wrapper img {
+  .gatsby-resp-image-wrapper img,
+  .gatsby-resp-image-background-image {
     border-radius: $border-radius;
   }
 
   .base-section {
-    margin-top: 10 * $spacing-unit;
+    margin-top: $box-height / 3;
+    margin-bottom: $box-height / 3;
+
     &:first-of-type {
       margin-top: 0;
     }
+
+    .base-section-color {
+      width: 100px;
+      height: 5px;
+      margin-bottom: 3 * $spacing-unit;
+
+      &.base-section-color-green {
+        background-color: $green;
+      }
+
+      &.base-section-color-orange {
+        background-color: $orange;
+      }
+
+      &.base-section-color-pink {
+        background-color: $pink;
+      }
+    }
   }
 
-  .badge {
-    padding: $spacing-unit;
-    background: $white !important;
-    color: $gray300;
-    border: 1px solid $gray300;
+  .mechanisms {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .badge {
+      padding: $spacing-unit;
+      background: $red !important;
+      color: $white;
+      font-size: 16px;
+      font-family: $font-family-title;
+    }
+  }
+
+  .sidebar-random-value {
+    .values {
+      color: $blue;
+    }
   }
 }
 
@@ -157,7 +218,7 @@ p {
 
   @media (min-width: 992px) {
     // desktop
-    padding-top: 2/3 * $box-height;
+    padding-top: $box-height;
     margin-top: -$box-height / 2;
   }
 }
@@ -226,14 +287,26 @@ p {
     }
 
     .card-footer {
-      background-color: $white;
+      background-color: $gray200;
       border-top: 0;
       border-radius: $border-radius;
     }
   }
 
+  .player-count {
+    line-height: 1;
+  }
+
   .base-box {
-    height: 240px;
+    text-align: center;
+    height: $box-height;
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     svg {
       color: $white;
       margin: 2px 2px 2px 0;
@@ -243,13 +316,8 @@ p {
 
 // // SIDEBAR
 
-// .sidebar-random-value {
-//   .values {
-//     color: $red;
-//   }
-// }
-
 .post-writer {
+  margin-top: $box-height / 2;
   img {
     height: 100px;
     border-radius: $border-radius;
@@ -261,12 +329,6 @@ p {
   //     margin-right: 1rem;
   //   }
 }
-
-// .player-count {
-//   display: flex;
-//   flex-wrap: wrap;
-//   width: 100%;
-// }
 
 // .base-section-column {
 //   box-shadow: inset -1px 0px 0px $red;

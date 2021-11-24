@@ -3,32 +3,26 @@ import { Link } from "gatsby"
 import SocialLinks from "../components/SocialLinks"
 import Container from "react-bootstrap/Container"
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-  let header
-
-  // if (isRootPath) {
-  //   header = (
-  //     <h1 className="main-heading">
-  //       <Link to="/">{title}</Link>
-  //     </h1>
-  //   )
-  // } else {
-  //   header = (
-
-  //   )
-  // }
+const renderNavbar = (location, title) => {
+  if (location.pathname === `${__PATH_PREFIX__}/`) {
+    return null
+  }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">
-        <Container>
-          <Link className="header-link-home" to="/">
-            {title}
-          </Link>
-        </Container>
-      </header>
+    <header className="global-header">
+      <Container>
+        <Link className="header-link-home" to="/">
+          {title}
+        </Link>
+      </Container>
+    </header>
+  )
+}
+
+const Layout = ({ location, title, children }) => {
+  return (
+    <div className="global-wrapper">
+      {renderNavbar(location, title)}
       <main>{children}</main>
       <footer className="global-footer">
         <Container className="d-flex justify-content-between">

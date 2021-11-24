@@ -26,14 +26,16 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
   )
 
   return (
-    <div className="post-writer mt-5">
-      <h5>{author.name}</h5>
+    <div className="post-writer d-flex justify-content-center">
       <img
         src={`../../people/${author.image}`}
         alt={author.name}
-        className="py-2"
+        className="me-3"
       />
-      <p>{author?.summary}</p>
+      <div>
+        <h5>{author.name}</h5>
+        <p>{author?.summary}</p>
+      </div>
     </div>
   )
 }

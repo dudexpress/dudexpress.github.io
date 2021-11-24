@@ -11,7 +11,7 @@ interface Icon {
 
 const icons: Icon[] = [
   // weight
-  { name: "Mouse Animal", url: "95005/mouse-animal" },
+  { name: "Butterfly", url: "ReoyJKHR7Mmp/butterfly" },
   { name: "Parrot", url: "36840/parrot" },
   { name: "Lion Full Body", url: "NtLw1N1CHb4g/lion-full-body" },
   { name: "Bear Full Body", url: "qlYqIMUdIBvt/bear-full-body" },

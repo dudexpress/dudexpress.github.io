@@ -8,7 +8,8 @@ module.exports = {
     authors: [
       {
         name: "Tia",
-        summary: "blablabla tia tia iaiaoh",
+        summary:
+          "Sviluppatore, beer snob, dipendente dal gioco, amante dei viaggi, noioso come la morte",
         image: "tia.jpg",
       },
       {
