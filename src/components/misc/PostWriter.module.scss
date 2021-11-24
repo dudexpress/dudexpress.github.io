@@ -1,0 +1,13 @@
+@use "../../style.scss" as v;
+
+.post-writer {
+  margin-top: v.$box-height / 2;
+  padding: 16px;
+  border: 10px solid v.$white;
+  border-radius: v.$border-radius;
+
+  img {
+    height: 100px;
+    border-radius: v.$border-radius;
+  }
+}

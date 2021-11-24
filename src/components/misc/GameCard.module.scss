@@ -1,0 +1,26 @@
+@use "../../style.scss" as v;
+
+.game-card {
+  border: 10px solid v.$gray200;
+  border-radius: v.$border-radius;
+
+  .game-card-body {
+    display: flex;
+    align-items: center;
+  }
+
+  h4 {
+    font-family: v.$font-family-title;
+    font-weight: 700;
+    color: v.$gray400;
+    text-decoration: none !important;
+  }
+
+  p {
+    letter-spacing: -0.3px;
+  }
+
+  & + .game-card {
+    margin-top: v.$spacing-unit;
+  }
+}

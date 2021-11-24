@@ -20,7 +20,7 @@ import PostWriter from "../components/misc/PostWriter"
 import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
 import Img from "gatsby-image"
-import GameCard from "../components/GameCard"
+import GameCard from "../components/misc/GameCard"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
@@ -34,11 +34,7 @@ const BlogPostTemplate = ({ data, location }) => {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article
-          className="blog-post"
-          itemScope
-          itemType="http://schema.org/Article"
-        >
+        <div className="blog-post">
           <header className="blog-post-header">
             <Container>
               <Row>
@@ -101,7 +97,7 @@ const BlogPostTemplate = ({ data, location }) => {
               </Row>
             </Container>
           </div>
-        </article>
+        </div>
         <Container className="read-more-posts">
           <Row className="game-list">
             <Col lg={{ span: 7, offset: 1 }}>

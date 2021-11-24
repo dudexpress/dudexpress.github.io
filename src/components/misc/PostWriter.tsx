@@ -1,6 +1,10 @@
+import classnames from "classnames"
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+
 import { Author } from "../../types"
+
+import * as styles from "./PostWriter.module.scss"
 
 interface PostWriterProps {
   writerName: string
@@ -25,8 +29,12 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
     (x: Author) => x.name === writerName
   )
 
+  const className = classnames(
+    styles.postWriter,
+    "d-flex justify-content-center"
+  )
   return (
-    <div className="post-writer d-flex justify-content-center">
+    <div className={className}>
       <img
         src={`../../people/${author.image}`}
         alt={author.name}

@@ -1,0 +1,10 @@
+@use "../../style.scss" as v;
+
+.sidebar-vote {
+  padding: 2 * v.$spacing-unit 0;
+
+  .values {
+    color: v.$blue;
+    margin: 0;
+  }
+}

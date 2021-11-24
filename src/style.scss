@@ -129,6 +129,14 @@ p {
   }
 }
 
+.blog-post {
+  p {
+    font-size: 20px;
+    line-height: 38px;
+    letter-spacing: -0.3px;
+  }
+}
+
 // MAIN CONTENT
 .main-content {
   color: $gray300;
@@ -141,12 +149,6 @@ p {
 
   h2 {
     font-size: 38px;
-  }
-
-  p {
-    font-size: 20px;
-    line-height: 38px;
-    letter-spacing: -0.3px;
   }
 
   .gatsby-resp-image-wrapper img,
@@ -180,26 +182,6 @@ p {
       }
     }
   }
-
-  .mechanisms {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    .badge {
-      padding: $spacing-unit;
-      background: $red !important;
-      color: $white;
-      font-size: 16px;
-      font-family: $font-family-title;
-    }
-  }
-
-  .sidebar-random-value {
-    .values {
-      color: $blue;
-    }
-  }
 }
 
 .article-main-content {
@@ -222,39 +204,6 @@ p {
     margin-top: -$box-height / 2;
   }
 }
-
-// .global-header {
-//   background-color: $dark-peach;
-//   padding: 2 * $spacing-unit;
-// }
-
-// .footer {
-//   background-color: $dark-peach;
-//   margin-top: 5 * $spacing-unit;
-//   padding: 2 * $spacing-unit;
-//   color: $black;
-// }
-
-// .container {
-//   max-width: 1200px;
-// }
-
-// h1 {
-//   font-weight: 800;
-// }
-
-// .blog-post-header {
-//   padding: 5rem 0;
-
-//   h1 {
-//     font-size: 5rem;
-//   }
-
-//   h4 {
-//     font-size: 2.5rem;
-//     font-weight: 300;
-//   }
-// }
 
 // WELCOME BOXES
 
@@ -316,80 +265,12 @@ p {
 
 // // SIDEBAR
 
-.post-writer {
-  margin-top: $box-height / 2;
-  padding: 16px;
-  border: 10px solid $white;
-  border-radius: $border-radius;
-
-  img {
-    height: 100px;
-    border-radius: $border-radius;
-  }
-  // height: 200px;
-  //   border-top: 1px solid $red;
-  //   img {
-  //     border-radius: 100%;
-  //     margin-right: 1rem;
-  //   }
-}
-
-// .base-section-column {
-//   box-shadow: inset -1px 0px 0px $red;
-// }
-
-// .base-section {
-//   p {
-//     line-height: 1.6;
-//   }
-// }
-
-// .blog-post-nav ul {
-//   list-style: none;
-//   padding: 0;
-// }
-
-// .image-wrapper {
-//   position: relative;
-//   height: 380px;
-
-//   .gatsby-resp-image-wrapper {
-//     height: 200px;
-//     width: 200px;
-//     position: absolute !important;
-//     left: 20%;
-
-//     + .gatsby-resp-image-wrapper {
-//       left: 40%;
-//       bottom: 10%;
-//     }
-//   }
-// }
 .global-footer {
   background: $gray400;
   font-family: "Sora";
   padding: 4 * $spacing-unit 0;
   color: $white;
   font-weight: 700;
-}
-
-.post-list-item {
-  .card {
-    border: 10px solid $gray200;
-    border-radius: $border-radius;
-  }
-
-  h4 {
-    font-family: $font-family-title;
-    font-weight: 700;
-    font-size: 30px;
-    color: $gray400;
-    text-decoration: none !important;
-  }
-
-  & + .post-list-item {
-    margin-top: $spacing-unit;
-  }
 }
 
 .read-more-posts {

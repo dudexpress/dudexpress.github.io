@@ -1,5 +1,6 @@
 import React from "react"
 import Badge from "react-bootstrap/Badge"
+import * as styles from "./Mechanisms.module.scss"
 
 interface MechanismsProps {
   values: string[]
@@ -7,14 +8,18 @@ interface MechanismsProps {
 
 export default class Mechanisms extends React.PureComponent<MechanismsProps> {
   private renderTag(tag: string): React.ReactNode {
-    return <Badge bg="secondary me-1 mb-1">{tag}</Badge>
+    return (
+      <Badge className={styles.badge} bg="secondary me-1 mb-1">
+        {tag}
+      </Badge>
+    )
   }
 
   public render(): React.ReactNode {
     return (
       <>
         <h5>Meccaniche</h5>
-        <div className="mechanisms">
+        <div className={styles.mechanisms}>
           {this.props.values.map(this.renderTag)}
         </div>
       </>

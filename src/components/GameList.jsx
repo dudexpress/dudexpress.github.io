@@ -2,7 +2,7 @@ import React from "react"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
-import GameCard from "../components/GameCard"
+import GameCard from "../components/misc/GameCard"
 
 const GameList = ({ games }) => {
   return (

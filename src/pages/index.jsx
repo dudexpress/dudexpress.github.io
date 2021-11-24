@@ -1,21 +1,19 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
-import WhoWeAre from "../components/WhoWeAre"
-import GameCard from "../components/GameCard"
-import Search from "../components/Search"
+import GameCard from "../components/misc/GameCard"
 
 const BlogIndex = ({ data, location }) => {
-  const { title, authors } = data.site.siteMetadata
+  const { title } = data.site.siteMetadata
 
   return (
     <Layout location={location} title={title}>
-      <Seo title="Welcome" />
+      <Seo title="Leggi gli ultimi articoli" />
       {/* <Search {...data.localSearchPages} location={location} /> */}
       <div style={{ minHeight: "calc(100vh - 88px)" }}>
         <Container className="text-center welcome-title">
@@ -33,12 +31,8 @@ const BlogIndex = ({ data, location }) => {
                 ))}
               </Col>
             </Row>
-            {/* <Link to="/blog" rel="next">
-            Scopri di più →
-          </Link> */}
-            {/* <hr /> */}
-            {/* <h2>Chi siamo</h2> */}
-            {/* <WhoWeAre authors={authors} /> */}
+            {/* <Link to="/blog" rel="next">Scopri di più →</Link> */}
+            {/* <WhoWeAre authors={data.site.siteMetadata.authors} /> */}
           </Container>
         </div>
       </div>
