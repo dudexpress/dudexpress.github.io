@@ -25,16 +25,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allMdx.nodes
 
   posts.forEach((post, index) => {
-    const previousPostId = index === 0 ? null : posts[index - 1].id
-    const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+    let readMoreIds = []
+    while (readMoreIds.length < 2) {
+      let r = "" + Math.floor(Math.random() * posts.length)
+      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+        readMoreIds.push(r)
+      }
+    }
 
     createPage({
       path: post.fields.slug,
       component: blogPost,
       context: {
         id: post.id,
-        previousPostId,
-        nextPostId,
+        readMoreIds: readMoreIds.map(x => posts[x].id),
       },
     })
   })

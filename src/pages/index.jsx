@@ -24,7 +24,7 @@ const BlogIndex = ({ data, location }) => {
         </Container>
 
         <div className="main-content">
-          <Container className="read-more-posts p-0">
+          <Container className="read-more-posts pt-0">
             <Row className="game-list">
               <Col lg={{ span: 6, offset: 3 }}>
                 <h1>Leggi gli ultimi articoli</h1>
@@ -64,7 +64,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(limit: 2, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(limit: 5, sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         excerpt
         fields {

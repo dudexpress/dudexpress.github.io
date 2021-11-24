@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
@@ -21,7 +21,6 @@ import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
 import Img from "gatsby-image"
 import GameCard from "../components/GameCard"
-import GameList from "../components/GameList"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
@@ -121,12 +120,13 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($id: String!) {
+  query BlogPostBySlug($id: String!, $readMoreIds: [String]!) {
     site {
       siteMetadata {
         title
       }
     }
+
     mdx(id: { eq: $id }) {
       id
       body
@@ -158,9 +158,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(limit: 2, sort: { fields: [frontmatter___date], order: DESC }) {
+
+    allMdx(filter: { id: { in: $readMoreIds } }) {
       nodes {
-        excerpt
         fields {
           slug
         }
