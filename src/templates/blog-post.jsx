@@ -20,11 +20,12 @@ import PostWriter from "../components/misc/PostWriter"
 import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
 import Img from "gatsby-image"
+import GameCard from "../components/GameCard"
+import GameList from "../components/GameList"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
   const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube }
 
   return (
@@ -97,52 +98,21 @@ const BlogPostTemplate = ({ data, location }) => {
                   <div className="mt-5">
                     <SidebarValues values={post.frontmatter.sidebar_votes} />
                   </div>
-                  {/* <div className="mt-5">
-                    <h5>Leggi anche</h5>
-                    <nav className="blog-post-nav">
-                      <ul>
-                        <li>
-                          {previous && (
-                            <Link to={previous.fields.slug} rel="prev">
-                              {previous.frontmatter.title}
-                            </Link>
-                          )}
-                        </li>
-                        <li>
-                          {next && (
-                            <Link to={next.fields.slug} rel="next">
-                              {next.frontmatter.title}
-                            </Link>
-                          )}
-                        </li>
-                      </ul>
-                    </nav>
-                  </div> */}
                 </Col>
               </Row>
             </Container>
           </div>
-          <Container>
-            <Row className="welcome-boxes">
-              <Col md={6} lg={3}>
-                <ScoreBox value={post.frontmatter.score} />
-              </Col>
-              <Col md={6} lg={3}>
-                <DurationBox value={post.frontmatter.playing_time} />
-              </Col>
-              <Col md={6} lg={3}>
-                <WeightBox value={post.frontmatter.weight} />
-              </Col>
-              <Col md={6} lg={3}>
-                <PlayerCountBox
-                  value={post.frontmatter.player_count}
-                  officialValue={post.frontmatter.player_count_official}
-                />
-              </Col>
-            </Row>
-          </Container>
-          asdsad
         </article>
+        <Container className="read-more-posts">
+          <Row className="game-list">
+            <Col lg={{ span: 7, offset: 1 }}>
+              <h1>Potrebbe interessarti anche</h1>
+              {data.allMdx.nodes.map(post => (
+                <GameCard key={post.frontmatter.title} post={post} />
+              ))}
+            </Col>
+          </Row>
+        </Container>
       </Layout>
     </MDXProvider>
   )
@@ -151,11 +121,7 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query BlogPostBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -192,20 +158,24 @@ export const pageQuery = graphql`
         }
       }
     }
-    previous: mdx(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: mdx(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
+    allMdx(limit: 2, sort: { fields: [frontmatter___date], order: DESC }) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          featureImage {
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          description
+        }
       }
     }
   }
