@@ -78,7 +78,7 @@ const BlogPostTemplate = ({ data, location }) => {
             </Container>
           </div>
 
-          <div className="main-content">
+          <div className="main-content article-main-content">
             <Container>
               <Row>
                 <Col
