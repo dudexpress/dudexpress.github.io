@@ -50,6 +50,14 @@ export const blogListQuery = graphql`
           }
           frontmatter {
             title
+            description
+            featureImage {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
