@@ -19,6 +19,7 @@
     "flexsearch": "^0.7.21",
     "gatsby": "^4.2.0",
     "gatsby-image": "^3.11.0",
+    "gatsby-plugin-cname": "^1.0.0",
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-feed-mdx": "^1.1.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",

@@ -23,6 +23,7 @@ module.exports = {
     siteUrl: `https://dudexpress.it/`,
   },
   plugins: [
+    `gatsby-plugin-cname`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
