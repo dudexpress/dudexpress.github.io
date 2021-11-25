@@ -29,7 +29,17 @@ p {
 }
 
 .welcome-title {
-  padding: 5rem;
+  padding: 2rem 1rem;
+  font-size: 50px;
+  @media (min-width: 768px) {
+    // ipad
+    padding: 5rem;
+    font-size: 75px;
+  }
+  @media (min-width: 992px) {
+    // desktop
+    font-size: 100px;
+  }
 
   h1,
   h5 {
@@ -274,7 +284,8 @@ p {
 }
 
 .read-more-posts {
-  padding: 120px 0;
+  padding-top: 120px;
+  padding-bottom: 120px;
 
   h1 {
     font-family: $font-family-title;

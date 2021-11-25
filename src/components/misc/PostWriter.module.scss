@@ -5,9 +5,15 @@
   padding: 16px;
   border: 10px solid v.$white;
   border-radius: v.$border-radius;
+  background-color: v.$gray200;
+
+  h4 {
+    font-weight: 700;
+    font-family: v.$font-family-title;
+  }
 
   img {
-    height: 100px;
+    width: 100%;
     border-radius: v.$border-radius;
   }
 }

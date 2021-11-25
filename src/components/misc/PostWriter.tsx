@@ -1,7 +1,9 @@
 import classnames from "classnames"
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import Card from "react-bootstrap/Card"
 import { Author } from "../../types"
 
 import * as styles from "./PostWriter.module.scss"
@@ -34,17 +36,21 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
     "d-flex justify-content-center"
   )
   return (
-    <div className={className}>
-      <img
-        src={`../../people/${author.image}`}
-        alt={author.name}
-        className="me-3"
-      />
-      <div>
-        <h5>{author.name}</h5>
-        <p>{author?.summary}</p>
-      </div>
-    </div>
+    <Card className={styles.postWriter}>
+      <Card.Body className={styles.gameCardBody}>
+        <Row>
+          <Col md={2}>
+            <img src={`../../people/${author.image}`} alt={author.name} />
+          </Col>
+          <Col md={10}>
+            <div className="d-flex flex-column justify-content-center h-100">
+              <h4>{author.name}</h4>
+              <p>{author?.summary}</p>
+            </div>
+          </Col>
+        </Row>
+      </Card.Body>
+    </Card>
   )
 }
 
