@@ -46,7 +46,9 @@ const BlogPostTemplate = ({ data, location }) => {
                 <Col md={9} className="blog-post-title">
                   <h4>
                     <span>{post.frontmatter.designer}</span>
-                    <span>● {post.frontmatter.publisher}</span>
+                    <span>
+                      ● {post.frontmatter.publisher.replace("-", "●")}
+                    </span>
                   </h4>
                   <h1 itemProp="headline">{post.frontmatter.title}</h1>
                   <p>{post.frontmatter.description}</p>
@@ -61,7 +63,10 @@ const BlogPostTemplate = ({ data, location }) => {
                   <ScoreBox value={post.frontmatter.score} />
                 </Col>
                 <Col md={6} lg={3}>
-                  <DurationBox value={post.frontmatter.playing_time} />
+                  <DurationBox
+                    value={post.frontmatter.playing_time}
+                    officialValue={post.frontmatter.playing_time_official}
+                  />
                 </Col>
                 <Col md={6} lg={3}>
                   <WeightBox value={post.frontmatter.weight} />
@@ -85,7 +90,6 @@ const BlogPostTemplate = ({ data, location }) => {
                   className="base-section-column"
                 >
                   <MDXRenderer>{post.body}</MDXRenderer>
-                  <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
 
                 <Col md={{ span: 3, offset: 1 }}>
@@ -93,6 +97,14 @@ const BlogPostTemplate = ({ data, location }) => {
                   <div className="mt-5">
                     <SidebarValues values={post.frontmatter.sidebar_votes} />
                   </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col
+                  lg={{ span: 7, offset: 1 }}
+                  className="base-section-column"
+                >
+                  <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
               </Row>
             </Container>
@@ -147,7 +159,7 @@ export const pageQuery = graphql`
         player_count
         player_count_official
         playing_time
-        unboxing_youtbe_id
+        playing_time_official
         sidebar_votes {
           title
           value

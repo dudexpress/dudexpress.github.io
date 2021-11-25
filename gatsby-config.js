@@ -9,12 +9,13 @@ module.exports = {
       {
         name: "Tia",
         summary:
-          "Sviluppatore, beer snob, dipendente dal gioco, amante dei viaggi, noioso come la morte",
+          "Sviluppatore, beer snob, giocatore ma non d'azzardo. Noioso come la morte.",
         image: "tia.jpg",
       },
       {
         name: "Angelo",
-        summary: "voglio fare la punk rock star",
+        summary:
+          "La gente dice che sono più bravo a scrivere che a giocare. Perdo sempre.",
         image: "angelo.jpg",
       },
     ],

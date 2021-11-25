@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   posts.forEach((post, index) => {
     let readMoreIds = []
-    while (readMoreIds.length < 2) {
+    while (readMoreIds.length < 1) {
       let r = "" + Math.floor(Math.random() * posts.length)
       if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
         readMoreIds.push(r)
@@ -113,7 +113,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       player_count: Int
       player_count_official: String
       playing_time: String
-      unboxing_youtbe_id: String
+      playing_time_official: String
       sidebar_votes: [SidebarVotes]
     }
 
