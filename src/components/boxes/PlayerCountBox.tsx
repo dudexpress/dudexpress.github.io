@@ -1,5 +1,6 @@
 import React from "react"
 import BaseBox from "./BaseBox"
+import * as style from "./PlayerCountBox.module.scss"
 interface PlayerCountBoxProps {
   value: number
   officialValue: string
@@ -40,7 +41,7 @@ export default class PlayerCountBox extends React.PureComponent<PlayerCountBoxPr
 
     return (
       <BaseBox title="Giocatori" footer={this.renderFooter()}>
-        <div className="player-count">
+        <div className={style.playerCount}>
           {this.getRandomNumbers(this.props.value).map((id: number) => (
             <img
               src={`../../gamers/${id}.png`}
