@@ -109,7 +109,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       score: Int
       mechanisms: [String]
       weight: Float
-      design: Float
       player_count: Int
       player_count_official: String
       playing_time: String

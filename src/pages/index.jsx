@@ -11,7 +11,7 @@ import * as style from "./index.module.scss"
 
 const Index = ({ data, location }) => {
   const { title } = data.site.siteMetadata
-  console.log(style)
+
   return (
     <Layout location={location} title={title}>
       <Seo title="Leggi gli ultimi articoli" />

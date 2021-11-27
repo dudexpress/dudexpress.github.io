@@ -39,7 +39,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    `gatsby-plugin-fontawesome-css`,
+    `gatsby-plugin-fontawesome-css`, // TODO need?
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -53,6 +53,7 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
+          // TODO npm uninstall
           //   {
           //     resolve: `gatsby-remark-responsive-iframe`,
           //     options: {
@@ -141,6 +142,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-typescript`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container"
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
+import { SiteMetadata } from "../types"
 
 interface Icon {
   name: string
@@ -42,7 +43,13 @@ const renderCredit = (icon: Icon): React.ReactNode => {
   )
 }
 
-const Credits = ({ data, location }) => {
+const Credits = ({
+  data,
+  location,
+}: {
+  data: CreditsProps
+  location: Location
+}) => {
   const { title } = data.site.siteMetadata
 
   return (
@@ -70,3 +77,9 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export interface CreditsProps {
+  site: {
+    siteMetadata: SiteMetadata
+  }
+}
