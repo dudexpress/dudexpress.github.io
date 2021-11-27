@@ -37,7 +37,7 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
   )
   return (
     <Card className={styles.postWriter}>
-      <Card.Body className={styles.gameCardBody}>
+      <Card.Body>
         <Row>
           <Col md={2}>
             <img src={`../../people/${author.image}`} alt={author.name} />
