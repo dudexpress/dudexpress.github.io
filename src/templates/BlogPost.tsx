@@ -19,9 +19,9 @@ import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
 import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
-import Img from "gatsby-image"
 import GameCard from "../components/misc/GameCard"
 import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
+import BlogPostHeader from "../components/misc/BlogPostHeader"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -36,25 +36,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
           description={post.frontmatter.description}
         />
         <div className="blog-post">
-          <header className="blog-post-header">
-            <Container>
-              <Row>
-                <Col md={3}>
-                  <Img
-                    fluid={post.frontmatter.featureImage.childImageSharp.fluid}
-                  />
-                </Col>
-                <Col md={9} className="blog-post-title">
-                  <h4>
-                    {post.frontmatter.designer} ●{" "}
-                    {post.frontmatter.publisher.replace("-", "●")}
-                  </h4>
-                  <h1 itemProp="headline">{post.frontmatter.title}</h1>
-                  <p>{post.frontmatter.description}</p>
-                </Col>
-              </Row>
-            </Container>
-          </header>
+          <BlogPostHeader {...post.frontmatter} />
           <div>
             <Container>
               <Row className="welcome-boxes">
