@@ -161,60 +161,6 @@ p {
   }
 }
 
-// WELCOME BOXES
-
-.welcome-boxes {
-  // position: relative;
-  // width: 100%;
-  // margin-top: -100px;
-  z-index: 2;
-
-  .card {
-    background: $white;
-    color: $gray400;
-    border: 10px solid $gray200;
-    border-radius: $border-radius;
-    // background-color: $peach;
-    // border-color: $red;
-
-    .card-title {
-      font-family: $font-family-title;
-      font-weight: 500;
-    }
-
-    .card-text {
-      font-family: $font-family-title;
-      height: 110px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-
-    .card-footer {
-      background-color: $gray200;
-      border-top: 0;
-      border-radius: $border-radius;
-    }
-  }
-
-  .base-box {
-    text-align: center;
-    height: $box-height;
-
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    svg {
-      color: $white;
-      margin: 2px 2px 2px 0;
-    }
-  }
-}
-
 // // SIDEBAR
 .read-more-posts {
   padding-top: 120px;

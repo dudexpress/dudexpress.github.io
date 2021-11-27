@@ -1,0 +1,38 @@
+@use "../../style.scss" as v;
+
+.base-box {
+  text-align: center;
+  height: v.$box-height;
+  background: v.$white;
+  color: v.$gray400;
+  border: 10px solid v.$gray200;
+  border-radius: v.$border-radius;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-family: v.$font-family-title;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  .card-text {
+    font-family: v.$font-family-title;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  .card-footer {
+    background-color: v.$gray200;
+    border-top: 0;
+    border-radius: v.$border-radius;
+    padding: 0;
+  }
+}
