@@ -45,10 +45,8 @@ const BlogPost = ({ data, location }) => {
                 </Col>
                 <Col md={9} className="blog-post-title">
                   <h4>
-                    <span>{post.frontmatter.designer}</span>
-                    <span>
-                      ● {post.frontmatter.publisher.replace("-", "●")}
-                    </span>
+                    {post.frontmatter.designer} ●{" "}
+                    {post.frontmatter.publisher.replace("-", "●")}
                   </h4>
                   <h1 itemProp="headline">{post.frontmatter.title}</h1>
                   <p>{post.frontmatter.description}</p>
