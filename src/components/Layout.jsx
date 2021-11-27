@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import SocialLinks from "../components/SocialLinks"
 import Container from "react-bootstrap/Container"
+import * as style from "./Layout.module.scss"
 
 const renderNavbar = (location, title) => {
   if (location.pathname === `${__PATH_PREFIX__}/`) {
@@ -9,11 +10,9 @@ const renderNavbar = (location, title) => {
   }
 
   return (
-    <header className="global-header">
+    <header className={style.globalHeader}>
       <Container>
-        <Link className="header-link-home" to="/">
-          {title}
-        </Link>
+        <Link to="/">{title}</Link>
       </Container>
     </header>
   )
@@ -21,10 +20,10 @@ const renderNavbar = (location, title) => {
 
 const Layout = ({ location, title, children }) => {
   return (
-    <div className="global-wrapper">
+    <div className={style.layout}>
       {renderNavbar(location, title)}
       <main>{children}</main>
-      <footer className="global-footer">
+      <footer className={style.globalFooter}>
         <Container className="d-flex justify-content-between">
           <SocialLinks />
           <span>{title}</span>

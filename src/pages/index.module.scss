@@ -1,0 +1,41 @@
+@use "../style.scss" as v;
+
+.index {
+  .welcome-title {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 50px;
+    @media (min-width: 768px) {
+      // ipad
+      padding: 5rem;
+      font-size: 75px;
+    }
+    @media (min-width: 992px) {
+      // desktop
+      font-size: 100px;
+    }
+
+    h1,
+    h5 {
+      font-family: v.$font-family-title;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 50px;
+      @media (min-width: 768px) {
+        // ipad
+        font-size: 75px;
+      }
+      @media (min-width: 992px) {
+        // desktop
+        font-size: 100px;
+      }
+    }
+
+    h5 {
+      text-transform: uppercase;
+      color: v.$gray300;
+    }
+  }
+}

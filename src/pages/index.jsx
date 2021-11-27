@@ -7,16 +7,17 @@ import Col from "react-bootstrap/Col"
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
 import GameCard from "../components/misc/GameCard"
+import * as style from "./index.module.scss"
 
-const BlogIndex = ({ data, location }) => {
+const Index = ({ data, location }) => {
   const { title } = data.site.siteMetadata
-
+  console.log(style)
   return (
     <Layout location={location} title={title}>
       <Seo title="Leggi gli ultimi articoli" />
       {/* <Search {...data.localSearchPages} location={location} /> */}
-      <div style={{ minHeight: "calc(100vh - 88px)" }}>
-        <Container className="text-center welcome-title">
+      <div style={{ minHeight: "calc(100vh - 88px)" }} className={style.index}>
+        <Container className={style.welcomeTitle}>
           <h1>{title}</h1>
           <h5>Recensioni semplici, immediate e immersive</h5>
         </Container>
@@ -40,7 +41,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default Index
 
 export const pageQuery = graphql`
   query {

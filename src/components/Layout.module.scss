@@ -1,0 +1,28 @@
+@use "../style.scss" as v;
+
+.layout {
+  .global-header {
+    padding: 4 * v.$spacing-unit 0;
+
+    a {
+      font-family: v.$font-family-title;
+      font-weight: 700;
+      color: v.$gray300;
+      font-size: 20px;
+      text-decoration: none;
+
+      &:hover {
+        color: v.$gray400;
+        animation: color 300ms;
+      }
+    }
+  }
+
+  .global-footer {
+    background: v.$gray400;
+    font-family: v.$font-family-title;
+    padding: 4 * v.$spacing-unit 0;
+    color: v.$white;
+    font-weight: 700;
+  }
+}
