@@ -4,11 +4,6 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import SidebarValues from "../components/sidebar/SidebarVotes"
-import WeightBox from "../components/boxes/WeightBox"
-import PlayerCountBox from "../components/boxes/PlayerCountBox"
-import DurationBox from "../components/boxes/DurationBox"
-import ScoreBox from "../components/boxes/ScoreBox"
 import Layout from "../components/Layout"
 import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
@@ -17,11 +12,12 @@ import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
 import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
-import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
 import GameCard from "../components/misc/GameCard"
 import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
-import BlogPostHeader from "../components/misc/BlogPostHeader"
+import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
+import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
+import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -37,30 +33,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         />
         <div className="blog-post">
           <BlogPostHeader {...post.frontmatter} />
-          <div>
-            <Container>
-              <Row className="welcome-boxes">
-                <Col md={6} lg={3}>
-                  <ScoreBox value={post.frontmatter.score} />
-                </Col>
-                <Col md={6} lg={3}>
-                  <DurationBox
-                    value={post.frontmatter.playing_time}
-                    officialValue={post.frontmatter.playing_time_official}
-                  />
-                </Col>
-                <Col md={6} lg={3}>
-                  <WeightBox value={post.frontmatter.weight} />
-                </Col>
-                <Col md={6} lg={3}>
-                  <PlayerCountBox
-                    value={post.frontmatter.player_count}
-                    officialValue={post.frontmatter.player_count_official}
-                  />
-                </Col>
-              </Row>
-            </Container>
-          </div>
+          <BlogPostBoxes {...post.frontmatter} />
           <div className="main-content article-main-content">
             <Container>
               <Row>
@@ -72,12 +45,8 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                 >
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
-
                 <Col md={{ span: 3, offset: 1 }}>
-                  <Mechanisms values={post.frontmatter.mechanisms} />
-                  <div className="mt-5">
-                    <SidebarValues values={post.frontmatter.sidebar_votes} />
-                  </div>
+                  <BlogPostSidebar {...post.frontmatter} />
                 </Col>
               </Row>
               <Row>
