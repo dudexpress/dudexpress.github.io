@@ -1,10 +1,11 @@
 import { faFeather, faWeightHanging } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
+import { PostWeigth } from "../../types"
 import BaseBox from "./BaseBox"
 
 interface WeightBoxProps {
-  value: 1 | 2 | 3 | 4 | 5
+  value: PostWeigth
 }
 
 export default class WeightBox extends React.PureComponent<WeightBoxProps> {

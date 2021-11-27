@@ -20,17 +20,19 @@ export interface SimpleFrontmatter {
   description: string
 }
 
+export type PostWeigth = 1 | 2 | 3 | 4 | 5
+
 export interface Frontmatter extends SimpleFrontmatter {
   designer: string
   publisher: string
 
   // boxes
   score: number
-  weight: number
+  weight: PostWeigth
   player_count: number
-  player_count_official: String
-  playing_time: String
-  playing_time_official: String
+  player_count_official: string
+  playing_time: string
+  playing_time_official: string
 
   // sidebar
   mechanisms: string[]

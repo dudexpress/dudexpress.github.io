@@ -21,8 +21,9 @@ import Mechanisms from "../components/sidebar/Mechanisms"
 import Container from "react-bootstrap/Container"
 import Img from "gatsby-image"
 import GameCard from "../components/misc/GameCard"
+import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
 
-const BlogPost = ({ data, location }) => {
+const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube }
@@ -32,7 +33,7 @@ const BlogPost = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <Seo
           title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          description={post.frontmatter.description}
         />
         <div className="blog-post">
           <header className="blog-post-header">
@@ -186,3 +187,23 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export interface BlogPostDataProps {
+  site: {
+    siteMetadata: SiteMetadata
+  }
+  mdx: {
+    frontmatter: Frontmatter
+    body: string
+  }
+  allMdx: {
+    nodes: {
+      frontmatter: SimpleFrontmatter
+    }[]
+  }
+}
+
+export interface BlogPostProps {
+  data: BlogPostDataProps
+  location: Location
+}
