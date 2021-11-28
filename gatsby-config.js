@@ -75,6 +75,16 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-iubenda-cookie-footer",
+      options: {
+        iubendaOptions: {
+          lang: "it",
+          siteId: 2419628,
+          cookiePolicyId: 42365225,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed-mdx`,
       options: {
         query: `
