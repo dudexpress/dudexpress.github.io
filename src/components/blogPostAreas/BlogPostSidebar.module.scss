@@ -1,0 +1,15 @@
+@use "../../style.scss" as v;
+
+.blog-post-sidebar {
+  text-align: center;
+  @media (min-width: 768px) {
+    // ipad
+    text-align: left;
+  }
+
+  h5 {
+    font-family: v.$font-family-title;
+    font-weight: 700;
+    color: v.$gray300;
+  }
+}

@@ -23,4 +23,12 @@
   & + .game-card {
     margin-top: v.$spacing-unit;
   }
+
+  .game-card-img {
+    width: 50%;
+    @media (min-width: 768px) {
+      // ipad
+      width: 100%;
+    }
+  }
 }

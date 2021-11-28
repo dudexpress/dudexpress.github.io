@@ -2,7 +2,6 @@ $font-family-body: "Lora";
 $font-family-title: "Sora";
 
 $gray400: #27272d;
-// #17161a;
 $gray300: #454548;
 $gray200: #f2f5f8;
 $white: white;
@@ -11,7 +10,6 @@ $spacing-unit: 8px;
 $border-radius: 16px;
 $box-height: 240px;
 
-// https://coolors.co/fe4655-ffa059-b6f986-ff9aaf-517ebd
 $red: #fe4655;
 $pink: #ff9aaf;
 $orange: #ffa059;
@@ -21,79 +19,15 @@ $blue: #7371a8;
 body {
   font-family: $font-family-body;
   -webkit-font-smoothing: antialiased;
-  // font-family: "Roboto", sans-serif !important;
 }
 
 p {
   margin: 0;
+  font-size: 20px;
+  line-height: 38px;
+  letter-spacing: -0.3px;
 }
 
-// BLOG POST HEADER
-.blog-post-header {
-  padding: 120px 0;
-
-  .blog-post-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    margin-top: 2 * $spacing-unit;
-    @media (min-width: 768px) {
-      // ipad
-      margin-top: 0;
-    }
-  }
-
-  h1 {
-    font-size: 50px;
-    @media (min-width: 768px) {
-      // ipad
-      font-size: 75px;
-    }
-    @media (min-width: 992px) {
-      // desktop
-      font-size: 100px;
-    }
-
-    line-height: 1;
-    margin-bottom: 2 * $spacing-unit;
-  }
-
-  h4 {
-    text-transform: uppercase;
-    color: $gray300;
-    font-size: 16px;
-
-    span + span {
-      margin-left: 5 * $spacing-unit;
-    }
-  }
-
-  h1,
-  h4 {
-    font-family: $font-family-title;
-    font-weight: 700;
-  }
-
-  p {
-    font-family: $font-family-body;
-    font-size: 20px;
-  }
-
-  img {
-    border-radius: $border-radius;
-  }
-}
-
-.blog-post {
-  p {
-    font-size: 20px;
-    line-height: 38px;
-    letter-spacing: -0.3px;
-  }
-}
-
-// MAIN CONTENT
 .main-content {
   color: $gray300;
 
@@ -111,62 +45,14 @@ p {
   .gatsby-resp-image-background-image {
     border-radius: $border-radius;
   }
-
-  .base-section {
-    margin-top: $box-height / 3;
-    margin-bottom: $box-height / 3;
-
-    &:first-of-type {
-      margin-top: 0;
-    }
-
-    .base-section-color {
-      width: 100px;
-      height: 5px;
-      margin-bottom: 3 * $spacing-unit;
-
-      &.base-section-color-green {
-        background-color: $green;
-      }
-
-      &.base-section-color-orange {
-        background-color: $orange;
-      }
-
-      &.base-section-color-pink {
-        background-color: $pink;
-      }
-    }
-  }
 }
 
-.article-main-content {
-  background-color: $gray200;
-  padding-bottom: $box-height / 2;
-  z-index: 1;
-
-  padding-top: (3 + 2/3) * $box-height;
-  margin-top: -3.5 * $box-height;
-
-  @media (min-width: 768px) {
-    // ipad
-    padding-top: (1 + 2/3) * $box-height;
-    margin-top: -1.5 * $box-height;
-  }
-
-  @media (min-width: 992px) {
-    // desktop
-    padding-top: $box-height;
-    margin-top: -$box-height / 2;
-  }
-}
-
-// // SIDEBAR
 .read-more-posts {
   padding-top: 120px;
   padding-bottom: 120px;
 
   h1 {
+    color: $gray400;
     font-family: $font-family-title;
     font-weight: 700;
   }

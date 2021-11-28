@@ -13,7 +13,11 @@
   }
 
   img {
-    width: 100%;
     border-radius: v.$border-radius;
+    width: 50%;
+    @media (min-width: 768px) {
+      // ipad
+      width: 100%;
+    }
   }
 }

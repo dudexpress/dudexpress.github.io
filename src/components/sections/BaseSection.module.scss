@@ -1,0 +1,28 @@
+@use "../../style.scss" as v;
+
+.base-section {
+  margin-top: v.$box-height / 3;
+  margin-bottom: v.$box-height / 3;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  .base-section-color {
+    width: 100px;
+    height: 5px;
+    margin-bottom: 3 * v.$spacing-unit;
+
+    &.base-section-color-green {
+      background-color: v.$green;
+    }
+
+    &.base-section-color-orange {
+      background-color: v.$orange;
+    }
+
+    &.base-section-color-pink {
+      background-color: v.$pink;
+    }
+  }
+}

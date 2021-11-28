@@ -39,7 +39,7 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
     <Card className={styles.postWriter}>
       <Card.Body>
         <Row>
-          <Col md={2}>
+          <Col md={2} className="mb-3 mb-md-0">
             <img src={`../../people/${author.image}`} alt={author.name} />
           </Col>
           <Col md={10}>

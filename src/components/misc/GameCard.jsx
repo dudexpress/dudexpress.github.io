@@ -14,13 +14,16 @@ const GameCard = ({ post }) => {
       <Link to={post.fields.slug} className="stretched-link" />
       <Card.Body className={styles.gameCardBody}>
         <Row className="w-100">
-          <Col md={2}>
-            <Img fluid={post.frontmatter.featureImage.childImageSharp.fluid} />
+          <Col md={2} className="mb-3 mb-md-0">
+            <Img
+              fluid={post.frontmatter.featureImage.childImageSharp.fluid}
+              className={styles.gameCardImg}
+            />
           </Col>
           <Col md={10}>
             <div className="d-flex flex-column justify-content-center h-100">
-              <h4 itemProp="headline">{title}</h4>
-              <p itemProp="description">{post.frontmatter.description}</p>
+              <h4>{title}</h4>
+              <p>{post.frontmatter.description}</p>
             </div>
           </Col>
         </Row>

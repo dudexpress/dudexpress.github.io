@@ -3,7 +3,11 @@
 .mechanisms {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  @media (min-width: 768px) {
+    // ipad
+    align-items: flex-start;
+  }
 
   .badge {
     padding: v.$spacing-unit;

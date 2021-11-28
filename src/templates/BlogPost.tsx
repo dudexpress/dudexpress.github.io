@@ -18,6 +18,7 @@ import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
 import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
+import * as style from "./BlogPost.module.scss"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -34,7 +35,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         <div className="blog-post">
           <BlogPostHeader {...post.frontmatter} />
           <BlogPostBoxes {...post.frontmatter} />
-          <div className="main-content article-main-content">
+          <div className={style.blogPost}>
             <Container>
               <Row>
                 <Col
