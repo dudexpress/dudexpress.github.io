@@ -1,0 +1,15 @@
+@use "../style.scss" as v;
+
+.social-links {
+  a {
+    &,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  small,
+  svg {
+    color: v.$white;
+  }
+}

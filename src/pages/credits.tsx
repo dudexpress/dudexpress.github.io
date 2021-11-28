@@ -56,7 +56,10 @@ const Credits = ({
     <Layout location={location} title={title}>
       <Seo title="Credits" />
 
-      <div className="main-content">
+      <div
+        style={{ minHeight: "calc(100vh - 88px - 94px)" }}
+        className="main-content"
+      >
         <Container>
           <h2>Credits</h2>
           <ul>{icons.map(renderCredit)}</ul>
