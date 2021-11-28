@@ -9,7 +9,7 @@ interface MechanismsProps {
 export default class Mechanisms extends React.PureComponent<MechanismsProps> {
   private renderTag(tag: string): React.ReactNode {
     return (
-      <Badge className={styles.badge} bg="secondary me-1 mb-1">
+      <Badge key={tag} className={styles.badge} bg="secondary me-1 mb-1">
         {tag}
       </Badge>
     )

@@ -8,7 +8,7 @@ interface SidebarVotesProps {
 export default class SidebarVotes extends React.PureComponent<SidebarVotesProps> {
   public render(): React.ReactNode {
     return this.props.values.map((value: SidebarVoteProps) => (
-      <SidebarVote {...value} />
+      <SidebarVote key={value.title} {...value} />
     ))
   }
 }
