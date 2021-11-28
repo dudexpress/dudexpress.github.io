@@ -108,7 +108,6 @@ export const pageQuery = graphql`
         score
         mechanisms
         weight
-        design
         player_count
         player_count_official
         playing_time
