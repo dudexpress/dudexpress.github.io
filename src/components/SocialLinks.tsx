@@ -9,9 +9,13 @@ import * as style from "./SocialLinks.module.scss"
 const SocialLinks = () => {
   return (
     <div className={style.socialLinks}>
-      <FontAwesomeIcon icon={faInstagram} /> <small>Instagram</small>
-      <FontAwesomeIcon icon={faFacebookSquare} className="ms-3" />{" "}
-      <small>Facebook</small>
+      <a href="https://www.instagram.com/dudexpress.review/" target="_blank">
+        <FontAwesomeIcon icon={faInstagram} /> <small>Instagram</small>
+      </a>
+      <a href="https://www.facebook.com/dudexpress" target="_blank">
+        <FontAwesomeIcon icon={faFacebookSquare} className="ms-3" />{" "}
+        <small>Facebook</small>
+      </a>
       <Link to="/credits">
         <FontAwesomeIcon icon={faList} className="ms-3" />{" "}
         <small>Credits</small>
