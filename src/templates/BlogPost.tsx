@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import React from "react"
 import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
@@ -24,6 +25,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube }
+  const classname = classNames("main-content", style.blogPost)
 
   return (
     <MDXProvider components={shortcodes}>
@@ -35,7 +37,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         <div className="blog-post">
           <BlogPostHeader {...post.frontmatter} />
           <BlogPostBoxes {...post.frontmatter} />
-          <div className={style.blogPost}>
+          <div className={classname}>
             <Container>
               <Row>
                 <Col

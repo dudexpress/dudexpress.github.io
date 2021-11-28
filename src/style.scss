@@ -41,9 +41,12 @@ p {
     font-size: 38px;
   }
 
+  .gatsby-resp-image-wrapper,
+  .gatsby-resp-image-image,
   .gatsby-resp-image-wrapper img,
+  .gatsby-resp-image-wrapper .gatsby-resp-image-image,
   .gatsby-resp-image-background-image {
-    border-radius: $border-radius;
+    border-radius: $border-radius !important;
   }
 }
 
