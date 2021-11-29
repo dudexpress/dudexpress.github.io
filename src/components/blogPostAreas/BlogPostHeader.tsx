@@ -20,7 +20,8 @@ export default class BlogPostHeader extends React.PureComponent<Frontmatter> {
             </Col>
             <Col md={9} className={style.blogPostTitle}>
               <h4>
-                {this.props.designer} ● {this.props.publisher.replace("-", "●")}
+                {this.props.designer} ●{" "}
+                {this.props.publisher.replace(/-/g, "●")}
               </h4>
               <h1>{this.props.title}</h1>
               <p>{this.props.description}</p>
