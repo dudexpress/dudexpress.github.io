@@ -10,6 +10,7 @@ import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
 import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
+import Instagram from "../components/misc/Instagram"
 import Youtube from "../components/misc/Youtube"
 import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
@@ -24,7 +25,7 @@ import * as style from "./BlogPost.module.scss"
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube }
+  const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube, Instagram }
   const classname = classNames("main-content", style.blogPost)
 
   return (
