@@ -1,0 +1,5 @@
+@use "../../style.scss" as v;
+
+.instagram iframe {
+  border-radius: v.$border-radius;
+}
