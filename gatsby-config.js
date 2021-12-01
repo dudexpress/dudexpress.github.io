@@ -9,17 +9,17 @@ module.exports = {
       {
         name: "Tia",
         summary:
-          "Sviluppatore, beer snob, giocatore ma non d'azzardo. Noioso come la morte.",
+          "Sviluppatore, giocatore, beer snob. A volte ho del tempo libero.",
         image: "tia.jpg",
       },
       {
         name: "Angelo",
         summary:
-          "La gente dice che sono più bravo a scrivere che a giocare. Perdo sempre.",
+          "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
         image: "angelo.jpg",
       },
     ],
-    description: `The dudexpress blog`,
+    description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
   },
   plugins: [
