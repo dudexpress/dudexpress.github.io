@@ -21,11 +21,20 @@ import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
 import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 import * as style from "./BlogPost.module.scss"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const shortcodes = { Setting, Rules, Feedback, Spotify, Youtube, Instagram }
+  const shortcodes = {
+    Setting,
+    Rules,
+    Feedback,
+    Spotify,
+    Youtube,
+    Instagram,
+    OutboundLink,
+  }
   const classname = classNames("main-content", style.blogPost)
 
   return (
