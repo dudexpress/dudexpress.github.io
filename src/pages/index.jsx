@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import { withPrefix } from "gatsby"
 
 import Layout from "../components/Layout"
 import Seo from "../components/seo"
@@ -14,12 +15,21 @@ const Index = ({ data, location }) => {
 
   return (
     <Layout location={location} title={title}>
-      <Seo title="Leggi gli ultimi articoli" />
+      <Seo title="Welcome" />
       {/* <Search {...data.localSearchPages} location={location} /> */}
       <div style={{ minHeight: "calc(100vh - 88px)" }} className={style.index}>
         <Container className={style.welcomeTitle}>
-          <h1>{title}</h1>
-          <h5>Recensioni semplici, immediate e immersive</h5>
+          <Row>
+            <Col lg={{ span: 6, offset: 3 }}>
+              <h1 className="d-none">{title}</h1>
+              <img
+                src={withPrefix("logo/logo.svg")}
+                alt="dudexpress logo"
+                className="w-100"
+              />
+            </Col>
+          </Row>
+          {/* <h5>Recensioni semplici, immediate e immersive</h5> */}
         </Container>
 
         <div className="main-content">

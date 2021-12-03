@@ -13,7 +13,13 @@ const renderNavbar = (location, title) => {
   return (
     <header className={style.globalHeader}>
       <Container>
-        <Link to="/">{title}</Link>
+        <Link to="/">
+          <img
+            src={withPrefix("logo/logo-small.svg")}
+            alt="dudexpress small logo"
+            height={50}
+          />
+        </Link>
       </Container>
     </header>
   )

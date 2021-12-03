@@ -29,7 +29,7 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
       <img
         src={`../../weight/${this.props.value}.png`}
         alt="weight"
-        height={100}
+        height={75}
       />
     )
   }

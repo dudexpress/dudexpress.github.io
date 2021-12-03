@@ -10,23 +10,30 @@ interface Icon {
   url: string
 }
 
-const icons: Icon[] = [
-  // weight
-  { name: "Butterfly", url: "ReoyJKHR7Mmp/butterfly" },
-  { name: "Parrot", url: "36840/parrot" },
-  { name: "Lion Full Body", url: "NtLw1N1CHb4g/lion-full-body" },
-  { name: "Bear Full Body", url: "qlYqIMUdIBvt/bear-full-body" },
-  { name: "Elephant", url: "24495/elephant" },
+// [...document.querySelectorAll('.icons-list__item a')].map(x => ({name: x.href.split('/')[5], url: x.href.split('/')[4] + '/' + x.href.split('/')[5]}))
 
-  // gamers
-  { name: "Man", url: "IABLjwpo2gC6/man" }, // 1
-  { name: "Man", url: "v347vCm9hFaV/man" }, // 2
-  { name: "Man", url: "KmBUs9ZZ4sVc/man" }, // 3
-  { name: "Man", url: "Mu8aaV3FcYU7/man" }, // 4
-  { name: "Woman", url: "FsQbbJpTJW0k/woman" }, // 5
-  { name: "Woman", url: "DMjCouV34UiT/woman" }, // 6
-  { name: "Woman", url: "YU1uiqlj7sa9/woman" }, // 7
-  { name: "Woman", url: "pPz84ciB0xhk/woman" }, // 8
+const icons: Icon[] = [
+  { name: "whale", url: "vLoyKUoYhPuX/whale" },
+  { name: "corgi", url: "116897/corgi" },
+  { name: "elephant", url: "101717/elephant" },
+  { name: "hummingbird", url: "_tOGCvyYkx7s/hummingbird" },
+  { name: "parrot", url: "8Yhi0cuR80EI/parrot" },
+  { name: "woman", url: "SSfJ7MRp9qFs/woman" },
+  { name: "woman", url: "QvUXDRHlRbI0/woman" },
+  { name: "woman", url: "2IWbKLq6AxuJ/woman" },
+  { name: "woman", url: "rKoU3TfWBuZz/woman" },
+  { name: "woman", url: "FlwLlmA9IP8d/woman" },
+  { name: "woman", url: "7iD2xZ2XTgaI/woman" },
+  { name: "woman", url: "VGbcWHIzNwLW/woman" },
+  { name: "woman", url: "ru1fDgX61vqA/woman" },
+  { name: "man", url: "p2HqVHxNq3CQ/man" },
+  { name: "man", url: "hn6wdLdmoBYd/man" },
+  { name: "man", url: "ioDdQy2TH8B5/man" },
+  { name: "man", url: "rKBmYRUjvbdl/man" },
+  { name: "man", url: "c9J06F8lHhV7/man" },
+  { name: "man", url: "VvMpLZL5r0aX/man" },
+  { name: "man", url: "x0GTt798eXuD/man" },
+  { name: "man", url: "dkYCqZS6eHXG/man" },
 ]
 
 const renderCredit = (icon: Icon): React.ReactNode => {

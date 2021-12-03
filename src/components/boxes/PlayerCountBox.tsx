@@ -9,15 +9,7 @@ interface PlayerCountBoxProps {
 
 export default class PlayerCountBox extends React.PureComponent<PlayerCountBoxProps> {
   private getHeight(amount: number): number {
-    if (amount <= 2) {
-      return 100
-    }
-
-    if (amount === 3) {
-      return 60
-    }
-
-    if (amount === 4) {
+    if (amount <= 4) {
       return 50
     }
 
@@ -29,7 +21,7 @@ export default class PlayerCountBox extends React.PureComponent<PlayerCountBoxPr
   }
 
   private getRandomNumbers(amount: number): number[] {
-    let array = [...new Array(8)].map((_, x) => x + 1)
+    let array = [...new Array(16)].map((_, x) => x + 1)
 
     return array
       .slice()
