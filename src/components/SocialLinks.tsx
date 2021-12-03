@@ -14,7 +14,7 @@ const SocialLinks = () => {
         <FontAwesomeIcon icon={faInstagram} />{" "}
         <small className="d-none d-md-inline-block">Instagram</small>
       </a>
-      <a href="https://www.facebook.com/dudexpress" target="_blank">
+      <a href="https://www.facebook.com/dudexpress.review" target="_blank">
         <FontAwesomeIcon icon={faFacebookSquare} className="ms-3" />{" "}
         <small className="d-none d-md-inline-block">Facebook</small>
       </a>
