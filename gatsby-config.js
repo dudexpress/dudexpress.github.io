@@ -18,6 +18,12 @@ module.exports = {
           "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
         image: "angelo.jpg",
       },
+      {
+        name: "Fora",
+        summary:
+          "Amante dei coop che ogni tanto si perde cosî tanto nei giochi che non scrive le biografie in tempo.",
+        image: "fora.jpg",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
