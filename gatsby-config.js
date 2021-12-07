@@ -21,7 +21,7 @@ module.exports = {
       {
         name: "Fora",
         summary:
-          "Amante dei coop che ogni tanto si perde cosî tanto nei giochi che non scrive le biografie in tempo.",
+          "Amante dei coop che ogni tanto si perde così tanto nei giochi che non scrive le biografie in tempo.",
         image: "fora.jpg",
       },
     ],
