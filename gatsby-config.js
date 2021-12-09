@@ -24,6 +24,12 @@ module.exports = {
           "Amante dei coop che ogni tanto si perde così tanto nei giochi che non scrive le biografie in tempo.",
         image: "fora.jpg",
       },
+      {
+        name: "Dadi-Daddy",
+        summary:
+          "Neopapà costantemente derubato dei dadi di tutti i suoi giochi dal loquace figlio di un anno.",
+        image: "dadi.jpg",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,

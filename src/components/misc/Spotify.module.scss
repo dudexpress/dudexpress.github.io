@@ -1,0 +1,6 @@
+@use "../../style.scss" as v;
+
+.spotify {
+  border-radius: v.$border-radius;
+  margin-bottom: 5 * v.$spacing-unit;
+}

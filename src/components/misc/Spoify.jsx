@@ -1,4 +1,5 @@
 import React from "react"
+import * as styles from "./Spotify.module.scss"
 
 const Spotify = props => (
   <iframe
@@ -9,6 +10,7 @@ const Spotify = props => (
     frameborder="0"
     allowtransparency="true"
     allow="encrypted-media"
+    className={styles.spotify}
   ></iframe>
 )
 
