@@ -9,7 +9,7 @@ module.exports = {
       {
         name: "Tia",
         summary:
-          "Sviluppatore, giocatore, beer snob. A volte ho del tempo libero.",
+          "Godo nel mescolare le carte appena imbustate. Annuso fumetti. A volte ho del tempo libero.",
         image: "tia.jpg",
       },
       {

@@ -16,11 +16,12 @@ export default class BlogPostHeader extends React.PureComponent<Frontmatter> {
               <Img
                 fluid={this.props.featureImage.childImageSharp.fluid}
                 className={style.blogPostHeaderImg}
+                alt="cover"
               />
             </Col>
             <Col md={9} className={style.blogPostTitle}>
               <h4>
-                {this.props.designer} ●{" "}
+                {this.props.designer.replace(/-/g, "●")} ●{" "}
                 {this.props.publisher.replace(/-/g, "●")}
               </h4>
               <h1>{this.props.title}</h1>
