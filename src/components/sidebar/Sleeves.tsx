@@ -8,7 +8,7 @@ interface SleevesProps {
 export default class Sleeves extends React.PureComponent<SleevesProps> {
   private renderSleeve(sleeve: Sleeve): React.ReactNode {
     return (
-      <li>
+      <li key={sleeve.size}>
         <strong>{sleeve.size}</strong>: {sleeve.amount} carte
       </li>
     )

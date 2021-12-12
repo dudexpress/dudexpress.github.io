@@ -7,7 +7,7 @@ const Spotify = props => (
     src={`https://open.spotify.com/embed/playlist/${props.playlistId}`}
     width="100%"
     height="80"
-    frameborder="0"
+    frameBorder="0"
     allowtransparency="true"
     allow="encrypted-media"
     className={styles.spotify}

@@ -69,7 +69,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(limit: 10, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(limit: 20, sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         excerpt
         fields {

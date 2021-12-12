@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   posts.forEach((post, index) => {
     let readMoreIds = []
-    while (readMoreIds.length < 1) {
+    while (readMoreIds.length < 3) {
       let r = "" + Math.floor(Math.random() * posts.length)
       if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
         readMoreIds.push(r)
