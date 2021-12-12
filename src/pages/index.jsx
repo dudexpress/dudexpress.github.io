@@ -4,18 +4,32 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { withPrefix } from "gatsby"
+import { Helmet } from "react-helmet"
 
 import Layout from "../components/Layout"
-import Seo from "../components/seo"
 import GameCard from "../components/misc/GameCard"
 import * as style from "./index.module.scss"
 
 const Index = ({ data, location }) => {
-  const { title } = data.site.siteMetadata
+  const { title, description } = data.site.siteMetadata
 
   return (
     <Layout location={location} title={title}>
-      <Seo title="Welcome" />
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+
+        <meta name="og:type" content="website" />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
+        <meta name="og:image" content={withPrefix("logo/logo.png")} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={withPrefix("logo/logo.png")} />
+      </Helmet>
+
       {/* <Search {...data.localSearchPages} location={location} /> */}
       <div style={{ minHeight: "calc(100vh - 88px)" }} className={style.index}>
         <Container className={style.welcomeTitle}>
@@ -62,6 +76,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
         authors {
           name
           summary

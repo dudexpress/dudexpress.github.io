@@ -1,7 +1,8 @@
 import React from "react"
 import Container from "react-bootstrap/Container"
+import { Helmet } from "react-helmet"
+
 import Layout from "../components/Layout"
-import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import { SiteMetadata } from "../types"
 
@@ -61,7 +62,9 @@ const Credits = ({
 
   return (
     <Layout location={location} title={title}>
-      <Seo title="Credits" />
+      <Helmet>
+        <title>Credits</title>
+      </Helmet>
 
       <div
         style={{ minHeight: "calc(100vh - 88px - 94px)" }}

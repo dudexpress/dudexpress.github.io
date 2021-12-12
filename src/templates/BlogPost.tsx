@@ -5,6 +5,8 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import { Helmet } from "react-helmet"
+
 import Layout from "../components/Layout"
 import Setting from "../components/sections/Setting"
 import Rules from "../components/sections/Rules"
@@ -12,7 +14,6 @@ import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
 import Instagram from "../components/misc/Instagram"
 import Youtube from "../components/misc/Youtube"
-import Seo from "../components/seo"
 import PostWriter from "../components/misc/PostWriter"
 import Container from "react-bootstrap/Container"
 import GameCard from "../components/misc/GameCard"
@@ -35,15 +36,31 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Instagram,
     OutboundLink,
   }
-  const classname = classNames("main-content", style.blogPost)
+  const classname = classNames("main-content", style.blogPost),
+    metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
+    metaDesciption = `${post.frontmatter.description} | Recensione ${data.site.siteMetadata.title}`,
+    metaImage = (
+      post.frontmatter.featureImage.childImageSharp.fluid as { src: string }
+    ).src
 
   return (
     <MDXProvider components={shortcodes}>
       <Layout location={location} title={siteTitle}>
-        <Seo
-          title={post.frontmatter.title}
-          description={post.frontmatter.description}
-        />
+        <Helmet>
+          <title>{metaTitle}</title>
+          <meta name="description" content={metaDesciption} />
+
+          <meta name="og:type" content="website" />
+          <meta name="og:title" content={metaTitle} />
+          <meta name="og:description" content={metaDesciption} />
+          <meta name="og:image" content={metaImage} />
+
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={metaTitle} />
+          <meta name="twitter:description" content={metaDesciption} />
+          <meta name="twitter:image" content={metaImage} />
+        </Helmet>
+
         <div className="blog-post">
           <BlogPostHeader {...post.frontmatter} />
           <BlogPostBoxes {...post.frontmatter} />
