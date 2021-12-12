@@ -11,6 +11,11 @@ export interface SidebarVotes {
   value: number
 }
 
+export interface Sleeve {
+  amount: number
+  size: string
+}
+
 export interface SimpleFrontmatter {
   date: Date
   title: string
@@ -37,6 +42,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   // sidebar
   mechanisms: string[]
   sidebar_votes: SidebarVotes[]
+  sleeves: Sleeve[]
 
   // bio
   writer: string

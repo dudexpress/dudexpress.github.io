@@ -114,11 +114,17 @@ exports.createSchemaCustomization = ({ actions }) => {
       playing_time: String
       playing_time_official: String
       sidebar_votes: [SidebarVotes]
+      seelves: [Sleeve]
     }
 
     type SidebarVotes {
       title: String
       value: Int
+    }
+
+    type Sleeve {
+      amount: Int
+      size: String
     }
 
     type Fields {

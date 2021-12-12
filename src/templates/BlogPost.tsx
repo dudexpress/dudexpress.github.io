@@ -126,6 +126,10 @@ export const pageQuery = graphql`
           title
           value
         }
+        sleeves {
+          amount
+          size
+        }
       }
     }
 
