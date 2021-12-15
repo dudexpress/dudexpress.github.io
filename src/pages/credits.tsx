@@ -35,6 +35,8 @@ const icons: Icon[] = [
   { name: "man", url: "VvMpLZL5r0aX/man" },
   { name: "man", url: "x0GTt798eXuD/man" },
   { name: "man", url: "dkYCqZS6eHXG/man" },
+  { name: "heart", url: "95473/heart" },
+  { name: "half-heart", url: "6I8HUVi4eZCN/half-heart" },
 ]
 
 const renderCredit = (icon: Icon): React.ReactNode => {
