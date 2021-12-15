@@ -1,22 +1,23 @@
+@use "sass:math";
 @use "../style.scss" as v;
 
 .blog-post {
   background-color: v.$gray200;
-  padding-bottom: v.$box-height / 2;
+  padding-bottom: math.div(v.$box-height, 2);
   z-index: 1;
 
-  padding-top: (3 + 2/3) * v.$box-height;
+  padding-top: (3 + math.div(2, 3)) * v.$box-height;
   margin-top: -3.5 * v.$box-height;
 
   @media (min-width: 768px) {
     // ipad
-    padding-top: (1 + 2/3) * v.$box-height;
+    padding-top: (1 + math.div(2, 3)) * v.$box-height;
     margin-top: -1.5 * v.$box-height;
   }
 
   @media (min-width: 1200px) {
     // desktop
     padding-top: v.$box-height;
-    margin-top: -1 * v.$box-height / 2;
+    margin-top: -1 * math.div(v.$box-height, 2);
   }
 }

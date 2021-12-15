@@ -1,8 +1,9 @@
+@use "sass:math";
 @use "../../style.scss" as v;
 
 .base-section {
-  margin-top: v.$box-height / 3;
-  margin-bottom: v.$box-height / 3;
+  margin-top: math.div(v.$box-height, 3);
+  margin-bottom: math.div(v.$box-height, 3);
 
   &:first-of-type {
     margin-top: 0;
