@@ -3,12 +3,17 @@ import classnames from "classnames"
 import * as style from "./BaseSection.module.scss"
 
 interface BaseSectionProps {
-  title: string
-  trait: "green" | "orange" | "pink"
+  title?: string
+  trait?: "green" | "orange" | "pink"
+  className?: string
 }
 
 export default class BaseSection extends React.PureComponent<BaseSectionProps> {
-  public render(): React.ReactNode {
+  private renderTitle(): React.ReactNode {
+    if (this.props.title == null) {
+      return null
+    }
+
     let lineClassName = classnames(style.baseSectionColor, {
       [style.baseSectionColorGreen]: this.props.trait === "green",
       [style.baseSectionColorOrange]: this.props.trait === "orange",
@@ -16,9 +21,19 @@ export default class BaseSection extends React.PureComponent<BaseSectionProps> {
     })
 
     return (
-      <div className={style.baseSection}>
+      <>
         <h2>{this.props.title}</h2>
         <div className={lineClassName} />
+      </>
+    )
+  }
+
+  public render(): React.ReactNode {
+    let className = classnames(style.baseSection, this.props.className)
+
+    return (
+      <div className={className}>
+        {this.renderTitle()}
         <p>{this.props.children}</p>
       </div>
     )

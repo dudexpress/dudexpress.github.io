@@ -23,6 +23,7 @@ import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
 import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 import * as style from "./BlogPost.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
+import Fantasia from "../components/misc/Fantasia"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -35,6 +36,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
+    Fantasia,
   }
   const classname = classNames("main-content", style.blogPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
