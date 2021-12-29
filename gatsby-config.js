@@ -55,6 +55,14 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
     {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://dudexpress.it",
+        sitemap: "https://dudexpress.it/sitemap/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
