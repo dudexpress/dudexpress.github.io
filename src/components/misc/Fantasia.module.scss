@@ -1,0 +1,35 @@
+@use "sass:math";
+@use "../../style.scss" as v;
+
+$fantasia: #0aacaf;
+
+.fantasia {
+  margin-top: math.div(v.$box-height, 3);
+  padding: 16px;
+  border: 10px solid $fantasia;
+  border-radius: v.$border-radius;
+  background-color: v.$gray200;
+
+  a {
+    color: $fantasia;
+
+    &:hover {
+      color: darken($fantasia, 8%);
+    }
+  }
+
+  h4 {
+    font-weight: 700;
+    font-family: v.$font-family-title;
+  }
+
+  img {
+    border-radius: v.$border-radius;
+    display: none;
+    @media (min-width: 768px) {
+      // ipad
+      display: block;
+      width: 100%;
+    }
+  }
+}
