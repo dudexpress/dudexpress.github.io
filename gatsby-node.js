@@ -115,6 +115,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       playing_time_official: String
       sidebar_votes: [SidebarVotes]
       seelves: [Sleeve]
+      fantasia_url: String
     }
 
     type SidebarVotes {

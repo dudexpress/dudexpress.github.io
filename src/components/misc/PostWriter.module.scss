@@ -2,7 +2,7 @@
 @use "../../style.scss" as v;
 
 .post-writer {
-  margin-top: math.div(v.$box-height, 2);
+  margin-top: math.div(v.$box-height, 3);
   padding: 16px;
   border: 10px solid v.$white;
   border-radius: v.$border-radius;

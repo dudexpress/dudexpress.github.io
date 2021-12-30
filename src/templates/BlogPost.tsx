@@ -36,7 +36,6 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
-    Fantasia,
   }
   const classname = classNames("main-content", style.blogPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
@@ -86,6 +85,10 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                   lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
+                  <Fantasia
+                    title={post.frontmatter.title}
+                    link={post.frontmatter.fantasia_url}
+                  />
                   <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
               </Row>
@@ -149,6 +152,7 @@ export const pageQuery = graphql`
           amount
           size
         }
+        fantasia_url
       }
     }
 

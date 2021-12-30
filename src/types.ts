@@ -46,6 +46,7 @@ export interface Frontmatter extends SimpleFrontmatter {
 
   // bio
   writer: string
+  fantasia_url: string
 }
 
 export interface SiteMetadata {
