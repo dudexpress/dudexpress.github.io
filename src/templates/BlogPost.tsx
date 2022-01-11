@@ -74,6 +74,12 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                   lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
+                  <Fantasia
+                    title={post.frontmatter.title}
+                    link={post.frontmatter.fantasia_url}
+                    className="mt-0"
+                  />
+
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
                 <Col md={{ span: 3, offset: 1 }}>

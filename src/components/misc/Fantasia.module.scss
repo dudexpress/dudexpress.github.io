@@ -8,7 +8,7 @@ $fantasia: #0aacaf;
   padding: 16px;
   border: 10px solid $fantasia;
   border-radius: v.$border-radius;
-  background-color: v.$gray200;
+  background-color: rgba($fantasia, 8%);
 
   a {
     color: $fantasia;
@@ -18,6 +18,26 @@ $fantasia: #0aacaf;
     }
   }
 
+  .btn-fantasia {
+    margin: v.$spacing-unit * 2 0;
+    padding: v.$spacing-unit v.$spacing-unit * 2;
+    background-color: $fantasia;
+    color: white;
+    border-radius: v.$border-radius;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+
+    &:hover {
+      color: white;
+      background-color: darken($fantasia, 8%);
+    }
+  }
+
+  small {
+    font-size: 12px;
+  }
+
   h4 {
     font-weight: 700;
     font-family: v.$font-family-title;
@@ -25,10 +45,9 @@ $fantasia: #0aacaf;
 
   img {
     border-radius: v.$border-radius;
-    display: none;
+    width: 33%;
     @media (min-width: 768px) {
       // ipad
-      display: block;
       width: 100%;
     }
   }
