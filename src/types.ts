@@ -49,6 +49,9 @@ export interface Frontmatter extends SimpleFrontmatter {
   fantasia_url: string
 }
 
+export interface Fields {
+  slug: string
+}
 export interface SiteMetadata {
   title: string
 }

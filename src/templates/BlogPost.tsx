@@ -63,7 +63,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         </Helmet>
 
         <div className="blog-post">
-          <BlogPostHeader {...post.frontmatter} />
+          <BlogPostHeader frontmatter={post.frontmatter} />
           <BlogPostBoxes {...post.frontmatter} />
           <div className={classname}>
             <Container>
@@ -103,8 +103,8 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         </div>
         <Container className="read-more-posts">
           <Row className="game-list">
-            <Col lg={{ span: 7, offset: 1 }}>
-              <h1>Potrebbe interessarti anche</h1>
+            <Col lg={8}>
+              <h2>Potrebbe interessarti anche...</h2>
               {data.allMdx.nodes.map(post => (
                 <GameCard key={post.frontmatter.title} post={post} />
               ))}

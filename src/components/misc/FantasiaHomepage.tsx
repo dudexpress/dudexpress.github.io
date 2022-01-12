@@ -6,46 +6,26 @@ import Col from "react-bootstrap/Col"
 import * as styles from "./Fantasia.module.scss"
 import classnames from "classnames"
 
-interface FantasiaProps {
-  title: string
-  link: string
-  className?: string
-}
-
-export default class Fantasia extends React.PureComponent<FantasiaProps> {
+export default class FantasiaHomepage extends React.PureComponent {
   public render(): React.ReactNode {
-    if (this.props.link == null) {
-      return null
-    }
-    const className = classnames(styles.fantasia, this.props.className)
+    const className = classnames(styles.fantasia, "mt-0")
 
     return (
       <Card className={className}>
         <Card.Body>
           <Row>
-            <Col md={2} className="mb-3">
+            <Col md={4} className="mb-3">
               <img src={`../../logo/fantasia.png`} alt="fantasia" />
             </Col>
-            <Col md={10}>
-              <p>
-                Vuoi sostenere l'impresa spaziale dei Dudes?
-                <br />
-                Puoi farlo acquistando{" "}
-                <OutboundLink
-                  href={`${this.props.link}?aff=47`}
-                  target="_blank"
-                >
-                  {this.props.title}
-                </OutboundLink>
-                !
-              </p>
+            <Col md={12}>
+              <p>Vuoi sostenere l'impresa spaziale dei Dudes?</p>
               <div>
                 <OutboundLink
-                  href={`${this.props.link}?aff=47`}
+                  href="https://fantasiastore.it/?aff=47"
                   target="_blank"
                   className={styles.btnFantasia}
                 >
-                  Acquistalo qui
+                  Acquista qui
                 </OutboundLink>
               </div>
               <small>

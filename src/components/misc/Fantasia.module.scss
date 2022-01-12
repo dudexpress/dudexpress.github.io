@@ -27,6 +27,7 @@ $fantasia: #0aacaf;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
+    box-shadow: v.$gray300 5px 5px 20px -10px;
 
     &:hover {
       color: white;

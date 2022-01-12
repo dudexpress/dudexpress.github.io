@@ -5,26 +5,6 @@ import SocialLinks from "../components/SocialLinks"
 import Container from "react-bootstrap/Container"
 import * as style from "./Layout.module.scss"
 
-const renderNavbar = (location, title) => {
-  if (location.pathname === `${__PATH_PREFIX__}/`) {
-    return null
-  }
-
-  return (
-    <header className={style.globalHeader}>
-      <Container>
-        <Link to="/">
-          <img
-            src={withPrefix("logo/logo-small.svg")}
-            alt="dudexpress small logo"
-            height={50}
-          />
-        </Link>
-      </Container>
-    </header>
-  )
-}
-
 const Layout = ({ location, title, children }) => {
   return (
     <div className={style.layout}>
@@ -38,7 +18,18 @@ const Layout = ({ location, title, children }) => {
         ></script>
       </Helmet>
 
-      {renderNavbar(location, title)}
+      <header className={style.globalHeader}>
+        <Container>
+          <Link to="/">
+            <img
+              src={withPrefix("logo/logo-small.svg")}
+              alt="dudexpress small logo"
+              height={50}
+            />
+          </Link>
+        </Container>
+      </header>
+
       <main>{children}</main>
       <footer className={style.globalFooter}>
         <Container className="d-flex justify-content-between">

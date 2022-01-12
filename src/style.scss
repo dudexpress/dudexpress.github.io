@@ -29,8 +29,6 @@ p {
 }
 
 .main-content {
-  color: $gray300;
-
   h2,
   h5 {
     font-family: $font-family-title;
@@ -54,7 +52,8 @@ p {
   padding-top: 120px;
   padding-bottom: 120px;
 
-  h1 {
+  h1,
+  h2 {
     color: $gray400;
     font-family: $font-family-title;
     font-weight: 700;
