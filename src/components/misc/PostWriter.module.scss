@@ -13,6 +13,10 @@
     font-family: v.$font-family-title;
   }
 
+  a {
+    color: inherit;
+  }
+
   img {
     border-radius: v.$border-radius;
     width: 33%;

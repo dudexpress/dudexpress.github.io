@@ -30,6 +30,13 @@ module.exports = {
           "Neopapà costantemente derubato dei dadi di tutti i suoi giochi dal loquace figlio di un anno.",
         image: "dadi.jpg",
       },
+      {
+        name: "Eris.in.Boardgameland",
+        summary:
+          "Esuberante e chiacchierona con la passione per i Giochi da Tavolo e di Ruolo, pronta a dispensar consigli.",
+        image: "eris.jpg",
+        instagram_url: "https://www.instagram.com/eris.in.boardgameland/",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,

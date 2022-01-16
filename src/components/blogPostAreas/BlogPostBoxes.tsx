@@ -7,14 +7,22 @@ import WeightBox from "../boxes/WeightBox"
 import PlayerCountBox from "../boxes/PlayerCountBox"
 import DurationBox from "../boxes/DurationBox"
 import ScoreBox from "../boxes/ScoreBox"
+import HypeBox from "../boxes/HypeBox"
 
 export default class BlogPostBoxes extends React.PureComponent<Frontmatter> {
+  private renderScoreBox(): React.ReactNode {
+    if (this.props.gamefound_url != null) {
+      return <HypeBox value={this.props.score} />
+    }
+    return <ScoreBox value={this.props.score} />
+  }
+
   public render(): React.ReactNode {
     return (
       <Container>
         <Row className="welcome-boxes">
           <Col md={6} xl={3}>
-            <ScoreBox value={this.props.score} />
+            {this.renderScoreBox()}
           </Col>
           <Col md={6} xl={3}>
             <DurationBox

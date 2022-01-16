@@ -88,6 +88,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       name: String
       summary: String
       image: String
+      instagram_url: String
     }
 
     type Social {
@@ -116,6 +117,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       sidebar_votes: [SidebarVotes]
       seelves: [Sleeve]
       fantasia_url: String
+      gamefound_url: String
     }
 
     type SidebarVotes {

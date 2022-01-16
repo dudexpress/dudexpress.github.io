@@ -24,6 +24,7 @@ import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 import * as style from "./BlogPost.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import Fantasia from "../components/misc/Fantasia"
+import Gamefound from "../components/misc/Gamefound"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -120,6 +121,10 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                     title={post.frontmatter.title}
                     link={post.frontmatter.fantasia_url}
                   />
+                  <Gamefound
+                    title={post.frontmatter.title}
+                    link={post.frontmatter.gamefound_url}
+                  />
                   <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
               </Row>
@@ -184,6 +189,7 @@ export const pageQuery = graphql`
           size
         }
         fantasia_url
+        gamefound_url
       }
     }
 

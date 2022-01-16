@@ -4,6 +4,7 @@ export interface Author {
   name: string
   summary: string
   image: string
+  instagram_url: string
 }
 
 export interface SidebarVotes {
@@ -47,6 +48,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   // bio
   writer: string
   fantasia_url: string
+  gamefound_url: string
 }
 
 export interface Fields {
