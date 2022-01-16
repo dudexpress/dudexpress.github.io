@@ -7,7 +7,6 @@ interface ReviewLinkProps {
 }
 
 const ReviewLink = ({ slug }: ReviewLinkProps) => {
-  console.log(styles)
   return (
     <Link to={slug} className={styles.reviewLink}>
       Leggi la recensione →

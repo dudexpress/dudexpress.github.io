@@ -44,6 +44,29 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
       post.frontmatter.featureImage.childImageSharp.fluid as { src: string }
     ).src
 
+  const structuredJSON = JSON.stringify({
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: post.frontmatter.title,
+    image: metaImage,
+    review: [
+      {
+        "@type": "Review",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: post.frontmatter.score,
+          bestRating: "10",
+          worstRating: "0",
+        },
+        author: {
+          "@type": "Person",
+          name: post.frontmatter.writer,
+        },
+        reviewBody: post.frontmatter.description,
+      },
+    ],
+  })
+
   return (
     <MDXProvider components={shortcodes}>
       <Layout location={location} title={siteTitle}>
@@ -60,6 +83,8 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
           <meta name="twitter:title" content={metaTitle} />
           <meta name="twitter:description" content={metaDesciption} />
           <meta name="twitter:image" content={metaImage} />
+
+          <script type="application/ld+json">{structuredJSON}</script>
         </Helmet>
 
         <div className="blog-post">
