@@ -37,6 +37,11 @@ module.exports = {
         image: "eris.jpg",
         instagram_url: "https://www.instagram.com/eris.in.boardgameland/",
       },
+      {
+        name: "Bruno",
+        summary: "Il mio regno per una partita a Twilight Imperium!",
+        image: "bruno.jpg",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
