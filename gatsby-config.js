@@ -42,6 +42,12 @@ module.exports = {
         summary: "Il mio regno per una partita a Twilight Imperium!",
         image: "bruno.jpg",
       },
+      {
+        name: "L'intavolatrice",
+        summary:
+          "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
+        image: "intavolatrice.png",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
