@@ -41,8 +41,8 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
             </Col>
             <Col md={9} className={style.blogPostTitle}>
               <h4>
-                {this.props.frontmatter.designer.replace(/-/g, "●")} ●{" "}
-                {this.props.frontmatter.publisher.replace(/-/g, "●")}
+                {this.props.frontmatter.designer.replace(/\s-\s/g, " ● ")} ●{" "}
+                {this.props.frontmatter.publisher.replace(/\s-\s/g, " ● ")}
               </h4>
               <h1>{this.props.frontmatter.title}</h1>
               <p>{this.props.frontmatter.description}</p>
