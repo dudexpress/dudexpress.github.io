@@ -4,7 +4,8 @@ export interface Author {
   name: string
   summary: string
   image: string
-  instagram_url: string
+  instagram_url?: string
+  website?: string
 }
 
 export interface SidebarVotes {

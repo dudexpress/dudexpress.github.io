@@ -89,6 +89,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       summary: String
       image: String
       instagram_url: String
+      website: String
     }
 
     type Social {

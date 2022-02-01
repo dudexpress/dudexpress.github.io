@@ -1,4 +1,3 @@
-import classnames from "classnames"
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Row from "react-bootstrap/Row"
@@ -9,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram"
 
 import * as styles from "./PostWriter.module.scss"
+import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons"
 
 interface PostWriterProps {
   writerName: string
@@ -24,6 +24,7 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
             summary
             image
             instagram_url
+            website
           }
         }
       }
@@ -41,6 +42,14 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
       socials.push(
         <a href={author.instagram_url} target="_blank">
           <FontAwesomeIcon icon={faInstagram} />
+        </a>
+      )
+    }
+
+    if (author.website != null) {
+      socials.push(
+        <a href={author.website} target="_blank">
+          <FontAwesomeIcon icon={faGlobeEurope} />
         </a>
       )
     }

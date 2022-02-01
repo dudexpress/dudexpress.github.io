@@ -11,6 +11,7 @@ module.exports = {
         summary:
           "Godo nel mescolare le carte appena imbustate. Annuso fumetti. A volte ho del tempo libero.",
         image: "tia.jpg",
+        instagram_url: "https://www.instagram.com/mattialarentis/",
       },
       {
         name: "Angelo",
@@ -47,6 +48,13 @@ module.exports = {
         summary:
           "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
         image: "intavolatrice.png",
+      },
+      {
+        name: "Il Leo",
+        summary:
+          "Curioso per natura, scettico di professione. Preferisco l'arbitrio ai dadi, ma alla fine l'importante è vincere.",
+        image: "leo.jpg",
+        website: "http://bertechlab.it",
       },
     ],
     description: `Recensioni semplici, immediate e immersive`,
