@@ -74,6 +74,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         <Helmet>
           <title>{metaTitle}</title>
           <meta name="description" content={metaDesciption} />
+          <link rel="canonical" href={`https://dudexpress.it/${post.slug}`} />
 
           <meta name="og:type" content="website" />
           <meta name="og:title" content={metaTitle} />
@@ -159,6 +160,7 @@ export const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      slug
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         writer
