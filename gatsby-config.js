@@ -56,6 +56,12 @@ module.exports = {
         image: "leo.jpg",
         website: "http://bertechlab.it",
       },
+      {
+        name: "chimi772_boardgamer",
+        summary: "Anche se perdo, non perdo la voglia di giocare.",
+        image: "chimi.jpg",
+        instagram_url: "https://www.instagram.com/chimi772_boardgamer/",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
