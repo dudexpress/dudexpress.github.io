@@ -50,6 +50,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   writer: string
   fantasia_url: string
   gamefound_url: string
+  kickstarter_url: string
 }
 
 export interface Fields {

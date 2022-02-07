@@ -1,0 +1,55 @@
+@use "sass:math";
+@use "../../style.scss" as v;
+
+$kickstarter: #00d36e;
+
+.kickstarter {
+  margin-top: math.div(v.$box-height, 3);
+  padding: 16px;
+  border: 10px solid $kickstarter;
+  border-radius: v.$border-radius;
+  background-color: rgba($kickstarter, 8%);
+
+  a {
+    color: $kickstarter;
+
+    &:hover {
+      color: darken($kickstarter, 8%);
+    }
+  }
+
+  .btn-kickstarter {
+    margin: v.$spacing-unit * 2 0;
+    padding: v.$spacing-unit v.$spacing-unit * 2;
+    background-color: $kickstarter;
+    color: white;
+    border-radius: v.$border-radius;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    box-shadow: v.$gray300 5px 5px 20px -10px;
+
+    &:hover {
+      color: white;
+      background-color: darken($kickstarter, 8%);
+    }
+  }
+
+  small {
+    font-size: 12px;
+  }
+
+  h4 {
+    font-weight: 700;
+    font-family: v.$font-family-title;
+  }
+
+  img {
+    border-radius: v.$border-radius;
+    width: 33%;
+    @media (min-width: 768px) {
+      // ipad
+      width: 100%;
+    }
+  }
+}

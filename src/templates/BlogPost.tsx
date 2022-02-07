@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
@@ -25,6 +25,7 @@ import * as style from "./BlogPost.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import Fantasia from "../components/misc/Fantasia"
 import Gamefound from "../components/misc/Gamefound"
+import Kickstarter from "../components/misc/Kickstarter"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -37,6 +38,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
+    Link,
   }
   const classname = classNames("main-content", style.blogPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
@@ -126,6 +128,10 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                     title={post.frontmatter.title}
                     link={post.frontmatter.gamefound_url}
                   />
+                  <Kickstarter
+                    title={post.frontmatter.title}
+                    link={post.frontmatter.kickstarter_url}
+                  />
                   <PostWriter writerName={post.frontmatter.writer} />
                 </Col>
               </Row>
@@ -192,6 +198,7 @@ export const pageQuery = graphql`
         }
         fantasia_url
         gamefound_url
+        kickstarter_url
       }
     }
 

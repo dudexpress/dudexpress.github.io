@@ -119,6 +119,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       seelves: [Sleeve]
       fantasia_url: String
       gamefound_url: String
+      kickstarter_url: String
     }
 
     type SidebarVotes {
