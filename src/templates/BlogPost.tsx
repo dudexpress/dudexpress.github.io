@@ -26,6 +26,7 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 import Fantasia from "../components/misc/Fantasia"
 import Gamefound from "../components/misc/Gamefound"
 import Kickstarter from "../components/misc/Kickstarter"
+import RandomLink from "../components/misc/RandomLink"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -39,6 +40,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Instagram,
     OutboundLink,
     Link,
+    RandomLink,
   }
   const classname = classNames("main-content", style.blogPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
@@ -103,12 +105,6 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                   lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
-                  <Fantasia
-                    title={post.frontmatter.title}
-                    link={post.frontmatter.fantasia_url}
-                    className="mt-0"
-                  />
-
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
                 <Col md={{ span: 3, offset: 1 }}>
