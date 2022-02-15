@@ -62,6 +62,12 @@ module.exports = {
         image: "chimi.jpg",
         instagram_url: "https://www.instagram.com/chimi772_boardgamer/",
       },
+      {
+        name: "G.Di.Gioco",
+        summary:
+          "Un American irriducibile, un German pratico e un Ibrido indeciso vi guideranno alla scoperta di questo sconfinato mondo in miniatura.",
+        image: "g-gioco.jpg",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
