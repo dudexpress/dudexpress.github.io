@@ -18,7 +18,6 @@ const Layout = ({ location, title, children }) => {
           charset="UTF-8"
           async
         ></script>
-        <script src={withPrefix("messanger.js")} type="text/javascript" />
       </Helmet>
 
       <header className={style.globalHeader}>

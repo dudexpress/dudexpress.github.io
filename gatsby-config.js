@@ -68,6 +68,12 @@ module.exports = {
           "Un American irriducibile, un German pratico e un Ibrido indeciso vi guideranno alla scoperta di questo sconfinato mondo in miniatura.",
         image: "g-gioco.jpg",
       },
+      {
+        name: "Maria Teresa",
+        summary:
+          "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
+        image: "maria-teresa.jpg",
+      },
     ],
     description: `Recensioni semplici, immediate e immersive`,
     siteUrl: `https://dudexpress.it/`,
