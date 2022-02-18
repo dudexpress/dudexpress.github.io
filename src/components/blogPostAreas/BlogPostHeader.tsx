@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { Fields, Frontmatter } from "../../types"
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 import * as style from "./BlogPostHeader.module.scss"
 import ReviewLink from "../misc/ReviewLink"
 
@@ -31,10 +32,8 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
         <Container>
           <Row>
             <Col md={3}>
-              <Img
-                fluid={
-                  this.props.frontmatter.featureImage.childImageSharp.fluid
-                }
+              <GatsbyImage
+                image={getImage(this.props.frontmatter.featureImage)!}
                 className={style.blogPostHeaderImg}
                 alt="cover"
               />

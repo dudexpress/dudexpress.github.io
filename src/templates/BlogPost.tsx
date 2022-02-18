@@ -42,12 +42,13 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Link,
     RandomLink,
   }
+
   const classname = classNames("main-content", style.blogPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
     metaDesciption = `${post.frontmatter.description} | Recensione ${data.site.siteMetadata.title}`,
-    metaImage = (
-      post.frontmatter.featureImage.childImageSharp.fluid as { src: string }
-    ).src
+    metaImage =
+      post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
+        .fallback!.src
 
   const structuredJSON = JSON.stringify({
     "@context": "https://schema.org/",
@@ -169,9 +170,11 @@ export const pageQuery = graphql`
         title
         featureImage {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(
+              width: 330
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
         }
         description
@@ -208,9 +211,11 @@ export const pageQuery = graphql`
           title
           featureImage {
             childImageSharp {
-              fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(
+                width: 330
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
           description

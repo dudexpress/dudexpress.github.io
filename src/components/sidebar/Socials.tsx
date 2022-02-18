@@ -10,14 +10,14 @@ export default class Socials extends React.PureComponent {
           href="https://www.instagram.com/dudexpress.review/"
           target="_blank"
         >
-          <img width={40} src={`../../socials/instagram.svg`} />
+          <img width={40} src={`../../socials/instagram.svg`} alt="instagram" />
         </OutboundLink>
         <OutboundLink
           href="https://www.facebook.com/dudexpress.review"
           target="_blank"
           className="ms-2"
         >
-          <img width={40} src={`../../socials/facebook.svg`} />
+          <img width={40} src={`../../socials/facebook.svg`} alt="facebook" />
         </OutboundLink>
       </>
     )

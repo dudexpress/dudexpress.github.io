@@ -114,8 +114,10 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 800,
+              maxWidth: 750,
               linkImagesToOriginal: false,
+              withWebp: true,
+              withAvif: true,
             },
           },
           // TODO npm uninstall

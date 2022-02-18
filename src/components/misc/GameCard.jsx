@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
-import Img from "gatsby-image"
 import * as styles from "./GameCard.module.scss"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const GameCard = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -15,9 +15,10 @@ const GameCard = ({ post }) => {
       <Card.Body className={styles.gameCardBody}>
         <Row className="w-100">
           <Col md={2} className="mb-3 mb-md-0">
-            <Img
-              fluid={post.frontmatter.featureImage.childImageSharp.fluid}
+            <GatsbyImage
+              image={getImage(post.frontmatter.featureImage)}
               className={styles.gameCardImg}
+              alt="cover"
             />
           </Col>
           <Col md={10}>

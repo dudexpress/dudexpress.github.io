@@ -1,4 +1,4 @@
-import { GatsbyImageFluidProps } from "gatsby-image"
+import { FileNode } from "gatsby-plugin-image/dist/src/components/hooks"
 
 export interface Author {
   name: string
@@ -21,9 +21,7 @@ export interface Sleeve {
 export interface SimpleFrontmatter {
   date: Date
   title: string
-  featureImage: {
-    childImageSharp: GatsbyImageFluidProps
-  }
+  featureImage: FileNode
   description: string
 }
 
