@@ -232,6 +232,7 @@ export interface BlogPostDataProps {
   mdx: {
     frontmatter: Frontmatter
     body: string
+    slug: string
   }
   allMdx: {
     nodes: {
