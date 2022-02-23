@@ -1,7 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
-import GameList from "../components/GameList"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import GameCard from "../components/misc/GameCard"
 
 const BlogList = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -13,18 +16,39 @@ const BlogList = ({ data, location, pageContext }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <GameList games={data.allMdx.edges.map(x => x.node)} />
-      {!isFirst && (
-        <Link to={`/blog/${prevPage}`} rel="prev">
-          ← Previous Page
-        </Link>
-      )}
+      <Container className="read-more-posts pt-0">
+        <Row className="game-list">
+          <Col lg={{ span: 8, offset: 2 }}>
+            <h1>Articoli - pagina {currentPage}</h1>
 
-      {!isLast && (
-        <Link to={`/blog/${nextPage}`} rel="next">
-          Next Page →
-        </Link>
-      )}
+            {data.allMdx.edges.map(post => (
+              <GameCard key={post.node.frontmatter.title} post={post.node} />
+            ))}
+
+            <div className="text-center">
+              {!isFirst && (
+                <Link
+                  to={`/blog/${prevPage}`}
+                  rel="prev"
+                  className="btn btn-outline-secondary mt-2 mb-4 mx-2"
+                >
+                  ←
+                </Link>
+              )}
+
+              {!isLast && (
+                <Link
+                  to={`/blog/${nextPage}`}
+                  rel="next"
+                  className="btn btn-outline-secondary mt-2 mb-4 mx-2"
+                >
+                  →
+                </Link>
+              )}
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   )
 }

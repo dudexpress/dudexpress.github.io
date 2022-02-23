@@ -73,7 +73,7 @@ const Index = ({ data, location }) => {
   return (
     <Layout location={location} title={title}>
       <Helmet>
-        <title>{title}</title>
+        <title>{title} | Recensioni di giochi da tavolo</title>
         <meta name="description" content={description} />
         <link rel="canonical" href="https://dudexpress.it/" />
 

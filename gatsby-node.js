@@ -43,8 +43,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  const blogPostPerPage = 5
+  const blogPostPerPage = 10
   const numPages = Math.ceil(posts.length / blogPostPerPage)
+
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
