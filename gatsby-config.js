@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `dudexpress`,
+    description: `Recensioni di giochi da tavolo semplici, immediate e immersive`,
+    siteUrl: `https://dudexpress.it/`,
     author: {
       name: `Mattia Larentis`,
       summary: `che fa cose`,
@@ -75,8 +77,6 @@ module.exports = {
         image: "maria-teresa.jpg",
       },
     ],
-    description: `Recensioni semplici, immediate e immersive`,
-    siteUrl: `https://dudexpress.it/`,
   },
   plugins: [
     `gatsby-plugin-cname`,

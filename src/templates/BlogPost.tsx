@@ -45,7 +45,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
 
   const classname = classNames("main-content", style.blogPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
-    metaDesciption = `${post.frontmatter.description} | Recensione ${data.site.siteMetadata.title}`,
+    metaDesciption = `${post.frontmatter.description} | Recensione gioco da tavolo ${data.site.siteMetadata.title}`,
     metaImage =
       post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
         .fallback!.src

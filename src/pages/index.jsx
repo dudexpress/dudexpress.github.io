@@ -41,6 +41,7 @@ const Index = ({ data, location }) => {
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href="https://dudexpress.it/" />
 
         <meta name="og:type" content="website" />
         <meta name="og:title" content={title} />
