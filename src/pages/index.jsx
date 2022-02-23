@@ -36,6 +36,40 @@ const Index = ({ data, location }) => {
     )
   }
 
+  const structuredJSON = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dudexpress.it/#organization",
+        name: "dudexpress",
+        url: "https://dudexpress.it/",
+        sameAs: [
+          "https://www.facebook.com/dudexpress.review",
+          "https://www.instagram.com/dudexpress.review/",
+        ],
+        logo: {
+          "@type": "ImageObject",
+          "@id": "https://dudexpress.it/#logo",
+          inLanguage: "it-IT",
+          url: `https://dudexpress.it/${withPrefix("logo/logo.png")}`,
+          caption: "dudexpress",
+        },
+        image: { "@id": "https://dudexpress.it/#logo" },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dudexpress.it/#website",
+        url: "https://dudexpress.it/",
+        name: title,
+        description,
+        publisher: { "@id": "https://dudexpress.it/#organization" },
+        potentialAction: [],
+        inLanguage: "it-IT",
+      },
+    ],
+  })
+
   return (
     <Layout location={location} title={title}>
       <Helmet>
@@ -52,6 +86,8 @@ const Index = ({ data, location }) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={withPrefix("logo/logo.png")} />
+
+        <script type="application/ld+json">{structuredJSON}</script>
       </Helmet>
 
       {/* <Search {...data.localSearchPages} location={location} /> */}
