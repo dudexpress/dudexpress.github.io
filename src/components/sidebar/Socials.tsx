@@ -5,7 +5,8 @@ export default class Socials extends React.PureComponent {
   public render(): React.ReactNode {
     return (
       <>
-        <h5>Sempre aggiornato</h5>
+        <h5>Rimani aggiornato</h5>
+        <div className="mb-2">Un semplice follow vuol dire tanto.</div>
         <OutboundLink
           href="https://www.instagram.com/dudexpress.review/"
           target="_blank"

@@ -52,7 +52,7 @@ const Index = ({ data, location }) => {
           "@type": "ImageObject",
           "@id": "https://dudexpress.it/#logo",
           inLanguage: "it-IT",
-          url: `https://dudexpress.it/${withPrefix("logo/logo.png")}`,
+          url: `https://dudexpress.it${withPrefix("logo/logo.png")}`,
           caption: "dudexpress",
         },
         image: { "@id": "https://dudexpress.it/#logo" },
@@ -108,12 +108,17 @@ const Index = ({ data, location }) => {
                 {renderOtherPosts()}
               </Col>
               <Col lg={4}>
-                <FantasiaHomepage />
+                <h5>Benvenuto su dudexpress.it!</h5>
+                <blockquote>
+                  Recensioni di giochi da tavolo semplici, immediate e
+                  immersive.
+                </blockquote>
                 <div className="mt-5"></div>
                 <Socials />
+                <div className="mt-5"></div>
+                <FantasiaHomepage />
               </Col>
             </Row>
-            {/* <Link to="/blog" rel="next">Scopri di più →</Link> */}
             {/* <WhoWeAre authors={data.site.siteMetadata.authors} /> */}
           </Container>
         </div>
