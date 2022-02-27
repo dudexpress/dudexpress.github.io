@@ -77,15 +77,21 @@ const Index = ({ data, location }) => {
         <meta name="description" content={description} />
         <link rel="canonical" href="https://dudexpress.it/" />
 
-        <meta name="og:type" content="website" />
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={description} />
-        <meta name="og:image" content={withPrefix("logo/logo.png")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta
+          property="og:image"
+          content={`https://dudexpress.it${withPrefix("logo/logo.png")}`}
+        />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={withPrefix("logo/logo.png")} />
+        <meta
+          name="twitter:image"
+          content={`https://dudexpress.it${withPrefix("logo/logo.png")}`}
+        />
 
         <script type="application/ld+json">{structuredJSON}</script>
       </Helmet>

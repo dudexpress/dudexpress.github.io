@@ -47,6 +47,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
     metaDesciption = `${post.frontmatter.description} | Recensione gioco da tavolo ${data.site.siteMetadata.title}`,
     metaImage =
+      "https://dudexpress.it" +
       post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
         .fallback!.src
 
@@ -81,10 +82,10 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
           <meta name="description" content={metaDesciption} />
           <link rel="canonical" href={`https://dudexpress.it/${post.slug}`} />
 
-          <meta name="og:type" content="website" />
-          <meta name="og:title" content={metaTitle} />
-          <meta name="og:description" content={metaDesciption} />
-          <meta name="og:image" content={metaImage} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={metaTitle} />
+          <meta property="og:description" content={metaDesciption} />
+          <meta property="og:image" content={metaImage} />
 
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={metaTitle} />
