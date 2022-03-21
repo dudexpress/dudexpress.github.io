@@ -69,6 +69,7 @@ module.exports = {
         summary:
           "Un American irriducibile, un German pratico e un Ibrido indeciso vi guideranno alla scoperta di questo sconfinato mondo in miniatura.",
         image: "g-gioco.jpg",
+        instagram_url: "https://www.instagram.com/g.di.gioco/",
       },
       {
         name: "Maria Teresa",
