@@ -83,6 +83,12 @@ module.exports = {
           "Amo due cose: i sonnellini e i giochi da tavolo. E se mi lasciano fare i miei sonnellini sopra ai giochi da tavolo sono di certo il gatto più felice del mondo!",
         image: "bilbo.jpg",
       },
+      {
+        name: "Michele",
+        summary:
+          "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
+        image: "michele.jpg",
+      },
     ],
   },
   plugins: [
