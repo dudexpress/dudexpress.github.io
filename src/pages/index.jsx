@@ -96,7 +96,6 @@ const Index = ({ data, location }) => {
         <script type="application/ld+json">{structuredJSON}</script>
       </Helmet>
 
-      {/* <Search {...data.localSearchPages} location={location} /> */}
       <div style={{ minHeight: "calc(100vh - 88px)" }} className={style.index}>
         <div className="main-content">
           <BlogPostHeader

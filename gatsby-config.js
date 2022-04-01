@@ -258,6 +258,15 @@ module.exports = {
                   title
                   date
                   description
+                  featureImage {
+                    childImageSharp {
+                      gatsbyImageData(
+                        width: 330
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                      )
+                    }
+                  }
                 }
               }
             }
@@ -289,6 +298,7 @@ module.exports = {
             title: node.frontmatter.title,
             date: node.frontmatter.date,
             description: node.frontmatter.description,
+            featureImage: node.frontmatter.featureImage,
           })),
       },
     },
