@@ -2,7 +2,7 @@
 
 .layout {
   .global-header {
-    padding: 4 * v.$spacing-unit 0;
+    padding: 2 * v.$spacing-unit 0;
 
     a {
       font-family: v.$font-family-title;
@@ -16,7 +16,11 @@
         animation: color 300ms;
       }
     }
-  }
+
+    & + main {
+      margin-top: 82px;
+    }
+  }  
 
   .global-footer {
     background: v.$gray400;

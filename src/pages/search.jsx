@@ -43,7 +43,7 @@ const Index = ({ data, location }) => {
         <div className="main-content">
           <Container className="read-more-posts pt-0">
             <Row className="game-list">
-              <Col lg={{ span: 8, offset: 2 }}>
+              <Col lg={{ span: 8, offset: 2 }} className="mt-4">
                 <Search
                   {...data.localSearchPages}
                   location={location}
@@ -78,33 +78,6 @@ export const pageQuery = graphql`
       }
     }
     allMdx(limit: 6, sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          designer
-          publisher
-
-          featureImage {
-            childImageSharp {
-              gatsbyImageData(
-                width: 330
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
-          }
-          description
-        }
-      }
-    }
-    otherGames: allMdx(
-      skip: 6
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
       nodes {
         fields {
           slug

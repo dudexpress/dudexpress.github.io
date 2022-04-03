@@ -1,3 +1,4 @@
+import classnames from "classnames"
 import React from "react"
 import Helmet from "react-helmet"
 import { withPrefix, Link } from "gatsby"
@@ -6,6 +7,8 @@ import Container from "react-bootstrap/Container"
 import * as style from "./Layout.module.scss"
 
 const Layout = ({ location, title, children }) => {
+  const headerClassName = classnames(style.globalHeader, "fixed-top bg-white")
+
   return (
     <div className={style.layout}>
       <div id="fb-root" />
@@ -20,15 +23,21 @@ const Layout = ({ location, title, children }) => {
         ></script>
       </Helmet>
 
-      <header className={style.globalHeader}>
+      <header className={headerClassName}>
         <Container>
-          <Link to="/">
-            <img
-              src={withPrefix("logo/logo-small.svg")}
-              alt="dudexpress small logo"
-              height={50}
-            />
-          </Link>
+          <div className="d-flex w-100 justify-content-between align-items-end">
+            <Link to="/">
+              <img
+                src={withPrefix("logo/logo-small.svg")}
+                alt="dudexpress small logo"
+                height={50}
+              />
+            </Link>
+
+            <Link to="/search">
+              <small>Cerca &#x1F50D;</small>
+            </Link>
+          </div>
         </Container>
       </header>
 
