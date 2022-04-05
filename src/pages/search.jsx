@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -11,7 +11,7 @@ import Search from "../components/Search"
 import * as style from "./index.module.scss"
 
 const Index = ({ data, location }) => {
-  const { title, description } = data.site.siteMetadata,
+  const { title } = data.site.siteMetadata,
     metaTitle = `Ricerca | ${title}`,
     metaDescription = "Pagina di ricerca"
 
@@ -19,12 +19,12 @@ const Index = ({ data, location }) => {
     <Layout location={location} title={title}>
       <Helmet>
         <title>{metaTitle}</title>
-        <meta name="description" content={description} />
+        <meta name="description" content={metaDescription} />
         <link rel="canonical" href="https://dudexpress.it/search" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={description} />
+        <meta property="og:description" content={metaDescription} />
         <meta
           property="og:image"
           content={`https://dudexpress.it${withPrefix("logo/logo.png")}`}
@@ -32,7 +32,7 @@ const Index = ({ data, location }) => {
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:description" content={metaDescription} />
         <meta
           name="twitter:image"
           content={`https://dudexpress.it${withPrefix("logo/logo.png")}`}
