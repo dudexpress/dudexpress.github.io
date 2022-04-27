@@ -26,6 +26,26 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
     )
   }
 
+  private renderDesignersAndPublishers(): React.ReactNode {
+    const designers = this.props.frontmatter.designer.replace(/\s-\s/g, " ● ")
+    const publisher = this.props.frontmatter.publisher.replace(/\s-\s/g, " ● ")
+
+    if (!designers || !publisher) {
+      return (
+        <h4>
+          {designers}
+          {publisher}
+        </h4>
+      )
+    }
+
+    return (
+      <h4>
+        {designers} ● {publisher}
+      </h4>
+    )
+  }
+
   public render(): React.ReactNode {
     return (
       <header className={style.blogPostHeader}>
@@ -39,10 +59,7 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
               />
             </Col>
             <Col md={9} className={style.blogPostTitle}>
-              <h4>
-                {this.props.frontmatter.designer.replace(/\s-\s/g, " ● ")} ●{" "}
-                {this.props.frontmatter.publisher.replace(/\s-\s/g, " ● ")}
-              </h4>
+              {this.renderDesignersAndPublishers()}
               <h1>{this.props.frontmatter.title}</h1>
               <p>{this.props.frontmatter.description}</p>
               {this.renderLink()}
