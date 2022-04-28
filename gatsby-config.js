@@ -89,6 +89,12 @@ module.exports = {
           "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
         image: "michele.jpg",
       },
+      {
+        name: "Ferra",
+        summary:
+          "Amante dei giochi da tavolo di ogni genere e difficoltà, cerca sempre nuove sfide e nuove avventure...",
+        image: "ferra.png",
+      },
     ],
   },
   plugins: [
