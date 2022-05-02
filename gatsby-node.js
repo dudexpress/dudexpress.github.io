@@ -119,6 +119,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       sidebar_votes: [SidebarVotes]
       seelves: [Sleeve]
       fantasia_url: String
+      weega_url: String
+      weega_future: Bool
       gamefound_url: String
       kickstarter_url: String
     }

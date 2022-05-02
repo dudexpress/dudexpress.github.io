@@ -13,7 +13,8 @@ export default class BlogPostBoxes extends React.PureComponent<Frontmatter> {
   private renderScoreBox(): React.ReactNode {
     if (
       this.props.gamefound_url != null ||
-      this.props.kickstarter_url != null
+      this.props.kickstarter_url != null ||
+      (this.props.weega_future && this.props.weega_url != null)
     ) {
       return <HypeBox value={this.props.score} />
     }

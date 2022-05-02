@@ -47,6 +47,8 @@ export interface Frontmatter extends SimpleFrontmatter {
   // bio
   writer: string
   fantasia_url: string
+  weega_url: string
+  weega_future: boolean
   gamefound_url: string
   kickstarter_url: string
 }

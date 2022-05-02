@@ -27,6 +27,7 @@ import Fantasia from "../components/misc/Fantasia"
 import Gamefound from "../components/misc/Gamefound"
 import Kickstarter from "../components/misc/Kickstarter"
 import RandomLink from "../components/misc/RandomLink"
+import Weega from "../components/misc/Weega"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -122,6 +123,11 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                     title={post.frontmatter.title}
                     link={post.frontmatter.fantasia_url}
                   />
+                  <Weega
+                    title={post.frontmatter.title}
+                    link={post.frontmatter.weega_url}
+                    future={post.frontmatter.weega_future}
+                  />
                   <Gamefound
                     title={post.frontmatter.title}
                     link={post.frontmatter.gamefound_url}
@@ -197,6 +203,8 @@ export const pageQuery = graphql`
           size
         }
         fantasia_url
+        weega_url
+        weega_future
         gamefound_url
         kickstarter_url
       }
