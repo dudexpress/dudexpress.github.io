@@ -120,7 +120,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       seelves: [Sleeve]
       fantasia_url: String
       weega_url: String
-      weega_future: Bool
+      weega_future: Boolean
       gamefound_url: String
       kickstarter_url: String
     }

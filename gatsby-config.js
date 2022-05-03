@@ -114,7 +114,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    `gatsby-plugin-fontawesome-css`, // TODO need?
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
     {

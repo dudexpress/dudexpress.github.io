@@ -12,7 +12,7 @@ const Layout = ({ location, title, children }) => {
   return (
     <div className={style.layout}>
       <div id="fb-root" />
-      <div id="fb-customer-chat" className="fb-customerchat" />
+      <Helmet htmlAttributes={{ lang: "it" }} />
       <Helmet>
         <script src={withPrefix("iubenda.js")} type="text/javascript" />
         <script
