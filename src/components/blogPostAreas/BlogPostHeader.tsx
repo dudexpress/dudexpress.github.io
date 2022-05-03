@@ -55,7 +55,7 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
               <GatsbyImage
                 image={getImage(this.props.frontmatter.featureImage)!}
                 className={style.blogPostHeaderImg}
-                alt="cover"
+                alt={this.props.frontmatter.title + " cover"}
               />
             </Col>
             <Col md={9} className={style.blogPostTitle}>

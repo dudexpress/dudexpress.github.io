@@ -19,6 +19,7 @@ const Instagram = (props: InstagramProps) => {
   return (
     <div ref={elementRef} className={style.instagram}>
       <iframe
+        title="instagram"
         src={`https://www.instagram.com/reel/${props.id}/embed`}
         width={width}
         height={(width * 125) / 100 + 54}
