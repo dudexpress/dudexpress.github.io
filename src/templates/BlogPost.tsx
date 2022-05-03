@@ -82,6 +82,10 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
           <title>{metaTitle}</title>
           <meta name="description" content={metaDesciption} />
           <link rel="canonical" href={`https://dudexpress.it/${post.slug}`} />
+          <meta
+            name="keywords"
+            content={`${post.frontmatter.title}, dudexpress, gioco, gioco da tavolo, recensioni, board game, review`}
+          />
 
           <meta property="og:type" content="website" />
           <meta property="og:title" content={metaTitle} />
