@@ -95,6 +95,12 @@ module.exports = {
           "Amante dei giochi da tavolo di ogni genere e difficoltà, cerca sempre nuove sfide e nuove avventure...",
         image: "ferra.png",
       },
+      {
+        name: "Angelo M Pero",
+        summary:
+          "Dopo aver lasciato gli studi in Lettere per incompatibilità di carattere, deve ancora capire cosa fare nella vita. Nel frattempo si diletta nella scrittura e nei giochi da tavolo. Ama i vampiri e il Giappone.",
+        image: "angelo-pero.png",
+      },
     ],
   },
   plugins: [
