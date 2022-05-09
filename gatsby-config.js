@@ -101,6 +101,12 @@ module.exports = {
           "Dopo aver lasciato gli studi in Lettere per incompatibilità di carattere, deve ancora capire cosa fare nella vita. Nel frattempo si diletta nella scrittura e nei giochi da tavolo. Ama i vampiri e il Giappone.",
         image: "angelo-pero.png",
       },
+      {
+        name: "iDefustellati",
+        summary:
+          "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
+        image: "idefustellati.jpg",
+      },
     ],
   },
   plugins: [
