@@ -107,6 +107,12 @@ module.exports = {
           "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
         image: "idefustellati.jpg",
       },
+      {
+        name: "Il Meeple Genovese",
+        summary:
+          "Giacomo. 25 anni. Psicologo dello sviluppo. Cerco di trasmettere quello che provo per i giochi da tavolo a tutti quelli che leggono ciò che scrivo.",
+        image: "genovese.jpg",
+      },
     ],
   },
   plugins: [
