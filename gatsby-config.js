@@ -113,6 +113,13 @@ module.exports = {
           "Giacomo. 25 anni. Psicologo dello sviluppo. Cerco di trasmettere quello che provo per i giochi da tavolo a tutti quelli che leggono ciò che scrivo.",
         image: "genovese.jpg",
       },
+      {
+        name: "The Golden Meeple",
+        summary:
+          "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
+        image: "golden.jpg",
+        instagram_url: "https://www.instagram.com/thegoldenmeeple/",
+      },
     ],
   },
   plugins: [
