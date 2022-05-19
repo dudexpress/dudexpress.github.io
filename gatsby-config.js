@@ -120,6 +120,12 @@ module.exports = {
         image: "golden.jpg",
         instagram_url: "https://www.instagram.com/thegoldenmeeple/",
       },
+      {
+        name: "BarbaBarco Games",
+        summary:
+          "Ahoy! Capitano BarbaBarco al vostro servizio! La nostra prossima avventura? Esplorare il mondo dei giochi da tavolo!",
+        image: "barbabarco.jpg",
+      },
     ],
   },
   plugins: [
@@ -286,7 +292,8 @@ module.exports = {
                 }
                 frontmatter {
                   title
-                  date
+                  date(formatString: "DD/MM/YYYYY")
+                  writer
                   description
                   featureImage {
                     childImageSharp {
@@ -325,6 +332,7 @@ module.exports = {
           data.allMdx.nodes.map(node => ({
             id: node.id,
             slug: node.fields.slug,
+            writer: node.frontmatter.writer,
             title: node.frontmatter.title,
             date: node.frontmatter.date,
             description: node.frontmatter.description,

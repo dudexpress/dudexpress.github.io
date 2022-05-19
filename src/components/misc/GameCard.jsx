@@ -25,6 +25,10 @@ const GameCard = ({ post }) => {
             <div className="d-flex flex-column justify-content-center h-100">
               <h4>{title}</h4>
               <p>{post.frontmatter.description}</p>
+              <small>
+                {post.frontmatter.writer} ●{" "}
+                <span className="release-date">{post.frontmatter.date}</span>
+              </small>
             </div>
           </Col>
         </Row>

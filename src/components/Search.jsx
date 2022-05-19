@@ -23,6 +23,7 @@ const Search = ({ index, store, location, defaultPosts }) => {
         slug: x.slug,
       },
       frontmatter: {
+        writer: x.writer,
         title: x.title,
         date: x.date,
         description: x.description,

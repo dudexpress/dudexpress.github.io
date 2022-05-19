@@ -26,6 +26,17 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
     )
   }
 
+  private renderDate(): React.ReactNode {
+    if (this.props.fields?.slug != null) {
+      return null
+    }
+    return (
+      <small className="mt-4">
+        Pubblicata il {this.props.frontmatter.date}
+      </small>
+    )
+  }
+
   private renderDesignersAndPublishers(): React.ReactNode {
     const designers = this.props.frontmatter.designer.replace(/\s-\s/g, " ● ")
     const publisher = this.props.frontmatter.publisher.replace(/\s-\s/g, " ● ")
@@ -62,6 +73,7 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
               {this.renderDesignersAndPublishers()}
               <h1>{this.props.frontmatter.title}</h1>
               <p>{this.props.frontmatter.description}</p>
+              {this.renderDate()}
               {this.renderLink()}
             </Col>
           </Row>

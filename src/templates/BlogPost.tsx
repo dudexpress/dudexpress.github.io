@@ -176,7 +176,7 @@ export const pageQuery = graphql`
       body
       slug
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD/MM/YYYY")
         writer
         title
         featureImage {
@@ -220,7 +220,8 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date(formatString: "DD/MM/YYYY")
+          writer
           title
           featureImage {
             childImageSharp {

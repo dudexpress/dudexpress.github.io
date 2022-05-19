@@ -73,6 +73,8 @@ export const blogListQuery = graphql`
             slug
           }
           frontmatter {
+            date(formatString: "DD/MM/YYYY")
+            writer
             title
             description
             featureImage {
