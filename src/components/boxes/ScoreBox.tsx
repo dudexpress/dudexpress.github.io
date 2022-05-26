@@ -60,7 +60,22 @@ export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
   }
 
   private renderFooter(): React.ReactNode {
-    return `${this.props.value} / 10`
+    switch (this.props.value) {
+      case 10:
+        return "Immancabile"
+      case 9:
+        return "Eccellente"
+      case 8:
+        return "Da avere"
+      case 7:
+        return "Da provare"
+      case 6:
+        return "Si difende"
+      case 5:
+        return "C'è di meglio"
+      default:
+        return "Meh"
+    }
   }
 
   public render(): React.ReactNode {
