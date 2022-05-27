@@ -15,5 +15,9 @@
     color: v.$white;
     font-size: 16px;
     font-family: v.$font-family-title;
+
+    &:hover {
+      background-color: darken(v.$red, 8%) !important;
+    }
   }
 }

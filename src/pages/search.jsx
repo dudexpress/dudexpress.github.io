@@ -39,11 +39,16 @@ const Index = ({ data, location }) => {
         />
       </Helmet>
 
-      <div style={{ minHeight: "calc(100vh - 88px)" }} className={style.index}>
+      <div
+        style={{ minHeight: "calc(100vh - 82px - 88px)" }}
+        className={style.index}
+      >
         <div className="main-content">
-          <Container className="read-more-posts pt-0">
+          <Container className="mb-5">
             <Row className="game-list">
               <Col lg={{ span: 8, offset: 2 }} className="mt-4">
+                <h1 className="my-5">Cerca</h1>
+
                 <Search
                   {...data.localSearchPages}
                   location={location}

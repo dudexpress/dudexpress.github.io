@@ -16,10 +16,10 @@ const BlogList = ({ data, location, pageContext }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Container className="read-more-posts pt-0">
+      <Container className="mb-5">
         <Row className="game-list">
           <Col lg={{ span: 8, offset: 2 }}>
-            <h1>Articoli - pagina {currentPage}</h1>
+            <h1 className="my-5">Recensioni - pagina {currentPage}</h1>
 
             {data.allMdx.edges.map(post => (
               <GameCard key={post.node.frontmatter.title} post={post.node} />

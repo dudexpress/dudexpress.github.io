@@ -5,6 +5,8 @@ import { withPrefix, Link } from "gatsby"
 import SocialLinks from "../components/SocialLinks"
 import Container from "react-bootstrap/Container"
 import * as style from "./Layout.module.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch"
 
 const Layout = ({ location, title, children }) => {
   const headerClassName = classnames(style.globalHeader, "fixed-top bg-white")
@@ -35,7 +37,9 @@ const Layout = ({ location, title, children }) => {
             </Link>
 
             <Link to="/search">
-              <small>Cerca &#x1F50D;</small>
+              <small>
+                Cerca <FontAwesomeIcon icon={faSearch} />
+              </small>
             </Link>
           </div>
         </Container>

@@ -1,6 +1,8 @@
 import React from "react"
 import Badge from "react-bootstrap/Badge"
 import * as styles from "./Mechanisms.module.scss"
+import { Link } from "gatsby"
+import slugify from "slugify"
 
 interface MechanismsProps {
   values: string[]
@@ -9,9 +11,11 @@ interface MechanismsProps {
 export default class Mechanisms extends React.PureComponent<MechanismsProps> {
   private renderTag(tag: string): React.ReactNode {
     return (
-      <Badge key={tag} className={styles.badge} bg="secondary me-1 mb-1">
-        {tag}
-      </Badge>
+      <Link to={`/mechanisms/${slugify(tag, { lower: true })}`}>
+        <Badge key={tag} className={styles.badge} bg="secondary me-1 mb-1">
+          {tag}
+        </Badge>
+      </Link>
     )
   }
 

@@ -1,5 +1,20 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const slugify = require("slugify")
+
+function dedupeMechanisms(allMdx) {
+  const uniqeMechanisms = new Set()
+  allMdx.edges.forEach(({ node }) => {
+    node.frontmatter.mechanisms.forEach(m => {
+      uniqeMechanisms.add(m)
+    })
+  })
+  return [...uniqeMechanisms]
+}
+
+function getMechanismPath(mechanism) {
+  return `/mechanisms/${slugify(mechanism, { lower: true })}`
+}
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -33,6 +48,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
+    reporter.info(`Creating page: ${post.fields.slug}`)
+
     createPage({
       path: post.fields.slug,
       component: blogPost,
@@ -47,6 +64,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const numPages = Math.ceil(posts.length / blogPostPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
+    reporter.info(`Creating page: blog/${i + 1}`)
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve("./src/templates/BlogPostList.jsx"),
@@ -55,6 +73,52 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         skip: i * blogPostPerPage,
         numPages,
         currentPage: i + 1,
+      },
+    })
+  })
+
+  const {
+    data: { allMdx },
+  } = await graphql(`
+    query {
+      allMdx {
+        edges {
+          node {
+            id
+            frontmatter {
+              mechanisms
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const dedupedMechanisms = dedupeMechanisms(allMdx).sort()
+
+  createPage({
+    path: `mechanisms`,
+    component: require.resolve("./src/templates/MechanismList.jsx"),
+    context: {
+      mechanisms: dedupedMechanisms.map(x => ({
+        title: x,
+        path: getMechanismPath(x),
+      })),
+    },
+  })
+
+  dedupedMechanisms.forEach(mechanism => {
+    reporter.info(`Creating page: mechanisms/${slugify(mechanism)}`)
+    createPage({
+      path: getMechanismPath(mechanism),
+      component: require.resolve("./src/templates/Mechanism.jsx"),
+      context: {
+        mechanism,
+        ids: allMdx.edges
+          .filter(({ node }) => {
+            return node.frontmatter.mechanisms.includes(mechanism)
+          })
+          .map(({ node }) => node.id),
       },
     })
   })

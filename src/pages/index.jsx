@@ -96,7 +96,10 @@ const Index = ({ data, location }) => {
         <script type="application/ld+json">{structuredJSON}</script>
       </Helmet>
 
-      <div style={{ minHeight: "calc(100vh - 88px)" }} className={style.index}>
+      <div
+        style={{ minHeight: "calc(100vh - 82px - 88px)" }}
+        className={style.index}
+      >
         <div className="main-content">
           <BlogPostHeader
             fields={firstPost.fields}
@@ -104,7 +107,7 @@ const Index = ({ data, location }) => {
             withLink
           />
 
-          <Container className="read-more-posts pt-0">
+          <Container>
             <Row className="game-list">
               <Col lg={8}>
                 {posts.map(post => (

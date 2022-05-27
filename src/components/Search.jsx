@@ -1,5 +1,7 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch"
 import React, { useState } from "react"
 import { useFlexSearch } from "react-use-flexsearch"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import GameCard from "../components/misc/GameCard"
 
@@ -46,7 +48,7 @@ const Search = ({ index, store, location, defaultPosts }) => {
             aria-describedby="basic-addon2"
           />
           <span className="input-group-text bg-white" id="basic-addon2">
-            &#x1F50D;
+            <FontAwesomeIcon icon={faSearch} />
           </span>
         </div>
       </form>

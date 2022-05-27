@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import { SiteMetadata } from "../types"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 interface Icon {
   name: string
@@ -68,13 +70,14 @@ const Credits = ({
         <title>Credits</title>
       </Helmet>
 
-      <div
-        style={{ minHeight: "calc(100vh - 88px - 94px)" }}
-        className="main-content"
-      >
+      <div style={{ minHeight: "calc(100vh - 82px - 88px)" }}>
         <Container>
-          <h2>Credits</h2>
-          <ul>{icons.map(renderCredit)}</ul>
+          <Row>
+            <Col lg={{ span: 8, offset: 2 }}>
+              <h1 className="my-5">Credits</h1>
+              <ul>{icons.map(renderCredit)}</ul>
+            </Col>
+          </Row>
         </Container>
       </div>
     </Layout>
