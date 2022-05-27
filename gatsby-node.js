@@ -108,7 +108,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   dedupedMechanisms.forEach(mechanism => {
-    reporter.info(`Creating page: mechanisms/${slugify(mechanism)}`)
+    reporter.info(`Creating page: ${getMechanismPath(mechanism)}`)
     createPage({
       path: getMechanismPath(mechanism),
       component: require.resolve("./src/templates/Mechanism.jsx"),
