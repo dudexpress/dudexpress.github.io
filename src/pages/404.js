@@ -1,20 +1,25 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-
+import Container from "react-bootstrap/Container"
 import Layout from "../components/Layout"
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+  const { title } = data.site.siteMetadata,
+    metaTitle = `404 | ${title}`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
       <Helmet>
-        <title>404: Not Found</title>
+        <title>{metaTitle}</title>
       </Helmet>
 
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <Container className="py-5 d-flex justify-content-center flex-column align-items-center">
+        <h1>404: Not Found</h1>
+        <p className="text-center">
+          Mi sa che sei più bravo di noi a intraprendere viaggi spaziali!
+        </p>
+      </Container>
     </Layout>
   )
 }

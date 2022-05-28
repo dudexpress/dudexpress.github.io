@@ -6,6 +6,10 @@ function getMechanismPath(mechanism) {
   return `/mechanisms/${slugify(mechanism, { lower: true })}`
 }
 
+function getWriterPath(author) {
+  return `/writers/${slugify(author, { lower: true })}`
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions,
     result = await graphql(
@@ -16,6 +20,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               id
               frontmatter {
                 mechanisms
+                writer
               }
               fields {
                 slug
@@ -99,6 +104,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         ids: posts
           .filter(node => {
             return node.frontmatter.mechanisms.includes(mechanism)
+          })
+          .map(node => node.id),
+      },
+    })
+  })
+
+  let dedupedWriters = new Set()
+  result.data.allMdx.nodes.forEach(node => {
+    dedupedWriters.add(node.frontmatter.writer)
+  })
+
+  dedupedWriters.forEach(writer => {
+    reporter.info(`Creating page: ${getWriterPath(writer)}`)
+    createPage({
+      path: getWriterPath(writer),
+      component: require.resolve("./src/templates/Writer.jsx"),
+      context: {
+        writer,
+        ids: posts
+          .filter(node => {
+            return node.frontmatter.writer === writer
           })
           .map(node => node.id),
       },

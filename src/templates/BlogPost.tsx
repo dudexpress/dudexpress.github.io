@@ -140,7 +140,10 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                     title={post.frontmatter.title}
                     link={post.frontmatter.kickstarter_url}
                   />
-                  <PostWriter writerName={post.frontmatter.writer} />
+                  <PostWriter
+                    writerName={post.frontmatter.writer}
+                    asCard={true}
+                  />
                 </Col>
               </Row>
             </Container>

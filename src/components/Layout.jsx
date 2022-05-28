@@ -46,6 +46,7 @@ const Layout = ({ location, title, children }) => {
                   width={20}
                   src={`../../socials/instagram.svg`}
                   alt="instagram"
+                  style={{ marginTop: "-3px" }}
                 />
               </OutboundLink>
               <OutboundLink
@@ -57,12 +58,14 @@ const Layout = ({ location, title, children }) => {
                   width={20}
                   src={`../../socials/facebook.svg`}
                   alt="facebook"
+                  style={{ marginTop: "-3px" }}
                 />
               </OutboundLink>
 
               <Link to="/search" className="ms-3">
                 <small>
-                  Cerca <FontAwesomeIcon icon={faSearch} />
+                  <span className="d-none d-md-inline-block me-1">Cerca</span>
+                  <FontAwesomeIcon icon={faSearch} />
                 </small>
               </Link>
             </div>
@@ -70,7 +73,7 @@ const Layout = ({ location, title, children }) => {
         </Container>
       </header>
 
-      <main>{children}</main>
+      <main style={{ minHeight: "calc(100vh - 82px - 88px)" }}>{children}</main>
       <footer className={style.globalFooter}>
         <Container className="d-flex justify-content-between">
           <Footer />

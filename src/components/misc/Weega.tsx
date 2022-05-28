@@ -61,7 +61,7 @@ export default class Weega extends React.PureComponent<WeegaProps> {
                   target="_blank"
                   className={styles.btnWeega}
                 >
-                  Acquistalo qui
+                  Vai a Weega
                 </OutboundLink>
               </div>
               {this.renderFuture()}

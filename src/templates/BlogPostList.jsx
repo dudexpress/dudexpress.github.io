@@ -5,17 +5,23 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import GameCard from "../components/misc/GameCard"
+import { Helmet } from "react-helmet"
 
 const BlogList = ({ data, location, pageContext }) => {
-  const siteTitle = data.site.siteMetadata.title
+  const { title } = data.site.siteMetadata
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
-  const nextPage = (currentPage + 1).toString()
+  const nextPage = (currentPage + 1).toString(),
+    metaTitle = `Recensioni - pagina ${currentPage} | ${title}`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
+      <Helmet>
+        <title>{metaTitle}</title>
+      </Helmet>
+
       <Container className="mb-5">
         <Row className="game-list">
           <Col lg={{ span: 8, offset: 2 }}>

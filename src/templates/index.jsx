@@ -1,11 +1,10 @@
-import React, { useState } from "react"
-import { graphql } from "gatsby"
+import React from "react"
+import { Link, graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { withPrefix } from "gatsby"
 import { Helmet } from "react-helmet"
-
 import Layout from "../components/Layout"
 import GameCard from "../components/misc/GameCard"
 import * as style from "./index.module.scss"
@@ -14,24 +13,17 @@ import FantasiaHomepage from "../components/misc/FantasiaHomepage"
 import Mechanisms from "../components/sidebar/Mechanisms"
 
 const Index = ({ data, location, pageContext }) => {
-  const [renderOtherGames, setRenderOtherGames] = useState(false)
   const { title, description } = data.site.siteMetadata,
     [firstPost, ...posts] = data.allMdx.nodes
 
   const renderOtherPosts = () => {
-    if (renderOtherGames) {
-      return data.otherGames.nodes.map(post => (
-        <GameCard key={post.frontmatter.title} post={post} />
-      ))
-    }
     return (
       <div className="text-center">
-        <button
-          className="btn btn-outline-secondary mt-2 mb-4"
-          onClick={() => setRenderOtherGames(true)}
-        >
-          Leggi di più
-        </button>
+        <Link to="/blog">
+          <button className="btn btn-outline-secondary mt-2 mb-4">
+            Scopri altri giochi
+          </button>
+        </Link>
       </div>
     )
   }
@@ -96,11 +88,8 @@ const Index = ({ data, location, pageContext }) => {
         <script type="application/ld+json">{structuredJSON}</script>
       </Helmet>
 
-      <div
-        style={{ minHeight: "calc(100vh - 82px - 88px)" }}
-        className={style.index}
-      >
-        <div className="main-content">
+      <div className={style.index}>
+        <div className="main-content mb-5">
           <BlogPostHeader
             fields={firstPost.fields}
             frontmatter={firstPost.frontmatter}
@@ -151,34 +140,6 @@ export const pageQuery = graphql`
       }
     }
     allMdx(limit: 6, sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "DD/MM/YYYY")
-          writer
-          title
-          designer
-          publisher
-
-          featureImage {
-            childImageSharp {
-              gatsbyImageData(
-                width: 330
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
-          }
-          description
-        }
-      }
-    }
-    otherGames: allMdx(
-      skip: 6
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
       nodes {
         fields {
           slug

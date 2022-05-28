@@ -11,7 +11,7 @@ import Search from "../components/Search"
 
 const Index = ({ data, location }) => {
   const { title } = data.site.siteMetadata,
-    metaTitle = `Ricerca | ${title}`,
+    metaTitle = `Cerca | ${title}`,
     metaDescription = "Pagina di ricerca"
 
   return (
@@ -38,22 +38,20 @@ const Index = ({ data, location }) => {
         />
       </Helmet>
 
-      <div style={{ minHeight: "calc(100vh - 82px - 88px)" }}>
-        <div className="main-content">
-          <Container className="mb-5">
-            <Row className="game-list">
-              <Col lg={{ span: 8, offset: 2 }} className="mt-4">
-                <h1 className="my-5">Cerca</h1>
+      <div className="main-content">
+        <Container className="mb-5">
+          <Row className="game-list">
+            <Col lg={{ span: 8, offset: 2 }} className="mt-4">
+              <h1 className="my-5">Cerca</h1>
 
-                <Search
-                  {...data.localSearchPages}
-                  location={location}
-                  defaultPosts={data.allMdx.nodes}
-                />
-              </Col>
-            </Row>
-          </Container>
-        </div>
+              <Search
+                {...data.localSearchPages}
+                location={location}
+                defaultPosts={data.allMdx.nodes}
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
     </Layout>
   )

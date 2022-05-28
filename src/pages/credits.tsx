@@ -1,7 +1,6 @@
 import React from "react"
 import Container from "react-bootstrap/Container"
 import { Helmet } from "react-helmet"
-
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import { SiteMetadata } from "../types"
@@ -62,24 +61,23 @@ const Credits = ({
   data: CreditsProps
   location: Location
 }) => {
-  const { title } = data.site.siteMetadata
+  const { title } = data.site.siteMetadata,
+    metaTitle = `Credits | ${title}`
 
   return (
     <Layout location={location} title={title}>
       <Helmet>
-        <title>Credits</title>
+        <title>{metaTitle}</title>
       </Helmet>
 
-      <div style={{ minHeight: "calc(100vh - 82px - 88px)" }}>
-        <Container>
-          <Row>
-            <Col lg={{ span: 8, offset: 2 }}>
-              <h1 className="my-5">Credits</h1>
-              <ul>{icons.map(renderCredit)}</ul>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+      <Container>
+        <Row>
+          <Col lg={{ span: 8, offset: 2 }}>
+            <h1 className="my-5">Credits</h1>
+            <ul>{icons.map(renderCredit)}</ul>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   )
 }

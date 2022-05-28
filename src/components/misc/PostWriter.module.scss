@@ -2,11 +2,14 @@
 @use "../../style.scss" as v;
 
 .post-writer {
-  margin-top: math.div(v.$box-height, 3);
   padding: 16px;
   border: 10px solid v.$white;
   border-radius: v.$border-radius;
-  background-color: v.$gray200;
+
+  &.as-card {
+    margin-top: math.div(v.$box-height, 3);
+    background-color: v.$gray200;
+  }
 
   h4 {
     font-weight: 700;

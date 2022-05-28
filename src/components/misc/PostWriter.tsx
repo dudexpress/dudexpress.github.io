@@ -1,20 +1,21 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import { Author } from "../../types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram"
-
+import slugify from "slugify"
 import * as styles from "./PostWriter.module.scss"
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons"
 
 interface PostWriterProps {
   writerName: string
+  asCard: boolean
 }
 
-const PostWriter = ({ writerName }: PostWriterProps) => {
+const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -36,6 +37,9 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
   )
 
   const renderSocial = (): React.ReactNode => {
+    if (asCard) {
+      return null
+    }
     let socials = []
 
     if (author.instagram_url != null) {
@@ -57,25 +61,35 @@ const PostWriter = ({ writerName }: PostWriterProps) => {
     return <span>{socials}</span>
   }
 
-  return (
-    <Card className={styles.postWriter}>
-      <Card.Body>
-        <Row>
-          <Col md={2} className="mb-3 mb-md-0">
-            <img src={`../../people/${author.image}`} alt={author.name} />
-          </Col>
-          <Col md={10}>
-            <div className="d-flex flex-column justify-content-center h-100">
-              <h4>
-                {author.name} {renderSocial()}
-              </h4>
-              <p>{author?.summary}</p>
-            </div>
-          </Col>
-        </Row>
-      </Card.Body>
-    </Card>
+  const content = (
+    <Row>
+      <Col md={2} className="mb-3 mb-md-0">
+        <img src={`../../people/${author.image}`} alt={author.name} />
+      </Col>
+      <Col md={10}>
+        <div className="d-flex flex-column justify-content-center h-100">
+          <h4>
+            {author.name} {renderSocial()}
+          </h4>
+          <p>{author?.summary}</p>
+        </div>
+      </Col>
+    </Row>
   )
+
+  if (asCard) {
+    return (
+      <Card className={styles.postWriter + " " + styles.asCard}>
+        <Link
+          to={`/writers/${slugify(author.name, { lower: true })}`}
+          className="stretched-link"
+        />
+        <Card.Body>{content}</Card.Body>
+      </Card>
+    )
+  }
+
+  return <div className={styles.postWriter}>{content}</div>
 }
 
 export default PostWriter

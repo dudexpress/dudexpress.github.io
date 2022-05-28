@@ -1,17 +1,16 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Container from "react-bootstrap/Container"
 import GameCard from "../components/misc/GameCard"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft"
+import PostWriter from "../components/misc/PostWriter"
 import { Helmet } from "react-helmet"
 
-const Mechanism = ({ pageContext, location, data }) => {
+const writers = ({ pageContext, location, data }) => {
   const { title } = data.site.siteMetadata,
-    metaTitle = `${pageContext.mechanism} | ${title}`
+    metaTitle = `${pageContext.writer} | ${title}`
 
   return (
     <Layout location={location} title={title}>
@@ -22,13 +21,10 @@ const Mechanism = ({ pageContext, location, data }) => {
       <Container className="mb-5">
         <Row className="game-list">
           <Col lg={{ span: 8, offset: 2 }}>
-            <h1 className="mt-5 mb-1">{pageContext.mechanism}</h1>
-            <h6 className="mb-5">
-              <Link to="/mechanisms" className="text-muted">
-                <FontAwesomeIcon icon={faAngleLeft} className="me-1" />
-                vedi tutte le meccaniche
-              </Link>
-            </h6>
+            <div className="my-5">
+              <PostWriter writerName={pageContext.writer} asCard={false} />
+            </div>
+
             {data.allMdx.edges.map(post => (
               <GameCard key={post.node.frontmatter.title} post={post.node} />
             ))}
@@ -39,8 +35,8 @@ const Mechanism = ({ pageContext, location, data }) => {
   )
 }
 
-export const mechanismQuery = graphql`
-  query mechanismQuery($ids: [String]!) {
+export const writersQuery = graphql`
+  query writerQuery($ids: [String]!) {
     site {
       siteMetadata {
         title
@@ -76,4 +72,4 @@ export const mechanismQuery = graphql`
   }
 `
 
-export default Mechanism
+export default writers
