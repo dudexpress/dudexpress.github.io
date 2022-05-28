@@ -11,8 +11,9 @@ import GameCard from "../components/misc/GameCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import FantasiaHomepage from "../components/misc/FantasiaHomepage"
+import Mechanisms from "../components/sidebar/Mechanisms"
 
-const Index = ({ data, location }) => {
+const Index = ({ data, location, pageContext }) => {
   const [renderOtherGames, setRenderOtherGames] = useState(false)
   const { title, description } = data.site.siteMetadata,
     [firstPost, ...posts] = data.allMdx.nodes
@@ -105,7 +106,6 @@ const Index = ({ data, location }) => {
             frontmatter={firstPost.frontmatter}
             withLink
           />
-
           <Container>
             <Row className="game-list">
               <Col lg={8}>
@@ -115,16 +115,15 @@ const Index = ({ data, location }) => {
                 {renderOtherPosts()}
               </Col>
               <Col lg={4}>
-                <h5>Benvenuto su dudexpress.it!</h5>
-                <blockquote>
-                  Recensioni di giochi da tavolo semplici, immediate e
-                  immersive.
-                </blockquote>
+                <Mechanisms
+                  title="Naviga per meccaniche"
+                  values={pageContext.mechanisms}
+                  withMore={true}
+                />
                 <div className="mt-5"></div>
                 <FantasiaHomepage />
               </Col>
             </Row>
-            {/* <WhoWeAre authors={data.site.siteMetadata.authors} /> */}
           </Container>
         </div>
       </div>

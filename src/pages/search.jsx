@@ -8,7 +8,6 @@ import { Helmet } from "react-helmet"
 
 import Layout from "../components/Layout"
 import Search from "../components/Search"
-import * as style from "./index.module.scss"
 
 const Index = ({ data, location }) => {
   const { title } = data.site.siteMetadata,
@@ -39,10 +38,7 @@ const Index = ({ data, location }) => {
         />
       </Helmet>
 
-      <div
-        style={{ minHeight: "calc(100vh - 82px - 88px)" }}
-        className={style.index}
-      >
+      <div style={{ minHeight: "calc(100vh - 82px - 88px)" }}>
         <div className="main-content">
           <Container className="mb-5">
             <Row className="game-list">

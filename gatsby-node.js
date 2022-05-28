@@ -2,44 +2,33 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const slugify = require("slugify")
 
-function dedupeMechanisms(allMdx) {
-  const uniqeMechanisms = new Set()
-  allMdx.edges.forEach(({ node }) => {
-    node.frontmatter.mechanisms.forEach(m => {
-      uniqeMechanisms.add(m)
-    })
-  })
-  return [...uniqeMechanisms]
-}
-
 function getMechanismPath(mechanism) {
   return `/mechanisms/${slugify(mechanism, { lower: true })}`
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-  const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
+  const { createPage } = actions,
+    result = await graphql(
+      `
+        {
+          allMdx(sort: { fields: [frontmatter___date], order: ASC }) {
+            nodes {
+              id
+              frontmatter {
+                mechanisms
+              }
+              fields {
+                slug
+              }
             }
           }
         }
-      }
-    `
-  )
-
-  const posts = result.data.allMdx.nodes
+      `
+    ),
+    posts = result.data.allMdx.nodes
 
   posts.forEach((post, index) => {
+    // TODO same mechaniism
     let readMoreIds = []
     while (readMoreIds.length < 3) {
       let r = "" + Math.floor(Math.random() * posts.length)
@@ -52,7 +41,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     createPage({
       path: post.fields.slug,
-      component: blogPost,
+      component: path.resolve(`./src/templates/BlogPost.tsx`),
       context: {
         id: post.id,
         readMoreIds: readMoreIds.map(x => posts[x].id),
@@ -60,8 +49,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  const blogPostPerPage = 10
-  const numPages = Math.ceil(posts.length / blogPostPerPage)
+  const blogPostPerPage = 10,
+    numPages = Math.ceil(posts.length / blogPostPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     reporter.info(`Creating page: blog/${i + 1}`)
@@ -77,24 +66,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  const {
-    data: { allMdx },
-  } = await graphql(`
-    query {
-      allMdx {
-        edges {
-          node {
-            id
-            frontmatter {
-              mechanisms
-            }
-          }
-        }
-      }
-    }
-  `)
+  let mechanismsCounter = {}
+  result.data.allMdx.nodes.forEach(node => {
+    node.frontmatter.mechanisms.forEach(m => {
+      mechanismsCounter[m] = (mechanismsCounter[m] ?? 0) + 1
+    })
+  })
 
-  const dedupedMechanisms = dedupeMechanisms(allMdx).sort()
+  const dedupedMechanisms = [...Object.keys(mechanismsCounter)].sort(),
+    sortedMechanisms = Object.keys(mechanismsCounter).sort(
+      (a, b) => mechanismsCounter[b] - mechanismsCounter[a]
+    )
 
   createPage({
     path: `mechanisms`,
@@ -114,13 +96,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Mechanism.jsx"),
       context: {
         mechanism,
-        ids: allMdx.edges
-          .filter(({ node }) => {
+        ids: posts
+          .filter(node => {
             return node.frontmatter.mechanisms.includes(mechanism)
           })
-          .map(({ node }) => node.id),
+          .map(node => node.id),
       },
     })
+  })
+
+  createPage({
+    path: "/",
+    component: require.resolve("./src/templates/index.jsx"),
+    context: {
+      mechanisms: sortedMechanisms.slice(0, 5),
+    },
   })
 }
 
