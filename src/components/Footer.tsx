@@ -1,5 +1,3 @@
-import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram"
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare"
 import { faIcons } from "@fortawesome/free-solid-svg-icons/faIcons"
 import { faEye } from "@fortawesome/free-solid-svg-icons/faEye"
 import { faDice } from "@fortawesome/free-solid-svg-icons/faDice"
@@ -9,7 +7,7 @@ import React from "react"
 import { Link } from "gatsby"
 import * as style from "./SocialLinks.module.scss"
 
-const SocialLinks = () => {
+const Footer = () => {
   return (
     <div className={style.socialLinks}>
       <Link to="/blog">
@@ -20,14 +18,6 @@ const SocialLinks = () => {
         <FontAwesomeIcon icon={faCogs} className="ms-3" />
         <small className="d-none d-md-inline-block ms-1">Meccaniche</small>
       </Link>
-      <a href="https://www.instagram.com/dudexpress.review/" target="_blank">
-        <FontAwesomeIcon icon={faInstagram} className="ms-3" />
-        <small className="d-none d-md-inline-block ms-1">Instagram</small>
-      </a>
-      <a href="https://www.facebook.com/dudexpress.review" target="_blank">
-        <FontAwesomeIcon icon={faFacebookSquare} className="ms-3" />
-        <small className="d-none d-md-inline-block ms-1">Facebook</small>
-      </a>
       <Link to="/credits">
         <FontAwesomeIcon icon={faIcons} className="ms-3" />
         <small className="d-none d-md-inline-block ms-1">Credits</small>
@@ -40,4 +30,4 @@ const SocialLinks = () => {
   )
 }
 
-export default SocialLinks
+export default Footer

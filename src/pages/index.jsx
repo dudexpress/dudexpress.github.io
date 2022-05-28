@@ -11,7 +11,6 @@ import GameCard from "../components/misc/GameCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import FantasiaHomepage from "../components/misc/FantasiaHomepage"
-import Socials from "../components/sidebar/Socials"
 
 const Index = ({ data, location }) => {
   const [renderOtherGames, setRenderOtherGames] = useState(false)
@@ -121,8 +120,6 @@ const Index = ({ data, location }) => {
                   Recensioni di giochi da tavolo semplici, immediate e
                   immersive.
                 </blockquote>
-                <div className="mt-5"></div>
-                <Socials />
                 <div className="mt-5"></div>
                 <FantasiaHomepage />
               </Col>

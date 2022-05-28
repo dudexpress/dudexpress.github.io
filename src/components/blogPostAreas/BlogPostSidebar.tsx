@@ -5,7 +5,6 @@ import SidebarValues from "../sidebar/SidebarVotes"
 import Mechanisms from "../sidebar/Mechanisms"
 import * as style from "./BlogPostSidebar.module.scss"
 import Sleeves from "../sidebar/Sleeves"
-import Socials from "../sidebar/Socials"
 
 export default class BlogPostSidebar extends React.PureComponent<Frontmatter> {
   private renderSleeves(): React.ReactNode {
@@ -30,9 +29,6 @@ export default class BlogPostSidebar extends React.PureComponent<Frontmatter> {
           <SidebarValues values={this.props.sidebar_votes} />
         </div>
         {this.renderSleeves()}
-        <div className="mt-5">
-          <Socials />
-        </div>
       </div>
     )
   }
