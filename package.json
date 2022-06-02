@@ -82,6 +82,6 @@
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "type-check": "tsc --noEmit",
-    "fora" : "git add . && echo 'Enter Commit letter' && read letter && git commit -m \"$letter\" && git push"
+    "fora" : "git add . && echo 'Enter Commit letter' && read letter && git commit -m \"$letter done\" && git push"
   }
 }
