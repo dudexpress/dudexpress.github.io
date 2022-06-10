@@ -295,6 +295,7 @@ module.exports = {
                   date(formatString: "DD/MM/YYYYY")
                   writer
                   description
+                  mechanisms
                   featureImage {
                     childImageSharp {
                       gatsbyImageData(
@@ -317,7 +318,7 @@ module.exports = {
         // List of keys to index. The values of the keys are taken from the
         // normalizer function below.
         // Default: all fields
-        index: ["title", "body"],
+        index: ["title", "description", "writer", "mechanisms"],
 
         // List of keys to store and make available in your UI. The values of
         // the keys are taken from the normalizer function below.
@@ -337,6 +338,7 @@ module.exports = {
             date: node.frontmatter.date,
             description: node.frontmatter.description,
             featureImage: node.frontmatter.featureImage,
+            mechanisms: node.frontmatter.mechanisms,
           })),
       },
     },

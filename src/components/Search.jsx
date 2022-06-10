@@ -43,9 +43,7 @@ const Search = ({ index, store, location, defaultPosts }) => {
             onInput={e => setSearchQuery(e.target.value)}
             type="text"
             className="form-control"
-            placeholder="Everdell, Mysterium, ..."
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
+            placeholder="Everdell, Piazzamento Lavoratori, Nani, Eris.in.Boardgameland, ..."
           />
           <span className="input-group-text bg-white" id="basic-addon2">
             <FontAwesomeIcon icon={faSearch} />
