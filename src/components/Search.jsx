@@ -1,5 +1,5 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useFlexSearch } from "react-use-flexsearch"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -10,11 +10,30 @@ const Search = ({ index, store, location, defaultPosts }) => {
   const query = new URLSearchParams(search).get("s")
   const [searchQuery, setSearchQuery] = useState(query || "")
   const results = useFlexSearch(searchQuery, index, store)
+
   const renderEmptyState = () => {
     if (searchQuery && results.length === 0) {
       return <div className="text-center mt-5">Nessun risultato :(</div>
     }
   }
+
+  const sendEventToGogoleAnalytics = search_term => {
+    if (window.gtag == null) {
+      window.gtag = console.log
+    }
+    window.gtag("event", "search", { search_term })
+  }
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery) {
+        sendEventToGogoleAnalytics(searchQuery)
+      }
+    }, 400)
+
+    return () => clearTimeout(delayDebounceFn)
+  }, [searchQuery])
+
   const getGames = () => {
     if (!searchQuery) {
       return defaultPosts
