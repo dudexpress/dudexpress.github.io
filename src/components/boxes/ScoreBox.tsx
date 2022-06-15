@@ -7,6 +7,24 @@ interface ScoreBoxProps {
 
 export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
   static height = 45
+  static getLabel(value: number): React.ReactNode {
+    switch (value) {
+      case 10:
+        return "Immancabile"
+      case 9:
+        return "Eccellente"
+      case 8:
+        return "Da avere"
+      case 7:
+        return "Da provare"
+      case 6:
+        return "Si difende"
+      case 5:
+        return "C'è di meglio"
+      default:
+        return "Meh"
+    }
+  }
 
   private renderFullHearts(amount: number): React.ReactNode {
     return [...new Array(amount)].map((_, idx) => (
@@ -59,28 +77,9 @@ export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
     )
   }
 
-  private renderFooter(): React.ReactNode {
-    switch (this.props.value) {
-      case 10:
-        return "Immancabile"
-      case 9:
-        return "Eccellente"
-      case 8:
-        return "Da avere"
-      case 7:
-        return "Da provare"
-      case 6:
-        return "Si difende"
-      case 5:
-        return "C'è di meglio"
-      default:
-        return "Meh"
-    }
-  }
-
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Punteggio" footer={this.renderFooter()}>
+      <BaseBox title="Punteggio" footer={ScoreBox.getLabel(this.props.value)}>
         {this.renderHearts()}
       </BaseBox>
     )
