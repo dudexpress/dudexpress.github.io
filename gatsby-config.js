@@ -126,6 +126,12 @@ module.exports = {
           "Ahoy! Capitano BarbaBarco al vostro servizio! La nostra prossima avventura? Esplorare il mondo dei giochi da tavolo!",
         image: "barbabarco.jpg",
       },
+      {
+        name: "Filippo",
+        summary:
+          "Preferisco giocare a Root dopo 1500 metri di dislivello piuttosto che a Monopoly nello scantinato.",
+        image: "filippo.jpg",
+      },
     ],
   },
   plugins: [
