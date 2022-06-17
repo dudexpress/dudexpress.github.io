@@ -6,28 +6,18 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import Button from "react-bootstrap/Button"
-import { EditorState, convertToRaw } from "draft-js"
-import draftToMarkdown from "draftjs-to-markdown"
+import { EditorState } from "draft-js"
 
 import { EditorTitle } from "../components/editor/fields/EditorTitle"
 import { EditorDescription } from "../components/editor/fields/EditorDescription"
 import { EditorWriter } from "../components/editor/fields/EditorWriter"
 import { EditorScore } from "../components/editor/fields/EditorScore"
 import { EditorSetting } from "../components/editor/fields/EditorSetting"
+import { EditorDownloader } from "../components/editor/fields/EditorDownloader"
 
 const MyForm = ({ data, location }) => {
   const siteMeta = data.site.siteMetadata,
     metaTitle = `Nuova recensione | ${siteMeta.title}`,
-    onSubmit = () => {
-      console.log(
-        title,
-        writer,
-        description,
-        score,
-        draftToMarkdown(convertToRaw(setting.getCurrentContent()))
-      )
-    },
     [title, setTitle] = useState(""),
     [writer, setWriter] = useState(null),
     [description, setDescription] = useState(""),
@@ -58,7 +48,13 @@ const MyForm = ({ data, location }) => {
               <EditorScore value={score} setValue={setScore} />
               <EditorSetting value={setting} setValue={setSetting} />
 
-              <Button onClick={onSubmit}>Salva</Button>
+              <EditorDownloader
+                title={title}
+                writer={writer}
+                description={description}
+                score={score}
+                setting={setting}
+              />
             </Form>
           </Col>
         </Row>
