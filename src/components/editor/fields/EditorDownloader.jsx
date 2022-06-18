@@ -73,8 +73,8 @@ export const EditorDownloader = props => {
         converter = new showdown.Converter({ simpleLineBreaks: true })
 
       let html = converter.makeHtml(md)
-      html = html.replace(/\*\*([\w\s:_\?]+)\*\*/gm, "<strong>$1</strong>")
-      html = html.replace(/\*([\w\s:_\?]+)\*/gm, "<em>$1</em>")
+      html = html.replace(/\*\*([\w\s:_?]+)\*\*/gm, "<strong>$1</strong>")
+      html = html.replace(/\*([\w\s:_?]+)\*/gm, "<em>$1</em>")
       html = html.replace(/<p>/g, "")
       html = html.replace(/<\/p>/g, "<br />")
 

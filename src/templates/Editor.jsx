@@ -68,7 +68,12 @@ const MyForm = ({ data, location, pageContext }) => {
             <h1 className="my-5">Nuova recensione</h1>
 
             <Form className="mb-5">
-              <h2>Header</h2>
+              <EditorWriter
+                setValue={setWriter}
+                allowedValues={siteMeta.authors}
+              />
+
+              <h2 className="mt-5">Header</h2>
 
               <EditorTitle value={title} setValue={setTitle} />
               <EditorDesigners setValue={setDesigners} />
@@ -138,36 +143,32 @@ const MyForm = ({ data, location, pageContext }) => {
               />
               <EditorImages value={files} setValue={setFiles} />
 
-              <h2 className="mt-5">Footer</h2>
-              <EditorWriter
-                setValue={setWriter}
-                allowedValues={siteMeta.authors}
-              />
-
-              <EditorDownloader
-                title={title}
-                writer={writer}
-                mechanisms={mechanisms}
-                publishers={publishers}
-                designers={designers}
-                description={description}
-                playingTime={playingTime}
-                playingTimeOfficial={playingTimeOfficial}
-                score={score}
-                weight={weight}
-                playerCount={playerCount}
-                playerCountOfficial={playerCountOfficial}
-                complexity={complexity}
-                preparation={preparation}
-                luck={luck}
-                longevity={longevity}
-                components={components}
-                portability={portability}
-                setting={setting}
-                rules={rules}
-                feedback={feedback}
-                files={files}
-              />
+              <div className="mt-5 text-center">
+                <EditorDownloader
+                  title={title}
+                  writer={writer}
+                  mechanisms={mechanisms}
+                  publishers={publishers}
+                  designers={designers}
+                  description={description}
+                  playingTime={playingTime}
+                  playingTimeOfficial={playingTimeOfficial}
+                  score={score}
+                  weight={weight}
+                  playerCount={playerCount}
+                  playerCountOfficial={playerCountOfficial}
+                  complexity={complexity}
+                  preparation={preparation}
+                  luck={luck}
+                  longevity={longevity}
+                  components={components}
+                  portability={portability}
+                  setting={setting}
+                  rules={rules}
+                  feedback={feedback}
+                  files={files}
+                />
+              </div>
             </Form>
           </Col>
         </Row>

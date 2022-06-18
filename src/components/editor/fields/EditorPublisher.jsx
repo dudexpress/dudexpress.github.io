@@ -22,6 +22,7 @@ export const EditorPublisher = ({ setValue }) => {
         isMulti
         onChange={options => setValue(options.map(x => x.value))}
         options={options}
+        placeholder="[Giochi Uniti] [Ghenos]"
       />
     </Form.Group>
   )

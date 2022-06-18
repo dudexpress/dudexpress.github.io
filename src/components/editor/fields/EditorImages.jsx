@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useDropzone } from "react-dropzone"
 
 const thumbsContainer = {
@@ -64,10 +64,6 @@ export const EditorImages = props => {
     </div>
   ))
 
-  useEffect(() => {
-    return () => props.value.forEach(file => URL.revokeObjectURL(file.preview))
-  }, [])
-
   return (
     <div
       className="card text-center p-2 bg-light
@@ -75,7 +71,7 @@ export const EditorImages = props => {
     >
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <p style={{ cursor: "pointer" }}>Carica qui le immagini</p>
+        <span style={{ cursor: "pointer" }}>Carica qui le immagini</span>
       </div>
       <aside style={thumbsContainer}>{thumbs}</aside>
     </div>

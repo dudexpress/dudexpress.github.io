@@ -15,6 +15,7 @@ export const EditorMechanism = ({ setValue, allowedValues }) => {
         options={options}
         isMulti
         onChange={options => setValue(options.map(x => x.value))}
+        placeholder="[Asta] [Piazzamento lavoratori]"
       />
     </Form.Group>
   )

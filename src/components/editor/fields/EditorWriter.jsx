@@ -11,7 +11,11 @@ export const EditorWriter = ({ setValue, allowedValues }) => {
   return (
     <Form.Group className="mb-3">
       <Form.Label>Chi sei?</Form.Label>
-      <Select options={options} onChange={a => setValue(a.value)} />
+      <Select
+        options={options}
+        onChange={a => setValue(a.value)}
+        placeholder="Tia"
+      />
     </Form.Group>
   )
 }

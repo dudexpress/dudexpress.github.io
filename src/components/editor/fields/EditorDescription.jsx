@@ -5,9 +5,9 @@ import { editorHandleChange } from "./Helpers"
 export const EditorDescription = ({ value, setValue }) => {
   return (
     <Form.Group className="mb-3">
-      <Form.Label>Description</Form.Label>
+      <Form.Label>Descrizione</Form.Label>
       <Form.Control
-        placeholder="Bla bla descrizione"
+        placeholder="Animaletti che fanno cose e corrono in giro!"
         onChange={editorHandleChange(setValue)}
         value={value}
       />
