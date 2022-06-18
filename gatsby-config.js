@@ -152,7 +152,7 @@ module.exports = {
       options: {
         host: "https://dudexpress.it",
         sitemap: "https://dudexpress.it/sitemap/sitemap-index.xml",
-        policy: [{ userAgent: "*", allow: "/" }],
+        policy: [{ userAgent: "*", allow: "/", disallow: ["/editor"] }],
       },
     },
     {

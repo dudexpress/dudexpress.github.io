@@ -3,14 +3,15 @@ import Form from "react-bootstrap/Form"
 import { Editor } from "react-draft-wysiwyg"
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 
-export const EditorSetting = ({ value, setValue }) => {
+export const EditorWYSIWYG = ({ name, value, setValue }) => {
   return (
     <Form.Group className="mb-3">
-      <Form.Label>Setting</Form.Label>
+      <Form.Label>{name}</Form.Label>
       <Editor
         editorState={value}
         toolbarClassName="boder"
-        editorClassName="px-2 border"
+        editorClassName="px-2 border h-100"
+        editorStyle={{ minHeight: 200 }}
         onEditorStateChange={setValue}
         toolbar={{
           options: ["inline", "list"],

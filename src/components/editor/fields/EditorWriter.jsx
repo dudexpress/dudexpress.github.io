@@ -1,21 +1,17 @@
 import React from "react"
+import Select from "react-select"
 import Form from "react-bootstrap/Form"
-import { editorHandleChange } from "./Helpers"
 
 export const EditorWriter = ({ setValue, allowedValues }) => {
+  const options = allowedValues.map(x => ({
+    value: x.name,
+    label: x.name,
+  }))
+
   return (
     <Form.Group className="mb-3">
-      <Form.Label>Autore</Form.Label>
-      <Form.Select onChange={editorHandleChange(setValue)}>
-        <option key="--" value={null}>
-          --
-        </option>
-        {allowedValues.map(x => (
-          <option key={x.name} value={x.name}>
-            {x.name}
-          </option>
-        ))}
-      </Form.Select>
+      <Form.Label>Chi sei?</Form.Label>
+      <Select options={options} onChange={a => setValue(a.value)} />
     </Form.Group>
   )
 }

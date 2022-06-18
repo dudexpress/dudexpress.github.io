@@ -1,17 +1,14 @@
 import React from "react"
 import Form from "react-bootstrap/Form"
 import { editorHandleChange } from "./Helpers"
-import ScoreBox from "../../boxes/ScoreBox"
 
-export const EditorScore = ({ value, setValue }) => {
+export const EditorComplexity = ({ value, setValue }) => {
   return (
     <Form.Group className="mb-3">
-      <Form.Label>
-        Punteggio {value}: {ScoreBox.getLabel(parseInt(value, 10))}
-      </Form.Label>
+      <Form.Label>Complessità</Form.Label>
       <Form.Range
         min={1}
-        max={10}
+        max={5}
         value={value}
         onChange={editorHandleChange(setValue)}
       />

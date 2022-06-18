@@ -84,6 +84,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     )
 
   createPage({
+    path: `editor`,
+    component: require.resolve("./src/templates/Editor.jsx"),
+    context: {
+      mechanisms: dedupedMechanisms,
+    },
+  })
+
+  createPage({
     path: `mechanisms`,
     component: require.resolve("./src/templates/MechanismList.jsx"),
     context: {

@@ -9,8 +9,8 @@ interface WeightBoxProps {
 }
 
 export default class WeightBox extends React.PureComponent<WeightBoxProps> {
-  private renderFooter(): React.ReactNode {
-    switch (this.props.value) {
+  static getLabel(value: number): string | null {
+    switch (value) {
       case 1:
         return "Leggerissimo"
       case 2:
@@ -21,6 +21,8 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
         return "Pesantino"
       case 5:
         return "Pesantissimo"
+      default:
+        return null
     }
   }
 
@@ -36,7 +38,10 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Impegno richiesto" footer={this.renderFooter()}>
+      <BaseBox
+        title="Impegno richiesto"
+        footer={WeightBox.getLabel(this.props.value)}
+      >
         {this.renderContent()}
       </BaseBox>
     )
