@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /editor
 Sitemap: https://dudexpress.it/sitemap/sitemap-index.xml
 Host: https://dudexpress.it
