@@ -132,6 +132,12 @@ module.exports = {
           "Preferisco giocare a Root dopo 1500 metri di dislivello piuttosto che a Monopoly nello scantinato.",
         image: "filippo.jpg",
       },
+      {
+        name: "LadyBugMeeple",
+        summary:
+          "Una italiana e uno spagnolo che si sono trovati grazie all'amore per i giochi da tavolo.",
+        image: "ladybug.jpg",
+      },
     ],
   },
   plugins: [
