@@ -138,6 +138,12 @@ module.exports = {
           "Una italiana e uno spagnolo che si sono trovati grazie all'amore per i giochi da tavolo.",
         image: "ladybug.jpg",
       },
+      {
+        name: "True Dice",
+        summary:
+          "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
+        image: "truedice.jpg",
+      },
     ],
   },
   plugins: [
