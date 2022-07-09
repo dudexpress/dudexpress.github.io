@@ -9,7 +9,6 @@ import Layout from "../components/Layout"
 import GameCard from "../components/misc/GameCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
-import FantasiaHomepage from "../components/misc/FantasiaHomepage"
 import Mechanisms from "../components/sidebar/Mechanisms"
 
 const Index = ({ data, location, pageContext }) => {
@@ -109,8 +108,6 @@ const Index = ({ data, location, pageContext }) => {
                   values={pageContext.mechanisms}
                   withMore={true}
                 />
-                <div className="mt-5"></div>
-                <FantasiaHomepage />
               </Col>
             </Row>
           </Container>

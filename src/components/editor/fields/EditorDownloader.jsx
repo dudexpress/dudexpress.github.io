@@ -39,6 +39,7 @@ sidebar_votes:
     value: {{portability}}
 
 # seelves
+# dungeondice_url
 # fantasia_url
 # weega_url
 # weega_future

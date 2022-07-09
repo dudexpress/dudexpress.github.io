@@ -43,10 +43,6 @@ export default class RandomLink extends React.PureComponent<RandomLinkProps> {
                   Acquistalo qui
                 </OutboundLink>
               </div>
-              <small>
-                Una parte della vendita sponsorizzerà le prossime imprese
-                spaziali!
-              </small>
             </Col>
           </Row>
         </Card.Body>

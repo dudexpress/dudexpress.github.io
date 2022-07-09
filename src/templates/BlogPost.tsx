@@ -23,7 +23,6 @@ import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
 import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 import * as style from "./BlogPost.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
-import Fantasia from "../components/misc/Fantasia"
 import Gamefound from "../components/misc/Gamefound"
 import Kickstarter from "../components/misc/Kickstarter"
 import RandomLink from "../components/misc/RandomLink"
@@ -123,10 +122,6 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                   lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
-                  <Fantasia
-                    title={post.frontmatter.title}
-                    link={post.frontmatter.fantasia_url}
-                  />
                   <Weega
                     title={post.frontmatter.title}
                     link={post.frontmatter.weega_url}
@@ -209,6 +204,7 @@ export const pageQuery = graphql`
           amount
           size
         }
+        dungeondice_url
         fantasia_url
         weega_url
         weega_future

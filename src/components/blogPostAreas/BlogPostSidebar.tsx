@@ -5,6 +5,7 @@ import SidebarValues from "../sidebar/SidebarVotes"
 import Mechanisms from "../sidebar/Mechanisms"
 import * as style from "./BlogPostSidebar.module.scss"
 import Sleeves from "../sidebar/Sleeves"
+import Stores from "../sidebar/Stores"
 
 export default class BlogPostSidebar extends React.PureComponent<Frontmatter> {
   private renderSleeves(): React.ReactNode {
@@ -24,6 +25,7 @@ export default class BlogPostSidebar extends React.PureComponent<Frontmatter> {
 
     return (
       <div className={className}>
+        <Stores {...this.props} />
         <Mechanisms values={this.props.mechanisms} />
         <div className="mt-5">
           <SidebarValues values={this.props.sidebar_votes} />

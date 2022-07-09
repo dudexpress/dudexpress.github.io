@@ -206,6 +206,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       playing_time_official: String
       sidebar_votes: [SidebarVotes]
       seelves: [Sleeve]
+      dungeondice_url: String
       fantasia_url: String
       weega_url: String
       weega_future: Boolean

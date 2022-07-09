@@ -1,0 +1,43 @@
+@use "../../style.scss" as v;
+
+.stores {
+  li {
+    display: inline-block;
+
+    & + li {
+      margin-top: 0;
+      margin-left: v.$spacing-unit;
+
+      @media (min-width: 768px) {
+        margin-top: v.$spacing-unit;
+        margin-left: 0;
+      }
+
+      @media (min-width: 992px) {
+        margin-top: 0;
+        margin-left: v.$spacing-unit;
+      }
+    }
+  }
+
+  img {
+    border-radius: v.$border-radius;
+    width: 100px;
+    border: 5px solid red;
+    transition: border-color 0.2s ease-out;
+
+    &.dungeondice {
+      border-color: v.$dungeonDiceColor;
+      &:hover {
+        border-color: darken(v.$dungeonDiceColor, 8%);
+      }
+    }
+
+    &.fantasia {
+      border-color: v.$fantasiaColor;
+      &:hover {
+        border-color: darken(v.$fantasiaColor, 8%);
+      }
+    }
+  }
+}
