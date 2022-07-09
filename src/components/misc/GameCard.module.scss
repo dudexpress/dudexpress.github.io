@@ -3,6 +3,11 @@
 .game-card {
   border: 10px solid v.$gray200;
   border-radius: v.$border-radius;
+  transition: border-color 0.2s ease-out;
+
+  &:hover {
+    border-color: darken(v.$gray200, 8%);
+  }
 
   .game-card-body {
     display: flex;

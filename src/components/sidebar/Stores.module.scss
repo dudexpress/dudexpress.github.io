@@ -3,21 +3,8 @@
 .stores {
   li {
     display: inline-block;
-
-    & + li {
-      margin-top: 0;
-      margin-left: v.$spacing-unit;
-
-      @media (min-width: 768px) {
-        margin-top: v.$spacing-unit;
-        margin-left: 0;
-      }
-
-      @media (min-width: 992px) {
-        margin-top: 0;
-        margin-left: v.$spacing-unit;
-      }
-    }
+    margin-right: v.$spacing-unit;
+    margin-bottom: v.$spacing-unit;
   }
 
   img {
@@ -37,6 +24,13 @@
       border-color: v.$fantasiaColor;
       &:hover {
         border-color: darken(v.$fantasiaColor, 8%);
+      }
+    }
+
+    &.weega {
+      border-color: v.$weegaColor;
+      &:hover {
+        border-color: darken(v.$weegaColor, 8%);
       }
     }
   }

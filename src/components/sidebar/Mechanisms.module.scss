@@ -15,6 +15,7 @@
     color: v.$white;
     font-size: 16px;
     font-family: v.$font-family-title;
+    transition: background-color 0.2s ease-out;
 
     &:hover {
       background-color: darken(v.$red, 8%) !important;

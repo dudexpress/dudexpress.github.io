@@ -10,6 +10,7 @@ import GameCard from "../components/misc/GameCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import Mechanisms from "../components/sidebar/Mechanisms"
+import Stores from "../components/sidebar/Stores"
 
 const Index = ({ data, location, pageContext }) => {
   const { title, description } = data.site.siteMetadata,
@@ -103,6 +104,12 @@ const Index = ({ data, location, pageContext }) => {
                 {renderOtherPosts()}
               </Col>
               <Col lg={4}>
+                <Stores
+                  label="Acquista i giochi su..."
+                  dungeondice_url="https://www.dungeondice.it/"
+                  fantasia_url="https://fantasiastore.it/"
+                  weega_url="https://weega.it/"
+                />
                 <Mechanisms
                   title="Naviga per meccaniche"
                   values={pageContext.mechanisms}

@@ -4,8 +4,11 @@ import React from "react"
 import * as styles from "./Stores.module.scss"
 
 interface StoresProps {
+  label?: string
   dungeondice_url: string
   fantasia_url: string
+  weega_url: string
+  weega_future: boolean
 }
 
 export default class Stores extends React.PureComponent<StoresProps> {
@@ -49,10 +52,26 @@ export default class Stores extends React.PureComponent<StoresProps> {
     )
   }
 
-  public render(): React.ReactNode {
-    const stores = [this.renderDungeonDice(), this.renderFantasia()].filter(
-      x => x
+  private renderWeega(): React.ReactNode {
+    if (this.props.weega_future) {
+      return false
+    }
+
+    return this.renderStore(
+      "weega",
+      "../../logo/weega.png",
+      styles.weega,
+      this.props.weega_url,
+      "?partners=Dudexpress"
     )
+  }
+
+  public render(): React.ReactNode {
+    const stores = [
+      this.renderDungeonDice(),
+      this.renderFantasia(),
+      this.renderWeega(),
+    ].filter(x => x)
     if (stores.length === 0) {
       return null
     }
@@ -60,7 +79,7 @@ export default class Stores extends React.PureComponent<StoresProps> {
     const className = classnames(styles.stores, "mb-5")
     return (
       <div className={className}>
-        <h5>Acquistalo qui</h5>
+        <h5>{this.props.label ?? "Acquistalo qui"}</h5>
         <ul className="list-unstyled">{stores}</ul>
       </div>
     )
