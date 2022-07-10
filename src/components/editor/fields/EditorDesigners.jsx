@@ -18,6 +18,9 @@ export const EditorDesigners = ({ setValue }) => {
         options={options}
         placeholder="[Mathias Wigge] [R. Eric Reuss]"
       />
+      <Form.Text className="text-muted">
+        Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"
+      </Form.Text>
     </Form.Group>
   )
 }

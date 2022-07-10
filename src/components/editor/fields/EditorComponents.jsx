@@ -12,6 +12,7 @@ export const EditorComponents = ({ value, setValue }) => {
         value={value}
         onChange={editorHandleChange(setValue)}
       />
+      <Form.Text className="text-muted">1 = schifo -- 5 = strepitose</Form.Text>
     </Form.Group>
   )
 }

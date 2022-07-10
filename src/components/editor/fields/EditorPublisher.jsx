@@ -24,6 +24,9 @@ export const EditorPublisher = ({ setValue }) => {
         options={options}
         placeholder="[Giochi Uniti] [Ghenos]"
       />
+      <Form.Text className="text-muted">
+        Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"
+      </Form.Text>
     </Form.Group>
   )
 }

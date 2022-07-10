@@ -12,6 +12,9 @@ export const EditorLuck = ({ value, setValue }) => {
         value={value}
         onChange={editorHandleChange(setValue)}
       />
+      <Form.Text className="text-muted">
+        1 = nessuna fortuna -- 5 = dadi come piovesse
+      </Form.Text>
     </Form.Group>
   )
 }

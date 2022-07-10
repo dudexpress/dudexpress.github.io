@@ -12,6 +12,9 @@ export const EditorComplexity = ({ value, setValue }) => {
         value={value}
         onChange={editorHandleChange(setValue)}
       />
+      <Form.Text className="text-muted">
+        1 = super easy -- 5 = super complicato
+      </Form.Text>
     </Form.Group>
   )
 }

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form"
 import { Editor } from "react-draft-wysiwyg"
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 
-export const EditorWYSIWYG = ({ name, value, setValue }) => {
+export const EditorWYSIWYG = ({ name, value, setValue, text }) => {
   return (
     <Form.Group className="mb-3">
       <Form.Label>{name}</Form.Label>
@@ -23,6 +23,7 @@ export const EditorWYSIWYG = ({ name, value, setValue }) => {
           },
         }}
       />
+      <Form.Text className="text-muted">{text}</Form.Text>
     </Form.Group>
   )
 }

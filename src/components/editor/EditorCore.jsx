@@ -133,16 +133,19 @@ const EditorCore = ({ data, location, pageContext }) => {
                 name="Ambientazione"
                 value={setting}
                 setValue={setSetting}
+                text="Cerca di far entrare il lettore nel mondo del gioco, non parlare di meccaniche, di longevità o che altro. Questa sezione serve solo per far immaginare al lettore in cosa si imbatterà, non come."
               />
               <EditorWYSIWYG
                 name="Regole in breve"
                 value={rules}
                 setValue={setRules}
+                text="Spiega solamente le regole necessarie, utilizza elenchi puntati, grassetti e che altro. Le sottoregole non ci interessano. Il lettore deve capire come funziona il gioco, non dobbiamo ricopiare il manuale."
               />
               <EditorWYSIWYG
                 name="Impressioni"
                 value={feedback}
                 setValue={setFeedback}
+                text="Cosa ti è piaciuto? Cosa non ti è piaciuto? Sii specifico. Comparalo pure ad altre recensioni presenti su dude."
               />
               <EditorImages value={files} setValue={setFiles} />
 

@@ -12,6 +12,9 @@ export const EditorLongevity = ({ value, setValue }) => {
         value={value}
         onChange={editorHandleChange(setValue)}
       />
+      <Form.Text className="text-muted">
+        1 = escape room -- 5 = scacchi
+      </Form.Text>
     </Form.Group>
   )
 }

@@ -12,6 +12,9 @@ export const EditorPreparation = ({ value, setValue }) => {
         value={value}
         onChange={editorHandleChange(setValue)}
       />
+      <Form.Text className="text-muted">
+        1 = già pronto -- 5 = ottimila cose da fare
+      </Form.Text>
     </Form.Group>
   )
 }

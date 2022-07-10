@@ -7,6 +7,7 @@ export const EditorWriter = ({ setValue, allowedValues }) => {
     value: x.name,
     label: x.name,
   }))
+  options.push({ value: "Non ci sono", label: "Non ci sono" })
 
   return (
     <Form.Group className="mb-3">
@@ -16,6 +17,9 @@ export const EditorWriter = ({ setValue, allowedValues }) => {
         onChange={a => setValue(a.value)}
         placeholder="Tia"
       />
+      <Form.Text className="text-muted">
+        Se il tuo nome non è presente, seleziona "Non ci sono"
+      </Form.Text>
     </Form.Group>
   )
 }

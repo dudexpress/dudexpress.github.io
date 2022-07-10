@@ -12,6 +12,10 @@ export const EditorPortability = ({ value, setValue }) => {
         value={value}
         onChange={editorHandleChange(setValue)}
       />
+      <Form.Text className="text-muted">
+        1 = poco portabile (gloomhaven) -- 5 = tanto portabile (carte da
+        briscola)
+      </Form.Text>
     </Form.Group>
   )
 }
