@@ -28,6 +28,8 @@ import { EditorLuck } from "./fields/EditorLuck"
 import { EditorLongevity } from "./fields/EditorLongevity"
 import { EditorComponents } from "./fields/EditorComponents"
 import { EditorPortability } from "./fields/EditorPortability"
+import { EditorFantasia } from "./fields/EditorFantasia"
+import { EditorDungeondice } from "./fields/EditorDungeondice"
 
 const EditorCore = ({ data, location, pageContext }) => {
   const siteMeta = data.site.siteMetadata,
@@ -53,7 +55,9 @@ const EditorCore = ({ data, location, pageContext }) => {
     [setting, setSetting] = useState(EditorState.createEmpty()),
     [rules, setRules] = useState(EditorState.createEmpty()),
     [feedback, setFeedback] = useState(EditorState.createEmpty()),
-    [files, setFiles] = useState([])
+    [files, setFiles] = useState([]),
+    [fantasiaUrl, setFantasiaUrl] = useState(),
+    [dungeondiceUrl, setDungeondiceUrl] = useState()
 
   if (window == null) {
     return null
@@ -153,6 +157,14 @@ const EditorCore = ({ data, location, pageContext }) => {
                 value={portability}
               />
 
+              <h2 className="mt-5">Dove comprare</h2>
+
+              <EditorFantasia value={fantasiaUrl} setValue={setFantasiaUrl} />
+              <EditorDungeondice
+                value={dungeondiceUrl}
+                setValue={setDungeondiceUrl}
+              />
+
               <h2 className="mt-5">Contenuto</h2>
 
               <EditorWYSIWYG
@@ -196,6 +208,8 @@ const EditorCore = ({ data, location, pageContext }) => {
                   longevity={longevity}
                   components={components}
                   portability={portability}
+                  fantasiaUrl={fantasiaUrl}
+                  dungeondiceUrl={dungeondiceUrl}
                   setting={setting}
                   rules={rules}
                   feedback={feedback}

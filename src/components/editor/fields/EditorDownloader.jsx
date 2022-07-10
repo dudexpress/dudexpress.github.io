@@ -39,8 +39,8 @@ sidebar_votes:
     value: {{portability}}
 
 # seelves
-# dungeondice_url
-# fantasia_url
+{{dungeondice_url}}
+{{fantasia_url}}
 # weega_url
 # weega_future
 # gamefound_url
@@ -115,6 +115,24 @@ export const EditorDownloader = props => {
       text = text.replace(/{{longevity}}/g, props.longevity)
       text = text.replace(/{{components}}/g, props.components)
       text = text.replace(/{{portability}}/g, props.portability)
+
+      if (props.fantasiaUrl) {
+        text = text.replace(
+          /{{fantasia_url}}/g,
+          `fantasia_url: ${props.fantasiaUrl}`
+        )
+      } else {
+        text = text.replace(/{{fantasia_url}}/g, "")
+      }
+
+      if (props.dungeondiceUrl) {
+        text = text.replace(
+          /{{dungeondice_url}}/g,
+          `dungeondice_url: ${props.dungeondiceUrl}`
+        )
+      } else {
+        text = text.replace(/{{dungeondice_url}}/g, "")
+      }
 
       text = text.replace(/{{setting}}/g, makeSections(props.setting))
       text = text.replace(/{{rules}}/g, makeSections(props.rules))
