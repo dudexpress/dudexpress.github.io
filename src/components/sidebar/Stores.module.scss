@@ -33,5 +33,19 @@
         border-color: darken(v.$weegaColor, 8%);
       }
     }
+
+    &.kickstarter {
+      border-color: v.$kickstarterColor;
+      &:hover {
+        border-color: darken(v.$kickstarterColor, 8%);
+      }
+    }
+
+    &.gamefound {
+      border-color: v.$gamefoundColor;
+      &:hover {
+        border-color: darken(v.$gamefoundColor, 8%);
+      }
+    }
   }
 }

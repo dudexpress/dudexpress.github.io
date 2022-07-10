@@ -15,13 +15,17 @@ export default class Sleeves extends React.PureComponent<SleevesProps> {
   }
 
   public render(): React.ReactNode {
+    if (this.props.sleeves == null) {
+      return null
+    }
+
     return (
-      <>
+      <div className="mb-5">
         <h5>Bustine protettive</h5>
         <ul className="list-unstyled">
           {this.props.sleeves.map(this.renderSleeve)}
         </ul>
-      </>
+      </div>
     )
   }
 }

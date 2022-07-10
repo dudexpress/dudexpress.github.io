@@ -6,9 +6,13 @@ interface SidebarVotesProps {
 }
 
 export default class SidebarVotes extends React.PureComponent<SidebarVotesProps> {
-  public render(): React.ReactNode {
+  private renderItems(): React.ReactNode {
     return this.props.values.map((value: SidebarVoteProps) => (
       <SidebarVote key={value.title} {...value} />
     ))
+  }
+
+  public render(): React.ReactNode {
+    return <div className="mb-5">{this.renderItems()}</div>
   }
 }

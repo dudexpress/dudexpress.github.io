@@ -1,14 +1,20 @@
 import classnames from "classnames"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import React from "react"
+import { Frontmatter } from "../../types"
 import * as styles from "./Stores.module.scss"
 
-interface StoresProps {
+interface StoresProps
+  extends Pick<
+    Frontmatter,
+    | "dungeondice_url"
+    | "fantasia_url"
+    | "weega_url"
+    | "weega_future"
+    | "kickstarter_url"
+    | "gamefound_url"
+  > {
   label?: string
-  dungeondice_url: string
-  fantasia_url: string
-  weega_url: string
-  weega_future: boolean
 }
 
 export default class Stores extends React.PureComponent<StoresProps> {
@@ -53,10 +59,6 @@ export default class Stores extends React.PureComponent<StoresProps> {
   }
 
   private renderWeega(): React.ReactNode {
-    if (this.props.weega_future) {
-      return false
-    }
-
     return this.renderStore(
       "weega",
       "../../logo/weega.png",
@@ -66,11 +68,33 @@ export default class Stores extends React.PureComponent<StoresProps> {
     )
   }
 
+  private renderKickstarer(): React.ReactNode {
+    return this.renderStore(
+      "kickstarter",
+      "../../logo/kickstarter.png",
+      styles.kickstarter,
+      this.props.kickstarter_url,
+      ""
+    )
+  }
+
+  private renderGamefound(): React.ReactNode {
+    return this.renderStore(
+      "gamefound",
+      "../../logo/gamefound.jpg",
+      styles.gamefound,
+      this.props.gamefound_url,
+      ""
+    )
+  }
+
   public render(): React.ReactNode {
     const stores = [
       this.renderDungeonDice(),
       this.renderFantasia(),
       this.renderWeega(),
+      this.renderKickstarer(),
+      this.renderGamefound(),
     ].filter(x => x)
     if (stores.length === 0) {
       return null

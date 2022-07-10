@@ -122,19 +122,6 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                   lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
-                  <Weega
-                    title={post.frontmatter.title}
-                    link={post.frontmatter.weega_url}
-                    future={post.frontmatter.weega_future}
-                  />
-                  <Gamefound
-                    title={post.frontmatter.title}
-                    link={post.frontmatter.gamefound_url}
-                  />
-                  <Kickstarter
-                    title={post.frontmatter.title}
-                    link={post.frontmatter.kickstarter_url}
-                  />
                   <PostWriter
                     writerName={post.frontmatter.writer}
                     asCard={true}
