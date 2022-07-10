@@ -35,7 +35,7 @@ export default class Stores extends React.PureComponent<StoresProps> {
   private renderDungeonDice(): React.ReactNode {
     return this.renderStore(
       "dungeondice",
-      "../../logo/dungeonDice.png",
+      "../../logo/dungeondice.png",
       styles.dungeondice,
       this.props.dungeondice_url,
       "?dda=9A5FB278F"
