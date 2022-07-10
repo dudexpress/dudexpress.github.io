@@ -1,8 +1,9 @@
 import React from "react"
 import Form from "react-bootstrap/Form"
 import CreatableSelect from "react-select/creatable"
+import { getSugesterSyle } from "./Helpers"
 
-export const EditorPublisher = ({ setValue }) => {
+export const EditorPublisher = ({ value, setValue }) => {
   // TODO dynamic?
   const options = [
     "Giochi Uniti",
@@ -23,6 +24,7 @@ export const EditorPublisher = ({ setValue }) => {
         onChange={options => setValue(options.map(x => x.value))}
         options={options}
         placeholder="[Giochi Uniti] [Ghenos]"
+        styles={getSugesterSyle(value)}
       />
       <Form.Text className="text-muted">
         Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"

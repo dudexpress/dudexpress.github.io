@@ -11,6 +11,7 @@ export const EditorPlayerCount = ({ value, setValue }) => {
         placeholder="4"
         onChange={editorHandleChange(setValue)}
         value={value}
+        isInvalid={!value}
       />
     </Form.Group>
   )

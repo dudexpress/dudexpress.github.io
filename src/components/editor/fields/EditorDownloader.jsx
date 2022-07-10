@@ -136,5 +136,19 @@ export const EditorDownloader = props => {
       })
     }
 
-  return <Button onClick={onSubmit}>Salva</Button>
+  const disabledReason = props.isDisabled && (
+    <>
+      <br />
+      <small>Compila tutti i campi!</small>
+    </>
+  )
+
+  return (
+    <>
+      <Button disabled={props.isDisabled} onClick={onSubmit}>
+        Salva
+      </Button>
+      {disabledReason}
+    </>
+  )
 }

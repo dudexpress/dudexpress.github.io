@@ -10,6 +10,7 @@ export const EditorDescription = ({ value, setValue }) => {
         placeholder="Animaletti che fanno cose e corrono in giro!"
         onChange={editorHandleChange(setValue)}
         value={value}
+        isInvalid={!value}
       />
     </Form.Group>
   )

@@ -59,6 +59,30 @@ const EditorCore = ({ data, location, pageContext }) => {
     return null
   }
 
+  const isEnabled =
+    title &&
+    writer &&
+    mechanisms &&
+    designers &&
+    publishers &&
+    description &&
+    score &&
+    playingTime &&
+    playingTimeOfficial &&
+    weight &&
+    playerCount &&
+    playerCountOfficial &&
+    complexity &&
+    preparation &&
+    luck &&
+    longevity &&
+    components &&
+    portability &&
+    setting &&
+    rules &&
+    feedback &&
+    files
+
   return (
     <Layout location={location} title={title}>
       <Helmet>
@@ -72,6 +96,7 @@ const EditorCore = ({ data, location, pageContext }) => {
 
             <Form className="mb-5">
               <EditorWriter
+                value={writer}
                 setValue={setWriter}
                 allowedValues={siteMeta.authors}
               />
@@ -79,8 +104,8 @@ const EditorCore = ({ data, location, pageContext }) => {
               <h2 className="mt-5">Header</h2>
 
               <EditorTitle value={title} setValue={setTitle} />
-              <EditorDesigners setValue={setDesigners} />
-              <EditorPublisher setValue={setPublishers} />
+              <EditorDesigners value={designers} setValue={setDesigners} />
+              <EditorPublisher value={publishers} setValue={setPublishers} />
               <EditorDescription
                 value={description}
                 setValue={setDescription}
@@ -109,6 +134,7 @@ const EditorCore = ({ data, location, pageContext }) => {
               <h2 className="mt-5">Sidebar</h2>
 
               <EditorMechanism
+                value={mechanisms}
                 setValue={setMechanisms}
                 allowedValues={pageContext.mechanisms}
               />
@@ -151,6 +177,7 @@ const EditorCore = ({ data, location, pageContext }) => {
 
               <div className="mt-5 text-center">
                 <EditorDownloader
+                  isDisabled={!isEnabled}
                   title={title}
                   writer={writer}
                   mechanisms={mechanisms}

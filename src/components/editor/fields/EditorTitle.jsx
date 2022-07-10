@@ -10,6 +10,7 @@ export const EditorTitle = ({ value, setValue }) => {
         placeholder="Everdell"
         onChange={editorHandleChange(setValue)}
         value={value}
+        isInvalid={!value}
       />
     </Form.Group>
   )

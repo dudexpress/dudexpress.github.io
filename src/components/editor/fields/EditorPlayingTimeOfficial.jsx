@@ -10,6 +10,7 @@ export const EditorPlayingTimeOfficial = ({ value, setValue }) => {
         placeholder="30-45"
         onChange={editorHandleChange(setValue)}
         value={value}
+        isInvalid={!value}
       />
     </Form.Group>
   )
