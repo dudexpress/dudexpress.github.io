@@ -192,6 +192,7 @@ export const pageQuery = graphql`
           size
         }
         dungeondice_url
+        getyourfun_url
         fantasia_url
         weega_url
         weega_future

@@ -8,6 +8,7 @@ interface StoresProps
   extends Pick<
     Frontmatter,
     | "dungeondice_url"
+    | "getyourfun_url"
     | "fantasia_url"
     | "weega_url"
     | "weega_future"
@@ -48,6 +49,15 @@ export default class Stores extends React.PureComponent<StoresProps> {
     )
   }
 
+  private renderGetYourFun(): React.ReactNode {
+    return this.renderStore(
+      "getyourfun",
+      "../../logo/getyourfun.jpg",
+      styles.getyourfun,
+      this.props.getyourfun_url,
+      "?ref=7020"
+    )
+  }
   private renderFantasia(): React.ReactNode {
     return this.renderStore(
       "fantasia",
@@ -91,6 +101,7 @@ export default class Stores extends React.PureComponent<StoresProps> {
   public render(): React.ReactNode {
     const stores = [
       this.renderDungeonDice(),
+      this.renderGetYourFun(),
       this.renderFantasia(),
       this.renderWeega(),
       this.renderKickstarer(),

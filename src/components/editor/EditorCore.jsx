@@ -30,6 +30,7 @@ import { EditorComponents } from "./fields/EditorComponents"
 import { EditorPortability } from "./fields/EditorPortability"
 import { EditorFantasia } from "./fields/EditorFantasia"
 import { EditorDungeondice } from "./fields/EditorDungeondice"
+import { EditorGetYourFun } from "./fields/EditorGetYourFun"
 
 const EditorCore = ({ data, location, pageContext }) => {
   const siteMeta = data.site.siteMetadata,
@@ -57,7 +58,8 @@ const EditorCore = ({ data, location, pageContext }) => {
     [feedback, setFeedback] = useState(EditorState.createEmpty()),
     [files, setFiles] = useState([]),
     [fantasiaUrl, setFantasiaUrl] = useState(),
-    [dungeondiceUrl, setDungeondiceUrl] = useState()
+    [dungeondiceUrl, setDungeondiceUrl] = useState(),
+    [getYourFunUrl, setGetYourFunUrl] = useState()
 
   if (window == null) {
     return null
@@ -164,6 +166,10 @@ const EditorCore = ({ data, location, pageContext }) => {
                 value={dungeondiceUrl}
                 setValue={setDungeondiceUrl}
               />
+              <EditorGetYourFun
+                value={getYourFunUrl}
+                setValue={setGetYourFunUrl}
+              />
 
               <h2 className="mt-5">Contenuto</h2>
 
@@ -210,6 +216,7 @@ const EditorCore = ({ data, location, pageContext }) => {
                   portability={portability}
                   fantasiaUrl={fantasiaUrl}
                   dungeondiceUrl={dungeondiceUrl}
+                  getYourFunUrl={getYourFunUrl}
                   setting={setting}
                   rules={rules}
                   feedback={feedback}

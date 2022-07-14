@@ -40,6 +40,7 @@ sidebar_votes:
 
 # seelves
 {{dungeondice_url}}
+{{getyourfun_url}}
 {{fantasia_url}}
 # weega_url
 # weega_future
@@ -132,6 +133,15 @@ export const EditorDownloader = props => {
         )
       } else {
         text = text.replace(/{{dungeondice_url}}/g, "")
+      }
+
+      if (props.getYourFunUrl) {
+        text = text.replace(
+          /{{getyourfun_url}}/g,
+          `getyourfun_url: ${props.getYourFunUrl}`
+        )
+      } else {
+        text = text.replace(/{{getyourfun_url}}/g, "")
       }
 
       text = text.replace(/{{setting}}/g, makeSections(props.setting))

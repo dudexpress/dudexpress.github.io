@@ -20,6 +20,13 @@
       }
     }
 
+    &.getyourfun {
+      border-color: v.$getYourFunColor;
+      &:hover {
+        border-color: darken(v.$getYourFunColor, 8%);
+      }
+    }
+
     &.fantasia {
       border-color: v.$fantasiaColor;
       &:hover {
