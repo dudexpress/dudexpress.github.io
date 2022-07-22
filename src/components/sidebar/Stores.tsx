@@ -71,7 +71,7 @@ export default class Stores extends React.PureComponent<StoresProps> {
   private renderWeega(): React.ReactNode {
     return this.renderStore(
       "weega",
-      "../../logo/weega.png",
+      "../../logo/weega.png?t=1",
       styles.weega,
       this.props.weega_url,
       "?partners=Dudexpress"

@@ -9,10 +9,23 @@ import classnames from "classnames"
 interface RandomLinkProps {
   title: string
   link: string
-  discount: string
+  discount?: string
 }
 
 export default class RandomLink extends React.PureComponent<RandomLinkProps> {
+  private renderDiscount(): React.ReactNode {
+    if (this.props.discount == null) {
+      return null
+    }
+
+    return (
+      <>
+        <br />
+        Eccoti un codice sconto per convincerti!{" "}
+        <strong>{this.props.discount}</strong>
+      </>
+    )
+  }
   public render(): React.ReactNode {
     const className = classnames(styles.randomLink)
 
@@ -30,9 +43,7 @@ export default class RandomLink extends React.PureComponent<RandomLinkProps> {
             <Col md={10}>
               <p>
                 {this.props.title} ti ha incuriosito?
-                <br />
-                Eccoti un codice sconto per convincerti!{" "}
-                <strong>{this.props.discount}</strong>
+                {this.renderDiscount()}
               </p>
               <div>
                 <OutboundLink

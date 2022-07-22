@@ -1,6 +1,7 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const slugify = require("slugify")
+const fetch = require("node-fetch")
 
 function getMechanismPath(mechanism) {
   return `/mechanisms/${slugify(mechanism, { lower: true })}`
@@ -139,10 +140,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  const response = await fetch(
+      "https://services.weega.it/api/sales/expiring/2"
+    ),
+    weegaData = await response.json()
+
   createPage({
     path: "/",
     component: require.resolve("./src/templates/index.jsx"),
     context: {
+      weegaData,
       mechanisms: sortedMechanisms.slice(0, 10),
     },
   })

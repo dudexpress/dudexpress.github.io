@@ -7,6 +7,7 @@ import { withPrefix } from "gatsby"
 import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import GameCard from "../components/misc/GameCard"
+import WeegaCard from "../components/misc/WeegaCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import Mechanisms from "../components/sidebar/Mechanisms"
@@ -62,6 +63,8 @@ const Index = ({ data, location, pageContext }) => {
     ],
   })
 
+  console.log(pageContext)
+
   return (
     <Layout location={location} title={title}>
       <Helmet>
@@ -98,7 +101,15 @@ const Index = ({ data, location, pageContext }) => {
           <Container>
             <Row className="game-list">
               <Col lg={8}>
-                {posts.map(post => (
+                {posts.splice(0, 3).map(post => (
+                  <GameCard key={post.frontmatter.title} post={post} />
+                ))}
+                <WeegaCard {...pageContext?.weegaData?.sales?.[0]} />
+                {posts.splice(0, 3).map(post => (
+                  <GameCard key={post.frontmatter.title} post={post} />
+                ))}
+                <WeegaCard {...pageContext?.weegaData?.sales?.[1]} />
+                {posts.splice(0, 3).map(post => (
                   <GameCard key={post.frontmatter.title} post={post} />
                 ))}
                 {renderOtherPosts()}
@@ -144,7 +155,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(limit: 6, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(limit: 10, sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         fields {
           slug

@@ -9,6 +9,23 @@
     border-color: darken(v.$gray200, 8%);
   }
 
+  &.weega-card {
+    border-color: white;
+    background-color: rgba(v.$weegaColor, 8%);
+
+    &:hover {
+      border-color: white;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
   .game-card-body {
     display: flex;
     align-items: center;
