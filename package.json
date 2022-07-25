@@ -19,6 +19,7 @@
     "@types/react-helmet": "^6.1.4",
     "bootstrap": "^5.1.3",
     "caniuse-lite": "^1.0.30001344",
+    "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.3.1",
     "draft-js": "^0.11.7",
     "draftjs-to-markdown": "^0.6.0",

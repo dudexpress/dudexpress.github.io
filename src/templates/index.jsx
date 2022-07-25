@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { withPrefix } from "gatsby"
@@ -122,6 +123,14 @@ const Index = ({ data, location, pageContext }) => {
                   fantasia_url="https://fantasiastore.it/"
                   weega_url="https://weega.it/"
                 />
+                <div className="mb-5">
+                  <h5>Giochi in sconto</h5>
+                  <Link to="/giochi-in-sconto">
+                    <Button variant="outline-dark">
+                      Controlla tutte le offerte
+                    </Button>
+                  </Link>
+                </div>
                 <Mechanisms
                   title="Naviga per meccaniche"
                   values={pageContext.mechanisms}
