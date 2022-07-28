@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container"
 import * as style from "./Layout.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch"
+import { faStore } from "@fortawesome/free-solid-svg-icons/faStore"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const Layout = ({ location, title, children }) => {
@@ -61,6 +62,13 @@ const Layout = ({ location, title, children }) => {
                   style={{ marginTop: "-3px" }}
                 />
               </OutboundLink>
+
+              <Link to="/giochi-in-sconto" className="ms-3">
+                <small>
+                  <span className="d-none d-md-inline-block me-1">Offerte</span>
+                  <FontAwesomeIcon icon={faStore} />
+                </small>
+              </Link>
 
               <Link to="/search" className="ms-3">
                 <small>
