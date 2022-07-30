@@ -144,6 +144,12 @@ module.exports = {
           "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
         image: "truedice.jpg",
       },
+      {
+        name: "Sasha",
+        summary: "Lavoro come ingegnere per avere i soldi da spendere in giochi in scatola. Ho un disturbo ossessivo compulsivo per l’ordine delle scatole. Non so bluffare.",
+        image: "sasha.jpg",
+        instagram_url: "https://www.instagram.com/i_giochi_di_sasha/",
+      }
     ],
   },
   plugins: [
