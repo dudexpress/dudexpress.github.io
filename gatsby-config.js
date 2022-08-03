@@ -149,6 +149,12 @@ module.exports = {
         summary: "Lavoro come ingegnere per avere i soldi da spendere in giochi in scatola. Ho un disturbo ossessivo compulsivo per l’ordine delle scatole. Non so bluffare.",
         image: "sasha.jpg",
         instagram_url: "https://www.instagram.com/i_giochi_di_sasha/",
+      },
+      {
+        name: "PcomePigro",
+        summary: "I giochi da tavolo sono la mia passione e la dimostro scrivendo recensioni fantastiche per tutti i gusti e i palati! Leggere per credere... ",
+        image: "PcomePigro.jpg",
+        
       }
     ],
   },
