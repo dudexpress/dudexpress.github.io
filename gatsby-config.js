@@ -155,6 +155,7 @@ module.exports = {
         name: "PcomePigro",
         summary: "guarda dietro di te, una scimmia a tre teste!",
         image: "PcomePigro.jpg",
+        instagram_url: "https://www.instagram.com/pcomepigro/",
       },
     ],
   },
