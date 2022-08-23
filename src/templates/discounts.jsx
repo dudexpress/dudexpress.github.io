@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, withPrefix } from "gatsby"
 import Container from "react-bootstrap/Container"
 import DropdownButton from "react-bootstrap/DropdownButton"
@@ -12,15 +12,46 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import * as style from "./discounts.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
+import axios from "axios"
 
 const Discount = ({ data, location, pageContext }) => {
   const [sorting, setSorting] = useState("nome"),
     [query, setQuery] = useState(),
+    [isLoading, setIsLoading] = useState(false),
+    [fetchedItems, setFetchedItems] = useState([]),
     { title } = data.site.siteMetadata,
     metaTitle = `Giochi in sconto | ${title}`,
     metaDescription =
       "I migliori giochi in sconto sui nostri store preferiti! Affrettati, dureranno poco!",
-    handleQuery = e => setQuery(e.target.value),
+    getQueryUrl = value => {
+      if (!value) {
+        return null
+      }
+      return `https://dude.hardwarepanic.it/search?query=${value
+        .split(" ")
+        .join("%20")}`
+    },
+    fetchItems = value => {
+      console.log("FETCH!", value)
+      axios.get(getQueryUrl(value)).then(response => {
+        setIsLoading(false)
+        console.log(response)
+        setFetchedItems(response.data.items)
+        console.log(response.items)
+        // console.log(response.data[0]?.PostOffice[0])
+      })
+    },
+    handleQuery = e => {
+      let value = e.target.value
+      setQuery(value)
+
+      if (!query) {
+        setIsLoading(false)
+        return null
+      }
+
+      setIsLoading(true)
+    },
     renderFilter = () => {
       return (
         <Form.Group className="mb-2 mb-md-0">
@@ -72,26 +103,29 @@ const Discount = ({ data, location, pageContext }) => {
       }
       return <img src="../../logo/weega.png?t=1" alt="weega" height={heigth} />
     },
-    renderItem = ({ title, link, image, discount }) => {
+    renderItem = ({ title, url, link, img, image, discount }) => {
+      console.log({ title, url, img, discount })
+      url = url ? url : link
+      img = img ? img : image
       return (
         <Col
-          key={link}
+          key={url}
           xs={6}
           lg={4}
           className="d-flex align-items-stretch mb-3"
         >
           <Card className={style.gameCard}>
             <OutboundLink
-              href={link}
+              href={url}
               target="_blank"
               className="stretched-link"
             />
-            <Card.Img variant="top" src={image} />
+            <Card.Img variant="top" src={img} />
             <Card.Body className="px-0">
               <Card.Title className="mb-0">{title}</Card.Title>
             </Card.Body>
             <Card.Footer className="text-right text-muted bg-white border-0 p-0 d-flex justify-content-between align-items-center">
-              {renderStore(link)}
+              {renderStore(url)}
               <div>
                 <Badge className={style.badge}>{discount}</Badge>
               </div>
@@ -108,12 +142,18 @@ const Discount = ({ data, location, pageContext }) => {
       return discountA - discountB
     },
     getItems = () => {
-      let items = [...pageContext.discountItems].filter(x => x.title)
       if (query) {
-        items = items.filter(x =>
-          x.title.toLowerCase().includes(query.toLowerCase())
-        )
+        console.log("fetchedItems", fetchedItems)
+        return fetchedItems
       }
+
+      let items = [...pageContext.discountItems].filter(x => x.title)
+
+      // if (query) {
+      // items = items.filter(x =>
+      // x.title.toLowerCase().includes(query.toLowerCase())
+      // )
+      // }
       if (sorting === "nome") {
         return items.sort(sortByName)
       }
@@ -123,6 +163,10 @@ const Discount = ({ data, location, pageContext }) => {
       return items
     },
     renderItems = () => {
+      if (isLoading) {
+        return "loading..."
+      }
+
       const items = getItems()
       if (items.length === 0) {
         return (
@@ -133,6 +177,55 @@ const Discount = ({ data, location, pageContext }) => {
       }
       return items.map(renderItem)
     }
+
+  // useEffect(() => {
+  //   // This gets called after every render, by default
+  //   // (the first one, and every one after that)
+  //   console.log(query)
+
+  //   if (!query) {
+  //     setIsLoading(false)
+  //     return null
+  //   }
+
+  //   setIsLoading(true)
+  //   debounce(() => {
+  //     console.log("AAAAA")
+  //     axios.get(getQueryUrl()).then(response => {
+  //       setIsLoading(false)
+  //       setFetchedItems(response.items)
+  //       console.log(response.items)
+  //       // console.log(response.data[0]?.PostOffice[0])
+  //     })
+  //   })
+
+  //   // If you want to implement componentWillUnmount,
+  //   // return a function from here, and React will call
+  //   // it prior to unmounting.
+  //   // return () => console.log("unmounting...")
+  // }, [query])
+
+  useEffect(
+    () => {
+      // Wait 1000ms before copying the value of tempValue into value;
+      if (!query) {
+        setIsLoading(false)
+        setFetchedItems([])
+        return
+      }
+
+      const timeout = setTimeout(() => {
+        fetchItems(query)
+      }, 1000)
+
+      // If the hook is called again, cancel the previous timeout
+      // This creates a debounce instead of a delay
+      return () => clearTimeout(timeout)
+    },
+    // Run the hook every time the user makes a keystroke
+    [query]
+  )
+
   return (
     <Layout location={location} title={metaTitle}>
       <Helmet>
