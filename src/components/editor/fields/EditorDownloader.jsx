@@ -154,7 +154,7 @@ export const EditorDownloader = props => {
       const inputBlob = new Blob([getText()], { type: "text/plain" }),
         zip = new JSZip()
 
-      zip.file("index.mdx", inputBlob)
+      zip.file("index.txt", inputBlob)
       props.files.forEach(file => {
         zip.file(file.name, file)
       })
