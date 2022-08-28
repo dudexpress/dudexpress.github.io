@@ -2,10 +2,6 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const slugify = require("slugify")
 const fetch = require("node-fetch")
-const fetchDungeonDiceDiscountItems = require("./scrapers/dungeondice")
-const fetchGetYourFunDiscountItems = require("./scrapers/getyourfun")
-const fetchFantasiaDiscountItems = require("./scrapers/fantasia")
-const fetchWeegaDiscountItems = require("./scrapers/weega")
 
 function getMechanismPath(mechanism) {
   return `/mechanisms/${slugify(mechanism, { lower: true })}`
@@ -158,19 +154,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     },
   })
 
-  const discountItems = [
-    ...(await fetchDungeonDiceDiscountItems()),
-    ...(await fetchGetYourFunDiscountItems()),
-    ...(await fetchFantasiaDiscountItems()),
-    ...(await fetchWeegaDiscountItems()),
-  ]
-
   createPage({
     path: "/giochi-in-sconto",
     component: require.resolve("./src/templates/discounts.jsx"),
-    context: {
-      discountItems,
-    },
+  })
+
+  createPage({
+    path: "/trova-sconti",
+    component: require.resolve("./src/templates/discounts.jsx"),
   })
 }
 

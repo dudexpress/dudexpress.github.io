@@ -1,0 +1,17 @@
+@use "../../style.scss" as v;
+
+.discount-card {
+  width: 100%;
+  border: 10px solid v.$gray200;
+  border-radius: v.$border-radius;
+  transition: border-color 0.2s ease-out;
+  padding: 10px;
+
+  &:hover {
+    border-color: darken(v.$gray200, 8%);
+  }
+
+  .badge {
+    background-color: v.$red !important;
+  }
+}

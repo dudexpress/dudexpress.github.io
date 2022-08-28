@@ -124,10 +124,14 @@ const Index = ({ data, location, pageContext }) => {
                   weega_url="https://weega.it/"
                 />
                 <div className="mb-5">
-                  <h5>Giochi in sconto</h5>
-                  <Link to="/giochi-in-sconto">
+                  <h5>Trova sconti</h5>
+                  <small className="mb-3 d-block">
+                    Stai cercando un gioco ma non sai dove comprarlo?
+                    <br />I vostri dude troveranno lo sconto migliore per voi!
+                  </small>
+                  <Link to="/trova-sconti">
                     <Button variant="outline-dark">
-                      Controlla tutte le offerte
+                      Trova lo sconto migliore
                     </Button>
                   </Link>
                 </div>
