@@ -15,7 +15,9 @@ import axios from "axios"
 
 const Discount = ({ data, location }) => {
   const [sorting, setSorting] = useState(
-      new URLSearchParams(window.location.search).get("sort") ?? "magia"
+      new URLSearchParams(
+        typeof window === "undefined" ? null : window.location.search
+      ).get("sort") ?? "magia"
     ),
     [isLoading, setIsLoading] = useState(false),
     // first fetch
@@ -23,7 +25,9 @@ const Discount = ({ data, location }) => {
     [fetchedDiscountItems, setFetchedDiscountItems] = useState([]),
     // query fetch
     [query, setQuery] = useState(
-      new URLSearchParams(window.location.search).get("query")
+      new URLSearchParams(
+        typeof window === "undefined" ? null : window.location.search
+      ).get("query")
     ),
     [fetchedItems, setFetchedItems] = useState([]),
     { title } = data.site.siteMetadata,
