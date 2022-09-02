@@ -34,6 +34,7 @@ const Discount = ({ data, location }) => {
     metaTitle = `Trova sconti | ${title}`,
     metaDescription =
       "I migliori giochi in sconto sui nostri store preferiti! Affrettati, dureranno poco!",
+    // apiHost = "http://localhost",
     apiHost = "https://api.dudexpress.it",
     getFetchDiscountItemUrl = () => `${apiHost}/discounts`,
     getQueryUrl = value =>
@@ -120,7 +121,10 @@ const Discount = ({ data, location }) => {
       )
     },
     sortByName = (a, b) => a.title.localeCompare(b.title),
-    sortByDiscount = (a, b) => b.discount - a.discount,
+    sortByDiscount = (a, b) =>
+      (b.discount ?? 0) +
+      (b.couponPercentage ?? 0) -
+      ((a.discount ?? 0) + (a.couponPercentage ?? 0)),
     sortByPrice = (a, b) => b.currentPrice - a.currentPrice,
     getItems = () => {
       let items

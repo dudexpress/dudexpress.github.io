@@ -1,11 +1,42 @@
 @use "../../style.scss" as v;
 
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 .discount-card {
   width: 100%;
   border: 10px solid v.$gray200;
   border-radius: v.$border-radius;
   transition: border-color 0.2s ease-out;
   padding: 10px;
+  cursor: pointer;
 
   &:hover {
     border-color: darken(v.$gray200, 8%);
@@ -13,5 +44,60 @@
 
   .badge {
     background-color: v.$red !important;
+  }
+}
+
+.modal {
+  .modal-title,
+  .alert {
+    font-family: v.$font-family-title;
+    font-weight: 700;
+  }
+
+  .modal-header {
+    border: 0;
+  }
+
+  .modal-body {
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .modal-footer {
+    border: 0;
+    justify-content: center;
+  }
+
+  .alert {
+    text-align: center;
+    border: 0;
+    background-color: v.$gray200;
+    margin: v.$spacing-unit * 2;
+    border-radius: v.$border-radius;
+    color: v.$red;
+    animation-name: rubberBand;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+
+  .btn {
+    font-family: v.$font-family-title;
+    display: inline-block;
+    margin-top: v.$spacing-unit * 2;
+    margin-bottom: v.$spacing-unit * 2;
+    border-radius: v.$border-radius;
+    background: v.$red;
+    box-shadow: v.$gray300 5px 5px 20px -10px;
+    padding: v.$spacing-unit v.$spacing-unit * 2;
+    color: v.$white;
+    text-decoration: none;
+    border: 0;
+
+    &:hover {
+      background-color: darken(v.$red, 8%);
+      color: v.$white;
+    }
   }
 }

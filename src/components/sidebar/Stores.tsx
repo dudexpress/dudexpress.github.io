@@ -10,6 +10,7 @@ interface StoresProps
     | "dungeondice_url"
     | "getyourfun_url"
     | "fantasia_url"
+    | "blasone_url"
     | "weega_url"
     | "weega_future"
     | "kickstarter_url"
@@ -58,6 +59,7 @@ export default class Stores extends React.PureComponent<StoresProps> {
       "?ref=7020"
     )
   }
+
   private renderFantasia(): React.ReactNode {
     return this.renderStore(
       "fantasia",
@@ -65,6 +67,16 @@ export default class Stores extends React.PureComponent<StoresProps> {
       styles.fantasia,
       this.props.fantasia_url,
       "?aff=47"
+    )
+  }
+
+  private renderBlasone(): React.ReactNode {
+    return this.renderStore(
+      "blasone",
+      "../../logo/blasone.jpg",
+      styles.blasone,
+      this.props.blasone_url,
+      "?aff=9337a74b51b728bb6e6add6b8eff9ff6"
     )
   }
 
@@ -103,6 +115,7 @@ export default class Stores extends React.PureComponent<StoresProps> {
       this.renderDungeonDice(),
       this.renderGetYourFun(),
       this.renderFantasia(),
+      this.renderBlasone(),
       this.renderWeega(),
       this.renderKickstarer(),
       this.renderGamefound(),

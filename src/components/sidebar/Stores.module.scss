@@ -34,6 +34,13 @@
       }
     }
 
+    &.blasone {
+      border-color: v.$blasoneColor;
+      &:hover {
+        border-color: darken(v.$blasoneColor, 8%);
+      }
+    }
+
     &.weega {
       border-color: v.$weegaColor;
       &:hover {
