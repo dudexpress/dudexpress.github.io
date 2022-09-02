@@ -226,6 +226,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       dungeondice_url: String
       getyourfun_url: String
       fantasia_url: String
+      blasone_url: String
       weega_url: String
       weega_future: Boolean
       gamefound_url: String
