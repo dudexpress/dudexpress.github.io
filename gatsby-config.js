@@ -9,23 +9,40 @@ module.exports = {
     },
     authors: [
       {
-        name: "Tia",
-        summary:
-          "Godo nel mescolare le carte appena imbustate. Annuso fumetti. A volte ho del tempo libero.",
-        image: "tia.jpg",
-        instagram_url: "https://www.instagram.com/mattialarentis/",
-      },
-      {
         name: "Angelo",
         summary:
           "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
         image: "angelo.jpg",
       },
+
       {
-        name: "Fora",
+        name: "Angelo M Pero",
         summary:
-          "Amante dei coop che ogni tanto si perde così tanto nei giochi che non scrive le biografie in tempo.",
-        image: "fora.jpg",
+          "Dopo aver lasciato gli studi in Lettere per incompatibilità di carattere, deve ancora capire cosa fare nella vita. Nel frattempo si diletta nella scrittura e nei giochi da tavolo. Ama i vampiri e il Giappone.",
+        image: "angelo-pero.png",
+      },
+      {
+        name: "BarbaBarco Games",
+        summary:
+          "Ahoy! Capitano BarbaBarco al vostro servizio! La nostra prossima avventura? Esplorare il mondo dei giochi da tavolo!",
+        image: "barbabarco.jpg",
+      },
+      {
+        name: "Bilbo's Playing",
+        summary:
+          "Amo due cose: i sonnellini e i giochi da tavolo. E se mi lasciano fare i miei sonnellini sopra ai giochi da tavolo sono di certo il gatto più felice del mondo!",
+        image: "bilbo.jpg",
+      },
+      {
+        name: "Bruno",
+        summary: "Il mio regno per una partita a Twilight Imperium!",
+        image: "bruno.jpg",
+      },
+      {
+        name: "chimi772_boardgamer",
+        summary: "Anche se perdo, non perdo la voglia di giocare.",
+        image: "chimi.jpg",
+        instagram_url: "https://www.instagram.com/chimi772_boardgamer/",
       },
       {
         name: "Dadi-Daddy",
@@ -41,15 +58,37 @@ module.exports = {
         instagram_url: "https://www.instagram.com/eris.in.boardgameland/",
       },
       {
-        name: "Bruno",
-        summary: "Il mio regno per una partita a Twilight Imperium!",
-        image: "bruno.jpg",
+        name: "Ferra",
+        summary:
+          "Amante dei giochi da tavolo di ogni genere e difficoltà, cerca sempre nuove sfide e nuove avventure...",
+        image: "ferra.png",
       },
       {
-        name: "L'intavolatrice",
+        name: "Filippo",
         summary:
-          "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
-        image: "intavolatrice.png",
+          "Preferisco giocare a Root dopo 1500 metri di dislivello piuttosto che a Monopoly nello scantinato.",
+        image: "filippo.jpg",
+      },
+      {
+        name: "Fora",
+        summary:
+          "Amante dei coop che ogni tanto si perde così tanto nei giochi che non scrive le biografie in tempo.",
+        image: "fora.jpg",
+        instagram_url: "https://www.instagram.com/francescoforadori/",
+      },
+      {
+        name: "G.Di.Gioco",
+        summary:
+          "Un American irriducibile, un German pratico e un Ibrido indeciso vi guideranno alla scoperta di questo sconfinato mondo in miniatura.",
+        image: "g-gioco.jpg",
+        instagram_url: "https://www.instagram.com/g.di.gioco/",
+      },
+
+      {
+        name: "iDefustellati",
+        summary:
+          "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
+        image: "idefustellati.jpg",
       },
       {
         name: "Il Leo",
@@ -59,78 +98,10 @@ module.exports = {
         website: "http://bertechlab.it",
       },
       {
-        name: "chimi772_boardgamer",
-        summary: "Anche se perdo, non perdo la voglia di giocare.",
-        image: "chimi.jpg",
-        instagram_url: "https://www.instagram.com/chimi772_boardgamer/",
-      },
-      {
-        name: "G.Di.Gioco",
-        summary:
-          "Un American irriducibile, un German pratico e un Ibrido indeciso vi guideranno alla scoperta di questo sconfinato mondo in miniatura.",
-        image: "g-gioco.jpg",
-        instagram_url: "https://www.instagram.com/g.di.gioco/",
-      },
-      {
-        name: "Maria Teresa",
-        summary:
-          "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
-        image: "maria-teresa.jpg",
-      },
-      {
-        name: "Bilbo's Playing",
-        summary:
-          "Amo due cose: i sonnellini e i giochi da tavolo. E se mi lasciano fare i miei sonnellini sopra ai giochi da tavolo sono di certo il gatto più felice del mondo!",
-        image: "bilbo.jpg",
-      },
-      {
-        name: "Michele",
-        summary:
-          "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
-        image: "michele.jpg",
-      },
-      {
-        name: "Ferra",
-        summary:
-          "Amante dei giochi da tavolo di ogni genere e difficoltà, cerca sempre nuove sfide e nuove avventure...",
-        image: "ferra.png",
-      },
-      {
-        name: "Angelo M Pero",
-        summary:
-          "Dopo aver lasciato gli studi in Lettere per incompatibilità di carattere, deve ancora capire cosa fare nella vita. Nel frattempo si diletta nella scrittura e nei giochi da tavolo. Ama i vampiri e il Giappone.",
-        image: "angelo-pero.png",
-      },
-      {
-        name: "iDefustellati",
-        summary:
-          "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
-        image: "idefustellati.jpg",
-      },
-      {
         name: "Il Meeple Genovese",
         summary:
           "Giacomo. 25 anni. Psicologo dello sviluppo. Cerco di trasmettere quello che provo per i giochi da tavolo a tutti quelli che leggono ciò che scrivo.",
         image: "genovese.jpg",
-      },
-      {
-        name: "The Golden Meeple",
-        summary:
-          "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
-        image: "golden.jpg",
-        instagram_url: "https://www.instagram.com/thegoldenmeeple/",
-      },
-      {
-        name: "BarbaBarco Games",
-        summary:
-          "Ahoy! Capitano BarbaBarco al vostro servizio! La nostra prossima avventura? Esplorare il mondo dei giochi da tavolo!",
-        image: "barbabarco.jpg",
-      },
-      {
-        name: "Filippo",
-        summary:
-          "Preferisco giocare a Root dopo 1500 metri di dislivello piuttosto che a Monopoly nello scantinato.",
-        image: "filippo.jpg",
       },
       {
         name: "LadyBugMeeple",
@@ -139,10 +110,28 @@ module.exports = {
         image: "ladybug.jpg",
       },
       {
-        name: "True Dice",
+        name: "L'intavolatrice",
         summary:
-          "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
-        image: "truedice.jpg",
+          "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
+        image: "intavolatrice.png",
+      },
+      {
+        name: "Maria Teresa",
+        summary:
+          "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
+        image: "maria-teresa.jpg",
+      },
+      {
+        name: "Michele",
+        summary:
+          "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
+        image: "michele.jpg",
+      },
+      {
+        name: "PcomePigro",
+        summary: "guarda dietro di te, una scimmia a tre teste!",
+        image: "PcomePigro.jpg",
+        instagram_url: "https://www.instagram.com/pcomepigro/",
       },
       {
         name: "Sasha",
@@ -152,10 +141,24 @@ module.exports = {
         instagram_url: "https://www.instagram.com/i_giochi_di_sasha/",
       },
       {
-        name: "PcomePigro",
-        summary: "guarda dietro di te, una scimmia a tre teste!",
-        image: "PcomePigro.jpg",
-        instagram_url: "https://www.instagram.com/pcomepigro/",
+        name: "The Golden Meeple",
+        summary:
+          "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
+        image: "golden.jpg",
+        instagram_url: "https://www.instagram.com/thegoldenmeeple/",
+      },
+      {
+        name: "Tia",
+        summary:
+          "Godo nel mescolare le carte appena imbustate. Annuso fumetti. A volte ho del tempo libero.",
+        image: "tia.jpg",
+        instagram_url: "https://www.instagram.com/mattialarentis/",
+      },
+      {
+        name: "True Dice",
+        summary:
+          "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
+        image: "truedice.jpg",
       },
     ],
   },
