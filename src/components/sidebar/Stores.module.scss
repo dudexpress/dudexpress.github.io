@@ -12,6 +12,7 @@
     width: 100px;
     border: 5px solid red;
     transition: border-color 0.2s ease-out;
+    cursor: pointer;
 
     &.dungeondice {
       border-color: v.$dungeonDiceColor;

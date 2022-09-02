@@ -2,6 +2,7 @@ import classnames from "classnames"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import React from "react"
 import { Frontmatter } from "../../types"
+import CouponModal from "../misc/CouponModal"
 import * as styles from "./Stores.module.scss"
 
 interface StoresProps
@@ -19,7 +20,29 @@ interface StoresProps
   label?: string
 }
 
-export default class Stores extends React.PureComponent<StoresProps> {
+export interface StoresState {
+  isModalShown: boolean
+}
+
+export default class Stores extends React.PureComponent<
+  StoresProps,
+  StoresState
+> {
+  constructor(props: StoresProps) {
+    super(props)
+    this.state = {
+      isModalShown: false,
+    }
+  }
+
+  private handleModalOpen(): void {
+    this.setState({ isModalShown: true })
+  }
+
+  private handleModalClose(): void {
+    this.setState({ isModalShown: false })
+  }
+
   private renderStore(
     name: string,
     imgPath: string,
@@ -29,6 +52,26 @@ export default class Stores extends React.PureComponent<StoresProps> {
   ): React.ReactNode {
     if (!link) {
       return null
+    }
+
+    if (name === "blasone") {
+      return (
+        <li>
+          <CouponModal
+            isModalShown={this.state.isModalShown}
+            url={link}
+            couponCode="DUDEXPRESS"
+            couponPercentage={0.1}
+            onClose={this.handleModalClose.bind(this)}
+          />
+          <img
+            src={imgPath}
+            alt={name}
+            className={imgClassName}
+            onClick={this.handleModalOpen.bind(this)}
+          />
+        </li>
+      )
     }
 
     return (

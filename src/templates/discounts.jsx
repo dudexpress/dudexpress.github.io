@@ -101,7 +101,7 @@ const Discount = ({ data, location }) => {
           onSelect={handleSorting}
         >
           {Object.keys(sortingKeyToLabel).map(key => (
-            <Dropdown.Item eventKey={key}>
+            <Dropdown.Item eventKey={key} key={key}>
               {sortingKeyToLabel[key]}
             </Dropdown.Item>
           ))}

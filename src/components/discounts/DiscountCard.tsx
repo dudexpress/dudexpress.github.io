@@ -3,9 +3,7 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 import Badge from "react-bootstrap/Badge"
 import Card from "react-bootstrap/Card"
 import * as style from "./DiscountCard.module.scss"
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
-import Alert from "react-bootstrap/Alert"
+import CouponModal from "../misc/CouponModal"
 
 type DiscountSourceType =
   | "dungeondice"
@@ -108,46 +106,6 @@ export default class DiscountCard extends React.PureComponent<
     return this.props.couponCode != null
   }
 
-  private renderModal(): React.ReactNode {
-    if (!this.withModal) {
-      return null
-    }
-
-    return (
-      <Modal
-        show={this.state.isModalShown}
-        onHide={this.handleModalClose.bind(this)}
-        dialogClassName={style.modal}
-      >
-        <Modal.Header closeButton className={style.modalHeader} />
-        <Modal.Body className={style.modalBody}>
-          Eccoti un <strong>codice sconto</strong> utilizzabile per questo
-          gioco.
-          <Alert className={style.alert}>
-            <h2 className="m-0">{this.props.couponCode}</h2>
-          </Alert>
-          <small>
-            Inseriscilo in fase di checkout, prima di procedere con il
-            pagamento.
-            <br />
-            Queto codice ti darà accesso al{" "}
-            <strong>{this.props.couponPercentage! * 100}%</strong> di sconto.
-          </small>
-        </Modal.Body>
-        <Modal.Footer className={style.modalFooter}>
-          <Button
-            variant="secondary"
-            href={this.props.url}
-            target="_blank"
-            className={style.btn}
-          >
-            Vai al gioco
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    )
-  }
-
   private renderOutboundLink(): React.ReactNode {
     if (this.withModal) {
       return null
@@ -165,7 +123,13 @@ export default class DiscountCard extends React.PureComponent<
   public render(): React.ReactNode {
     return (
       <>
-        {this.renderModal()}
+        <CouponModal
+          isModalShown={this.state.isModalShown}
+          url={this.props.url}
+          couponCode={this.props.couponCode}
+          couponPercentage={this.props.couponPercentage}
+          onClose={this.handleModalClose.bind(this)}
+        />
         <Card
           className={style.discountCard}
           onClick={this.handleModalOpen.bind(this)}
