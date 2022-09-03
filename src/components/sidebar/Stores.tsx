@@ -22,8 +22,9 @@ interface StoresProps
   linkToSpecificGame: boolean
 }
 
+type StoresWithModal = "blasone" | "mse"
 export interface StoresState {
-  isModalShown: boolean
+  modalShown: StoresWithModal | null
 }
 
 export default class Stores extends React.PureComponent<
@@ -33,16 +34,16 @@ export default class Stores extends React.PureComponent<
   constructor(props: StoresProps) {
     super(props)
     this.state = {
-      isModalShown: false,
+      modalShown: null,
     }
   }
 
-  private handleModalOpen(): void {
-    this.setState({ isModalShown: true })
+  private handleModalOpen(modalShown: StoresWithModal): void {
+    this.setState({ modalShown })
   }
 
   private handleModalClose(): void {
-    this.setState({ isModalShown: false })
+    this.setState({ modalShown: null })
   }
 
   private renderStore(
@@ -62,7 +63,8 @@ export default class Stores extends React.PureComponent<
       return (
         <li>
           <CouponModal
-            isModalShown={this.state.isModalShown}
+            key={name}
+            isModalShown={this.state.modalShown === name}
             url={link}
             couponCode={couponCode}
             couponPercentage={couponPercentage}
@@ -73,7 +75,7 @@ export default class Stores extends React.PureComponent<
             src={imgPath}
             alt={name}
             className={imgClassName}
-            onClick={this.handleModalOpen.bind(this)}
+            onClick={() => this.handleModalOpen(name)}
           />
         </li>
       )
