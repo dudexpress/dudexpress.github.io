@@ -11,11 +11,34 @@ interface CouponModalProps {
   couponPercentage: number | null
   isModalShown: boolean
   onClose: () => void
+  linkToSpecificGame: boolean
 }
 
 export default class CouponModal extends React.PureComponent<CouponModalProps> {
   private handleModalClose(): void {
     this.props.onClose()
+  }
+
+  private get title(): React.ReactNode {
+    if (this.props.linkToSpecificGame) {
+      return (
+        <>
+          Eccoti un <strong>codice sconto</strong> utilizzabile su questo gioco.
+        </>
+      )
+    }
+    return (
+      <>
+        Eccoti un <strong>codice sconto</strong> utilizzabile su questo negozio.
+      </>
+    )
+  }
+
+  private get ctaText(): string {
+    if (this.props.linkToSpecificGame) {
+      return "Vai al gicoo"
+    }
+    return "Vai allo store"
   }
 
   public render(): React.ReactNode {
@@ -31,8 +54,7 @@ export default class CouponModal extends React.PureComponent<CouponModalProps> {
       >
         <Modal.Header closeButton className={style.modalHeader} />
         <Modal.Body className={style.modalBody}>
-          Eccoti un <strong>codice sconto</strong> utilizzabile per questo
-          gioco.
+          {this.title}
           <Alert className={style.alert}>
             <h2 className="m-0">{this.props.couponCode}</h2>
           </Alert>
@@ -47,7 +69,7 @@ export default class CouponModal extends React.PureComponent<CouponModalProps> {
         <Modal.Footer className={style.modalFooter}>
           <OutboundLink href={this.props.url} target="_blank">
             <Button variant="secondary" className={style.btn}>
-              Vai al gioco
+              {this.ctaText}
             </Button>
           </OutboundLink>
         </Modal.Footer>

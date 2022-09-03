@@ -12,12 +12,14 @@ interface StoresProps
     | "getyourfun_url"
     | "fantasia_url"
     | "blasone_url"
+    | "mse_url"
     | "weega_url"
     | "weega_future"
     | "kickstarter_url"
     | "gamefound_url"
   > {
   label?: string
+  linkToSpecificGame: boolean
 }
 
 export interface StoresState {
@@ -48,21 +50,24 @@ export default class Stores extends React.PureComponent<
     imgPath: string,
     imgClassName: string,
     link: string,
-    linkSuffix: string
+    linkSuffix: string,
+    couponCode: string | null = null,
+    couponPercentage: number | null = null
   ): React.ReactNode {
     if (!link) {
       return null
     }
 
-    if (name === "blasone") {
+    if (couponPercentage != null) {
       return (
         <li>
           <CouponModal
             isModalShown={this.state.isModalShown}
             url={link}
-            couponCode="DUDEXPRESS"
-            couponPercentage={0.1}
+            couponCode={couponCode}
+            couponPercentage={couponPercentage}
             onClose={this.handleModalClose.bind(this)}
+            linkToSpecificGame={this.props.linkToSpecificGame}
           />
           <img
             src={imgPath}
@@ -119,7 +124,21 @@ export default class Stores extends React.PureComponent<
       "../../logo/blasone.jpg",
       styles.blasone,
       this.props.blasone_url,
-      "?aff=9337a74b51b728bb6e6add6b8eff9ff6"
+      "?aff=9337a74b51b728bb6e6add6b8eff9ff6",
+      "DUDEXPRESS",
+      0.1
+    )
+  }
+
+  private renderMse(): React.ReactNode {
+    return this.renderStore(
+      "mse",
+      "../../logo/mse.jpg",
+      styles.mse,
+      this.props.mse_url,
+      "",
+      "DUDEXPRESS10",
+      0.1
     )
   }
 
@@ -159,6 +178,7 @@ export default class Stores extends React.PureComponent<
       this.renderGetYourFun(),
       this.renderFantasia(),
       this.renderBlasone(),
+      this.renderMse(),
       this.renderWeega(),
       this.renderKickstarer(),
       this.renderGamefound(),

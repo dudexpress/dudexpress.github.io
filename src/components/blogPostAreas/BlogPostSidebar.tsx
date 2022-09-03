@@ -14,7 +14,7 @@ export default class BlogPostSidebar extends React.PureComponent<Frontmatter> {
 
     return (
       <div className={className}>
-        <Stores {...this.props} />
+        <Stores {...this.props} linkToSpecificGame={true} />
         <Mechanisms values={this.props.mechanisms} />
         <SidebarValues values={this.props.sidebar_votes} />
         <Sleeves sleeves={this.props.sleeves} />

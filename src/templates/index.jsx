@@ -122,7 +122,9 @@ const Index = ({ data, location, pageContext }) => {
                   getyourfun_url="https://www.getyourfun.it/"
                   fantasia_url="https://fantasiastore.it/"
                   blasone_url="https://www.blasoneshop.it/"
+                  mse_url="https://www.msedizioni.it/"
                   weega_url="https://weega.it/"
+                  linkToSpecificGame={false}
                 />
                 <div className="mb-5">
                   <h5>Trova sconti</h5>

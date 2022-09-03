@@ -34,8 +34,8 @@ const Discount = ({ data, location }) => {
     metaTitle = `Trova sconti | ${title}`,
     metaDescription =
       "I migliori giochi in sconto sui nostri store preferiti! Affrettati, dureranno poco!",
-    // apiHost = "http://localhost",
-    apiHost = "https://api.dudexpress.it",
+    apiHost = "http://localhost",
+    // apiHost = "https://api.dudexpress.it",
     getFetchDiscountItemUrl = () => `${apiHost}/discounts`,
     getQueryUrl = value =>
       `${apiHost}/search?query=${value.split(" ").join("%20")}`,

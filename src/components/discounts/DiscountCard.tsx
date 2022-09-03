@@ -10,6 +10,7 @@ type DiscountSourceType =
   | "getyourfun"
   | "fantasia"
   | "blasone"
+  | "mse"
   | "weega"
 
 interface DiscountCardProps {
@@ -50,6 +51,8 @@ export default class DiscountCard extends React.PureComponent<
       logo = "../../logo/fantasia.png"
     } else if (this.props.source === "blasone") {
       logo = "../../logo/blasone.jpg"
+    } else if (this.props.source === "mse") {
+      logo = "../../logo/mse.jpg"
     }
 
     return <img src={logo} alt={this.props.source} height={45} />
@@ -73,7 +76,7 @@ export default class DiscountCard extends React.PureComponent<
   }
 
   private renderPrices(): React.ReactNode {
-    if (this.props.discount == null) {
+    if (this.props.discount == null && this.props.couponCode == null) {
       return (
         <div className="d-flex flex-column">
           <strong>{this.getPrice(this.props.currentPrice)}</strong>
@@ -129,6 +132,7 @@ export default class DiscountCard extends React.PureComponent<
           couponCode={this.props.couponCode}
           couponPercentage={this.props.couponPercentage}
           onClose={this.handleModalClose.bind(this)}
+          linkToSpecificGame={true}
         />
         <Card
           className={style.discountCard}
