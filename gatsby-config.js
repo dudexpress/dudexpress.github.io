@@ -141,6 +141,11 @@ module.exports = {
         instagram_url: "https://www.instagram.com/i_giochi_di_sasha/",
       },
       {
+        name : 'Simone',
+        summary: '',
+        image: "",
+      },
+      {
         name: "The Golden Meeple",
         summary:
           "Amanti dei giochi da tavolo. Potrebbero passare delle ore a giocare, senza accorgersi del tempo che passa.",
