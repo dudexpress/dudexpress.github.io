@@ -9,6 +9,11 @@ module.exports = {
     },
     authors: [
       {
+        name: "DudeGuest",
+        summary: "It was I, DudeGuest",
+        image: "guest.jpg"
+      },
+      {
         name: "Angelo",
         summary:
           "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
@@ -142,8 +147,8 @@ module.exports = {
       },
       {
         name : 'Simone',
-        summary: '',
-        image: "",
+        summary: "Che sia un gioco da tavolo, di ruolo o un videogioco, l'importante è giocare...e ogni tanto perché no, vincere!",
+        image: "simone-magnolini",
       },
       {
         name: "The Golden Meeple",
