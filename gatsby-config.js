@@ -9,11 +9,6 @@ module.exports = {
     },
     authors: [
       {
-        name: "DudeGuest",
-        summary: "It was I, DudeGuest",
-        image: "guest.jpg"
-      },
-      {
         name: "Angelo",
         summary:
           "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
@@ -146,8 +141,9 @@ module.exports = {
         instagram_url: "https://www.instagram.com/i_giochi_di_sasha/",
       },
       {
-        name : 'Simone',
-        summary: "Che sia un gioco da tavolo, di ruolo o un videogioco, l'importante è giocare...e ogni tanto perché no, vincere!",
+        name: "Simone",
+        summary:
+          "Che sia un gioco da tavolo, di ruolo o un videogioco, l'importante è giocare...e ogni tanto perché no, vincere!",
         image: "simone-magnolini",
       },
       {
@@ -169,6 +165,12 @@ module.exports = {
         summary:
           "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
         image: "truedice.jpg",
+      },
+      {
+        name: "Vanessa 🧩",
+        summary: "Amo i giochi da tavolo, ma non mi piace perdere!",
+        image: "vanessa.jpg",
+        instagram_url: "https://www.instagram.com/miss.inpieces/",
       },
     ],
   },
