@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
-import Button from "react-bootstrap/Button"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { withPrefix } from "gatsby"
@@ -22,7 +21,7 @@ const Index = ({ data, location, pageContext }) => {
     return (
       <div className="text-center">
         <Link to="/blog">
-          <button className="btn btn-outline-secondary mt-2 mb-4">
+          <button className="btn btn-outline-secondary mt-2 mb-5">
             Scopri altri giochi
           </button>
         </Link>
@@ -126,18 +125,6 @@ const Index = ({ data, location, pageContext }) => {
                   weega_url="https://weega.it/"
                   linkToSpecificGame={false}
                 />
-                <div className="mb-5">
-                  <h5>Trova sconti</h5>
-                  <small className="mb-3 d-block">
-                    Stai cercando un gioco ma non sai dove comprarlo?
-                    <br />I vostri dude troveranno lo sconto migliore per voi!
-                  </small>
-                  <Link to="/trova-sconti">
-                    <Button variant="outline-dark">
-                      Trova lo sconto migliore
-                    </Button>
-                  </Link>
-                </div>
                 <Mechanisms
                   title="Naviga per meccaniche"
                   values={pageContext.mechanisms}

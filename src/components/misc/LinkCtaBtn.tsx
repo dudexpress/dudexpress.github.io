@@ -1,17 +1,18 @@
 import React from "react"
 import { Link } from "gatsby"
-import * as styles from "./ReviewLink.module.scss"
+import * as styles from "./LinkCtaBtn.module.scss"
 
 interface ReviewLinkProps {
   slug: string
+  title: string
 }
 
-const ReviewLink = ({ slug }: ReviewLinkProps) => {
+const LinkCtaBtn = ({ slug, title }: ReviewLinkProps) => {
   return (
     <Link to={slug} className={styles.reviewLink}>
-      Leggi la recensione →
+      {title} →
     </Link>
   )
 }
 
-export default ReviewLink
+export default LinkCtaBtn

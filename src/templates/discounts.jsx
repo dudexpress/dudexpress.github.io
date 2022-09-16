@@ -33,7 +33,7 @@ const Discount = ({ data, location }) => {
     { title } = data.site.siteMetadata,
     metaTitle = `Trova sconti | ${title}`,
     metaDescription =
-      "I migliori giochi in sconto sui nostri store preferiti! Affrettati, dureranno poco!",
+      "I migliori giochi in sconto sui nostri store preferiti! Affrettati, le offerte dureranno poco!",
     // apiHost = "http://localhost",
     apiHost = "https://api.dudexpress.it",
     getFetchDiscountItemUrl = () => `${apiHost}/discounts`,
@@ -219,7 +219,7 @@ const Discount = ({ data, location }) => {
                 <blockquote className="mb-5 text-muted">
                   I migliori giochi in sconto sui nostri store preferiti!
                   <br />
-                  Affrettati, dureranno poco!
+                  Affrettati, le offerte dureranno poco!
                 </blockquote>
 
                 <Row className="mb-3">

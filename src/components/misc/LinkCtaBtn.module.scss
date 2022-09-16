@@ -3,14 +3,16 @@
 
 .review-link {
   font-family: v.$font-family-title;
+  font-weight: bold;
   display: inline-block;
-  margin-top: v.$spacing-unit * 2;
   border-radius: v.$border-radius;
   background: v.$red;
   box-shadow: v.$gray300 5px 5px 20px -10px;
   padding: v.$spacing-unit v.$spacing-unit * 2;
   color: v.$white;
   text-decoration: none;
+  transition: background-color 0.2s ease-out;
+  font-size: 18px;
 
   &:hover {
     background-color: darken(v.$red, 8%);

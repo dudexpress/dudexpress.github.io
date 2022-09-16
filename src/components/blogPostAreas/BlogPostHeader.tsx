@@ -6,7 +6,7 @@ import { Fields, Frontmatter } from "../../types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import * as style from "./BlogPostHeader.module.scss"
-import ReviewLink from "../misc/ReviewLink"
+import LinkCtaBtn from "../misc/LinkCtaBtn"
 
 export interface BlogPostHeaderProps {
   frontmatter: Frontmatter
@@ -20,8 +20,8 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
       return null
     }
     return (
-      <div>
-        <ReviewLink slug={this.props.fields.slug} />
+      <div className="mt-3">
+        <LinkCtaBtn slug={this.props.fields.slug} title="Leggi la recensione" />
       </div>
     )
   }

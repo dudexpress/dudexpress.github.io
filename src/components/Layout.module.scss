@@ -18,9 +18,17 @@
     }
 
     & + main {
-      margin-top: 82px;
+      $header-height: 122px;
+      margin-top: $header-height;
+      min-height: calc(100vh - $header-height - 88px);
+
+      @media (min-width: 768px) {
+        $header-height: 82px;
+        margin-top: $header-height;
+        min-height: calc(100vh - $header-height - 88px);
+      }
     }
-  }  
+  }
 
   .global-footer {
     background: v.$gray400;

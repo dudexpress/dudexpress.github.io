@@ -1,9 +1,11 @@
 import classnames from "classnames"
+import { Link } from "gatsby"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import React from "react"
 import { Frontmatter } from "../../types"
 import CouponModal from "../misc/CouponModal"
 import * as styles from "./Stores.module.scss"
+import LinkCtaBtn from "../misc/LinkCtaBtn"
 
 interface StoresProps
   extends Pick<
@@ -189,11 +191,21 @@ export default class Stores extends React.PureComponent<
       return null
     }
 
-    const className = classnames(styles.stores, "mb-5")
+    const className = classnames(
+      styles.stores,
+      "mb-5 text-center text-lg-start"
+    )
     return (
       <div className={className}>
-        <h5>{this.props.label ?? "Acquistalo qui"}</h5>
-        <ul className="list-unstyled">{stores}</ul>
+        <h5 className="fw-bold">{this.props.label ?? "Acquistalo qui"}</h5>
+        <ul className="list-unstyled mb-2">{stores}</ul>
+        <small className="d-block mb-2">
+          Stai cercando un gioco?
+          <br />I vostri dude troveranno lo sconto migliore!
+        </small>
+        <Link to="/trova-sconti">
+          <LinkCtaBtn slug="/trova-sconti" title="Trova sconti" />
+        </Link>
       </div>
     )
   }

@@ -11,7 +11,8 @@ import { faPiggyBank } from "@fortawesome/free-solid-svg-icons/faPiggyBank"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const Layout = ({ location, title, children }) => {
-  const headerClassName = classnames(style.globalHeader, "fixed-top bg-white")
+  const headerClassName = classnames(style.globalHeader, "fixed-top bg-white"),
+    headerItemsSpacingClassName = "ms-4"
 
   return (
     <div className={style.layout}>
@@ -29,7 +30,7 @@ const Layout = ({ location, title, children }) => {
 
       <header className={headerClassName}>
         <Container>
-          <div className="d-flex w-100 justify-content-between align-items-end">
+          <div className="d-flex w-100 flex-column flex-md-row align-items-center justify-content-between align-items-md-end">
             <Link to="/">
               <img
                 src={withPrefix("logo/logo-small.svg")}
@@ -38,7 +39,7 @@ const Layout = ({ location, title, children }) => {
               />
             </Link>
 
-            <div className="d-flex justify-content-between align-items-end">
+            <div className="d-flex justify-content-between align-items-end mt-2 mt-md-0">
               <OutboundLink
                 href="https://www.instagram.com/dudexpress.review/"
                 target="_blank"
@@ -53,7 +54,7 @@ const Layout = ({ location, title, children }) => {
               <OutboundLink
                 href="https://www.facebook.com/dudexpress.review"
                 target="_blank"
-                className="ms-3"
+                className={headerItemsSpacingClassName}
               >
                 <img
                   width={20}
@@ -63,18 +64,16 @@ const Layout = ({ location, title, children }) => {
                 />
               </OutboundLink>
 
-              <Link to="/trova-sconti" className="ms-3">
+              <Link to="/trova-sconti" className={headerItemsSpacingClassName}>
                 <small>
-                  <span className="d-none d-md-inline-block me-1">
-                    Trova sconti
-                  </span>
+                  <span className="d-inline-block me-1">Trova sconti</span>
                   <FontAwesomeIcon icon={faPiggyBank} />
                 </small>
               </Link>
 
-              <Link to="/search" className="ms-3">
+              <Link to="/search" className={headerItemsSpacingClassName}>
                 <small>
-                  <span className="d-none d-md-inline-block me-1">Cerca</span>
+                  <span className="d-inline-block me-1">Cerca</span>
                   <FontAwesomeIcon icon={faSearch} />
                 </small>
               </Link>
@@ -83,7 +82,7 @@ const Layout = ({ location, title, children }) => {
         </Container>
       </header>
 
-      <main style={{ minHeight: "calc(100vh - 82px - 88px)" }}>{children}</main>
+      <main>{children}</main>
       <footer className={style.globalFooter}>
         <Container className="d-flex justify-content-between">
           <Footer />

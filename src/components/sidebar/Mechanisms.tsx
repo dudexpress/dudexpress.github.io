@@ -35,8 +35,8 @@ export default class Mechanisms extends React.PureComponent<MechanismsProps> {
 
   public render(): React.ReactNode {
     return (
-      <div className="mb-5">
-        <h5>{this.props.title ?? "Meccaniche"}</h5>
+      <div className="mb-5 text-center text-lg-start">
+        <h5 className="fw-bold">{this.props.title ?? "Meccaniche"}</h5>
         <div className={styles.mechanisms}>
           {this.props.values.map(this.renderTag)}
           {this.renderMore()}

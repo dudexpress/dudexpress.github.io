@@ -4,21 +4,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     // ipad
     align-items: flex-start;
   }
 
   .badge {
     padding: v.$spacing-unit;
-    background: v.$red !important;
-    color: v.$white;
-    font-size: 16px;
+    background: v.$white !important;
+    color: v.$red;
+    border: 1px solid v.$red;
+    font-weight: normal;
+    font-size: 14px;
     font-family: v.$font-family-title;
     transition: background-color 0.2s ease-out;
-
-    &:hover {
-      background-color: darken(v.$red, 8%) !important;
-    }
   }
 }
