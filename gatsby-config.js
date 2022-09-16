@@ -168,7 +168,7 @@ module.exports = {
       },
       {
         name: "Vanessa 🧩",
-        summary: "Amo i giochi da tavolo, ma non mi piace perdere!",
+        summary: "Giocatrice compulsiva, insegnante a tempo perso. Gioco di tutto, dai German ai cooperativi, dai family ai party game, però sempre con un pizzico di femminilità. Se non hai capito cosa intendo, vieni a vedere il mio profilo instagram ;-) ",
         image: "vanessa.jpg",
         instagram_url: "https://www.instagram.com/miss.inpieces/",
       },
