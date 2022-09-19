@@ -5,9 +5,23 @@ import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import * as styles from "./GameCard.module.scss"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { SimpleFrontmatter } from "../../types"
+import Badge from "react-bootstrap/Badge"
 
-const GameCard = ({ post }) => {
-  const title = post.frontmatter.title || post.fields.slug
+interface GameCardProps {
+  post: {
+    frontmatter: SimpleFrontmatter
+    fields: any
+  }
+}
+
+const GameCard = ({ post }: GameCardProps) => {
+  const title = post.frontmatter.title || post.fields.slug,
+    rendermechanism = (mec: string) => (
+      <Badge key={mec} className={styles.badge} bg="secondary">
+        {mec}
+      </Badge>
+    )
 
   return (
     <Card className={styles.gameCard}>
@@ -16,7 +30,7 @@ const GameCard = ({ post }) => {
         <Row className="w-100">
           <Col md={2} className="mb-3 mb-md-0">
             <GatsbyImage
-              image={getImage(post.frontmatter.featureImage)}
+              image={getImage(post.frontmatter.featureImage)!}
               className={styles.gameCardImg}
               alt="cover"
             />
@@ -24,6 +38,9 @@ const GameCard = ({ post }) => {
           <Col md={10}>
             <div className="d-flex flex-column justify-content-center h-100">
               <h4>{title}</h4>
+              <div className={styles.mechanisms}>
+                {post.frontmatter.mechanisms.map(rendermechanism)}
+              </div>
               <p>{post.frontmatter.description}</p>
               <small>
                 {post.frontmatter.writer} ●{" "}

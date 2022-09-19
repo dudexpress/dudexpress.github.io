@@ -23,10 +23,7 @@ import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
 import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 import * as style from "./BlogPost.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
-import Gamefound from "../components/misc/Gamefound"
-import Kickstarter from "../components/misc/Kickstarter"
 import RandomLink from "../components/misc/RandomLink"
-import Weega from "../components/misc/Weega"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -222,6 +219,7 @@ export const pageQuery = graphql`
             }
           }
           description
+          mechanisms
         }
       }
     }
@@ -240,6 +238,9 @@ export interface BlogPostDataProps {
   allMdx: {
     nodes: {
       frontmatter: SimpleFrontmatter
+      fields: {
+        slug: string
+      }
     }[]
   }
 }

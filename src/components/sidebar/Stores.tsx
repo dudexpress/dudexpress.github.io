@@ -77,7 +77,7 @@ export default class Stores extends React.PureComponent<
             src={imgPath}
             alt={name}
             className={imgClassName}
-            onClick={() => this.handleModalOpen(name)}
+            onClick={() => this.handleModalOpen(name as StoresWithModal)}
           />
         </li>
       )

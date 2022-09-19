@@ -49,6 +49,7 @@ const Search = ({ index, store, location, defaultPosts }) => {
         date: x.date,
         description: x.description,
         featureImage: x.featureImage,
+        mechanisms: x.mechanisms,
       },
     }))
   }

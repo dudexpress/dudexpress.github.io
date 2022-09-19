@@ -56,6 +56,7 @@ export const writersQuery = graphql`
             writer
             title
             description
+            mechanisms
             featureImage {
               childImageSharp {
                 gatsbyImageData(

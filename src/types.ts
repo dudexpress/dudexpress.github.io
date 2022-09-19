@@ -23,6 +23,8 @@ export interface SimpleFrontmatter {
   title: string
   featureImage: FileNode
   description: string
+  writer: string
+  mechanisms: string[]
 }
 
 export type PostWeigth = 1 | 2 | 3 | 4 | 5
@@ -40,7 +42,6 @@ export interface Frontmatter extends SimpleFrontmatter {
   playing_time_official: string
 
   // sidebar
-  mechanisms: string[]
   sidebar_votes: SidebarVotes[]
   sleeves: Sleeve[]
 

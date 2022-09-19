@@ -66,7 +66,7 @@ export default class DiscountCard extends React.PureComponent<
 
     const percentages = [discount, couponPercentage]
       .filter(Boolean)
-      .map(x => `-${Math.round(x * 100)}%`)
+      .map((x: number | null) => `-${Math.round(x! * 100)}%`)
 
     return <Badge className={style.badge}>{percentages.join(" & ")}</Badge>
   }

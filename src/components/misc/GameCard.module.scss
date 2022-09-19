@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "../../style.scss" as v;
 
 .game-card {
@@ -54,10 +55,31 @@
   }
 
   .game-card-img {
+    border-radius: v.$border-radius;
     width: 33%;
     @media (min-width: 768px) {
       // ipad
       width: 100%;
+    }
+  }
+
+  .mechanisms {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: v.$spacing-unit;
+
+    flex-wrap: wrap;
+    row-gap: math.div(v.$spacing-unit, 2);
+    column-gap: math.div(v.$spacing-unit, 2);
+
+    .badge {
+      padding: math.div(v.$spacing-unit, 2);
+      font-size: 12px;
+      background: v.$white !important;
+      color: v.$red;
+      border: 1px solid v.$red;
+      font-weight: normal;
+      font-family: v.$font-family-title;
     }
   }
 }
