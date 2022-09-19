@@ -38,11 +38,24 @@ const Layout = ({ location, title, children }) => {
                 height={50}
               />
             </Link>
-
             <div className="d-flex justify-content-between align-items-end mt-2 mt-md-0">
+              <Link to="/trova-sconti">
+                <small>
+                  <span className="d-inline-block me-1">Trova sconti</span>
+                  <FontAwesomeIcon icon={faPiggyBank} />
+                </small>
+              </Link>
+
+              <Link to="/search" className={headerItemsSpacingClassName}>
+                <small>
+                  <span className="d-inline-block me-1">Cerca</span>
+                  <FontAwesomeIcon icon={faSearch} />
+                </small>
+              </Link>
               <OutboundLink
                 href="https://www.instagram.com/dudexpress.review/"
                 target="_blank"
+                className={headerItemsSpacingClassName}
               >
                 <img
                   width={20}
@@ -63,20 +76,6 @@ const Layout = ({ location, title, children }) => {
                   style={{ marginTop: "-3px" }}
                 />
               </OutboundLink>
-
-              <Link to="/trova-sconti" className={headerItemsSpacingClassName}>
-                <small>
-                  <span className="d-inline-block me-1">Trova sconti</span>
-                  <FontAwesomeIcon icon={faPiggyBank} />
-                </small>
-              </Link>
-
-              <Link to="/search" className={headerItemsSpacingClassName}>
-                <small>
-                  <span className="d-inline-block me-1">Cerca</span>
-                  <FontAwesomeIcon icon={faSearch} />
-                </small>
-              </Link>
             </div>
           </div>
         </Container>
