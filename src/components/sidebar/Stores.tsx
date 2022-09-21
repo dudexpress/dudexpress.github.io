@@ -67,7 +67,7 @@ export default class Stores extends React.PureComponent<
           <CouponModal
             key={name}
             isModalShown={this.state.modalShown === name}
-            url={link}
+            url={`${link}${linkSuffix}`}
             couponCode={couponCode}
             couponPercentage={couponPercentage}
             onClose={this.handleModalClose.bind(this)}
