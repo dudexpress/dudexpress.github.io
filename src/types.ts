@@ -52,6 +52,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   fantasia_url: string
   blasone_url: string
   mse_url: string
+  pandoragames_url: string
   weega_url: string
   weega_future: boolean
   gamefound_url: string

@@ -228,6 +228,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       fantasia_url: String
       blasone_url: String
       mse_url: String
+      pandoragames_url: String
       weega_url: String
       weega_future: Boolean
       gamefound_url: String

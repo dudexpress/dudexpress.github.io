@@ -15,6 +15,7 @@ interface StoresProps
     | "fantasia_url"
     | "blasone_url"
     | "mse_url"
+    | "pandoragames_url"
     | "weega_url"
     | "weega_future"
     | "kickstarter_url"
@@ -146,6 +147,16 @@ export default class Stores extends React.PureComponent<
     )
   }
 
+  private renderPandoraGames(): React.ReactNode {
+    return this.renderStore(
+      "pandora",
+      "../../logo/pandoragames.jpg",
+      styles.pandora,
+      this.props.pandoragames_url,
+      ""
+    )
+  }
+
   private renderWeega(): React.ReactNode {
     return this.renderStore(
       "weega",
@@ -183,6 +194,7 @@ export default class Stores extends React.PureComponent<
       this.renderFantasia(),
       this.renderBlasone(),
       this.renderMse(),
+      this.renderPandoraGames(),
       this.renderWeega(),
       this.renderKickstarer(),
       this.renderGamefound(),
