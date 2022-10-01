@@ -1,5 +1,13 @@
 @use "../../style.scss" as v;
 
+@mixin store($color) {
+  border-color: $color;
+
+  &:hover {
+    border-color: darken($color, 8%);
+  }
+}
+
 .stores {
   li {
     display: inline-block;
@@ -15,59 +23,39 @@
     cursor: pointer;
 
     &.dungeondice {
-      border-color: v.$dungeonDiceColor;
-      &:hover {
-        border-color: darken(v.$dungeonDiceColor, 8%);
-      }
+      @include store(v.$dungeonDiceColor);
     }
 
     &.getyourfun {
-      border-color: v.$getYourFunColor;
-      &:hover {
-        border-color: darken(v.$getYourFunColor, 8%);
-      }
+      @include store(v.$getYourFunColor);
     }
 
     &.fantasia {
-      border-color: v.$fantasiaColor;
-      &:hover {
-        border-color: darken(v.$fantasiaColor, 8%);
-      }
+      @include store(v.$fantasiaColor);
     }
 
     &.blasone {
-      border-color: v.$blasoneColor;
-      &:hover {
-        border-color: darken(v.$blasoneColor, 8%);
-      }
+      @include store(v.$blasoneColor);
     }
 
     &.mse {
-      border-color: v.$mseColor;
-      &:hover {
-        border-color: darken(v.$mseColor, 8%);
-      }
+      @include store(v.$mseColor);
+    }
+
+    &.pandora {
+      @include store(v.$pandoraColor);
     }
 
     &.weega {
-      border-color: v.$weegaColor;
-      &:hover {
-        border-color: darken(v.$weegaColor, 8%);
-      }
+      @include store(v.$weegaColor);
     }
 
     &.kickstarter {
-      border-color: v.$kickstarterColor;
-      &:hover {
-        border-color: darken(v.$kickstarterColor, 8%);
-      }
+      @include store(v.$kickstarterColor);
     }
 
     &.gamefound {
-      border-color: v.$gamefoundColor;
-      &:hover {
-        border-color: darken(v.$gamefoundColor, 8%);
-      }
+      @include store(v.$gamefoundColor);
     }
   }
 }

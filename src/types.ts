@@ -23,6 +23,8 @@ export interface SimpleFrontmatter {
   title: string
   featureImage: FileNode
   description: string
+  writer: string
+  mechanisms: string[]
 }
 
 export type PostWeigth = 1 | 2 | 3 | 4 | 5
@@ -40,7 +42,6 @@ export interface Frontmatter extends SimpleFrontmatter {
   playing_time_official: string
 
   // sidebar
-  mechanisms: string[]
   sidebar_votes: SidebarVotes[]
   sleeves: Sleeve[]
 
@@ -51,6 +52,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   fantasia_url: string
   blasone_url: string
   mse_url: string
+  pandoragames_url: string
   weega_url: string
   weega_future: boolean
   gamefound_url: string

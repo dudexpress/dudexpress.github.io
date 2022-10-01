@@ -98,6 +98,7 @@ export const pageQuery = graphql`
             }
           }
           description
+          mechanisms
         }
       }
     }

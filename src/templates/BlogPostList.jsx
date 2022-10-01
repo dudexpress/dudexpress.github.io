@@ -83,6 +83,7 @@ export const blogListQuery = graphql`
             writer
             title
             description
+            mechanisms
             featureImage {
               childImageSharp {
                 gatsbyImageData(

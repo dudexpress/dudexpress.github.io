@@ -122,6 +122,7 @@ const Index = ({ data, location, pageContext }) => {
                   fantasia_url="https://fantasiastore.it/"
                   blasone_url="https://www.blasoneshop.it/"
                   mse_url="https://www.msedizioni.it/"
+                  pandoragames_url="https://pandoragames.it/"
                   weega_url="https://weega.it/"
                   linkToSpecificGame={false}
                 />
@@ -180,6 +181,7 @@ export const pageQuery = graphql`
             }
           }
           description
+          mechanisms
         }
       }
     }

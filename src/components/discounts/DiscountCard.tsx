@@ -11,6 +11,7 @@ type DiscountSourceType =
   | "fantasia"
   | "blasone"
   | "mse"
+  | "pandora"
   | "weega"
 
 interface DiscountCardProps {
@@ -53,6 +54,8 @@ export default class DiscountCard extends React.PureComponent<
       logo = "../../logo/blasone.jpg"
     } else if (this.props.source === "mse") {
       logo = "../../logo/mse.jpg"
+    } else if (this.props.source === "pandora") {
+      logo = "../../logo/pandoragames.jpg"
     }
 
     return <img src={logo} alt={this.props.source} height={45} />
@@ -66,7 +69,7 @@ export default class DiscountCard extends React.PureComponent<
 
     const percentages = [discount, couponPercentage]
       .filter(Boolean)
-      .map(x => `-${Math.round(x * 100)}%`)
+      .map((x: number | null) => `-${Math.round(x! * 100)}%`)
 
     return <Badge className={style.badge}>{percentages.join(" & ")}</Badge>
   }

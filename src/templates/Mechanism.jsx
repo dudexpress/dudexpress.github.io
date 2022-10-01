@@ -60,6 +60,7 @@ export const mechanismQuery = graphql`
             writer
             title
             description
+            mechanisms
             featureImage {
               childImageSharp {
                 gatsbyImageData(
