@@ -128,6 +128,12 @@ module.exports = {
         image: "michele.jpg",
       },
       {
+        name: "miss.inpieces",
+        summary: "Giocatrice compulsiva, insegnante a tempo perso. Gioco di tutto, dai German ai cooperativi, dai family ai party game, però sempre con un pizzico di femminilità. Se non hai capito cosa intendo, vieni a vedere il mio profilo instagram ;-) ",
+        image: "vanessa.jpg",
+        instagram_url: "https://www.instagram.com/miss.inpieces/",
+      },
+      {
         name: "PcomePigro",
         summary: "guarda dietro di te, una scimmia a tre teste!",
         image: "PcomePigro.jpg",
@@ -166,12 +172,7 @@ module.exports = {
           "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
         image: "truedice.jpg",
       },
-      {
-        name: "Vanessa 🧩",
-        summary: "Giocatrice compulsiva, insegnante a tempo perso. Gioco di tutto, dai German ai cooperativi, dai family ai party game, però sempre con un pizzico di femminilità. Se non hai capito cosa intendo, vieni a vedere il mio profilo instagram ;-) ",
-        image: "vanessa.jpg",
-        instagram_url: "https://www.instagram.com/miss.inpieces/",
-      },
+
     ],
   },
   plugins: [
