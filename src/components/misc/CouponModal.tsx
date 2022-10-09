@@ -36,7 +36,7 @@ export default class CouponModal extends React.PureComponent<CouponModalProps> {
 
   private get ctaText(): string {
     if (this.props.linkToSpecificGame) {
-      return "Vai al gicoo"
+      return "Vai al gioco"
     }
     return "Vai allo store"
   }
