@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-discounts-jsx","path":"/giochi-in-sconto","result":{"data":{"site":{"siteMetadata":{"title":"dudexpress","description":"Recensioni di giochi da tavolo semplici, immediate e immersive"}}},"pageContext":{}},"staticQueryHashes":[]}
+{
+    "componentChunkName": "component---src-templates-discounts-jsx",
+    "path": "/giochi-in-sconto",
+    "result": {"data":{"site":{"siteMetadata":{"title":"dudexpress","description":"Recensioni di giochi da tavolo semplici, immediate e immersive"}}},"pageContext":{}},
+    "staticQueryHashes": []}
