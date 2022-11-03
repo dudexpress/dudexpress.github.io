@@ -74,27 +74,29 @@ export default class DiscountCard extends React.PureComponent<
     return <Badge className={style.badge}>{percentages.join(" & ")}</Badge>
   }
 
-  private getPrice(price: number): string {
-    return `${price.toFixed(2)}€`
-  }
+  // private getPrice(price: number): string {
+  //   return `${price.toFixed(2)}€`
+  // }
 
   private renderPrices(): React.ReactNode {
-    if (this.props.discount == null && this.props.couponCode == null) {
-      return (
-        <div className="d-flex flex-column">
-          <strong>{this.getPrice(this.props.currentPrice)}</strong>
-        </div>
-      )
-    }
+    return this.renderDiscountAndCoupon()
 
-    return (
-      <div className="d-flex flex-column align-items-end">
-        <del>{this.getPrice(this.props.regularPrice)}</del>
-        {this.renderDiscountAndCoupon()}
+    // if (this.props.discount == null && this.props.couponCode == null) {
+    //   return (
+    //     <div className="d-flex flex-column">
+    //       <strong>{this.getPrice(this.props.currentPrice)}</strong>
+    //     </div>
+    //   )
+    // }
 
-        <strong>{this.getPrice(this.props.currentPrice)}</strong>
-      </div>
-    )
+    // return (
+    //   <div className="d-flex flex-column align-items-end">
+    //     <del>{this.getPrice(this.props.regularPrice)}</del>
+    //     {this.renderDiscountAndCoupon()}
+
+    //     <strong>{this.getPrice(this.props.currentPrice)}</strong>
+    //   </div>
+    // )
   }
 
   private handleModalOpen(): void {
