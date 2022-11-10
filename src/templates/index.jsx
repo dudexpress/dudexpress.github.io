@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link, graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -15,7 +15,8 @@ import Stores from "../components/sidebar/Stores"
 
 const Index = ({ data, location, pageContext }) => {
   const { title, description } = data.site.siteMetadata,
-    [firstPost, ...posts] = data.allMdx.nodes
+    [firstPost, ...posts] = data.allMdx.nodes,
+    [weegaData, setWeegaData] = useState([])
 
   const renderOtherPosts = () => {
     return (
@@ -28,6 +29,14 @@ const Index = ({ data, location, pageContext }) => {
       </div>
     )
   }
+
+  useEffect(async () => {
+    try {
+      const response = await fetch("https://api.dudexpress.it/weega-sales"),
+        weegaData = await response.json()
+      setWeegaData(weegaData)
+    } catch (e) {}
+  }, [])
 
   const structuredJSON = JSON.stringify({
     "@context": "https://schema.org",
@@ -62,8 +71,6 @@ const Index = ({ data, location, pageContext }) => {
       },
     ],
   })
-
-  console.log(pageContext)
 
   return (
     <Layout location={location} title={title}>
@@ -104,11 +111,11 @@ const Index = ({ data, location, pageContext }) => {
                 {posts.splice(0, 3).map(post => (
                   <GameCard key={post.frontmatter.title} post={post} />
                 ))}
-                <WeegaCard {...pageContext?.weegaData?.sales?.[0]} />
+                <WeegaCard {...weegaData?.sales?.[0]} />
                 {posts.splice(0, 3).map(post => (
                   <GameCard key={post.frontmatter.title} post={post} />
                 ))}
-                <WeegaCard {...pageContext?.weegaData?.sales?.[1]} />
+                <WeegaCard {...weegaData?.sales?.[1]} />
                 {posts.splice(0, 3).map(post => (
                   <GameCard key={post.frontmatter.title} post={post} />
                 ))}
