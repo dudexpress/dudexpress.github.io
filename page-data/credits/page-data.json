@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-credits-tsx","path":"/credits/","result":{"data":{"site":{"siteMetadata":{"title":"dudexpress"}}},"pageContext":{}},"staticQueryHashes":[]}
+{
+    "componentChunkName": "component---src-pages-credits-tsx",
+    "path": "/credits/",
+    "result": {"data":{"site":{"siteMetadata":{"title":"dudexpress"}}},"pageContext":{}},
+    "staticQueryHashes": []}
