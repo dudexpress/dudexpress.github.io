@@ -5,6 +5,7 @@ export interface Author {
   summary: string
   image: string
   instagram_url?: string
+  youtube_url?: string
   website?: string
 }
 

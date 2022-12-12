@@ -82,6 +82,7 @@ module.exports = {
           "Un American irriducibile, un German pratico e un Ibrido indeciso vi guideranno alla scoperta di questo sconfinato mondo in miniatura.",
         image: "g-gioco.jpg",
         instagram_url: "https://www.instagram.com/g.di.gioco/",
+        youtube_url: "https://www.youtube.com/@gdg-gdigioco820",
       },
 
       {
@@ -129,7 +130,8 @@ module.exports = {
       },
       {
         name: "miss.inpieces",
-        summary: "Giocatrice compulsiva, insegnante a tempo perso. Gioco di tutto, dai German ai cooperativi, dai family ai party game, però sempre con un pizzico di femminilità. Se non hai capito cosa intendo, vieni a vedere il mio profilo instagram ;-) ",
+        summary:
+          "Giocatrice compulsiva, insegnante a tempo perso. Gioco di tutto, dai German ai cooperativi, dai family ai party game, però sempre con un pizzico di femminilità. Se non hai capito cosa intendo, vieni a vedere il mio profilo instagram ;-) ",
         image: "vanessa.jpg",
         instagram_url: "https://www.instagram.com/miss.inpieces/",
       },
@@ -172,7 +174,6 @@ module.exports = {
           "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
         image: "truedice.jpg",
       },
-
     ],
   },
   plugins: [

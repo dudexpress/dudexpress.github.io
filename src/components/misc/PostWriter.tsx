@@ -9,6 +9,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram"
 import slugify from "slugify"
 import * as styles from "./PostWriter.module.scss"
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons"
+import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 
 interface PostWriterProps {
   writerName: string
@@ -25,6 +26,7 @@ const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
             summary
             image
             instagram_url
+            youtube_url
             website
           }
         }
@@ -44,15 +46,23 @@ const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
 
     if (author.instagram_url != null) {
       socials.push(
-        <a href={author.instagram_url} target="_blank">
+        <a href={author.instagram_url} target="_blank" className="me-1">
           <FontAwesomeIcon icon={faInstagram} />
+        </a>
+      )
+    }
+
+    if (author.youtube_url != null) {
+      socials.push(
+        <a href={author.youtube_url} target="_blank" className="me-1">
+          <FontAwesomeIcon icon={faYoutube} />
         </a>
       )
     }
 
     if (author.website != null) {
       socials.push(
-        <a href={author.website} target="_blank">
+        <a href={author.website} target="_blank" className="me-1">
           <FontAwesomeIcon icon={faGlobeEurope} />
         </a>
       )
