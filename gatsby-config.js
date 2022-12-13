@@ -88,7 +88,14 @@ module.exports = {
         instagram_url: "https://www.instagram.com/g.di.gioco/",
         youtube_url: "https://www.youtube.com/@gdg-gdigioco820",
       },
-
+      {
+        name: "dancefloor89",
+        summary:
+          "Mi chiamo Felice i giochi da tavolo e i videogames sono la mia passione, viaggiamo insieme in questo fantastico mondo!",
+        image: "felice.jpg",
+        instagram_url: "https://www.instragram.com/dancefloor89",
+        youtube_url: "https://www.youtube.com/1989Dancefloor1989",
+      },
       {
         name: "iDefustellati",
         summary:
