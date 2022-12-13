@@ -13,6 +13,7 @@ module.exports = {
         summary:
           "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
         image: "angelo.jpg",
+        instagram_url: "https://www.instagram.com/giotap_boardgames/",
       },
 
       {
@@ -20,18 +21,21 @@ module.exports = {
         summary:
           "Dopo aver lasciato gli studi in Lettere per incompatibilità di carattere, deve ancora capire cosa fare nella vita. Nel frattempo si diletta nella scrittura e nei giochi da tavolo. Ama i vampiri e il Giappone.",
         image: "angelo-pero.png",
+        instagram_url: "https://www.instagram.com/angelompero/",
       },
       {
         name: "BarbaBarco Games",
         summary:
           "Ahoy! Capitano BarbaBarco al vostro servizio! La nostra prossima avventura? Esplorare il mondo dei giochi da tavolo!",
         image: "barbabarco.jpg",
+        instagram_url: "https://www.instagram.com/barba_barco_games/",
       },
       {
         name: "Bilbo's Playing",
         summary:
           "Amo due cose: i sonnellini e i giochi da tavolo. E se mi lasciano fare i miei sonnellini sopra ai giochi da tavolo sono di certo il gatto più felice del mondo!",
         image: "bilbo.jpg",
+        instagram_url: "https://www.instagram.com/bilbosplaying/",
       },
       {
         name: "Bruno",
@@ -109,6 +113,7 @@ module.exports = {
         summary:
           "Una italiana e uno spagnolo che si sono trovati grazie all'amore per i giochi da tavolo.",
         image: "ladybug.jpg",
+        instagram_url: "https://www.instagram.com/ladybugmeeple/",
       },
       {
         name: "L'intavolatrice",
@@ -173,6 +178,7 @@ module.exports = {
         summary:
           "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
         image: "truedice.jpg",
+        instagram_url: "https://www.instagram.com/true.dice/",
       },
     ],
   },
