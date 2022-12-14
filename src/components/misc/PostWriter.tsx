@@ -10,6 +10,8 @@ import slugify from "slugify"
 import * as styles from "./PostWriter.module.scss"
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons"
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
+import { faTiktok } from "@fortawesome/free-brands-svg-icons"
+import { faFacebook } from "@fortawesome/free-brands-svg-icons"
 
 interface PostWriterProps {
   writerName: string
@@ -27,6 +29,8 @@ const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
             image
             instagram_url
             youtube_url
+            facebook_url
+            tiktok_url
             website
           }
         }
@@ -56,6 +60,22 @@ const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
       socials.push(
         <a href={author.youtube_url} target="_blank" className="me-1">
           <FontAwesomeIcon icon={faYoutube} />
+        </a>
+      )
+    }
+
+    if (author.facebook_url != null) {
+      socials.push(
+        <a href={author.facebook_url} target="_blank" className="me-1">
+          <FontAwesomeIcon icon={faFacebook} />
+        </a>
+      )
+    }
+
+    if (author.tiktok_url != null) {
+      socials.push(
+        <a href={author.tiktok_url} target="_blank" className="me-1">
+          <FontAwesomeIcon icon={faTiktok} />
         </a>
       )
     }

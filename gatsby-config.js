@@ -49,18 +49,28 @@ module.exports = {
         instagram_url: "https://www.instagram.com/chimi772_boardgamer/",
       },
       {
+        name: "dancefloor89",
+        summary:
+          "Mi chiamo Felice i giochi da tavolo e i videogames sono la mia passione, viaggiamo insieme in questo fantastico mondo!",
+        image: "felice.jpg",
+        instagram_url: "https://www.instragram.com/dancefloor89",
+        tiktok_url:
+          "https://www.tiktok.com/@dancefloor1989?_t=8UmC95Wwz9J&_r=1",
+        youtube_url: "https://www.youtube.com/1989Dancefloor1989",
+      },
+      {
         name: "Dadi-Daddy",
         summary:
           "Neopapà costantemente derubato dei dadi di tutti i suoi giochi dal loquace figlio di un anno.",
         image: "dadi.jpg",
       },
       {
-        name: "dancefloor89",
+        name: "JamesElio",
         summary:
-          "Mi chiamo Felice i giochi da tavolo e i videogames sono la mia passione, viaggiamo insieme in questo fantastico mondo!",
-        image: "felice.jpg",
-        instagram_url: "https://www.instragram.com/dancefloor89",
-        youtube_url: "https://www.youtube.com/1989Dancefloor1989",
+          "Fabbricato nel 1984. Giornalista. Nerd da quando non era di moda esserlo. Cresciuto a pane, Sega Master System e giochi da tavolo. L’età anagrafica è solo un numero",
+        image: "JamesElio.jpg",
+        instagram_url: "https://www.instagram.com/jameselio_84/",
+        facebook_url: " https://www.facebook.com/elio.cogno",
       },
       {
         name: "Eris.in.Boardgameland",
@@ -186,6 +196,7 @@ module.exports = {
           "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
         image: "truedice.jpg",
         instagram_url: "https://www.instagram.com/true.dice/",
+        tiktok_url: "https://vm.tiktok.com/ZMNVJsFQf/",
       },
     ],
   },
