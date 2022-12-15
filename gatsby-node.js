@@ -190,6 +190,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       image: String
       instagram_url: String
       youtube_url: String
+      facebook_url: String
+      tiktok_url: String
       website: String
     }
 
