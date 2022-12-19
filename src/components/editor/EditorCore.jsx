@@ -31,6 +31,8 @@ import { EditorPortability } from "./fields/EditorPortability"
 import { EditorFantasia } from "./fields/EditorFantasia"
 import { EditorDungeondice } from "./fields/EditorDungeondice"
 import { EditorGetYourFun } from "./fields/EditorGetYourFun"
+import { EditorBlasone } from "./fields/EditorBlasone"
+import { EditorDate } from "./fields/EditorDate"
 
 const EditorCore = ({ data, location, pageContext }) => {
   const siteMeta = data.site.siteMetadata,
@@ -59,13 +61,16 @@ const EditorCore = ({ data, location, pageContext }) => {
     [files, setFiles] = useState([]),
     [fantasiaUrl, setFantasiaUrl] = useState(),
     [dungeondiceUrl, setDungeondiceUrl] = useState(),
-    [getYourFunUrl, setGetYourFunUrl] = useState()
+    [getYourFunUrl, setGetYourFunUrl] = useState(),
+    [blasoneshopUrl, setBlasoneshopUrl] = useState(),
+    [date, setDate] = useState()
 
   if (window == null) {
     return null
   }
 
   const isEnabled =
+    date &&
     title &&
     writer &&
     mechanisms &&
@@ -101,6 +106,8 @@ const EditorCore = ({ data, location, pageContext }) => {
             <h1 className="my-5">Nuova recensione</h1>
 
             <Form className="mb-5">
+              <EditorDate value={date} setValue={setDate} />
+
               <EditorWriter
                 value={writer}
                 setValue={setWriter}
@@ -170,6 +177,10 @@ const EditorCore = ({ data, location, pageContext }) => {
                 value={getYourFunUrl}
                 setValue={setGetYourFunUrl}
               />
+              <EditorBlasone
+                value={blasoneshopUrl}
+                setValue={setBlasoneshopUrl}
+              />
 
               <h2 className="mt-5">Contenuto</h2>
 
@@ -197,6 +208,7 @@ const EditorCore = ({ data, location, pageContext }) => {
                 <EditorDownloader
                   isDisabled={!isEnabled}
                   title={title}
+                  date={date}
                   writer={writer}
                   mechanisms={mechanisms}
                   publishers={publishers}
@@ -217,6 +229,7 @@ const EditorCore = ({ data, location, pageContext }) => {
                   fantasiaUrl={fantasiaUrl}
                   dungeondiceUrl={dungeondiceUrl}
                   getYourFunUrl={getYourFunUrl}
+                  blasoneshopUrl={blasoneshopUrl}
                   setting={setting}
                   rules={rules}
                   feedback={feedback}

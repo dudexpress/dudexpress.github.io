@@ -7,7 +7,7 @@ import JSZip from "jszip"
 import showdown from "showdown"
 
 const template = `---
-date: "2022-xx-xx"
+date: "{{date}}"
 writer: {{writer}}
 title: "{{title}}"
 featureImage: cover.jpg
@@ -42,6 +42,7 @@ sidebar_votes:
 {{dungeondice_url}}
 {{getyourfun_url}}
 {{fantasia_url}}
+{{blasoneshop_url}}
 # weega_url
 # weega_future
 # gamefound_url
@@ -63,6 +64,8 @@ sidebar_votes:
 <Feedback>
   {{feedback}}
 </Feedback>
+
+<img src="./game3.jpg" alt="{{title}}" />
 `
 
 export const EditorDownloader = props => {
@@ -85,6 +88,9 @@ export const EditorDownloader = props => {
     getText = () => {
       let text = template
       text = text.replace(/{{title}}/g, props.title)
+
+      text = text.replace(/{{date}}/g, props.date)
+
       text = text.replace(/{{writer}}/g, props.writer)
       text = text.replace(/{{description}}/g, props.description)
 
@@ -144,6 +150,15 @@ export const EditorDownloader = props => {
         text = text.replace(/{{getyourfun_url}}/g, "")
       }
 
+      if (props.blasoneshopUrl) {
+        text = text.replace(
+          /{{blasoneshop_url}}/g,
+          `blasoneshop_url: ${props.blasoneshopUrl}`
+        )
+      } else {
+        text = text.replace(/{{blasoneshop_url}}/g, "")
+      }
+
       text = text.replace(/{{setting}}/g, makeSections(props.setting))
       text = text.replace(/{{rules}}/g, makeSections(props.rules))
       text = text.replace(/{{feedback}}/g, makeSections(props.feedback))
@@ -174,7 +189,7 @@ export const EditorDownloader = props => {
   return (
     <>
       <Button disabled={props.isDisabled} onClick={onSubmit}>
-        Salva
+        Scarica lo zip
       </Button>
       {disabledReason}
     </>
