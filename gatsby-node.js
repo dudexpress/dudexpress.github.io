@@ -11,52 +11,108 @@ function getWriterPath(author) {
   return `/writers/${slugify(author, { lower: true })}`
 }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions,
-    result = await graphql(
-      `
-        {
-          allMdx(sort: { fields: [frontmatter___date], order: ASC }) {
-            nodes {
-              id
-              frontmatter {
-                mechanisms
-                writer
-              }
-              fields {
-                slug
-              }
+async function getAllReviews(graphql) {
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "review" } } }
+          sort: { fields: [frontmatter___date], order: ASC }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              type
+              mechanisms
+              writer
+            }
+            fields {
+              slug
             }
           }
         }
-      `
-    ),
-    posts = result.data.allMdx.nodes
+      }
+    `
+  )
 
-  posts.forEach((post, index) => {
+  return result.data.allMdx.nodes
+}
+
+async function getAllBestOf(graphql) {
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "best-of" } } }
+          sort: { fields: [frontmatter___date], order: ASC }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              type
+              mechanisms
+              writer
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return result.data.allMdx.nodes
+}
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions,
+    reviewPosts = await getAllReviews(graphql),
+    bestOfPosts = await getAllBestOf(graphql)
+
+  reviewPosts.forEach((post, index) => {
     // TODO same mechaniism
     let readMoreIds = []
     while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * posts.length)
+      let r = "" + Math.floor(Math.random() * reviewPosts.length)
       if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
         readMoreIds.push(r)
       }
     }
 
     reporter.info(`Creating page: ${post.fields.slug}`)
-
     createPage({
       path: post.fields.slug,
       component: path.resolve(`./src/templates/BlogPost.tsx`),
       context: {
         id: post.id,
-        readMoreIds: readMoreIds.map(x => posts[x].id),
+        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
+      },
+    })
+  })
+
+  bestOfPosts.forEach((post, index) => {
+    let readMoreIds = []
+    while (readMoreIds.length < 3) {
+      let r = "" + Math.floor(Math.random() * reviewPosts.length)
+      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+        readMoreIds.push(r)
+      }
+    }
+
+    reporter.info(`Creating page: ${post.fields.slug}`)
+    createPage({
+      path: post.fields.slug,
+      component: path.resolve(`./src/templates/BestOfPost.tsx`),
+      context: {
+        id: post.id,
+        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
       },
     })
   })
 
   const blogPostPerPage = 10,
-    numPages = Math.ceil(posts.length / blogPostPerPage)
+    numPages = Math.ceil(reviewPosts.length / blogPostPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     reporter.info(`Creating page: blog/${i + 1}`)
@@ -73,7 +129,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   let mechanismsCounter = {}
-  result.data.allMdx.nodes.forEach(node => {
+  reviewPosts.forEach(node => {
     node.frontmatter.mechanisms.forEach(m => {
       mechanismsCounter[m] = (mechanismsCounter[m] ?? 0) + 1
     })
@@ -110,7 +166,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Mechanism.jsx"),
       context: {
         mechanism,
-        ids: posts
+        ids: reviewPosts
           .filter(node => {
             return node.frontmatter.mechanisms.includes(mechanism)
           })
@@ -120,7 +176,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   let dedupedWriters = new Set()
-  result.data.allMdx.nodes.forEach(node => {
+  reviewPosts.forEach(node => {
     dedupedWriters.add(node.frontmatter.writer)
   })
 
@@ -131,7 +187,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Writer.jsx"),
       context: {
         writer,
-        ids: posts
+        ids: reviewPosts
           .filter(node => {
             return node.frontmatter.writer === writer
           })
@@ -205,6 +261,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
+      type: String
       date: Date @dateformat
       writer: String
       title: String

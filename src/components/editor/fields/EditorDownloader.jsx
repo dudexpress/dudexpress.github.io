@@ -7,6 +7,7 @@ import JSZip from "jszip"
 import showdown from "showdown"
 
 const template = `---
+type: "review"
 date: "{{date}}"
 writer: {{writer}}
 title: "{{title}}"
