@@ -154,7 +154,7 @@ export const EditorDownloader = props => {
       if (props.blasoneshopUrl) {
         text = text.replace(
           /{{blasoneshop_url}}/g,
-          `blasoneshop_url: ${props.blasoneshopUrl}`
+          `blasone_url: ${props.blasoneshopUrl}`
         )
       } else {
         text = text.replace(/{{blasoneshop_url}}/g, "")
