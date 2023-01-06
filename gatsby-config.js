@@ -139,6 +139,12 @@ module.exports = {
         image: "intavolatrice.png",
       },
       {
+        name: "LoveIsOnTheBoard",
+        summary: " 'Ma sì, prendiamoci un gioco da tavolo' si dissero 'cosa mai potrà succedere?' Ebbene eccoci qui, molti giochi dopo, a scrivere recensioni su quella che è diventata una nostra grande passione.",
+        image: "LoveIsOnTheBoard.jpg"
+        
+      },
+      {
         name: "Maria Teresa",
         summary:
           "Amante dei giochi da tavolo. Potrei passare delle ore a giocare, senza accorgermi del tempo che passa.",
