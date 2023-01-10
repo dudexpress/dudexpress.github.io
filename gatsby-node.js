@@ -38,12 +38,12 @@ async function getAllReviews(graphql) {
   return result.data.allMdx.nodes
 }
 
-async function getAllBestOf(graphql) {
+async function getAllAdvisor(graphql) {
   const result = await graphql(
     `
       {
         allMdx(
-          filter: { frontmatter: { type: { eq: "best-of" } } }
+          filter: { frontmatter: { type: { eq: "advisor" } } }
           sort: { fields: [frontmatter___date], order: ASC }
         ) {
           nodes {
@@ -68,7 +68,7 @@ async function getAllBestOf(graphql) {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions,
     reviewPosts = await getAllReviews(graphql),
-    bestOfPosts = await getAllBestOf(graphql)
+    advisorPosts = await getAllAdvisor(graphql)
 
   reviewPosts.forEach((post, index) => {
     // TODO same mechaniism
@@ -91,7 +91,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  bestOfPosts.forEach((post, index) => {
+  advisorPosts.forEach((post, index) => {
     let readMoreIds = []
     while (readMoreIds.length < 3) {
       let r = "" + Math.floor(Math.random() * reviewPosts.length)
@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.info(`Creating page: ${post.fields.slug}`)
     createPage({
       path: post.fields.slug,
-      component: path.resolve(`./src/templates/BestOfPost.tsx`),
+      component: path.resolve(`./src/templates/AdvisorPost.tsx`),
       context: {
         id: post.id,
         readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
@@ -112,21 +112,45 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   const blogPostPerPage = 10,
-    numPages = Math.ceil(reviewPosts.length / blogPostPerPage)
+    blogNumPages = Math.ceil(
+      (reviewPosts.length + advisorPosts.length) / blogPostPerPage
+    )
 
-  Array.from({ length: numPages }).forEach((_, i) => {
+  Array.from({ length: blogNumPages }).forEach((_, i) => {
     reporter.info(`Creating page: blog/${i + 1}`)
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve("./src/templates/BlogPostList.jsx"),
       context: {
+        title: "Articoli",
+        types: ["review", "advisor"],
+        basePath: "blog",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
-        numPages,
+        blogNumPages,
         currentPage: i + 1,
       },
     })
   })
+
+  // const reviewsNumPages = Math.ceil(reviewPosts.length / blogPostPerPage)
+
+  // Array.from({ length: reviewsNumPages }).forEach((_, i) => {
+  //   reporter.info(`Creating page: reviews/${i + 1}`)
+  //   createPage({
+  //     path: i === 0 ? `/reviews` : `/reviews/${i + 1}`,
+  //     component: path.resolve("./src/templates/BlogPostList.jsx"),
+  //     context: {
+  //       title: "Recensioni",
+  //       types: ["review"],
+  //       basePath: "reviews",
+  //       limit: blogPostPerPage,
+  //       skip: i * blogPostPerPage,
+  //       reviewsNumPages,
+  //       currentPage: i + 1,
+  //     },
+  //   })
+  // })
 
   let mechanismsCounter = {}
   reviewPosts.forEach(node => {

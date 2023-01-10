@@ -21,3 +21,8 @@
     margin-top: -1 * math.div(v.$box-height, 2);
   }
 }
+
+.advisor-post {
+  margin-top: 0;
+  padding-top: math.div(v.$box-height, 2);
+}

@@ -20,7 +20,7 @@ export interface Sleeve {
 }
 
 export interface SimpleFrontmatter {
-  date: Date
+  date: string
   title: string
   featureImage: FileNode
   description: string

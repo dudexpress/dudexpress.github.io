@@ -7,15 +7,17 @@ import * as styles from "./GameCard.module.scss"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { SimpleFrontmatter } from "../../types"
 import Badge from "react-bootstrap/Badge"
+import classnames from "classnames"
 
 interface GameCardProps {
   post: {
     frontmatter: SimpleFrontmatter
     fields: any
   }
+  className?: string
 }
 
-const GameCard = ({ post }: GameCardProps) => {
+const GameCard = ({ post, className }: GameCardProps) => {
   const title = post.frontmatter.title || post.fields.slug,
     rendermechanism = (mec: string) => (
       <Badge key={mec} className={styles.badge} bg="secondary">
@@ -23,8 +25,14 @@ const GameCard = ({ post }: GameCardProps) => {
       </Badge>
     )
 
+  const mechanisms = post.frontmatter.mechanisms && (
+    <div className={styles.mechanisms}>
+      {post.frontmatter.mechanisms.map(rendermechanism)}
+    </div>
+  )
+
   return (
-    <Card className={styles.gameCard}>
+    <Card className={classnames(styles.gameCard, className)}>
       <Link to={post.fields.slug} className="stretched-link" />
       <Card.Body className={styles.gameCardBody}>
         <Row className="w-100">
@@ -38,9 +46,7 @@ const GameCard = ({ post }: GameCardProps) => {
           <Col md={10}>
             <div className="d-flex flex-column justify-content-center h-100">
               <h4>{title}</h4>
-              <div className={styles.mechanisms}>
-                {post.frontmatter.mechanisms.map(rendermechanism)}
-              </div>
+              {mechanisms}
               <p>{post.frontmatter.description}</p>
               <small>
                 {post.frontmatter.writer} ●{" "}

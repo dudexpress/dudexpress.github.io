@@ -14,16 +14,18 @@ import Feedback from "../components/sections/Feedback"
 import Spotify from "../components/misc/Spoify"
 import Instagram from "../components/misc/Instagram"
 import Youtube from "../components/misc/Youtube"
-import PostWriter from "../components/misc/PostWriter"
 import Container from "react-bootstrap/Container"
 import GameCard from "../components/misc/GameCard"
 import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
-import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
-import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
 import * as style from "./BlogPost.module.scss"
+import * as styleSidebar from "../components/blogPostAreas/BlogPostSidebar.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import RandomLink from "../components/misc/RandomLink"
+import { AdvisorBit } from "../components/sections/AdvisorBit"
+import Stores from "../components/sidebar/Stores"
+import classnames from "classnames"
+import AdvisorIntro from "../components/sections/AdvisorIntro"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -38,9 +40,15 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     OutboundLink,
     Link,
     RandomLink,
+    AdvisorIntro,
+    AdvisorBit,
   }
 
-  const classname = classNames("main-content", style.blogPost),
+  const classname = classNames(
+      "main-content",
+      style.blogPost,
+      style.advisorPost
+    ),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
     metaDesciption = `${post.frontmatter.description} | Recensione gioco da tavolo ${data.site.siteMetadata.title}`,
     metaImage =
@@ -49,28 +57,29 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
         .fallback!.src
 
   const structuredJSON = JSON.stringify({
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    name: post.frontmatter.title,
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://dudexpress.it/${post.slug}`,
+    },
+    headline: post.frontmatter.title,
+    description: post.frontmatter.description,
     image: metaImage,
-    review: [
-      {
-        "@type": "Review",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: post.frontmatter.score,
-          bestRating: "10",
-          worstRating: "0",
-        },
-        author: {
-          "@type": "Person",
-          name: post.frontmatter.writer,
-        },
-        datePublished: post.frontmatter.date,
-        publisher: { "@type": "Organization", name: "dudexpress" },
-        reviewBody: post.frontmatter.description,
+    author: {
+      "@type": "Organization",
+      name: "dudexpress",
+      url: "https://dudexpress.it",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "dudexpress",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://dudexpress.it/logo/logo-small.svg",
       },
-    ],
+    },
+    datePublished: post.frontmatter.date,
   })
 
   return (
@@ -82,7 +91,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
           <link rel="canonical" href={`https://dudexpress.it/${post.slug}`} />
           <meta
             name="keywords"
-            content={`${post.frontmatter.title}, dudexpress, gioco, gioco da tavolo, recensioni, board game, review`}
+            content={`${post.frontmatter.title}, dudexpress, migiori giochi, best board games, best of, dudeadvisor, gioco, gioco da tavolo, recensioni, board game, review`}
           />
 
           <meta property="og:type" content="website" />
@@ -100,7 +109,6 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
 
         <div className="blog-post">
           <BlogPostHeader frontmatter={post.frontmatter} />
-          <BlogPostBoxes {...post.frontmatter} />
           <div className={classname}>
             <Container>
               <Row>
@@ -113,18 +121,24 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
                 <Col md={{ span: 3, offset: 1 }}>
-                  <BlogPostSidebar {...post.frontmatter} />
-                </Col>
-              </Row>
-              <Row>
-                <Col
-                  lg={{ span: 7, offset: 1 }}
-                  className="base-section-column"
-                >
-                  <PostWriter
-                    writerName={post.frontmatter.writer}
-                    asCard={true}
-                  />
+                  <div
+                    className={classnames(
+                      styleSidebar.blogPostSidebar,
+                      "mt-5 mt-md-0"
+                    )}
+                  >
+                    <Stores
+                      label="Acquista i giochi su..."
+                      dungeondice_url="https://www.dungeondice.it/"
+                      getyourfun_url="https://www.getyourfun.it/"
+                      fantasia_url="https://fantasiastore.it/"
+                      blasone_url="https://www.blasoneshop.it/"
+                      mse_url="https://www.msedizioni.it/"
+                      pandoragames_url="https://pandoragames.it/"
+                      weega_url="https://weega.it/"
+                      linkToSpecificGame={false}
+                    />
+                  </div>
                 </Col>
               </Row>
             </Container>
@@ -148,7 +162,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($id: String!, $readMoreIds: [String]!) {
+  query AdvisorPostBySlug($id: String!, $readMoreIds: [String]!) {
     site {
       siteMetadata {
         title
@@ -182,24 +196,6 @@ export const pageQuery = graphql`
         player_count_official
         playing_time
         playing_time_official
-        sidebar_votes {
-          title
-          value
-        }
-        sleeves {
-          amount
-          size
-        }
-        dungeondice_url
-        getyourfun_url
-        fantasia_url
-        blasone_url
-        mse_url
-        pandoragames_url
-        weega_url
-        weega_future
-        gamefound_url
-        kickstarter_url
       }
     }
 
@@ -229,12 +225,12 @@ export const pageQuery = graphql`
   }
 `
 
-export interface BlogPostDataProps {
+export interface AdvisorPostDataProps {
   site: {
     siteMetadata: SiteMetadata
   }
   mdx: {
-    frontmatter: Frontmatter
+    frontmatter: Frontmatter // TODO
     body: string
     slug: string
   }
@@ -249,6 +245,6 @@ export interface BlogPostDataProps {
 }
 
 export interface BlogPostProps {
-  data: BlogPostDataProps
+  data: AdvisorPostDataProps
   location: Location
 }

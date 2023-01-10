@@ -8,18 +8,20 @@ import * as styles from "./Stores.module.scss"
 import LinkCtaBtn from "../misc/LinkCtaBtn"
 
 interface StoresProps
-  extends Pick<
-    Frontmatter,
-    | "dungeondice_url"
-    | "getyourfun_url"
-    | "fantasia_url"
-    | "blasone_url"
-    | "mse_url"
-    | "pandoragames_url"
-    | "weega_url"
-    | "weega_future"
-    | "kickstarter_url"
-    | "gamefound_url"
+  extends Partial<
+    Pick<
+      Frontmatter,
+      | "dungeondice_url"
+      | "getyourfun_url"
+      | "fantasia_url"
+      | "blasone_url"
+      | "mse_url"
+      | "pandoragames_url"
+      | "weega_url"
+      | "weega_future"
+      | "kickstarter_url"
+      | "gamefound_url"
+    >
   > {
   label?: string
   linkToSpecificGame: boolean
@@ -53,7 +55,7 @@ export default class Stores extends React.PureComponent<
     name: string,
     imgPath: string,
     imgClassName: string,
-    link: string,
+    link: string | undefined,
     linkSuffix: string,
     couponCode: string | null = null,
     couponPercentage: number | null = null

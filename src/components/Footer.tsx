@@ -13,7 +13,7 @@ const Footer = () => {
     <div className={style.socialLinks}>
       <Link to="/blog">
         <FontAwesomeIcon icon={faDice} />
-        <small className="d-none d-md-inline-block ms-1">Recensioni</small>
+        <small className="d-none d-md-inline-block ms-1">Articoli</small>
       </Link>
       <Link to="/mechanisms">
         <FontAwesomeIcon icon={faCogs} className="ms-3" />

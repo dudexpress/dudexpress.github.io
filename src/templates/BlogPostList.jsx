@@ -9,12 +9,12 @@ import { Helmet } from "react-helmet"
 
 const BlogList = ({ data, location, pageContext }) => {
   const { title } = data.site.siteMetadata
-  const { currentPage, numPages } = pageContext
+  const { currentPage, numPages, basePath } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
   const nextPage = (currentPage + 1).toString(),
-    metaTitle = `Recensioni - pagina ${currentPage} | ${title}`
+    metaTitle = `${pageContext.title} - pagina ${currentPage} | ${title}`
 
   return (
     <Layout location={location} title={title}>
@@ -25,7 +25,9 @@ const BlogList = ({ data, location, pageContext }) => {
       <Container className="mb-5">
         <Row className="game-list">
           <Col lg={{ span: 8, offset: 2 }}>
-            <h1 className="my-5">Recensioni - pagina {currentPage}</h1>
+            <h1 className="my-5">
+              {pageContext.title} - pagina {currentPage}
+            </h1>
 
             {data.allMdx.edges.map(post => (
               <GameCard key={post.node.frontmatter.title} post={post.node} />
@@ -34,7 +36,7 @@ const BlogList = ({ data, location, pageContext }) => {
             <div className="text-center">
               {!isFirst && (
                 <Link
-                  to={`/blog/${prevPage}`}
+                  to={`/${basePath}/${prevPage}`}
                   rel="prev"
                   className="btn btn-outline-secondary mt-2 mb-4 mx-2"
                 >
@@ -44,7 +46,7 @@ const BlogList = ({ data, location, pageContext }) => {
 
               {!isLast && (
                 <Link
-                  to={`/blog/${nextPage}`}
+                  to={`/${basePath}/${nextPage}`}
                   rel="next"
                   className="btn btn-outline-secondary mt-2 mb-4 mx-2"
                 >
@@ -62,13 +64,14 @@ const BlogList = ({ data, location, pageContext }) => {
 export default BlogList
 
 export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+  query blogListQuery($skip: Int!, $limit: Int!, $types: [String]) {
     site {
       siteMetadata {
         title
       }
     }
     allMdx(
+      filter: { frontmatter: { type: { in: $types } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

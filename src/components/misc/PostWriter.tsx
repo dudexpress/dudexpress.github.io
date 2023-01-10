@@ -12,13 +12,15 @@ import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons"
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { faTiktok } from "@fortawesome/free-brands-svg-icons"
 import { faFacebook } from "@fortawesome/free-brands-svg-icons"
+import classnames from "classnames"
 
 interface PostWriterProps {
   writerName: string
   asCard: boolean
+  inAdvisor?: boolean
 }
 
-const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
+const PostWriter = ({ writerName, asCard, inAdvisor }: PostWriterProps) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -109,7 +111,11 @@ const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
 
   if (asCard) {
     return (
-      <Card className={styles.postWriter + " " + styles.asCard}>
+      <Card
+        className={classnames(styles.postWriter, styles.asCard, {
+          "p-0 mt-4": inAdvisor,
+        })}
+      >
         <Link
           to={`/writers/${slugify(author.name, { lower: true })}`}
           className="stretched-link"
@@ -119,7 +125,15 @@ const PostWriter = ({ writerName, asCard }: PostWriterProps) => {
     )
   }
 
-  return <div className={styles.postWriter}>{content}</div>
+  return (
+    <div
+      className={classnames(styles.postWriter, {
+        "p-0 mt-4": inAdvisor,
+      })}
+    >
+      {content}
+    </div>
+  )
 }
 
 export default PostWriter

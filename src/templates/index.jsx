@@ -23,7 +23,7 @@ const Index = ({ data, location, pageContext }) => {
       <div className="text-center">
         <Link to="/blog">
           <button className="btn btn-outline-secondary mt-2 mb-5">
-            Scopri altri giochi
+            Scopri altri articoli
           </button>
         </Link>
       </div>

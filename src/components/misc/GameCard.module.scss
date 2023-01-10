@@ -6,6 +6,14 @@
   border-radius: v.$border-radius;
   transition: border-color 0.2s ease-out;
 
+  &.game-card-dark {
+    border-color: darken(v.$gray200, 8%);
+
+    &:hover {
+      border-color: darken(darken(v.$gray200, 8%), 8%);
+    }
+  }
+
   &:hover {
     border-color: darken(v.$gray200, 8%);
   }

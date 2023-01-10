@@ -19,9 +19,13 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
     if (this.props.fields == null) {
       return null
     }
+
+    const title = this.props.fields.slug.includes("/advisor/")
+      ? "Leggi l'articolo"
+      : "Leggi la recensione"
     return (
       <div className="mt-3">
-        <LinkCtaBtn slug={this.props.fields.slug} title="Leggi la recensione" />
+        <LinkCtaBtn slug={this.props.fields.slug} title={title} />
       </div>
     )
   }
@@ -32,14 +36,18 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
     }
     return (
       <small className="mt-4">
-        Pubblicata il {this.props.frontmatter.date}
+        <>Pubblicata il {this.props.frontmatter.date}</>
       </small>
     )
   }
 
   private renderDesignersAndPublishers(): React.ReactNode {
-    const designers = this.props.frontmatter.designer.replace(/\s-\s/g, " ● ")
-    const publisher = this.props.frontmatter.publisher.replace(/\s-\s/g, " ● ")
+    const designers = this.props.frontmatter.designer?.replace(/\s-\s/g, " ● ")
+    const publisher = this.props.frontmatter.publisher?.replace(/\s-\s/g, " ● ")
+
+    if (!designers || !publisher) {
+      return null
+    }
 
     if (!designers || !publisher) {
       return (

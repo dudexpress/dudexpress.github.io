@@ -8,7 +8,9 @@ interface BaseSectionProps {
   className?: string
 }
 
-export default class BaseSection extends React.PureComponent<BaseSectionProps> {
+export default class BaseSection extends React.PureComponent<
+  React.PropsWithChildren<BaseSectionProps>
+> {
   private renderTitle(): React.ReactNode {
     if (this.props.title == null) {
       return null
