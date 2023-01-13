@@ -140,9 +140,9 @@ module.exports = {
       },
       {
         name: "LoveIsOnTheBoard",
-        summary: " 'Ma sì, prendiamoci un gioco da tavolo' si dissero 'cosa mai potrà succedere?' Ebbene eccoci qui, molti giochi dopo, a scrivere recensioni su quella che è diventata una nostra grande passione.",
-        image: "LoveIsOnTheBoard.jpg"
-        
+        summary:
+          " 'Ma sì, prendiamoci un gioco da tavolo' si dissero 'cosa mai potrà succedere?' Ebbene eccoci qui, molti giochi dopo, a scrivere recensioni su quella che è diventata una nostra grande passione.",
+        image: "LoveIsOnTheBoard.jpg",
       },
       {
         name: "Maria Teresa",
@@ -180,7 +180,7 @@ module.exports = {
         name: "Simone",
         summary:
           "Che sia un gioco da tavolo, di ruolo o un videogioco, l'importante è giocare...e ogni tanto perché no, vincere!",
-        image: "simone-magnolini",
+        image: "simone-magnolini.jpg",
       },
       {
         name: "The Golden Meeple",
