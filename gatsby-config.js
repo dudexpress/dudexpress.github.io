@@ -9,7 +9,7 @@ module.exports = {
     },
     authors: [
       {
-        name: "Alkimisti",
+        name: "alKiMisti",
         summary:
           "Collezionisti e amanti di german, preferibilmente fuori produzione o introvabili.",
         image: "alkimisti.jpg",
