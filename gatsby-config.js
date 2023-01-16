@@ -8,14 +8,13 @@ module.exports = {
       summary: `che fa cose`,
     },
     authors: [
-
-
       {
         name: "Alkimisti",
-        summary: "Collezionisti e amanti di german, preferibilmente fuori produzione o introvabili.",
+        summary:
+          "Collezionisti e amanti di german, preferibilmente fuori produzione o introvabili.",
         image: "alkimisti.jpg",
         instagram_url: "https://www.instagram.com/alkimisti_gdt/",
-      }
+      },
 
       {
         name: "Angelo",
