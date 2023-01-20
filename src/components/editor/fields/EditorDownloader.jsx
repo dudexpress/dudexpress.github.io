@@ -90,7 +90,12 @@ export const EditorDownloader = props => {
       let text = template
       text = text.replace(/{{title}}/g, props.title)
 
-      text = text.replace(/{{date}}/g, props.date)
+      if (props.date === "TBD") {
+        const year = new Date().getFullYear()
+        text = text.replace(/{{date}}/g, `${year}-MM-DD"`)
+      } else {
+        text = text.replace(/{{date}}/g, props.date)
+      }
 
       text = text.replace(/{{writer}}/g, props.writer)
       text = text.replace(/{{description}}/g, props.description)
