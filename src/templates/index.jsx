@@ -125,6 +125,7 @@ const Index = ({ data, location, pageContext }) => {
                 <Stores
                   label="Acquista i giochi su..."
                   dungeondice_url="https://www.dungeondice.it/"
+                  magicmerchant_url="https://magicmerchant.it/"
                   getyourfun_url="https://www.getyourfun.it/"
                   fantasia_url="https://fantasiastore.it/"
                   blasone_url="https://www.blasoneshop.it/"

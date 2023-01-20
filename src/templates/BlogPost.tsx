@@ -191,6 +191,7 @@ export const pageQuery = graphql`
           size
         }
         dungeondice_url
+        magicmerchant_url
         getyourfun_url
         fantasia_url
         blasone_url

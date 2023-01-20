@@ -49,6 +49,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   // bio
   writer: string
   dungeondice_url: string
+  magicmerchant_url: string
   getyourfun_url: string
   fantasia_url: string
   blasone_url: string

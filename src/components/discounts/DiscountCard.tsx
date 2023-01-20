@@ -13,6 +13,7 @@ type DiscountSourceType =
   | "mse"
   | "pandora"
   | "weega"
+  | "magicmerchant"
 
 interface DiscountCardProps {
   url: string
@@ -56,6 +57,8 @@ export default class DiscountCard extends React.PureComponent<
       logo = "../../logo/mse.jpg"
     } else if (this.props.source === "pandora") {
       logo = "../../logo/pandoragames.jpg"
+    } else if (this.props.source === "magicmerchant") {
+      logo = "../../logo/magicmerchant.jpg"
     }
 
     return <img src={logo} alt={this.props.source} height={45} />

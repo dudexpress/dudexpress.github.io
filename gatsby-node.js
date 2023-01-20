@@ -302,6 +302,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       sidebar_votes: [SidebarVotes]
       seelves: [Sleeve]
       dungeondice_url: String
+      magicmerchant_url: String
       getyourfun_url: String
       fantasia_url: String
       blasone_url: String

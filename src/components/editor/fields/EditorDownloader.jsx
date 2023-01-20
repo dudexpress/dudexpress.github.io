@@ -41,6 +41,7 @@ sidebar_votes:
 
 # seelves
 {{dungeondice_url}}
+{{magicmerchant_url}}
 {{getyourfun_url}}
 {{fantasia_url}}
 {{blasoneshop_url}}
@@ -140,6 +141,15 @@ export const EditorDownloader = props => {
         )
       } else {
         text = text.replace(/{{dungeondice_url}}/g, "")
+      }
+
+      if (props.magicmerchantUrl) {
+        text = text.replace(
+          /{{magicmerchant_url}}/g,
+          `magicmerchant_url: ${props.magicmerchantUrl}`
+        )
+      } else {
+        text = text.replace(/{{magicmerchant_url}}/g, "")
       }
 
       if (props.getYourFunUrl) {

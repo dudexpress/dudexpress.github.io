@@ -12,6 +12,7 @@ interface StoresProps
     Pick<
       Frontmatter,
       | "dungeondice_url"
+      | "magicmerchant_url"
       | "getyourfun_url"
       | "fantasia_url"
       | "blasone_url"
@@ -105,6 +106,18 @@ export default class Stores extends React.PureComponent<
     )
   }
 
+  private renderMagicMerchant(): React.ReactNode {
+    return this.renderStore(
+      "magicmerchant",
+      "../../logo/magicmerchant.jpg",
+      styles.magicmerchant,
+      this.props.magicmerchant_url,
+      "",
+      "DUDEXPRESS5",
+      0.05
+    )
+  }
+
   private renderGetYourFun(): React.ReactNode {
     return this.renderStore(
       "getyourfun",
@@ -192,9 +205,10 @@ export default class Stores extends React.PureComponent<
   public render(): React.ReactNode {
     const stores = [
       this.renderDungeonDice(),
-      this.renderGetYourFun(),
+      this.renderMagicMerchant(),
       this.renderFantasia(),
       this.renderBlasone(),
+      this.renderGetYourFun(),
       this.renderMse(),
       this.renderPandoraGames(),
       this.renderWeega(),

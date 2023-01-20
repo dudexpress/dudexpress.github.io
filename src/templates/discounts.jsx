@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import Spinner from "../components/misc/Spinner"
 import DiscountCard from "../components/discounts/DiscountCard"
+import { DiscountEmptyState } from "../components/discounts/DiscountEmptyState"
 import * as style from "./discounts.module.scss"
 import axios from "axios"
 
@@ -157,7 +158,11 @@ const Discount = ({ data, location }) => {
 
       const items = getItems()
       if (items.length === 0) {
-        return <div className="mt-5 text-center">Nessun gioco trovato :(</div>
+        return (
+          <div className="mt-5 text-center">
+            <DiscountEmptyState />
+          </div>
+        )
       }
       return items.map(renderItem)
     }

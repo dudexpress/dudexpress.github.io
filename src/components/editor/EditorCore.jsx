@@ -33,6 +33,7 @@ import { EditorDungeondice } from "./fields/EditorDungeondice"
 import { EditorGetYourFun } from "./fields/EditorGetYourFun"
 import { EditorBlasone } from "./fields/EditorBlasone"
 import { EditorDate } from "./fields/EditorDate"
+import { EditorMagicMerchant } from "./fields/EditorMagicMerchant"
 
 const EditorCore = ({ data, location, pageContext }) => {
   const siteMeta = data.site.siteMetadata,
@@ -61,6 +62,7 @@ const EditorCore = ({ data, location, pageContext }) => {
     [files, setFiles] = useState([]),
     [fantasiaUrl, setFantasiaUrl] = useState(),
     [dungeondiceUrl, setDungeondiceUrl] = useState(),
+    [magicmerchantUrl, setmagicmerchantUrl] = useState(),
     [getYourFunUrl, setGetYourFunUrl] = useState(),
     [blasoneshopUrl, setBlasoneshopUrl] = useState(),
     [date, setDate] = useState()
@@ -173,6 +175,10 @@ const EditorCore = ({ data, location, pageContext }) => {
                 value={dungeondiceUrl}
                 setValue={setDungeondiceUrl}
               />
+              <EditorMagicMerchant
+                value={magicmerchantUrl}
+                setValue={setmagicmerchantUrl}
+              />
               <EditorGetYourFun
                 value={getYourFunUrl}
                 setValue={setGetYourFunUrl}
@@ -228,6 +234,7 @@ const EditorCore = ({ data, location, pageContext }) => {
                   portability={portability}
                   fantasiaUrl={fantasiaUrl}
                   dungeondiceUrl={dungeondiceUrl}
+                  magicmerchantUrl={magicmerchantUrl}
                   getYourFunUrl={getYourFunUrl}
                   blasoneshopUrl={blasoneshopUrl}
                   setting={setting}

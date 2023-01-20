@@ -26,6 +26,10 @@
       @include store(v.$dungeonDiceColor);
     }
 
+    &.magicmerchant {
+      @include store(v.$magicMerchantColor);
+    }
+
     &.getyourfun {
       @include store(v.$getYourFunColor);
     }
