@@ -10,10 +10,11 @@ export const EditorDate = ({ value, setValue }) => {
         placeholder="2022-12-31"
         onChange={editorHandleChange(setValue)}
         value={value}
-        isInvalid={value?.match(/^\d{4}-\d{2}-\d{2}$/) != null}
+        isInvalid={!value?.match(/^\d{4}-\d{2}-\d{2}$/) && value !== "TBD"}
       />
       <Form.Text className="text-muted">
-        inserire la data nel formato AAAA-MM-GG
+        inserire la data nel formato AAAA-MM-GG o se non si ha una data definita
+        digitare TBD
       </Form.Text>
     </Form.Group>
   )

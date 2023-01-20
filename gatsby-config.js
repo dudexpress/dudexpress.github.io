@@ -9,6 +9,14 @@ module.exports = {
     },
     authors: [
       {
+        name: "alKiMisti",
+        summary:
+          "Collezionisti e amanti di german, preferibilmente fuori produzione o introvabili.",
+        image: "alkimisti.jpg",
+        instagram_url: "https://www.instagram.com/alkimisti_gdt/",
+      },
+
+      {
         name: "Angelo",
         summary:
           "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
