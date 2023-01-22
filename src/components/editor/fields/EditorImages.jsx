@@ -68,7 +68,7 @@ export const EditorImages = props => {
     <div className="card text-center p-2 bg-light">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <span style={{ cursor: "pointer" }}>Carica qui le immagini</span>
+        <span style={{ cursor: "pointer" }}>Carica qui le immagini e l'eventuale reel!</span>
       </div>
       <aside style={thumbsContainer}>{thumbs}</aside>
     </div>
