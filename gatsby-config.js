@@ -205,9 +205,9 @@ module.exports = {
         instagram_url: "https://www.instagram.com/mattialarentis/",
       },
       {
-        name: "True Dice",
+        name: "True Dice - Veronica",
         summary:
-          "Mi chiamo Veronica e sono un'appassionata di giochi da tavolo. Il mio tallone d'Achille? Se il gioco richiede anche solo un pizzico di fortuna stai certo che io non ce l'ho!",
+          "Mi piace parlare, riparlare e straparlare di giochi da tavolo!",
         image: "truedice.jpg",
         instagram_url: "https://www.instagram.com/true.dice/",
         tiktok_url: "https://vm.tiktok.com/ZMNVJsFQf/",
