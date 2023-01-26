@@ -3,6 +3,14 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const slugify = require("slugify")
 const fetch = require("node-fetch")
 
+function getDesignerPath(mechanism) {
+  return `/designers/${slugify(mechanism, { lower: true })}`
+}
+
+function getPublisherPath(mechanism) {
+  return `/publishers/${slugify(mechanism, { lower: true })}`
+}
+
 function getMechanismPath(mechanism) {
   return `/mechanisms/${slugify(mechanism, { lower: true })}`
 }
@@ -23,6 +31,8 @@ async function getAllReviews(graphql) {
             id
             frontmatter {
               type
+              designer
+              publisher
               mechanisms
               writer
             }
@@ -50,6 +60,8 @@ async function getAllAdvisor(graphql) {
             id
             frontmatter {
               type
+              designer
+              publisher
               mechanisms
               writer
             }
@@ -153,23 +165,97 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // })
 
   let mechanismsCounter = {}
+  let designersCounter = {}
+  let publishersCounter = {}
+
   reviewPosts.forEach(node => {
+    node.frontmatter.designer.forEach(m => {
+      designersCounter[m] = (designersCounter[m] ?? 0) + 1
+    })
+    node.frontmatter.publisher.forEach(m => {
+      publishersCounter[m] = (publishersCounter[m] ?? 0) + 1
+    })
     node.frontmatter.mechanisms.forEach(m => {
       mechanismsCounter[m] = (mechanismsCounter[m] ?? 0) + 1
     })
   })
 
-  const dedupedMechanisms = [...Object.keys(mechanismsCounter)].sort(),
-    sortedMechanisms = Object.keys(mechanismsCounter).sort(
-      (a, b) => mechanismsCounter[b] - mechanismsCounter[a]
-    )
+  const dedupedDesigners = [...Object.keys(designersCounter)].sort()
+  const sortedDesigners = Object.keys(designersCounter).sort(
+    (a, b) => designersCounter[b] - designersCounter[a]
+  )
+
+  const dedupedPublishers = [...Object.keys(publishersCounter)].sort()
+  const sortedPublishers = Object.keys(publishersCounter).sort(
+    (a, b) => publishersCounter[b] - publishersCounter[a]
+  )
+
+  const dedupedMechanisms = [...Object.keys(mechanismsCounter)].sort()
+  const sortedMechanisms = Object.keys(mechanismsCounter).sort(
+    (a, b) => mechanismsCounter[b] - mechanismsCounter[a]
+  )
 
   createPage({
     path: `editor`,
     component: require.resolve("./src/templates/Editor.jsx"),
     context: {
       mechanisms: dedupedMechanisms,
+      // TODO
     },
+  })
+
+  createPage({
+    path: `designers`,
+    component: require.resolve("./src/templates/DesignerList.jsx"),
+    context: {
+      designers: dedupedDesigners.map(name => ({
+        name,
+        path: getDesignerPath(name),
+      })),
+    },
+  })
+
+  dedupedDesigners.forEach(designer => {
+    reporter.info(`Creating page: ${getDesignerPath(designer)}`)
+    createPage({
+      path: getDesignerPath(designer),
+      component: require.resolve("./src/templates/Designer.jsx"),
+      context: {
+        designer,
+        ids: reviewPosts
+          .filter(node => {
+            return node.frontmatter.designer.includes(designer)
+          })
+          .map(node => node.id),
+      },
+    })
+  })
+
+  createPage({
+    path: `publishers`,
+    component: require.resolve("./src/templates/PublisherList.jsx"),
+    context: {
+      publishers: dedupedPublishers.map(name => ({
+        name,
+        path: getPublisherPath(name),
+      })),
+    },
+  })
+
+  dedupedPublishers.forEach(publisher => {
+    reporter.info(`Creating page: ${getPublisherPath(publisher)}`)
+    createPage({
+      path: getPublisherPath(publisher),
+      component: require.resolve("./src/templates/Publisher.jsx"),
+      context: {
+        publisher,
+        ids: reviewPosts
+          .filter(node => {
+            return node.frontmatter.publisher.includes(publisher)
+          })
+          .map(node => node.id),
+      },
+    })
   })
 
   createPage({
