@@ -42,10 +42,10 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
   }
 
   private renderDesignersAndPublishers(): React.ReactNode {
-    const designers = this.props.frontmatter.designer?.replace(/\s-\s/g, " ● ")
-    const publisher = this.props.frontmatter.publisher?.replace(/\s-\s/g, " ● ")
+    const designers = (this.props.frontmatter.designer ?? []).join(" ● ")
+    const publisher = (this.props.frontmatter.publisher ?? []).join(" ● ")
 
-    if (!designers || !publisher) {
+    if (!designers && !publisher) {
       return null
     }
 

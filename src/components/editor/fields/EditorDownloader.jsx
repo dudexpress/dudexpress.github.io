@@ -13,8 +13,10 @@ writer: {{writer}}
 title: "{{title}}"
 featureImage: cover.jpg
 description: "{{description}}"
-designer: {{designers}}
-publisher: {{publishers}}
+designer: 
+{{designers}}
+publisher: 
+{{publishers}}
 mechanisms:
 {{mechanisms}}
 
@@ -101,8 +103,17 @@ export const EditorDownloader = props => {
       text = text.replace(/{{writer}}/g, props.writer)
       text = text.replace(/{{description}}/g, props.description)
 
-      text = text.replace(/{{designers}}/g, props.designers.join(" - "))
-      text = text.replace(/{{publishers}}/g, props.publishers.join(" - "))
+      let designers = ""
+      for (let m of props.designers) {
+        designers += `  - ${m}\n`
+      }
+      text = text.replace(/{{designers}}/g, designers)
+
+      let publishers = ""
+      for (let m of props.publishers) {
+        publishers += `  - ${m}\n`
+      }
+      text = text.replace(/{{publishers}}/g, publishers)
 
       let mechanisms = ""
       for (let m of props.mechanisms) {

@@ -31,8 +31,8 @@ export interface SimpleFrontmatter {
 export type PostWeigth = 1 | 2 | 3 | 4 | 5
 
 export interface Frontmatter extends SimpleFrontmatter {
-  designer: string
-  publisher: string
+  designer: string[]
+  publisher: string[]
 
   // boxes
   score: number
