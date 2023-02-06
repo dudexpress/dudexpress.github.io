@@ -1,5 +1,6 @@
 import classNames from "classnames"
 import React from "react"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 import * as style from "./DiscountEmptyState.module.scss"
 
@@ -17,9 +18,12 @@ export const DiscountEmptyState = () => {
           <div className="mt-3">
             Non trovi il gioco che desideri? <br />
             Fa' la tua proposta su{" "}
-            <a href="https://bit.ly/weega_dudexpress" target="_blank">
+            <OutboundLink
+              href="https://bit.ly/weega_dudexpress"
+              target="_blank"
+            >
               Weega!
-            </a>
+            </OutboundLink>
           </div>
         </div>
       </div>
