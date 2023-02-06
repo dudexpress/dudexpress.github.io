@@ -17,7 +17,7 @@ export const DiscountEmptyState = () => {
           <div className="mt-3">
             Non trovi il gioco che desideri? <br />
             Fa' la tua proposta su{" "}
-            <a href="https://weega.it/?partners=Dudexpress" target="_blank">
+            <a href="https://bit.ly/weega_dudexpress" target="_blank">
               Weega!
             </a>
           </div>
