@@ -212,6 +212,13 @@ module.exports = {
         instagram_url: "https://www.instagram.com/true.dice/",
         tiktok_url: "https://vm.tiktok.com/ZMNVJsFQf/",
       },
+      {
+        name: "Un Meeple per due",
+        summary: "Lo spazio! perche nessuno pensa allo spazio?!",
+        image: "un-meeple-per-due.jpg",
+        instagram_url: "https://www.instagram.com/un_meeple_per_due",
+        tiktok_url: "https://www.tiktok.com/@un_meeple_per_due",
+      },
     ],
   },
   plugins: [
