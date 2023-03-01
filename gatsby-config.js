@@ -219,6 +219,16 @@ module.exports = {
         instagram_url: "https://www.instagram.com/un_meeple_per_due",
         tiktok_url: "https://www.tiktok.com/@un_meeple_per_due",
       },
+      {
+        name: "Zirø",
+        summary:
+          "Sono Alessio, ma potete chiamarmi Zirø. Appassionato di: Giochi da tavolo, librigame, videogiochi e di tante altre cose che però non entrano in questa bio",
+        image: "ziro.jpg",
+        instagram_url:
+          "https://instagram.com/ziroeight.exe?igshid=YmMyMTA2M2Y=",
+        tiktok_url: "https://www.tiktok.com/@ziroeight?_t=8YJ9MXws1sU&_r=1",
+        youtube_url: "https://YouTube.com/ziroeight",
+      },
     ],
   },
   plugins: [
