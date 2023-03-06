@@ -15,7 +15,7 @@ export default class DeadlineBox extends React.PureComponent<DeadlineBoxProps> {
   public render(): React.ReactNode {
     return (
       <BaseBox
-        title="Scandenza"
+        title="Scadenza"
         footer={this.renderFooter()}
         small={this.props.small}
       >
