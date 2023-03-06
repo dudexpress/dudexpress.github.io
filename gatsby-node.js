@@ -77,10 +77,36 @@ async function getAllAdvisor(graphql) {
   return result.data.allMdx.nodes
 }
 
+async function getAllFunding(graphql) {
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "funding" } } }
+          sort: { fields: [frontmatter___date], order: ASC }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              type
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return result.data.allMdx.nodes
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions,
-    reviewPosts = await getAllReviews(graphql),
-    advisorPosts = await getAllAdvisor(graphql)
+  const { createPage } = actions
+  const reviewPosts = await getAllReviews(graphql)
+  const advisorPosts = await getAllAdvisor(graphql)
+  const fundingPosts = await getAllFunding(graphql)
 
   reviewPosts.forEach((post, index) => {
     // TODO same mechaniism
@@ -123,9 +149,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  fundingPosts.forEach((post, index) => {
+    let readMoreIds = []
+    while (readMoreIds.length < 3) {
+      let r = "" + Math.floor(Math.random() * reviewPosts.length)
+      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+        readMoreIds.push(r)
+      }
+    }
+
+    reporter.info(`Creating page: ${post.fields.slug}`)
+    createPage({
+      path: post.fields.slug,
+      component: path.resolve(`./src/templates/FundingPost.tsx`),
+      context: {
+        id: post.id,
+        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
+      },
+    })
+  })
+
   const blogPostPerPage = 10,
     blogNumPages = Math.ceil(
-      (reviewPosts.length + advisorPosts.length) / blogPostPerPage
+      (reviewPosts.length + advisorPosts.length + fundingPosts.length) /
+        blogPostPerPage
     )
 
   Array.from({ length: blogNumPages }).forEach((_, i) => {
@@ -135,7 +182,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve("./src/templates/BlogPostList.jsx"),
       context: {
         title: "Articoli",
-        types: ["review", "advisor"],
+        types: ["review", "advisor", "funding"],
         basePath: "blog",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,

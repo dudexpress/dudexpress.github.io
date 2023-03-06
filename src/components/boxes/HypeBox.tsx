@@ -3,10 +3,11 @@ import BaseBox from "./BaseBox"
 
 interface HypeBoxProps {
   value: number
+  small?: boolean
 }
 
 export default class HypeBox extends React.PureComponent<HypeBoxProps> {
-  static height = 45
+  private height: number = this.props.small ? 30 : 45
 
   private renderFullHearts(amount: number): React.ReactNode {
     return [...new Array(amount)].map((_, idx) => (
@@ -14,7 +15,7 @@ export default class HypeBox extends React.PureComponent<HypeBoxProps> {
         key={`full-` + idx}
         src={`../../stars/full.png`}
         alt="heart"
-        height={HypeBox.height}
+        height={this.height}
       />
     ))
   }
@@ -25,7 +26,7 @@ export default class HypeBox extends React.PureComponent<HypeBoxProps> {
         key={`empty-` + idx}
         src={`../../stars/empty.png`}
         alt="heart"
-        height={HypeBox.height}
+        height={this.height}
       />
     ))
   }
@@ -40,7 +41,7 @@ export default class HypeBox extends React.PureComponent<HypeBoxProps> {
         key="half"
         src={`../../stars/half.png`}
         alt="heart"
-        height={HypeBox.height}
+        height={this.height}
       />
     )
   }
@@ -65,7 +66,7 @@ export default class HypeBox extends React.PureComponent<HypeBoxProps> {
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Hype" footer={this.renderFooter()}>
+      <BaseBox title="Hype" footer={this.renderFooter()} small>
         {this.renderHearts()}
       </BaseBox>
     )

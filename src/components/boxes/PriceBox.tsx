@@ -1,21 +1,21 @@
 import React from "react"
 import BaseBox from "./BaseBox"
 
-interface DurationBoxProps {
+interface PriceBoxProps {
   value: string
-  officialValue: string
+  otherValue: string
   small?: boolean
 }
 
-export default class DurationBox extends React.PureComponent<DurationBoxProps> {
+export default class PriceBox extends React.PureComponent<PriceBoxProps> {
   private renderFooter(): React.ReactNode {
-    return "Dichiarati: " + this.props.officialValue
+    return "Spedizioni: " + this.props.otherValue
   }
 
   public render(): React.ReactNode {
     return (
       <BaseBox
-        title="Durata"
+        title="Prezzo base"
         footer={this.renderFooter()}
         small={this.props.small}
       >

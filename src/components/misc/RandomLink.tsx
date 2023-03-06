@@ -10,6 +10,7 @@ interface RandomLinkProps {
   title: string
   link: string
   discount?: string
+  small?: boolean
 }
 
 export default class RandomLink extends React.PureComponent<RandomLinkProps> {
@@ -27,7 +28,9 @@ export default class RandomLink extends React.PureComponent<RandomLinkProps> {
     )
   }
   public render(): React.ReactNode {
-    const className = classnames(styles.randomLink)
+    const className = classnames(styles.randomLink, {
+      [styles.randomLinkSmall]: this.props.small,
+    })
 
     return (
       <Card className={className}>

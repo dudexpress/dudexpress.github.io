@@ -6,6 +6,7 @@ import BaseBox from "./BaseBox"
 
 interface WeightBoxProps {
   value: PostWeigth
+  small?: boolean
 }
 
 export default class WeightBox extends React.PureComponent<WeightBoxProps> {
@@ -31,7 +32,7 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
       <img
         src={`../../weight/${this.props.value}.png`}
         alt="weight"
-        height={75}
+        height={this.props.small ? 45 : 75}
       />
     )
   }
@@ -41,6 +42,7 @@ export default class WeightBox extends React.PureComponent<WeightBoxProps> {
       <BaseBox
         title="Impegno richiesto"
         footer={WeightBox.getLabel(this.props.value)}
+        small={this.props.small}
       >
         {this.renderContent()}
       </BaseBox>

@@ -8,6 +8,7 @@ interface MechanismsProps {
   title?: string
   values: string[]
   withMore?: boolean
+  small?: boolean
 }
 
 export default class Mechanisms extends React.PureComponent<MechanismsProps> {
@@ -34,6 +35,20 @@ export default class Mechanisms extends React.PureComponent<MechanismsProps> {
   }
 
   public render(): React.ReactNode {
+    if (this.props.small) {
+      return (
+        <div className="text-center text-lg-start">
+          <div
+            className={
+              styles.mechanisms + " flex-row justify-content-center flex-wrap"
+            }
+          >
+            {this.props.values.map(this.renderTag)}
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className="mb-5 text-center text-lg-start">
         <h5 className="fw-bold">{this.props.title ?? "Meccaniche"}</h5>

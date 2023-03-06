@@ -1,21 +1,21 @@
 import React from "react"
 import BaseBox from "./BaseBox"
 
-interface DurationBoxProps {
+interface DeadlineBoxProps {
   value: string
-  officialValue: string
+  deliverylValue: string
   small?: boolean
 }
 
-export default class DurationBox extends React.PureComponent<DurationBoxProps> {
+export default class DeadlineBox extends React.PureComponent<DeadlineBoxProps> {
   private renderFooter(): React.ReactNode {
-    return "Dichiarati: " + this.props.officialValue
+    return "Consegna: " + this.props.deliverylValue
   }
 
   public render(): React.ReactNode {
     return (
       <BaseBox
-        title="Durata"
+        title="Scadenza"
         footer={this.renderFooter()}
         small={this.props.small}
       >
