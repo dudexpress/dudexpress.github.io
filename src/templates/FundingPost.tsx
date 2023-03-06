@@ -27,6 +27,7 @@ import classnames from "classnames"
 import FundingIntro from "../components/sections/FundingIntro"
 import { FundingBit } from "../components/sections/FundingBit"
 import PostWriter from "../components/misc/PostWriter"
+import WeegaLink from "../components/misc/WeegaLink"
 
 const BlogPost = ({ data, location }: FundingPostProps) => {
   const post = data.mdx
@@ -148,6 +149,8 @@ const BlogPost = ({ data, location }: FundingPostProps) => {
                   lg={{ span: 7, offset: 1 }}
                   className="base-section-column"
                 >
+                  <WeegaLink />
+
                   <PostWriter
                     writerName={post.frontmatter.writer}
                     asCard={true}
