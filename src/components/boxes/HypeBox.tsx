@@ -66,7 +66,11 @@ export default class HypeBox extends React.PureComponent<HypeBoxProps> {
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Hype" footer={this.renderFooter()} small>
+      <BaseBox
+        title="Hype"
+        footer={this.renderFooter()}
+        small={this.props.small}
+      >
         {this.renderHearts()}
       </BaseBox>
     )
