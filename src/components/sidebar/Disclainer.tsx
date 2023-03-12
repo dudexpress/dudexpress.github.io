@@ -22,7 +22,7 @@ export default class Disclaimer extends React.PureComponent<DisclaimerProps> {
       <div className="disclaimer mb-5">
         <h5>Disclaimer</h5>
         <small>
-          Vi ricordiamo che state leggendo riguardo l'anteprima di un gioco non
+          Vi ricordiamo che state leggendo l'anteprima di un gioco non
           ancora esistente che i vostri Dudes sono andati a recuperare nelle
           profondità dello spazio! <br />I voti e i giudizi sono relativi
           solamente alla copia ricevuta e analizzata grazie ai nostri
