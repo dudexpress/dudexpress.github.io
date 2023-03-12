@@ -5,15 +5,16 @@ import * as style from "./PlayerCountBox.module.scss"
 interface PlayerCountBoxProps {
   value: number
   officialValue: string
+  small?: boolean
 }
 
 export default class PlayerCountBox extends React.PureComponent<PlayerCountBoxProps> {
   private getHeight(amount: number): number {
     if (amount <= 4) {
-      return 50
+      return this.props.small ? 30 : 50
     }
 
-    return 40
+    return this.props.small ? 25 : 40
   }
 
   private renderFooter(): React.ReactNode {
@@ -33,7 +34,11 @@ export default class PlayerCountBox extends React.PureComponent<PlayerCountBoxPr
     const height = this.getHeight(this.props.value)
 
     return (
-      <BaseBox title="Giocatori" footer={this.renderFooter()}>
+      <BaseBox
+        title="Giocatori"
+        footer={this.renderFooter()}
+        small={this.props.small}
+      >
         <span className={style.playerCount}>
           {this.getRandomNumbers(this.props.value).map((id: number) => (
             <img

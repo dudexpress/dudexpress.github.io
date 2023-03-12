@@ -8,6 +8,10 @@
   border: 10px solid v.$gray200;
   border-radius: v.$border-radius;
 
+  &.small {
+    height: 140px;
+  }
+
   .card-body {
     display: flex;
     flex-direction: column;
@@ -20,6 +24,10 @@
     margin-bottom: 0;
   }
 
+  .card-title-small {
+    font-size: 1rem;
+  }
+
   .card-text {
     font-family: v.$font-family-title;
     height: 110px;
@@ -29,10 +37,23 @@
     font-size: 3rem;
   }
 
+  .card-text-small {
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .card-text-no-height {
+    height: unset !important;
+  }
+
   .card-footer {
     background-color: v.$gray200;
     border-top: 0;
     border-radius: v.$border-radius;
     padding: 0;
+  }
+
+  .card-footer-small {
+    font-size: 0.9rem;
   }
 }

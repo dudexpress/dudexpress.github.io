@@ -20,9 +20,9 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
       return null
     }
 
-    const title = this.props.fields.slug.includes("/advisor/")
-      ? "Leggi l'articolo"
-      : "Leggi la recensione"
+    const title = this.props.fields.slug.includes("/review/")
+      ? "Leggi la recensione"
+      : "Leggi l'articolo"
     return (
       <div className="mt-3">
         <LinkCtaBtn slug={this.props.fields.slug} title={title} />

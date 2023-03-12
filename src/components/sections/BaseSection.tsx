@@ -6,6 +6,7 @@ interface BaseSectionProps {
   title?: string
   trait?: "green" | "orange" | "pink"
   className?: string
+  renderAfterTitle?: () => JSX.Element
 }
 
 export default class BaseSection extends React.PureComponent<
@@ -36,6 +37,7 @@ export default class BaseSection extends React.PureComponent<
     return (
       <div className={className}>
         {this.renderTitle()}
+        {this.props.renderAfterTitle?.()}
         <p>{this.props.children}</p>
       </div>
     )

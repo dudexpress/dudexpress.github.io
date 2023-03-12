@@ -4,6 +4,7 @@ import BaseBox from "./BaseBox"
 interface DurationBoxProps {
   value: string
   officialValue: string
+  small?: boolean
 }
 
 export default class DurationBox extends React.PureComponent<DurationBoxProps> {
@@ -13,7 +14,11 @@ export default class DurationBox extends React.PureComponent<DurationBoxProps> {
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Durata" footer={this.renderFooter()}>
+      <BaseBox
+        title="Durata"
+        footer={this.renderFooter()}
+        small={this.props.small}
+      >
         {this.props.value}
       </BaseBox>
     )
