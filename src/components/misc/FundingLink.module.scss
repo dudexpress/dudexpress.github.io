@@ -6,7 +6,7 @@ $randomLink: v.$weegaColor;
 .random-link {
   margin-top: math.div(v.$box-height, 3);
   padding: 16px;
-  border: 10px solid $randomLink;
+  border: 0;
   border-radius: v.$border-radius;
   background-color: rgba($randomLink, 8%);
 
@@ -26,7 +26,6 @@ $randomLink: v.$weegaColor;
     border-radius: v.$border-radius;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
     box-shadow: v.$gray300 5px 5px 20px -10px;
 
     &:hover {
