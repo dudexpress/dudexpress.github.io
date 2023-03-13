@@ -163,13 +163,14 @@ export default class Stores extends React.PureComponent<
   }
 
   private renderPandoraGames(): React.ReactNode {
-    return this.renderStore(
-      "pandora",
-      "../../logo/pandoragames.jpg",
-      styles.pandora,
-      this.props.pandoragames_url,
-      ""
-    )
+    return null
+    // return this.renderStore(
+    // "pandora",
+    // "../../logo/pandoragames.jpg",
+    // styles.pandora,
+    // this.props.pandoragames_url,
+    // ""
+    // )
   }
 
   private renderWeega(): React.ReactNode {
