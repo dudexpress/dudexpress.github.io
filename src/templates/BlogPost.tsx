@@ -1,35 +1,40 @@
-import classNames from "classnames"
-import React from "react"
-import { graphql, Link } from "gatsby"
+import * as style from "./BlogPost.module.scss"
+
+import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
+import { Link, graphql } from "gatsby"
+
+import BaseSection from "../components/sections/BaseSection"
+import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
+import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
+import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
+import Col from "react-bootstrap/Col"
+import Container from "react-bootstrap/Container"
+import Feedback from "../components/sections/Feedback"
+import GameCard from "../components/misc/GameCard"
+import { Helmet } from "react-helmet"
+import Instagram from "../components/misc/Instagram"
+import Layout from "../components/Layout"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
-import { Helmet } from "react-helmet"
-
-import Layout from "../components/Layout"
-import Setting from "../components/sections/Setting"
-import Rules from "../components/sections/Rules"
-import Feedback from "../components/sections/Feedback"
-import Spotify from "../components/misc/Spoify"
-import Instagram from "../components/misc/Instagram"
-import Youtube from "../components/misc/Youtube"
-import PostWriter from "../components/misc/PostWriter"
-import Container from "react-bootstrap/Container"
-import GameCard from "../components/misc/GameCard"
-import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
-import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
-import BlogPostBoxes from "../components/blogPostAreas/BlogPostBoxes"
-import BlogPostSidebar from "../components/blogPostAreas/BlogPostSidebar"
-import * as style from "./BlogPost.module.scss"
+import OriginalReviewLink from "../components/misc/OriginalReviewLink"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
+import Panoramic from "../components/sections/Panoramic"
+import PostWriter from "../components/misc/PostWriter"
 import RandomLink from "../components/misc/RandomLink"
+import React from "react"
+import Row from "react-bootstrap/Row"
+import Rules from "../components/sections/Rules"
+import Setting from "../components/sections/Setting"
+import Spotify from "../components/misc/Spoify"
+import Youtube from "../components/misc/Youtube"
+import classNames from "classnames"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const shortcodes = {
     Setting,
+    Panoramic,
     Rules,
     Feedback,
     Spotify,
@@ -38,6 +43,8 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     OutboundLink,
     Link,
     RandomLink,
+    BaseSection,
+    OriginalReviewLink,
   }
 
   const classname = classNames("main-content", style.blogPost),
