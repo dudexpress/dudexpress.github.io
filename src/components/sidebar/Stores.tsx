@@ -67,7 +67,7 @@ export default class Stores extends React.PureComponent<
 
     if (couponPercentage != null) {
       return (
-        <li>
+        <li key={link}>
           <CouponModal
             key={name}
             isModalShown={this.state.modalShown === name}
@@ -88,7 +88,7 @@ export default class Stores extends React.PureComponent<
     }
 
     return (
-      <li>
+      <li key={link}>
         <OutboundLink href={`${link}${linkSuffix}`} target="_blank">
           <img src={imgPath} alt={name} className={imgClassName} />
         </OutboundLink>

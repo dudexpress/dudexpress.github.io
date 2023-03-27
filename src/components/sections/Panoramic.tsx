@@ -6,7 +6,7 @@ export default class Panoramic extends React.PureComponent<
 > {
   public render(): React.ReactNode {
     return (
-      <BaseSection title="Panoramica" trait="green">
+      <BaseSection title="Panoramica" trait="orange">
         {this.props.children}
       </BaseSection>
     )
