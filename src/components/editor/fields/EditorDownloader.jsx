@@ -1,12 +1,16 @@
-import React from "react"
 import Button from "react-bootstrap/Button"
+import JSZip from "jszip"
+import React from "react"
 import { convertToRaw } from "draft-js"
 import draftToMarkdown from "draftjs-to-markdown"
 import { saveAs } from "file-saver"
-import JSZip from "jszip"
 import showdown from "showdown"
 
-const template = `---
+export const EditorDownloader = props => {
+  console.log(props)
+
+  const template =
+    `---
 type: "review"
 date: "{{date}}"
 writer: {{writer}}
@@ -28,12 +32,26 @@ playing_time: {{playing_time}}min
 playing_time_official: {{playing_time_official}}min
 
 sidebar_votes:
+` +
+    (props.typeContent === "expansion"
+      ? `
+  - title: Necessità
+    value: {{necessity}}
+`
+      : ``) +
+    `
   - title: Complessità
     value: {{complexity}}
   - title: Preparazione
     value: {{preparation}}
+` +
+    (props.typeContent === "review"
+      ? `
   - title: Fortuna
     value: {{luck}}
+`
+      : ``) +
+    `
   - title: Longevità
     value: {{longevity}}
   - title: Componenti
@@ -52,7 +70,12 @@ sidebar_votes:
 # gamefound_url
 # kickstarter_url
 ---
-
+` +
+    (props.typeContent === "expansion"
+      ? `<OriginalReviewLink slug="{{reviewLink}}" />`
+      : ``) +
+    (props.typeContent === "review"
+      ? `
 <Setting>
   {{setting}}
 </Setting>
@@ -62,7 +85,14 @@ sidebar_votes:
 <Rules>
  {{rules}}
 </Rules>
+`
+      : `
+<Panoramic>
+  {{panoramic}}
+</Panoramic>
 
+`) +
+    `
 <img src="./game2.jpg" alt="{{title}}" />
 
 <Feedback>
@@ -72,7 +102,6 @@ sidebar_votes:
 <img src="./game3.jpg" alt="{{title}}" />
 `
 
-export const EditorDownloader = props => {
   const makeSections = text => {
       const mdWithHtml = draftToMarkdown(
           convertToRaw(text.getCurrentContent())
@@ -133,10 +162,15 @@ export const EditorDownloader = props => {
         /{{playing_time_official}}/g,
         props.playingTimeOfficial
       )
-
+      if (props.typeContent === "expansion") {
+        text = text.replace(/{{necessity}}/g, props.necessity)
+      }
       text = text.replace(/{{complexity}}/g, props.complexity)
       text = text.replace(/{{preparation}}/g, props.preparation)
-      text = text.replace(/{{luck}}/g, props.luck)
+      if (props.typeContent !== "review") {
+        text = text.replace(/{{luck}}/g, props.luck)
+      }
+
       text = text.replace(/{{longevity}}/g, props.longevity)
       text = text.replace(/{{components}}/g, props.components)
       text = text.replace(/{{portability}}/g, props.portability)
@@ -186,8 +220,15 @@ export const EditorDownloader = props => {
         text = text.replace(/{{blasoneshop_url}}/g, "")
       }
 
-      text = text.replace(/{{setting}}/g, makeSections(props.setting))
-      text = text.replace(/{{rules}}/g, makeSections(props.rules))
+      if (props.typeContent === "expansion") {
+        text = text.replace(/{{reviewLink}}/g, props.title.toLowerCase())
+      }
+      if (props.typeContent === "review") {
+        text = text.replace(/{{setting}}/g, makeSections(props.setting))
+        text = text.replace(/{{rules}}/g, makeSections(props.rules))
+      } else {
+        text = text.replace(/{{panoramic}}/g, makeSections(props.panoramic))
+      }
       text = text.replace(/{{feedback}}/g, makeSections(props.feedback))
 
       return text

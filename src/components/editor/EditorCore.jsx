@@ -1,39 +1,41 @@
 import React, { useState } from "react"
-import Container from "react-bootstrap/Container"
-import Form from "react-bootstrap/Form"
-import { Helmet } from "react-helmet"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
-import { EditorState } from "draft-js"
 
-import Layout from "../Layout"
-import { EditorTitle } from "./fields/EditorTitle"
+import Col from "react-bootstrap/Col"
+import Container from "react-bootstrap/Container"
+import { EditorBlasone } from "./fields/EditorBlasone"
+import { EditorComplexity } from "./fields/EditorComplexity"
+import { EditorComponents } from "./fields/EditorComponents"
+import { EditorDate } from "./fields/EditorDate"
 import { EditorDescription } from "./fields/EditorDescription"
-import { EditorWriter } from "./fields/EditorWriter"
-import { EditorScore } from "./fields/EditorScore"
-import { EditorWYSIWYG } from "./fields/EditorWYSIWYG"
 import { EditorDesigners } from "./fields/EditorDesigners"
-import { EditorPlayingTime } from "./fields/EditorPlayingTime"
-import { EditorPlayingTimeOfficial } from "./fields/EditorPlayingTimeOfficial"
-import { EditorMechanism } from "./fields/EditorMechanism"
-import { EditorPublisher } from "./fields/EditorPublisher"
-import { EditorImages } from "./fields/EditorImages"
 import { EditorDownloader } from "./fields/EditorDownloader"
-import { EditorWeight } from "./fields/EditorWeight"
+import { EditorDungeondice } from "./fields/EditorDungeondice"
+import { EditorFantasia } from "./fields/EditorFantasia"
+import { EditorGetYourFun } from "./fields/EditorGetYourFun"
+import { EditorImages } from "./fields/EditorImages"
+import { EditorLongevity } from "./fields/EditorLongevity"
+import { EditorLuck } from "./fields/EditorLuck"
+import { EditorMagicMerchant } from "./fields/EditorMagicMerchant"
+import { EditorMechanism } from "./fields/EditorMechanism"
+import { EditorNecessity } from "./fields/EditorNecessity"
 import { EditorPlayerCount } from "./fields/EditorPlayerCount"
 import { EditorPlayerCountOfficial } from "./fields/EditorPlayerCountOfficial"
-import { EditorComplexity } from "./fields/EditorComplexity"
-import { EditorPreparation } from "./fields/EditorPreparation"
-import { EditorLuck } from "./fields/EditorLuck"
-import { EditorLongevity } from "./fields/EditorLongevity"
-import { EditorComponents } from "./fields/EditorComponents"
+import { EditorPlayingTime } from "./fields/EditorPlayingTime"
+import { EditorPlayingTimeOfficial } from "./fields/EditorPlayingTimeOfficial"
 import { EditorPortability } from "./fields/EditorPortability"
-import { EditorFantasia } from "./fields/EditorFantasia"
-import { EditorDungeondice } from "./fields/EditorDungeondice"
-import { EditorGetYourFun } from "./fields/EditorGetYourFun"
-import { EditorBlasone } from "./fields/EditorBlasone"
-import { EditorDate } from "./fields/EditorDate"
-import { EditorMagicMerchant } from "./fields/EditorMagicMerchant"
+import { EditorPreparation } from "./fields/EditorPreparation"
+import { EditorPublisher } from "./fields/EditorPublisher"
+import { EditorScore } from "./fields/EditorScore"
+import { EditorState } from "draft-js"
+import { EditorTitle } from "./fields/EditorTitle"
+import { EditorTypeContent } from "./fields/EditorTypeContent"
+import { EditorWYSIWYG } from "./fields/EditorWYSIWYG"
+import { EditorWeight } from "./fields/EditorWeight"
+import { EditorWriter } from "./fields/EditorWriter"
+import Form from "react-bootstrap/Form"
+import { Helmet } from "react-helmet"
+import Layout from "../Layout"
+import Row from "react-bootstrap/Row"
 
 const EditorCore = ({ data, location, pageContext }) => {
   const siteMeta = data.site.siteMetadata,
@@ -65,7 +67,10 @@ const EditorCore = ({ data, location, pageContext }) => {
     [magicmerchantUrl, setmagicmerchantUrl] = useState(),
     [getYourFunUrl, setGetYourFunUrl] = useState(),
     [blasoneshopUrl, setBlasoneshopUrl] = useState(),
-    [date, setDate] = useState()
+    [date, setDate] = useState(),
+    [typeContent, setTypeContent] = useState("review"),
+    [panoramic, setPanoramic] = useState(EditorState.createEmpty()),
+    [necessity, setNecessity] = useState(1)
 
   if (window == null) {
     return null
@@ -87,14 +92,14 @@ const EditorCore = ({ data, location, pageContext }) => {
     playerCountOfficial &&
     complexity &&
     preparation &&
-    luck &&
     longevity &&
     components &&
     portability &&
-    setting &&
-    rules &&
     feedback &&
-    files
+    files &&
+    typeContent === "review"
+      ? necessity && panoramic
+      : luck && setting && rules
 
   return (
     <Layout location={location} title={title}>
@@ -105,9 +110,13 @@ const EditorCore = ({ data, location, pageContext }) => {
       <Container>
         <Row>
           <Col lg={{ span: 8, offset: 2 }}>
-            <h1 className="my-5">Nuova recensione</h1>
+            <h1 className="my-5">Nuova contenuto : </h1>
 
             <Form className="mb-5">
+              <EditorTypeContent
+                value={typeContent}
+                setValue={setTypeContent}
+              />
               <EditorDate value={date} setValue={setDate} />
 
               <EditorWriter
@@ -160,7 +169,11 @@ const EditorCore = ({ data, location, pageContext }) => {
                 setValue={setPreparation}
                 value={preparation}
               />
-              <EditorLuck setValue={setLuck} value={luck} />
+              {typeContent === "review" ? (
+                <EditorLuck setValue={setLuck} value={luck} />
+              ) : (
+                <EditorNecessity setValue={setNecessity} value={necessity} />
+              )}
               <EditorLongevity setValue={setLongevity} value={longevity} />
               <EditorComponents setValue={setComponents} value={components} />
               <EditorPortability
@@ -190,18 +203,30 @@ const EditorCore = ({ data, location, pageContext }) => {
 
               <h2 className="mt-5">Contenuto</h2>
 
-              <EditorWYSIWYG
-                name="Ambientazione"
-                value={setting}
-                setValue={setSetting}
-                text="Cerca di far entrare il lettore nel mondo del gioco, non parlare di meccaniche, di longevità o che altro. Questa sezione serve solo per far immaginare al lettore in cosa si imbatterà, non come."
-              />
-              <EditorWYSIWYG
-                name="Regole in breve"
-                value={rules}
-                setValue={setRules}
-                text="Spiega solamente le regole necessarie, utilizza elenchi puntati, grassetti e che altro. Le sottoregole non ci interessano. Il lettore deve capire come funziona il gioco, non dobbiamo ricopiare il manuale."
-              />
+              {typeContent === "review" ? (
+                <>
+                  {" "}
+                  <EditorWYSIWYG
+                    name="Ambientazione"
+                    value={setting}
+                    setValue={setSetting}
+                    text="Cerca di far entrare il lettore nel mondo del gioco, non parlare di meccaniche, di longevità o che altro. Questa sezione serve solo per far immaginare al lettore in cosa si imbatterà, non come."
+                  />{" "}
+                  <EditorWYSIWYG
+                    name="Regole in breve"
+                    value={rules}
+                    setValue={setRules}
+                    text="Spiega solamente le regole necessarie, utilizza elenchi puntati, grassetti e che altro. Le sottoregole non ci interessano. Il lettore deve capire come funziona il gioco, non dobbiamo ricopiare il manuale."
+                  />
+                </>
+              ) : (
+                <EditorWYSIWYG
+                  name="Panoramica"
+                  value={panoramic}
+                  setValue={setPanoramic}
+                  text="cosa rappresenta questa espansione ? di cosa parla? Cosa aggiunge? Cosa modifica? Facci una panoramica in breve"
+                />
+              )}
               <EditorWYSIWYG
                 name="Impressioni"
                 value={feedback}
@@ -212,6 +237,7 @@ const EditorCore = ({ data, location, pageContext }) => {
 
               <div className="mt-5 text-center">
                 <EditorDownloader
+                  typeContent={typeContent}
                   isDisabled={!isEnabled}
                   title={title}
                   date={date}
@@ -241,6 +267,8 @@ const EditorCore = ({ data, location, pageContext }) => {
                   rules={rules}
                   feedback={feedback}
                   files={files}
+                  panoramic={panoramic}
+                  necessity={necessity}
                 />
               </div>
             </Form>

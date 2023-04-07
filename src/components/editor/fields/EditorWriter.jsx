@@ -1,6 +1,6 @@
+import Form from "react-bootstrap/Form"
 import React from "react"
 import Select from "react-select"
-import Form from "react-bootstrap/Form"
 import { getSugesterSyle } from "./Helpers"
 
 export const EditorWriter = ({ value, setValue, allowedValues }) => {
@@ -9,6 +9,8 @@ export const EditorWriter = ({ value, setValue, allowedValues }) => {
     label: x.name,
   }))
   options.push({ value: "Non ci sono", label: "Non ci sono" })
+
+  console.log(allowedValues)
 
   return (
     <Form.Group className="mb-3">
