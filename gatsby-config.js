@@ -165,6 +165,13 @@ module.exports = {
         image: "michele.jpg",
       },
       {
+        name: "MG Boardgames",
+        summary:
+          "Siamo Mirko e Greta, due giovani ingegneri che sì, studiano la meccanica, ma quella dei giochi da tavolo!",
+        image: "mg.png",
+        instagram_url: "https://www.instagram.com/mg_boardgames/",
+      },
+      {
         name: "miss.inpieces",
         summary:
           "Giocatrice compulsiva, insegnante a tempo perso. Gioco di tutto, dai German ai cooperativi, dai family ai party game, però sempre con un pizzico di femminilità. Se non hai capito cosa intendo, vieni a vedere il mio profilo instagram ;-) ",
