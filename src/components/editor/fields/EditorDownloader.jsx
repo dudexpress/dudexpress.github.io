@@ -167,7 +167,7 @@ sidebar_votes:
       }
       text = text.replace(/{{complexity}}/g, props.complexity)
       text = text.replace(/{{preparation}}/g, props.preparation)
-      if (props.typeContent !== "review") {
+      if (props.typeContent === "review") {
         text = text.replace(/{{luck}}/g, props.luck)
       }
 
