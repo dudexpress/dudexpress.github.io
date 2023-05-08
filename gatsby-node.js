@@ -102,11 +102,37 @@ async function getAllFunding(graphql) {
   return result.data.allMdx.nodes
 }
 
+async function getAllInterview(graphql) {
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "interview" } } }
+          sort: { fields: [frontmatter___date], order: ASC }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              type
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return result.data.allMdx.nodes
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const reviewPosts = await getAllReviews(graphql)
   const advisorPosts = await getAllAdvisor(graphql)
   const fundingPosts = await getAllFunding(graphql)
+  const interviewPosts = await getAllInterview(graphql)
 
   reviewPosts.forEach((post, index) => {
     // TODO same mechaniism
@@ -169,9 +195,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  interviewPosts.forEach((post, index) => {
+    let readMoreIds = []
+    while (readMoreIds.length < 3) {
+      let r = "" + Math.floor(Math.random() * reviewPosts.length)
+      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+        readMoreIds.push(r)
+      }
+    }
+
+    reporter.info(`Creating page: ${post.fields.slug}`)
+    createPage({
+      path: post.fields.slug,
+      component: path.resolve(`./src/templates/InterviewPost.tsx`),
+      context: {
+        id: post.id,
+        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
+      },
+    })
+  })
+
   const blogPostPerPage = 10,
     blogNumPages = Math.ceil(
-      (reviewPosts.length + advisorPosts.length + fundingPosts.length) /
+      (reviewPosts.length +
+        advisorPosts.length +
+        fundingPosts.length +
+        interviewPosts.length) /
         blogPostPerPage
     )
 
