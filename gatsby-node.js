@@ -4,19 +4,19 @@ const slugify = require("slugify")
 const fetch = require("node-fetch")
 
 function getDesignerPath(mechanism) {
-  return `/designers/${slugify(mechanism, { lower: true })}`
+  return `/designers/${slugify(mechanism, { lower: true, strict: true })}`
 }
 
 function getPublisherPath(mechanism) {
-  return `/publishers/${slugify(mechanism, { lower: true })}`
+  return `/publishers/${slugify(mechanism, { lower: true, strict: true })}`
 }
 
 function getMechanismPath(mechanism) {
-  return `/mechanisms/${slugify(mechanism, { lower: true })}`
+  return `/mechanisms/${slugify(mechanism, { lower: true, strict: true })}`
 }
 
 function getWriterPath(author) {
-  return `/writers/${slugify(author, { lower: true })}`
+  return `/writers/${slugify(author, { lower: true, strict: true })}`
 }
 
 async function getAllReviews(graphql) {
