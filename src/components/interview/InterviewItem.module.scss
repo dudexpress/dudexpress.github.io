@@ -1,16 +1,29 @@
+@use "../../style.scss" as v;
+
 .chat-container {
   .chat-left,
   .chat-right {
     display: flex;
     flex: 1;
     flex-direction: row;
-    margin-bottom: 40px;
+    margin-bottom: 5 * v.$spacing-unit;
+  }
+
+  div.chat-right {
+    margin-top: 10 * v.$spacing-unit;
+  }
+
+  div.chat-right {
+    justify-content: flex-end;
   }
 
   div .chat-avatar div {
-    height: 48px;
-    width: 48px;
-    background: #f4a055;
+    height: 6 * v.$spacing-unit;
+    width: 6 * v.$spacing-unit;
+    background: v.$red;
+    color: v.$white;
+    font-family: v.$font-family-title;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,21 +32,17 @@
     margin-right: 20px;
   }
 
-  div.chat-right {
-    justify-content: flex-end;
-  }
-
   div.chat-right > .chat-avatar div {
     margin-left: 20px;
     margin-right: 0;
+    background: v.$orange;
+    font-size: 23px;
   }
 
   div .chat-text {
     padding: 16px;
-    border-radius: 16px;
-    background: #ffffff;
-    // font-size: 16px;
-    // line-height: 1.5;
+    border-radius: v.$border-radius;
+    background: v.$white;
     position: relative;
   }
 
@@ -54,7 +63,7 @@
 
   div.chat-right > .chat-text:before {
     right: -20px;
-    border-color: transparent transparent transparent #ffffff;
+    border-color: transparent transparent transparent v.$white;
     left: inherit;
   }
 }

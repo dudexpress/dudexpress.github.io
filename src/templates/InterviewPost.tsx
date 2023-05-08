@@ -14,20 +14,19 @@ import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import * as style from "./BlogPost.module.scss"
 import * as styleSidebar from "../components/blogPostAreas/BlogPostSidebar.module.scss"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
-import RandomLink from "../components/misc/RandomLink"
-import { AdvisorBit } from "../components/sections/AdvisorBit"
 import Stores from "../components/sidebar/Stores"
 import classnames from "classnames"
-import AdvisorIntro from "../components/sections/AdvisorIntro"
-import { Item } from "../components/interview/Item"
+import { InterviewItem } from "../components/interview/InterviewItem"
+import InterviewIntro from "../components/interview/InterviewIntro"
+import PostWriter from "../components/misc/PostWriter"
 
 const InterviewPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const shortcodes = {
     Link,
-    Item,
+    InterviewIntro,
+    InterviewItem,
   }
 
   const classname = classNames(
@@ -36,7 +35,7 @@ const InterviewPost = ({ data, location }: BlogPostProps) => {
       style.advisorPost
     ),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
-    metaDesciption = `${post.frontmatter.description} | Recensione gioco da tavolo ${data.site.siteMetadata.title}`,
+    metaDesciption = `${post.frontmatter.description} | Intevista ${data.site.siteMetadata.title}`,
     metaImage =
       "https://dudexpress.it" +
       post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
@@ -77,7 +76,7 @@ const InterviewPost = ({ data, location }: BlogPostProps) => {
           <link rel="canonical" href={`https://dudexpress.it/${post.slug}`} />
           <meta
             name="keywords"
-            content={`${post.frontmatter.title}, dudexpress, migiori giochi, best board games, best of, dudeadvisor, gioco, gioco da tavolo, recensioni, board game, review`}
+            content={`${post.frontmatter.title}, dudexpress, intervista, interview, best board games, best of, dudeinterview, gioco, gioco da tavolo, recensioni, board game, review`}
           />
 
           <meta property="og:type" content="website" />
@@ -126,6 +125,17 @@ const InterviewPost = ({ data, location }: BlogPostProps) => {
                       linkToSpecificGame={false}
                     />
                   </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col
+                  lg={{ span: 7, offset: 1 }}
+                  className="base-section-column"
+                >
+                  <PostWriter
+                    writerName={post.frontmatter.writer}
+                    asCard={true}
+                  />
                 </Col>
               </Row>
             </Container>
