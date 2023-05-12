@@ -14,7 +14,10 @@ interface MechanismsProps {
 export default class Mechanisms extends React.PureComponent<MechanismsProps> {
   private renderTag(tag: string): React.ReactNode {
     return (
-      <Link key={tag} to={`/mechanisms/${slugify(tag, { lower: true })}`}>
+      <Link
+        key={tag}
+        to={`/mechanisms/${slugify(tag, { lower: true, strict: true })}`}
+      >
         <Badge key={tag} className={styles.badge} bg="secondary me-1 mb-1">
           {tag}
         </Badge>

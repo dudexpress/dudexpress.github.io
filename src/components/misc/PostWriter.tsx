@@ -117,7 +117,7 @@ const PostWriter = ({ writerName, asCard, inAdvisor }: PostWriterProps) => {
         })}
       >
         <Link
-          to={`/writers/${slugify(author.name, { lower: true })}`}
+          to={`/writers/${slugify(author.name, { lower: true , strict: true})}`}
           className="stretched-link"
         />
         <Card.Body>{content}</Card.Body>
