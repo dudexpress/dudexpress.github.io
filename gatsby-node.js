@@ -102,6 +102,31 @@ async function getAllFunding(graphql) {
   return result.data.allMdx.nodes
 }
 
+async function getAllCon(graphql) {
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "con" } } }
+          sort: { fields: [frontmatter___date], order: ASC }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              type
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return result.data.allMdx.nodes
+}
+
 async function getAllInterview(graphql) {
   const result = await graphql(
     `
@@ -132,6 +157,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const reviewPosts = await getAllReviews(graphql)
   const advisorPosts = await getAllAdvisor(graphql)
   const fundingPosts = await getAllFunding(graphql)
+  const conPosts = await getAllCon(graphql)
   const interviewPosts = await getAllInterview(graphql)
 
   reviewPosts.forEach((post, index) => {
@@ -195,6 +221,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  conPosts.forEach((post, index) => {
+    let readMoreIds = []
+    while (readMoreIds.length < 3) {
+      let r = "" + Math.floor(Math.random() * reviewPosts.length)
+      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+        readMoreIds.push(r)
+      }
+    }
+
+    reporter.info(`Creating page: ${post.fields.slug}`)
+    createPage({
+      path: post.fields.slug,
+      component: path.resolve(`./src/templates/ConPost.tsx`),
+      context: {
+        id: post.id,
+        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
+      },
+    })
+  })
+
   interviewPosts.forEach((post, index) => {
     let readMoreIds = []
     while (readMoreIds.length < 3) {
@@ -220,6 +266,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       (reviewPosts.length +
         advisorPosts.length +
         fundingPosts.length +
+        conPosts.length +
         interviewPosts.length) /
         blogPostPerPage
     )

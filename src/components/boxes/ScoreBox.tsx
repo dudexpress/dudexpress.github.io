@@ -3,10 +3,12 @@ import BaseBox from "./BaseBox"
 
 interface ScoreBoxProps {
   value: number
+  small?: boolean
 }
 
 export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
-  static height = 45
+  private height: number = this.props.small ? 30 : 45
+
   static getLabel(value: number): React.ReactNode {
     switch (value) {
       case 10:
@@ -32,7 +34,7 @@ export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
         key={`full-` + idx}
         src={`../../hearts/full.png`}
         alt="heart"
-        height={ScoreBox.height}
+        height={this.height}
       />
     ))
   }
@@ -43,7 +45,7 @@ export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
         key={`empty-` + idx}
         src={`../../hearts/empty.png`}
         alt="heart"
-        height={ScoreBox.height}
+        height={this.height}
       />
     ))
   }
@@ -58,7 +60,7 @@ export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
         key="half"
         src={`../../hearts/half.png`}
         alt="heart"
-        height={ScoreBox.height}
+        height={this.height}
       />
     )
   }
@@ -79,7 +81,11 @@ export default class ScoreBox extends React.PureComponent<ScoreBoxProps> {
 
   public render(): React.ReactNode {
     return (
-      <BaseBox title="Punteggio" footer={ScoreBox.getLabel(this.props.value)}>
+      <BaseBox
+        title="Punteggio"
+        footer={ScoreBox.getLabel(this.props.value)}
+        small={this.props.small}
+      >
         {this.renderHearts()}
       </BaseBox>
     )
