@@ -278,7 +278,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve("./src/templates/BlogPostList.jsx"),
       context: {
         title: "Articoli",
-        types: ["review", "advisor", "funding"],
+        types: ["review", "advisor", "funding", "con"],
         basePath: "blog",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
