@@ -52,7 +52,7 @@ const ConPost = ({ data, location }: ConPostProps) => {
       style.advisorPost
     ),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
-    metaDesciption = `${post.frontmatter.description} | Nuova uscite kickstarter, backerkit, gamefound.`,
+    metaDesciption = `${post.frontmatter.description} | Nuova uscite in fiera.`,
     metaImage =
       "https://dudexpress.it" +
       post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
