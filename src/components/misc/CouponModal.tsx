@@ -62,7 +62,7 @@ export default class CouponModal extends React.PureComponent<CouponModalProps> {
             Inseriscilo in fase di checkout, prima di procedere con il
             pagamento.
             <br />
-            Queto codice ti darà accesso al{" "}
+            Questo codice ti darà accesso al{" "}
             <strong>{this.props.couponPercentage! * 100}%</strong> di sconto.
           </small>
         </Modal.Body>
