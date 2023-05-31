@@ -20,7 +20,7 @@ export default class BlogPostHeader extends React.PureComponent<BlogPostHeaderPr
       return null
     }
 
-    const title = this.props.fields.slug.includes("/review/")
+    const title = this.props.fields.slug.includes("/reviews/")
       ? "Leggi la recensione"
       : "Leggi l'articolo"
     return (
