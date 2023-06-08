@@ -179,6 +179,12 @@ module.exports = {
         instagram_url: "https://www.instagram.com/miss.inpieces/",
       },
       {
+        name: "PentiDaTavolo",
+        summary:
+          "The cats are on the table, pronti a distruggere i set up elaborati e ad occupare le scatole incustodite, mentre noi lanciamo i dadi cercando di non colpirli.",
+        image: "PenTiDaTavolo.jpg",
+      },
+      {
         name: "PcomePigro",
         summary: "guarda dietro di te, una scimmia a tre teste!",
         image: "PcomePigro.jpg",
