@@ -141,6 +141,12 @@ module.exports = {
         instagram_url: "https://www.instagram.com/ladybugmeeple/",
       },
       {
+        name: "LateInTheGame",
+        summary:
+          "Con un ludopate cronico in casa, non c’è (ehm!) partita: tra una ninna nanna e un biberon, è giocoforza (ehm, ehm!) imparare a batterlo al suo stesso gioco!",
+        image: "lateInTheGame.jpg",
+      },
+      {
         name: "L'intavolatrice",
         summary:
           "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
