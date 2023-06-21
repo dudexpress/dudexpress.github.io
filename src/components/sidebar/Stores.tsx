@@ -57,7 +57,7 @@ export default class Stores extends React.PureComponent<
     imgPath: string,
     imgClassName: string,
     link: string | undefined,
-    linkSuffix: string,
+    updateLink: (x: string) => string,
     couponCode: string | null = null,
     couponPercentage: number | null = null
   ): React.ReactNode {
@@ -71,7 +71,7 @@ export default class Stores extends React.PureComponent<
           <CouponModal
             key={name}
             isModalShown={this.state.modalShown === name}
-            url={`${link}${linkSuffix}`}
+            url={updateLink(link)}
             couponCode={couponCode}
             couponPercentage={couponPercentage}
             onClose={this.handleModalClose.bind(this)}
@@ -89,7 +89,7 @@ export default class Stores extends React.PureComponent<
 
     return (
       <li key={link}>
-        <OutboundLink href={`${link}${linkSuffix}`} target="_blank">
+        <OutboundLink href={updateLink(link)} target="_blank">
           <img src={imgPath} alt={name} className={imgClassName} />
         </OutboundLink>
       </li>
@@ -102,7 +102,9 @@ export default class Stores extends React.PureComponent<
       "../../logo/dungeondice.png",
       styles.dungeondice,
       this.props.dungeondice_url,
-      "?dda=9A5FB278F"
+      x =>
+        "https://www.awin1.com/cread.php?awinmid=54767&awinaffid=1358029&ued=" +
+        encodeURIComponent(x)
     )
   }
 
@@ -112,7 +114,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/magicmerchant.jpg",
       styles.magicmerchant,
       this.props.magicmerchant_url,
-      "",
+      x => x,
       "DUDEXPRESS5",
       0.05
     )
@@ -124,7 +126,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/getyourfun.jpg",
       styles.getyourfun,
       this.props.getyourfun_url,
-      "?ref=7020"
+      x => x + "?ref=7020"
     )
   }
 
@@ -134,7 +136,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/fantasia.png",
       styles.fantasia,
       this.props.fantasia_url,
-      "?aff=47"
+      x => x + "?aff=47"
     )
   }
 
@@ -144,7 +146,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/blasone.jpg",
       styles.blasone,
       this.props.blasone_url,
-      "?aff=9337a74b51b728bb6e6add6b8eff9ff6",
+      x => x + "?aff=9337a74b51b728bb6e6add6b8eff9ff6",
       "DUDEXPRESS",
       0.1
     )
@@ -156,7 +158,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/mse.jpg",
       styles.mse,
       this.props.mse_url,
-      "",
+      x => x,
       "DUDEXPRESS10",
       0.1
     )
@@ -179,7 +181,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/weega.png?t=1",
       styles.weega,
       this.props.weega_url,
-      "?partners=Dudexpress"
+      x => x + "?partners=Dudexpress"
     )
   }
 
@@ -189,7 +191,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/kickstarter.png",
       styles.kickstarter,
       this.props.kickstarter_url,
-      ""
+      x => x
     )
   }
 
@@ -199,7 +201,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/gamefound.jpg",
       styles.gamefound,
       this.props.gamefound_url,
-      ""
+      x => x
     )
   }
 
