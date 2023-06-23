@@ -188,7 +188,7 @@ module.exports = {
         name: "PentiDaTavolo",
         summary:
           "The cats are on the table, pronti a distruggere i set up elaborati e ad occupare le scatole incustodite, mentre noi lanciamo i dadi cercando di non colpirli.",
-        image: "PenTiDaTavolo.jpg",
+        image: "PentiDaTavolo.jpg",
       },
       {
         name: "PcomePigro",
