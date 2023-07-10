@@ -1,17 +1,16 @@
-import React from "react"
-
+import BaseBox from "../boxes/BaseBox"
 import BaseSection from "./BaseSection"
-import HypeBox from "../boxes/HypeBox"
-import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import DeadlineBox from "../boxes/DeadlineBox"
 import DurationBox from "../boxes/DurationBox"
-import WeightBox from "../boxes/WeightBox"
+import HypeBox from "../boxes/HypeBox"
+import Mechanisms from "../sidebar/Mechanisms"
 import PlayerCountBox from "../boxes/PlayerCountBox"
 import { PostWeigth } from "../../types"
-import DeadlineBox from "../boxes/DeadlineBox"
 import PriceBox from "../boxes/PriceBox"
-import Mechanisms from "../sidebar/Mechanisms"
-import BaseBox from "../boxes/BaseBox"
+import React from "react"
+import Row from "react-bootstrap/Row"
+import WeightBox from "../boxes/WeightBox"
 
 export interface AdvisorBitProps {
   title: string
@@ -26,6 +25,8 @@ export interface AdvisorBitProps {
   price: string
   otherPrice: string
   mechanism: string[]
+  designer?: string[]
+  publisher?: string[]
 }
 
 export const FundingBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
@@ -75,6 +76,8 @@ export const FundingBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
   return (
     <BaseSection
       title={props.title}
+      publisher={props.publisher}
+      designer={props.designer}
       trait="pink"
       className="mb-4"
       renderAfterTitle={renderAfterTitle}

@@ -1,9 +1,12 @@
+import * as style from "./BaseSection.module.scss"
+
 import React from "react"
 import classnames from "classnames"
-import * as style from "./BaseSection.module.scss"
 
 interface BaseSectionProps {
   title?: string
+  publisher?: string[]
+  designer?: string[]
   trait?: "green" | "orange" | "pink"
   className?: string
   renderAfterTitle?: () => JSX.Element
@@ -25,6 +28,19 @@ export default class BaseSection extends React.PureComponent<
 
     return (
       <>
+        {this.props.designer && this.props.publisher && (
+          <h4
+            style={{
+              fontSize: "0.8em",
+              textTransform: "uppercase",
+              fontWeight: "bold",
+            }}
+          >
+            {this.props.designer.join(" ● ")}
+            {" ● "}
+            {this.props.publisher.join(" ● ")}
+          </h4>
+        )}
         <h2>{this.props.title}</h2>
         <div className={lineClassName} />
       </>
