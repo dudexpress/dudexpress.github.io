@@ -15,6 +15,36 @@ interface BaseSectionProps {
 export default class BaseSection extends React.PureComponent<
   React.PropsWithChildren<BaseSectionProps>
 > {
+  private renderDesignersAndPublishers(): React.ReactNode {
+    const designers = (this.props.designer ?? []).join(" ● ")
+    const publisher = (this.props.publisher ?? []).join(" ● ")
+
+    if (!designers && !publisher) {
+      return null
+    }
+
+    const style = {
+      fontSize: "0.8em",
+      textTransform: "uppercase",
+      fontWeight: "bold",
+    } as const
+
+    if (!designers || !publisher) {
+      return (
+        <h4 style={style}>
+          {designers}
+          {publisher}
+        </h4>
+      )
+    }
+
+    return (
+      <h4 style={style}>
+        {designers} ● {publisher}
+      </h4>
+    )
+  }
+
   private renderTitle(): React.ReactNode {
     if (this.props.title == null) {
       return null
@@ -28,20 +58,7 @@ export default class BaseSection extends React.PureComponent<
 
     return (
       <>
-        {this.props.designer && this.props.publisher && (
-          <h4
-            style={{
-              fontSize: "0.8em",
-              textTransform: "uppercase",
-              fontWeight: "bold",
-            }}
-          >
-            {this.props.designer.join(" ● ")}
-            {" ● "}
-            {this.props.publisher.join(" ● ")}
-          </h4>
-        )}
-        <h2>{this.props.title}</h2>
+        {this.renderDesignersAndPublishers()} <h2>{this.props.title}</h2>
         <div className={lineClassName} />
       </>
     )
