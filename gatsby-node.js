@@ -170,7 +170,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
-    reporter.info(`Creating page: ${post.fields.slug}`)
     createPage({
       path: post.fields.slug,
       component: path.resolve(`./src/templates/BlogPost.tsx`),
@@ -190,7 +189,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
-    reporter.info(`Creating page: ${post.fields.slug}`)
     createPage({
       path: post.fields.slug,
       component: path.resolve(`./src/templates/AdvisorPost.tsx`),
@@ -210,7 +208,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
-    reporter.info(`Creating page: ${post.fields.slug}`)
     createPage({
       path: post.fields.slug,
       component: path.resolve(`./src/templates/FundingPost.tsx`),
@@ -230,7 +227,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
-    reporter.info(`Creating page: ${post.fields.slug}`)
     createPage({
       path: post.fields.slug,
       component: path.resolve(`./src/templates/ConPost.tsx`),
@@ -250,7 +246,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
-    reporter.info(`Creating page: ${post.fields.slug}`)
     createPage({
       path: post.fields.slug,
       component: path.resolve(`./src/templates/InterviewPost.tsx`),
@@ -261,20 +256,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  const fundingPostsLength = fundingPosts.length
   const blogPostPerPage = 10,
     blogNumPages = Math.ceil(
       (reviewPosts.length +
         advisorPosts.length +
-        fundingPostsLength +
+        fundingPosts.length +
         conPosts.length +
         interviewPosts.length) /
         blogPostPerPage
     )
-  const fundingNumPages = Math.ceil(fundingPostsLength / blogPostPerPage)
+  const fundingNumPages = Math.ceil(fundingPosts.length / blogPostPerPage)
 
   Array.from({ length: fundingNumPages }).forEach((_, i) => {
-    reporter.info(`Creating page: funding/${i + 1}`)
     createPage({
       path: i === 0 ? `/funding` : `/funding/${i + 1}`,
       component: path.resolve("./src/templates/FundingPostList.jsx"),
@@ -284,14 +277,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         basePath: "funding",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
-        fundingNumPages,
+
+        numPages: fundingNumPages,
         currentPage: i + 1,
       },
     })
   })
 
   Array.from({ length: blogNumPages }).forEach((_, i) => {
-    reporter.info(`Creating page: blog/${i + 1}`)
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve("./src/templates/BlogPostList.jsx"),
@@ -301,7 +294,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         basePath: "blog",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
-        blogNumPages,
+        numPages: blogNumPages,
         currentPage: i + 1,
       },
     })
@@ -310,7 +303,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // const reviewsNumPages = Math.ceil(reviewPosts.length / blogPostPerPage)
 
   // Array.from({ length: reviewsNumPages }).forEach((_, i) => {
-  //   reporter.info(`Creating page: reviews/${i + 1}`)
   //   createPage({
   //     path: i === 0 ? `/reviews` : `/reviews/${i + 1}`,
   //     component: path.resolve("./src/templates/BlogPostList.jsx"),
@@ -378,7 +370,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   dedupedDesigners.forEach(designer => {
-    reporter.info(`Creating page: ${getDesignerPath(designer)}`)
     createPage({
       path: getDesignerPath(designer),
       component: require.resolve("./src/templates/Designer.jsx"),
@@ -405,7 +396,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   dedupedPublishers.forEach(publisher => {
-    reporter.info(`Creating page: ${getPublisherPath(publisher)}`)
     createPage({
       path: getPublisherPath(publisher),
       component: require.resolve("./src/templates/Publisher.jsx"),
@@ -432,7 +422,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   dedupedMechanisms.forEach(mechanism => {
-    reporter.info(`Creating page: ${getMechanismPath(mechanism)}`)
     createPage({
       path: getMechanismPath(mechanism),
       component: require.resolve("./src/templates/Mechanism.jsx"),
@@ -453,7 +442,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   dedupedWriters.forEach(writer => {
-    reporter.info(`Creating page: ${getWriterPath(writer)}`)
     createPage({
       path: getWriterPath(writer),
       component: require.resolve("./src/templates/Writer.jsx"),
