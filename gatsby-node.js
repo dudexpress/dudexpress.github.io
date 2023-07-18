@@ -261,15 +261,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  const fundingPostsLength = fundingPosts.length
   const blogPostPerPage = 10,
     blogNumPages = Math.ceil(
       (reviewPosts.length +
         advisorPosts.length +
-        fundingPosts.length +
+        fundingPostsLength +
         conPosts.length +
         interviewPosts.length) /
         blogPostPerPage
     )
+  const fundingNumPages = Math.ceil(fundingPostsLength / blogPostPerPage)
+
+  Array.from({ length: fundingNumPages }).forEach((_, i) => {
+    reporter.info(`Creating page: funding/${i + 1}`)
+    createPage({
+      path: i === 0 ? `/funding` : `/funding/${i + 1}`,
+      component: path.resolve("./src/templates/FundingPostList.jsx"),
+      context: {
+        title: "dudeFunding",
+        types: ["funding"],
+        basePath: "funding",
+        limit: blogPostPerPage,
+        skip: i * blogPostPerPage,
+        fundingNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 
   Array.from({ length: blogNumPages }).forEach((_, i) => {
     reporter.info(`Creating page: blog/${i + 1}`)
