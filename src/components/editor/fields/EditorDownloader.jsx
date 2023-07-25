@@ -237,7 +237,7 @@ sidebar_votes:
       const inputBlob = new Blob([getText()], { type: "text/plain" }),
         zip = new JSZip()
 
-      zip.file("index.txt", inputBlob)
+      zip.file("index.docx", inputBlob)
       props.files.forEach(file => {
         zip.file(file.name, file)
       })

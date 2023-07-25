@@ -266,6 +266,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         blogPostPerPage
     )
   const fundingNumPages = Math.ceil(fundingPosts.length / blogPostPerPage)
+  const advisorNumPages = Math.ceil(advisorPosts.length / blogPostPerPage)
+  const conNumPages = Math.ceil(conPosts.length / blogPostPerPage)
+  const interviewNumPages = Math.ceil(interviewPosts.length / blogPostPerPage)
+  // const notReviewPages =
+  // fundingNumPages + advisorNumPages + conNumPages + interviewNumPages
 
   Array.from({ length: fundingNumPages }).forEach((_, i) => {
     createPage({
@@ -277,12 +282,75 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         basePath: "funding",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
-
         numPages: fundingNumPages,
         currentPage: i + 1,
       },
     })
   })
+
+  Array.from({ length: advisorNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/advisor` : `/advisor/${i + 1}`,
+      component: path.resolve("./src/templates/AdvisorPostList.jsx"),
+      context: {
+        title: "dudeAdvisor",
+        types: ["advisor"],
+        basePath: "advisor",
+        limit: blogPostPerPage,
+        skip: i * blogPostPerPage,
+        numPages: advisorNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  Array.from({ length: conNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/convention` : `/convention/${i + 1}`,
+      component: path.resolve("./src/templates/ConPostList.jsx"),
+      context: {
+        title: "dudeCon",
+        types: ["con"],
+        basePath: "convention",
+        limit: blogPostPerPage,
+        skip: i * blogPostPerPage,
+        numPages: conNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  Array.from({ length: interviewNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/interview` : `/interview/${i + 1}`,
+      component: path.resolve("./src/templates/InterviewPostList.jsx"),
+      context: {
+        title: "dudeInterview",
+        types: ["interview"],
+        basePath: "interview",
+        limit: blogPostPerPage,
+        skip: i * blogPostPerPage,
+        numPages: interviewNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  // Array.from({ length: notReviewPages }).forEach((_, i) => {
+  //   createPage({
+  //     path: i === 0 ? `/rubriche` : `/rubriche/${i + 1}`,
+  //     component: path.resolve("./src/templates/BlogPostList.jsx"),
+  //     context: {
+  //       title: "Rubriche",
+  //       types: ["advisor", "funding", "con", "interview"],
+  //       basePath: "rubriche",
+  //       limit: blogPostPerPage,
+  //       skip: i * blogPostPerPage,
+  //       numPages: notReviewPages,
+  //       currentPage: i + 1,
+  //     },
+  //   })
+  // })
 
   Array.from({ length: blogNumPages }).forEach((_, i) => {
     createPage({
@@ -290,7 +358,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve("./src/templates/BlogPostList.jsx"),
       context: {
         title: "Articoli",
-        types: ["review", "advisor", "funding", "con"],
+        types: ["review", "advisor", "funding", "con", "interview"],
         basePath: "blog",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
