@@ -277,7 +277,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? `/funding` : `/funding/${i + 1}`,
       component: path.resolve("./src/templates/FundingPostList.jsx"),
       context: {
-        title: "dudeFunding",
+        title: "DudeFunding",
         types: ["funding"],
         basePath: "funding",
         limit: blogPostPerPage,
@@ -293,7 +293,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? `/advisor` : `/advisor/${i + 1}`,
       component: path.resolve("./src/templates/AdvisorPostList.jsx"),
       context: {
-        title: "dudeAdvisor",
+        title: "DudeAdvisor",
         types: ["advisor"],
         basePath: "advisor",
         limit: blogPostPerPage,
@@ -309,7 +309,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? `/convention` : `/convention/${i + 1}`,
       component: path.resolve("./src/templates/ConPostList.jsx"),
       context: {
-        title: "dudeCon",
+        title: "DudeCon",
         types: ["con"],
         basePath: "convention",
         limit: blogPostPerPage,
@@ -325,7 +325,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? `/interview` : `/interview/${i + 1}`,
       component: path.resolve("./src/templates/InterviewPostList.jsx"),
       context: {
-        title: "dudeInterview",
+        title: "DudeInterview",
         types: ["interview"],
         basePath: "interview",
         limit: blogPostPerPage,
