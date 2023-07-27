@@ -136,6 +136,7 @@ const ConPost = ({ data, location }: ConPostProps) => {
                       getyourfun_url="https://www.getyourfun.it/"
                       fantasia_url="https://fantasiastore.it/"
                       blasone_url="https://www.blasoneshop.it/"
+                      lsgiochi_url="https://www.lsgiochi.it/"
                       mse_url="https://www.msedizioni.it/"
                       pandoragames_url="https://pandoragames.it/"
                       weega_url="https://weega.it/"

@@ -7,8 +7,6 @@ import { saveAs } from "file-saver"
 import showdown from "showdown"
 
 export const EditorDownloader = props => {
-  console.log(props)
-
   const template =
     `---
 type: "review"
@@ -65,6 +63,7 @@ sidebar_votes:
 {{getyourfun_url}}
 {{fantasia_url}}
 {{blasoneshop_url}}
+{{lsgiochi_url}}
 # weega_url
 # weega_future
 # gamefound_url
@@ -218,6 +217,15 @@ sidebar_votes:
         )
       } else {
         text = text.replace(/{{blasoneshop_url}}/g, "")
+      }
+
+      if (props.lsgiochiUrl) {
+        text = text.replace(
+          /{{lsgiochi_url}}/g,
+          `lsgiochi_url: ${props.lsgiochiUrl}`
+        )
+      } else {
+        text = text.replace(/{{lsgiochi_url}}/g, "")
       }
 
       if (props.typeContent === "expansion") {

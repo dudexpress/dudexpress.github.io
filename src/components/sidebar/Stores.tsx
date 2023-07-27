@@ -16,6 +16,7 @@ interface StoresProps
       | "getyourfun_url"
       | "fantasia_url"
       | "blasone_url"
+      | "lsgiochi_url"
       | "mse_url"
       | "pandoragames_url"
       | "weega_url"
@@ -152,6 +153,18 @@ export default class Stores extends React.PureComponent<
     )
   }
 
+  private renderLsGiochi(): React.ReactNode {
+    return this.renderStore(
+      "lsgiochi",
+      "../../logo/lsgiochi.jpg",
+      styles.lsgiochi,
+      this.props.lsgiochi_url,
+      x => x,
+      "DUDEXPRESS10",
+      0.1
+    )
+  }
+
   private renderMse(): React.ReactNode {
     return this.renderStore(
       "mse",
@@ -211,6 +224,7 @@ export default class Stores extends React.PureComponent<
       this.renderMagicMerchant(),
       this.renderFantasia(),
       this.renderBlasone(),
+      this.renderLsGiochi(),
       this.renderGetYourFun(),
       this.renderMse(),
       this.renderPandoraGames(),

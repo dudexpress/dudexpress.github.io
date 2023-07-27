@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
+import { EditorLsgiochi } from "./fields/EditorLsgiochi"
 import { EditorBlasone } from "./fields/EditorBlasone"
 import { EditorComplexity } from "./fields/EditorComplexity"
 import { EditorComponents } from "./fields/EditorComponents"
@@ -67,6 +68,7 @@ const EditorCore = ({ data, location, pageContext }) => {
     [magicmerchantUrl, setmagicmerchantUrl] = useState(),
     [getYourFunUrl, setGetYourFunUrl] = useState(),
     [blasoneshopUrl, setBlasoneshopUrl] = useState(),
+    [lsgiochiUrl, setLsgiochiUrl] = useState(),
     [date, setDate] = useState(),
     [typeContent, setTypeContent] = useState("review"),
     [panoramic, setPanoramic] = useState(EditorState.createEmpty()),
@@ -200,6 +202,7 @@ const EditorCore = ({ data, location, pageContext }) => {
                 value={blasoneshopUrl}
                 setValue={setBlasoneshopUrl}
               />
+              <EditorLsgiochi value={lsgiochiUrl} setValue={setLsgiochiUrl} />
 
               <h2 className="mt-5">Contenuto</h2>
 
@@ -263,6 +266,7 @@ const EditorCore = ({ data, location, pageContext }) => {
                   magicmerchantUrl={magicmerchantUrl}
                   getYourFunUrl={getYourFunUrl}
                   blasoneshopUrl={blasoneshopUrl}
+                  lsgiochiUrl={lsgiochiUrl}
                   setting={setting}
                   rules={rules}
                   feedback={feedback}

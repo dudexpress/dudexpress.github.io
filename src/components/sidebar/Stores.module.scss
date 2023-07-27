@@ -50,6 +50,10 @@
       @include store(v.$pandoraColor);
     }
 
+    &.lsgiochi {
+      @include store(v.$lsgiochiColor);
+    }
+
     &.weega {
       @include store(v.$weegaColor);
     }
