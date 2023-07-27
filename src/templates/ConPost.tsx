@@ -22,12 +22,11 @@ import * as style from "./BlogPost.module.scss"
 import * as styleSidebar from "../components/blogPostAreas/BlogPostSidebar.module.scss"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import RandomLink from "../components/misc/RandomLink"
-import Stores from "../components/sidebar/Stores"
 import classnames from "classnames"
 import FundingIntro from "../components/sections/FundingIntro"
 import { ConBit } from "../components/sections/ConBit"
 import PostWriter from "../components/misc/PostWriter"
-// import ConLink from "../components/misc/ConLink"
+import { DefaultStores } from "../components/sidebar/DefaultStores"
 
 const ConPost = ({ data, location }: ConPostProps) => {
   const post = data.mdx
@@ -129,19 +128,7 @@ const ConPost = ({ data, location }: ConPostProps) => {
                       "mt-5 mt-md-0"
                     )}
                   >
-                    <Stores
-                      label="Acquista i giochi su..."
-                      dungeondice_url="https://www.dungeondice.it/"
-                      magicmerchant_url="https://magicmerchant.it/"
-                      getyourfun_url="https://www.getyourfun.it/"
-                      fantasia_url="https://fantasiastore.it/"
-                      blasone_url="https://www.blasoneshop.it/"
-                      lsgiochi_url="https://www.lsgiochi.it/"
-                      mse_url="https://www.msedizioni.it/"
-                      pandoragames_url="https://pandoragames.it/"
-                      weega_url="https://weega.it/"
-                      linkToSpecificGame={false}
-                    />
+                    <DefaultStores />
                   </div>
                 </Col>
               </Row>
