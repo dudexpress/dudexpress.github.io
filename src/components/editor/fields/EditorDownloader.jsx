@@ -124,7 +124,7 @@ sidebar_votes:
 
       if (props.date === "TBD") {
         const year = new Date().getFullYear()
-        text = text.replace(/{{date}}/g, `${year}-MM-DD"`)
+        text = text.replace(/{{date}}/g, `${year}-MM-DD`)
       } else {
         text = text.replace(/{{date}}/g, props.date)
       }
