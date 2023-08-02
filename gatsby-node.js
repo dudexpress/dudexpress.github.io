@@ -610,6 +610,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       getyourfun_url: String
       fantasia_url: String
       blasone_url: String
+      lsgiochi_url: String
       mse_url: String
       pandoragames_url: String
       weega_url: String

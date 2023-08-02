@@ -202,6 +202,7 @@ export const pageQuery = graphql`
         getyourfun_url
         fantasia_url
         blasone_url
+        lsgiochi_url
         mse_url
         pandoragames_url
         weega_url

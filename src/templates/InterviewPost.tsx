@@ -14,11 +14,11 @@ import { Frontmatter, SimpleFrontmatter, SiteMetadata } from "../types"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import * as style from "./BlogPost.module.scss"
 import * as styleSidebar from "../components/blogPostAreas/BlogPostSidebar.module.scss"
-import Stores from "../components/sidebar/Stores"
 import classnames from "classnames"
 import { InterviewItem } from "../components/interview/InterviewItem"
 import InterviewIntro from "../components/interview/InterviewIntro"
 import PostWriter from "../components/misc/PostWriter"
+import { DefaultStores } from "../components/sidebar/DefaultStores"
 
 const InterviewPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -112,18 +112,7 @@ const InterviewPost = ({ data, location }: BlogPostProps) => {
                       "mt-5 mt-md-0"
                     )}
                   >
-                    <Stores
-                      label="Acquista i giochi su..."
-                      dungeondice_url="https://www.dungeondice.it/"
-                      magicmerchant_url="https://magicmerchant.it/"
-                      getyourfun_url="https://www.getyourfun.it/"
-                      fantasia_url="https://fantasiastore.it/"
-                      blasone_url="https://www.blasoneshop.it/"
-                      mse_url="https://www.msedizioni.it/"
-                      pandoragames_url="https://pandoragames.it/"
-                      weega_url="https://weega.it/"
-                      linkToSpecificGame={false}
-                    />
+                    <DefaultStores />
                   </div>
                 </Col>
               </Row>

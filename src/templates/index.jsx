@@ -11,7 +11,7 @@ import WeegaCard from "../components/misc/WeegaCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
 import Mechanisms from "../components/sidebar/Mechanisms"
-import Stores from "../components/sidebar/Stores"
+import { DefaultStores } from "../components/sidebar/DefaultStores"
 
 const Index = ({ data, location, pageContext }) => {
   const { title, description } = data.site.siteMetadata,
@@ -122,18 +122,8 @@ const Index = ({ data, location, pageContext }) => {
                 {renderOtherPosts()}
               </Col>
               <Col lg={4}>
-                <Stores
-                  label="Acquista i giochi su..."
-                  dungeondice_url="https://www.dungeondice.it/"
-                  magicmerchant_url="https://magicmerchant.it/"
-                  getyourfun_url="https://www.getyourfun.it/"
-                  fantasia_url="https://fantasiastore.it/"
-                  blasone_url="https://www.blasoneshop.it/"
-                  mse_url="https://www.msedizioni.it/"
-                  pandoragames_url="https://pandoragames.it/"
-                  weega_url="https://weega.it/"
-                  linkToSpecificGame={false}
-                />
+                <DefaultStores />
+
                 <Mechanisms
                   title="Naviga per meccaniche"
                   values={pageContext.mechanisms}

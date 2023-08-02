@@ -53,6 +53,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   getyourfun_url: string
   fantasia_url: string
   blasone_url: string
+  lsgiochi_url: string
   mse_url: string
   pandoragames_url: string
   weega_url: string
