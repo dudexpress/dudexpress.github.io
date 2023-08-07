@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import React from "react"
 import Row from "react-bootstrap/Row"
 
-const ConPostList = ({ data, location, pageContext }) => {
+const GenericBlogList = ({ data, location, pageContext }) => {
   const { title } = data.site.siteMetadata
   const { currentPage, numPages, basePath } = pageContext
   const isFirst = currentPage === 1
@@ -62,10 +62,10 @@ const ConPostList = ({ data, location, pageContext }) => {
   )
 }
 
-export default ConPostList
+export default GenericBlogList
 
-export const ConPostListQuery = graphql`
-  query ConPostListQuery($skip: Int!, $limit: Int!, $types: [String]) {
+export const GenericPostListQuery = graphql`
+  query GenericBlogListQuery($skip: Int!, $limit: Int!, $types: [String]) {
     site {
       siteMetadata {
         title

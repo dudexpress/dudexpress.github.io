@@ -3,12 +3,11 @@ import React from "react"
 import Helmet from "react-helmet"
 import { withPrefix, Link } from "gatsby"
 import Footer from "../components/Footer"
+import NavDropdown from "react-bootstrap/NavDropdown"
 import Container from "react-bootstrap/Container"
 import * as style from "./Layout.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch"
-import { faPiggyBank } from "@fortawesome/free-solid-svg-icons/faPiggyBank"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const Layout = ({ location, title, children }) => {
   const headerClassName = classnames(style.globalHeader, "fixed-top bg-white"),
@@ -39,43 +38,46 @@ const Layout = ({ location, title, children }) => {
               />
             </Link>
             <div className="d-flex justify-content-between align-items-end mt-2 mt-md-0">
-              <Link to="/trova-sconti">
-                <small>
-                  <span className="d-inline-block me-1">Trova sconti</span>
-                  <FontAwesomeIcon icon={faPiggyBank} />
-                </small>
+              <NavDropdown title="Rubriche">
+                <NavDropdown.Item
+                  as={Link}
+                  to="/reviews"
+                  className={style.dropdownItem}
+                >
+                  <span className={style.dudeInDropdown}>Dude</span>Review
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/funding"
+                  className={style.dropdownItem}
+                >
+                  <span className={style.dudeInDropdown}>Dude</span>Funding
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/advisor"
+                  className={style.dropdownItem}
+                >
+                  <span className={style.dudeInDropdown}>Dude</span>Advisor
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/interview"
+                  className={style.dropdownItem}
+                >
+                  <span className={style.dudeInDropdown}>Dude</span>Interview
+                </NavDropdown.Item>
+              </NavDropdown>
+
+              <Link to="/trova-sconti" className={headerItemsSpacingClassName}>
+                <span className="d-inline-block me-1">Trova sconti</span>
               </Link>
 
               <Link to="/search" className={headerItemsSpacingClassName}>
-                <small>
-                  <span className="d-inline-block me-1">Cerca</span>
-                  <FontAwesomeIcon icon={faSearch} />
-                </small>
+                <span className="d-inline-block me-1">
+                  Cerca <FontAwesomeIcon icon={faSearch} />
+                </span>
               </Link>
-              <OutboundLink
-                href="https://www.instagram.com/dudexpress.review/"
-                target="_blank"
-                className={headerItemsSpacingClassName}
-              >
-                <img
-                  width={20}
-                  src={`../../socials/instagram.svg`}
-                  alt="instagram"
-                  style={{ marginTop: "-3px" }}
-                />
-              </OutboundLink>
-              <OutboundLink
-                href="https://www.facebook.com/dudexpress.review"
-                target="_blank"
-                className={headerItemsSpacingClassName}
-              >
-                <img
-                  width={20}
-                  src={`../../socials/facebook.svg`}
-                  alt="facebook"
-                  style={{ marginTop: "-3px" }}
-                />
-              </OutboundLink>
             </div>
           </div>
         </Container>

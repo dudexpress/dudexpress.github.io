@@ -11,13 +11,22 @@
       font-family: v.$font-family-title;
       font-weight: 700;
       color: v.$gray300;
-      font-size: 20px;
+      font-size: 17px !important;
       text-decoration: none;
 
       &:hover {
         color: v.$gray400;
         animation: color 300ms;
       }
+    }
+
+    .dropdown-item {
+      font-size: 15px !important;
+      padding: v.$spacing-unit 2 * v.$spacing-unit;
+    }
+
+    .dude-in-dropdown {
+      font-weight: 500;
     }
 
     & + main {

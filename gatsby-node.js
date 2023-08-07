@@ -265,17 +265,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         interviewPosts.length) /
         blogPostPerPage
     )
+  const reviewsNumPages = Math.ceil(reviewPosts.length / blogPostPerPage)
   const fundingNumPages = Math.ceil(fundingPosts.length / blogPostPerPage)
   const advisorNumPages = Math.ceil(advisorPosts.length / blogPostPerPage)
   const conNumPages = Math.ceil(conPosts.length / blogPostPerPage)
   const interviewNumPages = Math.ceil(interviewPosts.length / blogPostPerPage)
-  // const notReviewPages =
-  // fundingNumPages + advisorNumPages + conNumPages + interviewNumPages
+
+  Array.from({ length: reviewsNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/reviews` : `/reviews/${i + 1}`,
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
+      context: {
+        title: "DudeReview",
+        types: ["review"],
+        basePath: "reviews",
+        limit: blogPostPerPage,
+        skip: i * blogPostPerPage,
+        numPages: reviewsNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 
   Array.from({ length: fundingNumPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/funding` : `/funding/${i + 1}`,
-      component: path.resolve("./src/templates/FundingPostList.jsx"),
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
       context: {
         title: "DudeFunding",
         types: ["funding"],
@@ -291,7 +306,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: advisorNumPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/advisor` : `/advisor/${i + 1}`,
-      component: path.resolve("./src/templates/AdvisorPostList.jsx"),
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
       context: {
         title: "DudeAdvisor",
         types: ["advisor"],
@@ -307,7 +322,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: conNumPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/convention` : `/convention/${i + 1}`,
-      component: path.resolve("./src/templates/ConPostList.jsx"),
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
       context: {
         title: "DudeCon",
         types: ["con"],
@@ -323,7 +338,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: interviewNumPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/interview` : `/interview/${i + 1}`,
-      component: path.resolve("./src/templates/InterviewPostList.jsx"),
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
       context: {
         title: "DudeInterview",
         types: ["interview"],
@@ -336,26 +351,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
-  // Array.from({ length: notReviewPages }).forEach((_, i) => {
-  //   createPage({
-  //     path: i === 0 ? `/rubriche` : `/rubriche/${i + 1}`,
-  //     component: path.resolve("./src/templates/BlogPostList.jsx"),
-  //     context: {
-  //       title: "Rubriche",
-  //       types: ["advisor", "funding", "con", "interview"],
-  //       basePath: "rubriche",
-  //       limit: blogPostPerPage,
-  //       skip: i * blogPostPerPage,
-  //       numPages: notReviewPages,
-  //       currentPage: i + 1,
-  //     },
-  //   })
-  // })
-
   Array.from({ length: blogNumPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-      component: path.resolve("./src/templates/BlogPostList.jsx"),
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
       context: {
         title: "Articoli",
         types: ["review", "advisor", "funding", "con", "interview"],
@@ -367,24 +366,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     })
   })
-
-  // const reviewsNumPages = Math.ceil(reviewPosts.length / blogPostPerPage)
-
-  // Array.from({ length: reviewsNumPages }).forEach((_, i) => {
-  //   createPage({
-  //     path: i === 0 ? `/reviews` : `/reviews/${i + 1}`,
-  //     component: path.resolve("./src/templates/BlogPostList.jsx"),
-  //     context: {
-  //       title: "Recensioni",
-  //       types: ["review"],
-  //       basePath: "reviews",
-  //       limit: blogPostPerPage,
-  //       skip: i * blogPostPerPage,
-  //       reviewsNumPages,
-  //       currentPage: i + 1,
-  //     },
-  //   })
-  // })
 
   let mechanismsCounter = {}
   let designersCounter = {}
@@ -530,11 +511,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     context: {
       mechanisms: sortedMechanisms.slice(0, 10),
     },
-  })
-
-  createPage({
-    path: "/giochi-in-sconto",
-    component: require.resolve("./src/templates/discounts.jsx"),
   })
 
   createPage({
