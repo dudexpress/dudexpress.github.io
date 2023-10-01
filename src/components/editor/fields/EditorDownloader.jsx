@@ -1,9 +1,8 @@
 import Button from "react-bootstrap/Button"
-import JSZip from "jszip"
 import React from "react"
 import { convertToRaw } from "draft-js"
 import draftToMarkdown from "draftjs-to-markdown"
-import FileSaver, { saveAs } from "file-saver"
+import { saveAs } from "file-saver"
 import showdown from "showdown"
 
 export const EditorDownloader = props => {
@@ -247,20 +246,8 @@ sidebar_votes:
       return text
     },
     onSubmit = () => {
-/*       const inputBlob = new Blob([getText()], { type: "text/plain" }),
-        zip = new JSZip()
-
-      zip.file("index.docx", inputBlob)
-      props.files.forEach(file => {
-        zip.file(file.name, file)
-      })
-
-      zip.generateAsync({ type: "blob" }).then(content => {
-        saveAs(content, `${props.title.replace(/ /g, "-")}.zip`)
-      }) */
-      const file = new Blob([getText()],{type: "text/plain"})
-      saveAs(file,"index.doc")
-
+      const file = new Blob([getText()], { type: "text/plain" })
+      saveAs(file, "index.doc")
     }
 
   const disabledReason = props.isDisabled && (

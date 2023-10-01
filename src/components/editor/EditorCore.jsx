@@ -13,7 +13,6 @@ import { EditorDownloader } from "./fields/EditorDownloader"
 import { EditorDungeondice } from "./fields/EditorDungeondice"
 import { EditorFantasia } from "./fields/EditorFantasia"
 import { EditorGetYourFun } from "./fields/EditorGetYourFun"
-import { EditorImages } from "./fields/EditorImages"
 import { EditorLongevity } from "./fields/EditorLongevity"
 import { EditorLuck } from "./fields/EditorLuck"
 import { EditorMagicMerchant } from "./fields/EditorMagicMerchant"
@@ -62,7 +61,6 @@ const EditorCore = ({ data, location, pageContext }) => {
     [setting, setSetting] = useState(EditorState.createEmpty()),
     [rules, setRules] = useState(EditorState.createEmpty()),
     [feedback, setFeedback] = useState(EditorState.createEmpty()),
-    [files, setFiles] = useState([]),
     [fantasiaUrl, setFantasiaUrl] = useState(),
     [dungeondiceUrl, setDungeondiceUrl] = useState(),
     [magicmerchantUrl, setmagicmerchantUrl] = useState(),
@@ -98,7 +96,6 @@ const EditorCore = ({ data, location, pageContext }) => {
     components &&
     portability &&
     feedback &&
-    files &&
     typeContent === "review"
       ? necessity && panoramic
       : luck && setting && rules
@@ -236,7 +233,6 @@ const EditorCore = ({ data, location, pageContext }) => {
                 setValue={setFeedback}
                 text="Cosa ti è piaciuto? Cosa non ti è piaciuto? Sii specifico. Comparalo pure ad altre recensioni presenti su dude."
               />
-              <EditorImages value={files} setValue={setFiles} />
 
               <div className="mt-5 text-center">
                 <EditorDownloader
@@ -270,7 +266,6 @@ const EditorCore = ({ data, location, pageContext }) => {
                   setting={setting}
                   rules={rules}
                   feedback={feedback}
-                  files={files}
                   panoramic={panoramic}
                   necessity={necessity}
                 />
