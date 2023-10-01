@@ -67,6 +67,13 @@ const Layout = ({ location, title, children }) => {
                 >
                   <span className={style.dudeInDropdown}>Dude</span>Interview
                 </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/convention"
+                  className={style.dropdownItem}
+                >
+                  <span className={style.dudeInDropdown}>Dude</span>Con
+                </NavDropdown.Item>
               </NavDropdown>
 
               <Link to="/trova-sconti" className={headerItemsSpacingClassName}>
