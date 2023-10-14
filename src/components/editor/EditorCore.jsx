@@ -10,6 +10,7 @@ import { EditorDate } from "./fields/EditorDate"
 import { EditorDescription } from "./fields/EditorDescription"
 import { EditorDesigners } from "./fields/EditorDesigners"
 import { EditorDownloader } from "./fields/EditorDownloader"
+import { EditorShower } from "./fields/EditorShower"
 import { EditorDungeondice } from "./fields/EditorDungeondice"
 import { EditorFantasia } from "./fields/EditorFantasia"
 import { EditorGetYourFun } from "./fields/EditorGetYourFun"
@@ -70,7 +71,8 @@ const EditorCore = ({ data, location, pageContext }) => {
     [date, setDate] = useState(),
     [typeContent, setTypeContent] = useState("review"),
     [panoramic, setPanoramic] = useState(EditorState.createEmpty()),
-    [necessity, setNecessity] = useState(1)
+    [necessity, setNecessity] = useState(1),
+    [editingText, setEditingText] = useState(EditorState.createEmpty())
 
   if (window == null) {
     return null
@@ -116,160 +118,191 @@ const EditorCore = ({ data, location, pageContext }) => {
                 value={typeContent}
                 setValue={setTypeContent}
               />
-              <EditorDate value={date} setValue={setDate} />
-
-              <EditorWriter
-                value={writer}
-                setValue={setWriter}
-                allowedValues={siteMeta.authors}
-              />
-
-              <h2 className="mt-5">Header</h2>
-
-              <EditorTitle value={title} setValue={setTitle} />
-              <EditorDesigners value={designers} setValue={setDesigners} />
-              <EditorPublisher value={publishers} setValue={setPublishers} />
-              <EditorDescription
-                value={description}
-                setValue={setDescription}
-              />
-
-              <h2 className="mt-5">Box</h2>
-              <EditorScore value={score} setValue={setScore} />
-              <EditorPlayingTime
-                value={playingTime}
-                setValue={setPlayingTime}
-              />
-              <EditorPlayingTimeOfficial
-                value={playingTimeOfficial}
-                setValue={setPlayingTimeOfficial}
-              />
-              <EditorWeight value={weight} setValue={setWeight} />
-              <EditorPlayerCount
-                value={playerCount}
-                setValue={setPlayerCount}
-              />
-              <EditorPlayerCountOfficial
-                value={playerCountOfficial}
-                setValue={setPlayerCountOfficial}
-              />
-
-              <h2 className="mt-5">Sidebar</h2>
-
-              <EditorMechanism
-                value={mechanisms}
-                setValue={setMechanisms}
-                allowedValues={pageContext.mechanisms}
-              />
-
-              <EditorComplexity setValue={setComplexity} value={complexity} />
-
-              <EditorPreparation
-                setValue={setPreparation}
-                value={preparation}
-              />
-              {typeContent === "review" ? (
-                <EditorLuck setValue={setLuck} value={luck} />
-              ) : (
-                <EditorNecessity setValue={setNecessity} value={necessity} />
-              )}
-              <EditorLongevity setValue={setLongevity} value={longevity} />
-              <EditorComponents setValue={setComponents} value={components} />
-              <EditorPortability
-                setValue={setPortability}
-                value={portability}
-              />
-
-              <h2 className="mt-5">Dove comprare</h2>
-
-              <EditorFantasia value={fantasiaUrl} setValue={setFantasiaUrl} />
-              <EditorDungeondice
-                value={dungeondiceUrl}
-                setValue={setDungeondiceUrl}
-              />
-              <EditorMagicMerchant
-                value={magicmerchantUrl}
-                setValue={setmagicmerchantUrl}
-              />
-              <EditorGetYourFun
-                value={getYourFunUrl}
-                setValue={setGetYourFunUrl}
-              />
-              <EditorBlasone
-                value={blasoneshopUrl}
-                setValue={setBlasoneshopUrl}
-              />
-              <EditorLsgiochi value={lsgiochiUrl} setValue={setLsgiochiUrl} />
-
-              <h2 className="mt-5">Contenuto</h2>
-
-              {typeContent === "review" ? (
+              {typeContent !== "editor" ? (
                 <>
-                  {" "}
-                  <EditorWYSIWYG
-                    name="Ambientazione"
-                    value={setting}
-                    setValue={setSetting}
-                    text="Cerca di far entrare il lettore nel mondo del gioco, non parlare di meccaniche, di longevità o che altro. Questa sezione serve solo per far immaginare al lettore in cosa si imbatterà, non come."
-                  />{" "}
-                  <EditorWYSIWYG
-                    name="Regole in breve"
-                    value={rules}
-                    setValue={setRules}
-                    text="Spiega solamente le regole necessarie, utilizza elenchi puntati, grassetti e che altro. Le sottoregole non ci interessano. Il lettore deve capire come funziona il gioco, non dobbiamo ricopiare il manuale."
+                  <EditorDate value={date} setValue={setDate} />
+
+                  <EditorWriter
+                    value={writer}
+                    setValue={setWriter}
+                    allowedValues={siteMeta.authors}
                   />
+
+                  <h2 className="mt-5">Header</h2>
+
+                  <EditorTitle value={title} setValue={setTitle} />
+                  <EditorDesigners value={designers} setValue={setDesigners} />
+                  <EditorPublisher
+                    value={publishers}
+                    setValue={setPublishers}
+                  />
+                  <EditorDescription
+                    value={description}
+                    setValue={setDescription}
+                  />
+
+                  <h2 className="mt-5">Box</h2>
+                  <EditorScore value={score} setValue={setScore} />
+                  <EditorPlayingTime
+                    value={playingTime}
+                    setValue={setPlayingTime}
+                  />
+                  <EditorPlayingTimeOfficial
+                    value={playingTimeOfficial}
+                    setValue={setPlayingTimeOfficial}
+                  />
+                  <EditorWeight value={weight} setValue={setWeight} />
+                  <EditorPlayerCount
+                    value={playerCount}
+                    setValue={setPlayerCount}
+                  />
+                  <EditorPlayerCountOfficial
+                    value={playerCountOfficial}
+                    setValue={setPlayerCountOfficial}
+                  />
+
+                  <h2 className="mt-5">Sidebar</h2>
+
+                  <EditorMechanism
+                    value={mechanisms}
+                    setValue={setMechanisms}
+                    allowedValues={pageContext.mechanisms}
+                  />
+
+                  <EditorComplexity
+                    setValue={setComplexity}
+                    value={complexity}
+                  />
+
+                  <EditorPreparation
+                    setValue={setPreparation}
+                    value={preparation}
+                  />
+                  {typeContent === "review" ? (
+                    <EditorLuck setValue={setLuck} value={luck} />
+                  ) : (
+                    <EditorNecessity
+                      setValue={setNecessity}
+                      value={necessity}
+                    />
+                  )}
+                  <EditorLongevity setValue={setLongevity} value={longevity} />
+                  <EditorComponents
+                    setValue={setComponents}
+                    value={components}
+                  />
+                  <EditorPortability
+                    setValue={setPortability}
+                    value={portability}
+                  />
+
+                  <h2 className="mt-5">Dove comprare</h2>
+
+                  <EditorFantasia
+                    value={fantasiaUrl}
+                    setValue={setFantasiaUrl}
+                  />
+                  <EditorDungeondice
+                    value={dungeondiceUrl}
+                    setValue={setDungeondiceUrl}
+                  />
+                  <EditorMagicMerchant
+                    value={magicmerchantUrl}
+                    setValue={setmagicmerchantUrl}
+                  />
+                  <EditorGetYourFun
+                    value={getYourFunUrl}
+                    setValue={setGetYourFunUrl}
+                  />
+                  <EditorBlasone
+                    value={blasoneshopUrl}
+                    setValue={setBlasoneshopUrl}
+                  />
+                  <EditorLsgiochi
+                    value={lsgiochiUrl}
+                    setValue={setLsgiochiUrl}
+                  />
+
+                  <h2 className="mt-5">Contenuto</h2>
+
+                  {typeContent === "review" ? (
+                    <>
+                      {" "}
+                      <EditorWYSIWYG
+                        name="Ambientazione"
+                        value={setting}
+                        setValue={setSetting}
+                        text="Cerca di far entrare il lettore nel mondo del gioco, non parlare di meccaniche, di longevità o che altro. Questa sezione serve solo per far immaginare al lettore in cosa si imbatterà, non come."
+                      />{" "}
+                      <EditorWYSIWYG
+                        name="Regole in breve"
+                        value={rules}
+                        setValue={setRules}
+                        text="Spiega solamente le regole necessarie, utilizza elenchi puntati, grassetti e che altro. Le sottoregole non ci interessano. Il lettore deve capire come funziona il gioco, non dobbiamo ricopiare il manuale."
+                      />
+                    </>
+                  ) : (
+                    <EditorWYSIWYG
+                      name="Panoramica"
+                      value={panoramic}
+                      setValue={setPanoramic}
+                      text="cosa rappresenta questa espansione ? di cosa parla? Cosa aggiunge? Cosa modifica? Facci una panoramica in breve"
+                    />
+                  )}
+                  <EditorWYSIWYG
+                    name="Impressioni"
+                    value={feedback}
+                    setValue={setFeedback}
+                    text="Cosa ti è piaciuto? Cosa non ti è piaciuto? Sii specifico. Comparalo pure ad altre recensioni presenti su dude."
+                  />
+
+                  <div className="mt-5 text-center">
+                    <EditorDownloader
+                      typeContent={typeContent}
+                      isDisabled={!isEnabled}
+                      title={title}
+                      date={date}
+                      writer={writer}
+                      mechanisms={mechanisms}
+                      publishers={publishers}
+                      designers={designers}
+                      description={description}
+                      playingTime={playingTime}
+                      playingTimeOfficial={playingTimeOfficial}
+                      score={score}
+                      weight={weight}
+                      playerCount={playerCount}
+                      playerCountOfficial={playerCountOfficial}
+                      complexity={complexity}
+                      preparation={preparation}
+                      luck={luck}
+                      longevity={longevity}
+                      components={components}
+                      portability={portability}
+                      fantasiaUrl={fantasiaUrl}
+                      dungeondiceUrl={dungeondiceUrl}
+                      magicmerchantUrl={magicmerchantUrl}
+                      getYourFunUrl={getYourFunUrl}
+                      blasoneshopUrl={blasoneshopUrl}
+                      lsgiochiUrl={lsgiochiUrl}
+                      setting={setting}
+                      rules={rules}
+                      feedback={feedback}
+                      panoramic={panoramic}
+                      necessity={necessity}
+                    />
+                  </div>
                 </>
               ) : (
-                <EditorWYSIWYG
-                  name="Panoramica"
-                  value={panoramic}
-                  setValue={setPanoramic}
-                  text="cosa rappresenta questa espansione ? di cosa parla? Cosa aggiunge? Cosa modifica? Facci una panoramica in breve"
-                />
+                <>
+                  <EditorWYSIWYG
+                    value={editingText}
+                    setValue={setEditingText}
+                    text="scrivi quello che vuoi, non ci sono limiti"
+                  />
+                  <EditorShower editingText={editingText} />
+                </>
               )}
-              <EditorWYSIWYG
-                name="Impressioni"
-                value={feedback}
-                setValue={setFeedback}
-                text="Cosa ti è piaciuto? Cosa non ti è piaciuto? Sii specifico. Comparalo pure ad altre recensioni presenti su dude."
-              />
-
-              <div className="mt-5 text-center">
-                <EditorDownloader
-                  typeContent={typeContent}
-                  isDisabled={!isEnabled}
-                  title={title}
-                  date={date}
-                  writer={writer}
-                  mechanisms={mechanisms}
-                  publishers={publishers}
-                  designers={designers}
-                  description={description}
-                  playingTime={playingTime}
-                  playingTimeOfficial={playingTimeOfficial}
-                  score={score}
-                  weight={weight}
-                  playerCount={playerCount}
-                  playerCountOfficial={playerCountOfficial}
-                  complexity={complexity}
-                  preparation={preparation}
-                  luck={luck}
-                  longevity={longevity}
-                  components={components}
-                  portability={portability}
-                  fantasiaUrl={fantasiaUrl}
-                  dungeondiceUrl={dungeondiceUrl}
-                  magicmerchantUrl={magicmerchantUrl}
-                  getYourFunUrl={getYourFunUrl}
-                  blasoneshopUrl={blasoneshopUrl}
-                  lsgiochiUrl={lsgiochiUrl}
-                  setting={setting}
-                  rules={rules}
-                  feedback={feedback}
-                  panoramic={panoramic}
-                  necessity={necessity}
-                />
-              </div>
             </Form>
           </Col>
         </Row>

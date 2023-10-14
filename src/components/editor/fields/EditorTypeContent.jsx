@@ -7,6 +7,7 @@ export const EditorTypeContent = ({ value, setValue }) => {
   const options = [
     { value: "review", label: "gioco base" },
     { value: "expansion", label: "espansione" },
+    { value: "editor", label: "editing veloce" },
   ]
 
   return (

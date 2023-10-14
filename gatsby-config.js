@@ -23,6 +23,15 @@ module.exports = {
         image: "angelo.jpg",
         instagram_url: "https://www.instagram.com/giotap_boardgames/",
       },
+      {
+        name: "Atipica Nerd",
+        summary:
+          "Sono un’Atipica Nerd appassionata di giochi da tavolo. Lettrice accanita e amante di serie tv. Pensandoci sono una Nerd a tutti gli effetti!",
+        image: "atipica-nerd.jpg",
+        instagram_url:
+          "https://instagram.com/atipicanerd?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr",
+        tiktok_url: "https://www.tiktok.com/@atipicanerd?_t=8gMaMHZq3TV&_r=1",
+      },
 
       {
         name: "Angelo M Pero",
