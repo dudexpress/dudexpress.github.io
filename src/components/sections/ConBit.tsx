@@ -16,23 +16,28 @@ import StandBox from "../boxes/StandBox"
 import GameCard from "../misc/GameCard"
 import { graphql, useStaticQuery } from "gatsby"
 import * as stylesGameCard from "../misc/GameCard.module.scss"
+import SystemBox from "../boxes/SystemBox"
+import FamilyBox from "../boxes/FamilyBox"
 
-export interface AdvisorBitProps {
+export interface ConBitProps {
   title: string
   hype?: number
   score?: number
   slug?: string
-  player_count: number
-  player_count_official: string
+  player_count?: number
+  player_count_official?: string
   weight: PostWeigth
-  playing_time: string
-  playing_time_official: string
+  playing_time?: string
+  playing_time_official?: string
   publisher: string
   stand: string
   mechanism: string[]
+  // gdr
+  system?: string
+  family?: string
 }
 
-export const ConBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
+export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
   let review = null
   if (props.slug != null) {
     const data = useStaticQuery(graphql`
@@ -74,6 +79,8 @@ export const ConBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
   }
 
   function renderAfterTitle(): JSX.Element {
+    const isGdR = props.family != null
+
     return (
       <Row className="welcome-boxes">
         <Col md={6} xl={4} className="p-0">
@@ -81,21 +88,29 @@ export const ConBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
           {props.hype && <HypeBox value={props.hype} small />}
         </Col>
         <Col md={6} xl={4} className="p-0">
-          <DurationBox
-            value={props.playing_time}
-            officialValue={props.playing_time_official}
-            small
-          />
+          {isGdR ? (
+            <SystemBox value={props.system!} small />
+          ) : (
+            <DurationBox
+              value={props.playing_time!}
+              officialValue={props.playing_time_official!}
+              small
+            />
+          )}
         </Col>
         <Col md={6} xl={4} className="p-0">
           <WeightBox value={props.weight} small />
         </Col>
         <Col md={6} xl={4} className="p-0">
-          <PlayerCountBox
-            value={props.player_count}
-            officialValue={props.player_count_official}
-            small
-          />
+          {isGdR ? (
+            <FamilyBox value={props.family!} small />
+          ) : (
+            <PlayerCountBox
+              value={props.player_count!}
+              officialValue={props.player_count_official!}
+              small
+            />
+          )}
         </Col>
         <Col md={6} xl={4} className="p-0">
           <PublisherBox value={props.publisher} small />
@@ -106,7 +121,7 @@ export const ConBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
 
         <Col md={12} xl={12} className="p-0">
           <BaseBox title="Meccaniche" small noHeight>
-            <Mechanisms values={props.mechanism} small />
+            <Mechanisms values={props.mechanism} small avoidLinks={isGdR} />
           </BaseBox>
         </Col>
       </Row>

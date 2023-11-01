@@ -164,7 +164,7 @@ module.exports = {
       {
         name: "LoveIsOnTheBoard",
         summary:
-          " 'Ma sì, prendiamoci un gioco da tavolo' si dissero 'cosa mai potrà succedere?' Ebbene eccoci qui, molti giochi dopo, a scrivere recensioni su quella che è diventata una nostra grande passione.",
+          "'Ma sì, prendiamoci un gioco da tavolo' si dissero 'cosa mai potrà succedere?' Ebbene eccoci qui, molti giochi dopo, a scrivere recensioni su quella che è diventata una nostra grande passione.",
         image: "LoveIsOnTheBoard.jpg",
       },
       {
@@ -201,7 +201,7 @@ module.exports = {
       },
       {
         name: "PcomePigro",
-        summary: "guarda dietro di te, una scimmia a tre teste!",
+        summary: "Guarda dietro di te, una scimmia a tre teste!",
         image: "PcomePigro.jpg",
         instagram_url: "https://www.instagram.com/pcomepigro/",
       },
@@ -246,6 +246,12 @@ module.exports = {
         image: "un-meeple-per-due.jpg",
         instagram_url: "https://www.instagram.com/un_meeple_per_due",
         tiktok_url: "https://www.tiktok.com/@un_meeple_per_due",
+      },
+      {
+        name: "Zio Hal & La Locandiera",
+        summary:
+          "Lui: Devoto agli scritti di Tolkien e veterano dei giochi di ruolo presiede il Club Dado Giallo di Biella in maniera impeccabile. “Giocare è una cosa seria”. Lei: Scrittrice, pittrice ed ottima cuoca; dal connubio irresistibile di cucina e GdR è nata My Fantasy Kitchen, una pagina Ig di ricette a tema GdR.",
+        image: "zio-hal.jpg",
       },
       {
         name: "Zirø",

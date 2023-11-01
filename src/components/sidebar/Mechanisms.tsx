@@ -9,18 +9,26 @@ interface MechanismsProps {
   values: string[]
   withMore?: boolean
   small?: boolean
+  avoidLinks?: boolean
 }
 
 export default class Mechanisms extends React.PureComponent<MechanismsProps> {
   private renderTag(tag: string): React.ReactNode {
+    const badge = (
+      <Badge key={tag} className={styles.badge} bg="secondary me-1 mb-1">
+        {tag}
+      </Badge>
+    )
+    if (this.props.avoidLinks) {
+      return <div className="mt-1">{badge}</div>
+    }
+
     return (
       <Link
         key={tag}
         to={`/mechanisms/${slugify(tag, { lower: true, strict: true })}`}
       >
-        <Badge key={tag} className={styles.badge} bg="secondary me-1 mb-1">
-          {tag}
-        </Badge>
+        {badge}
       </Link>
     )
   }
@@ -46,7 +54,7 @@ export default class Mechanisms extends React.PureComponent<MechanismsProps> {
               styles.mechanisms + " flex-row justify-content-center flex-wrap"
             }
           >
-            {this.props.values.map(this.renderTag)}
+            {this.props.values.map(this.renderTag.bind(this))}
           </div>
         </div>
       )
@@ -56,7 +64,7 @@ export default class Mechanisms extends React.PureComponent<MechanismsProps> {
       <div className="mb-5 text-center text-lg-start">
         <h5 className="fw-bold">{this.props.title ?? "Meccaniche"}</h5>
         <div className={styles.mechanisms}>
-          {this.props.values.map(this.renderTag)}
+          {this.props.values.map(this.renderTag.bind(this))}
           {this.renderMore()}
         </div>
       </div>
