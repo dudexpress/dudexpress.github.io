@@ -48,6 +48,35 @@ async function getAllReviews(graphql) {
   return result.data.allMdx.nodes
 }
 
+async function getAllPreviews(graphql) {
+  const result = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: { type: { eq: "preview" } } }
+          sort: { fields: [frontmatter___date], order: ASC }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              type
+              designer
+              publisher
+              mechanisms
+              writer
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return result.data.allMdx.nodes
+}
+
 async function getAllAdvisor(graphql) {
   const result = await graphql(
     `
@@ -155,6 +184,7 @@ async function getAllInterview(graphql) {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const reviewPosts = await getAllReviews(graphql)
+  const previewPosts = await getAllPreviews(graphql)
   const advisorPosts = await getAllAdvisor(graphql)
   const fundingPosts = await getAllFunding(graphql)
   const conPosts = await getAllCon(graphql)
@@ -176,6 +206,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: post.id,
         readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
+      },
+    })
+  })
+
+  previewPosts.forEach((post, index) => {
+    // TODO same mechaniism
+    let readMoreIds = []
+    while (readMoreIds.length < 3) {
+      let r = "" + Math.floor(Math.random() * previewPosts.length)
+      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+        readMoreIds.push(r)
+      }
+    }
+
+    createPage({
+      path: post.fields.slug,
+      component: path.resolve(`./src/templates/BlogPost.tsx`),
+      context: {
+        id: post.id,
+        readMoreIds: readMoreIds.map(x => previewPosts[x].id),
       },
     })
   })
@@ -259,6 +309,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const blogPostPerPage = 10,
     blogNumPages = Math.ceil(
       (reviewPosts.length +
+        previewPosts.length +
         advisorPosts.length +
         fundingPosts.length +
         conPosts.length +
@@ -266,6 +317,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         blogPostPerPage
     )
   const reviewsNumPages = Math.ceil(reviewPosts.length / blogPostPerPage)
+  const previewsNumPages = Math.ceil(previewPosts.length / blogPostPerPage)
   const fundingNumPages = Math.ceil(fundingPosts.length / blogPostPerPage)
   const advisorNumPages = Math.ceil(advisorPosts.length / blogPostPerPage)
   const conNumPages = Math.ceil(conPosts.length / blogPostPerPage)
@@ -282,6 +334,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,
         numPages: reviewsNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  Array.from({ length: previewsNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/previews` : `/previews/${i + 1}`,
+      component: path.resolve("./src/templates/GenericPostList.jsx"),
+      context: {
+        title: "DudePreview",
+        types: ["preview"],
+        basePath: "previews",
+        limit: blogPostPerPage,
+        skip: i * blogPostPerPage,
+        numPages: previewsNumPages,
         currentPage: i + 1,
       },
     })
@@ -357,7 +425,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve("./src/templates/GenericPostList.jsx"),
       context: {
         title: "Articoli",
-        types: ["review", "advisor", "funding", "con", "interview"],
+        types: ["review", "preview", "advisor", "funding", "con", "interview"],
         basePath: "blog",
         limit: blogPostPerPage,
         skip: i * blogPostPerPage,

@@ -48,6 +48,13 @@ const Layout = ({ location, title, children }) => {
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   as={Link}
+                  to="/previews"
+                  className={style.dropdownItem}
+                >
+                  <span className={style.dudeInDropdown}>Dude</span>Preview
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
                   to="/funding"
                   className={style.dropdownItem}
                 >
