@@ -1,7 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const slugify = require("slugify")
-const fetch = require("node-fetch")
 
 function getDesignerPath(mechanism) {
   return `/designers/${slugify(mechanism, { lower: true, strict: true })}`
@@ -19,12 +18,12 @@ function getWriterPath(author) {
   return `/writers/${slugify(author, { lower: true, strict: true })}`
 }
 
-async function getAllReviews(graphql) {
+async function getAllArticles(graphql, type) {
   const result = await graphql(
     `
       {
         allMdx(
-          filter: { frontmatter: { type: { eq: "review" } } }
+          filter: { frontmatter: { type: { eq: "${type}" } } }
           sort: { fields: [frontmatter___date], order: ASC }
         ) {
           nodes {
@@ -35,168 +34,6 @@ async function getAllReviews(graphql) {
               publisher
               mechanisms
               writer
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return result.data.allMdx.nodes
-}
-
-async function getAllPreviews(graphql) {
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          filter: { frontmatter: { type: { eq: "preview" } } }
-          sort: { fields: [frontmatter___date], order: ASC }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              type
-              designer
-              publisher
-              mechanisms
-              writer
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return result.data.allMdx.nodes
-}
-
-async function getAllNext(graphql) {
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          filter: { frontmatter: { type: { eq: "next" } } }
-          sort: { fields: [frontmatter___date], order: ASC }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              type
-              designer
-              publisher
-              mechanisms
-              writer
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return result.data.allMdx.nodes
-}
-
-async function getAllAdvisor(graphql) {
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          filter: { frontmatter: { type: { eq: "advisor" } } }
-          sort: { fields: [frontmatter___date], order: ASC }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              type
-              designer
-              publisher
-              mechanisms
-              writer
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return result.data.allMdx.nodes
-}
-
-async function getAllFunding(graphql) {
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          filter: { frontmatter: { type: { eq: "funding" } } }
-          sort: { fields: [frontmatter___date], order: ASC }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              type
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return result.data.allMdx.nodes
-}
-
-async function getAllCon(graphql) {
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          filter: { frontmatter: { type: { eq: "con" } } }
-          sort: { fields: [frontmatter___date], order: ASC }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              type
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  return result.data.allMdx.nodes
-}
-
-async function getAllInterview(graphql) {
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          filter: { frontmatter: { type: { eq: "interview" } } }
-          sort: { fields: [frontmatter___date], order: ASC }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              type
             }
             fields {
               slug
@@ -211,297 +48,99 @@ async function getAllInterview(graphql) {
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
+  const BLOG_POST_PER_PAGE = 10
   const { createPage } = actions
-  const reviewPosts = await getAllReviews(graphql)
-  const previewPosts = await getAllPreviews(graphql)
-  const nextPosts = await getAllNext(graphql)
-  const advisorPosts = await getAllAdvisor(graphql)
-  const fundingPosts = await getAllFunding(graphql)
-  const conPosts = await getAllCon(graphql)
-  const interviewPosts = await getAllInterview(graphql)
+  const reviewPosts = await getAllArticles(graphql, "review")
 
-  reviewPosts.forEach((post, index) => {
-    // TODO same mechaniism
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * reviewPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
+  const createPostPage = (templatePath, posts) => {
+    return (post, index) => {
+      let readMoreIds = []
+      while (readMoreIds.length < 3) {
+        let r = "" + Math.floor(Math.random() * reviewPosts.length)
+        if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
+          readMoreIds.push(r)
+        }
       }
+
+      createPage({
+        path: post.fields.slug,
+        component: path.resolve(templatePath),
+        context: {
+          id: post.id,
+          readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
+        },
+      })
     }
+  }
 
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/BlogPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
-      },
+  const createIndexPages = (numPages, title, types, basePath) => {
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/${basePath}` : `/${basePath}/${i + 1}`,
+        component: path.resolve("./src/templates/GenericPostList.jsx"),
+        context: {
+          title,
+          types,
+          basePath,
+          limit: BLOG_POST_PER_PAGE,
+          skip: i * BLOG_POST_PER_PAGE,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
     })
-  })
+  }
 
-  previewPosts.forEach((post, index) => {
-    // TODO same mechaniism
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * previewPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
-      }
-    }
+  const reviewsNumPages = Math.ceil(reviewPosts.length / BLOG_POST_PER_PAGE)
+  reviewPosts.forEach(createPostPage(`./src/templates/BlogPost.tsx`, reviewPosts))
+  createIndexPages(reviewsNumPages, "DudeReview", ["review"], "reviews")
 
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/BlogPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => previewPosts[x].id),
-      },
-    })
-  })
+  const previewPosts = await getAllArticles(graphql, "preview")
+  const previewNumPages = Math.ceil(previewPosts.length / BLOG_POST_PER_PAGE)
+  previewPosts.forEach(createPostPage(`./src/templates/BlogPost.tsx`, previewPosts))
+  createIndexPages(previewNumPages, "DudePreview", ["preview"], "previews")
 
-  nextPosts.forEach((post, index) => {
-    // TODO same mechaniism
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * nextPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
-      }
-    }
+  const nextPosts = await getAllArticles(graphql, "next")
+  const nextNumPages = Math.ceil(nextPosts.length / BLOG_POST_PER_PAGE)
+  nextPosts.forEach(createPostPage(`./src/templates/BlogPost.tsx`, previewPosts))
+  createIndexPages(nextNumPages, "DudeNext", ["next"], "nexts")
 
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/BlogPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => nextPosts[x].id),
-      },
-    })
-  })
+  const advisorPosts = await getAllArticles(graphql, "advisor")
+  const advisorNumPages = Math.ceil(advisorPosts.length / BLOG_POST_PER_PAGE)
+  advisorPosts.forEach(createPostPage(`./src/templates/AdvisorPost.tsx`, advisorPosts))
+  createIndexPages(advisorNumPages, "DudeAdvisor", ["advisor"], "advisor")
 
-  advisorPosts.forEach((post, index) => {
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * reviewPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
-      }
-    }
+  const fundingPosts = await getAllArticles(graphql, "funding")
+  const fundingNumPages = Math.ceil(fundingPosts.length / BLOG_POST_PER_PAGE)
+  fundingPosts.forEach(createPostPage(`./src/templates/FundingPost.tsx`, fundingPosts))
+  createIndexPages(fundingNumPages, "DudeFunding", ["funding"], "funding")
 
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/AdvisorPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
-      },
-    })
-  })
+  const conPosts = await getAllArticles(graphql, "con")
+  const conNumPages = Math.ceil(conPosts.length / BLOG_POST_PER_PAGE)
+  conPosts.forEach(createPostPage(`./src/templates/ConPost.tsx`, conPosts))
+  createIndexPages(conNumPages, "DudeCon", ["con"], "convention")
 
-  fundingPosts.forEach((post, index) => {
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * reviewPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
-      }
-    }
+  const interviewPosts = await getAllArticles(graphql, "interview")
+  const interviewNumPages = Math.ceil(interviewPosts.length / BLOG_POST_PER_PAGE)
+  interviewPosts.forEach(createPostPage(`./src/templates/InterviewPost.tsx`, interviewPosts))
+  createIndexPages(interviewNumPages, "DudeInterview", ["interview"], "interview")
 
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/FundingPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
-      },
-    })
-  })
-
-  conPosts.forEach((post, index) => {
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * reviewPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
-      }
-    }
-
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/ConPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
-      },
-    })
-  })
-
-  interviewPosts.forEach((post, index) => {
-    let readMoreIds = []
-    while (readMoreIds.length < 3) {
-      let r = "" + Math.floor(Math.random() * reviewPosts.length)
-      if (readMoreIds.indexOf(r) === -1 && r !== "" + index) {
-        readMoreIds.push(r)
-      }
-    }
-
-    createPage({
-      path: post.fields.slug,
-      component: path.resolve(`./src/templates/InterviewPost.tsx`),
-      context: {
-        id: post.id,
-        readMoreIds: readMoreIds.map(x => reviewPosts[x].id),
-      },
-    })
-  })
-
-  const blogPostPerPage = 10,
-    blogNumPages = Math.ceil(
-      (reviewPosts.length +
-        previewPosts.length +
-        nextPosts.length +
-        advisorPosts.length +
-        fundingPosts.length +
-        conPosts.length +
-        interviewPosts.length) /
-        blogPostPerPage
-    )
-  const reviewsNumPages = Math.ceil(reviewPosts.length / blogPostPerPage)
-  const previewsNumPages = Math.ceil(previewPosts.length / blogPostPerPage)
-  const nextNumPages = Math.ceil(nextPosts.length / blogPostPerPage)
-  const fundingNumPages = Math.ceil(fundingPosts.length / blogPostPerPage)
-  const advisorNumPages = Math.ceil(advisorPosts.length / blogPostPerPage)
-  const conNumPages = Math.ceil(conPosts.length / blogPostPerPage)
-  const interviewNumPages = Math.ceil(interviewPosts.length / blogPostPerPage)
-
-  Array.from({ length: reviewsNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/reviews` : `/reviews/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudeReview",
-        types: ["review"],
-        basePath: "reviews",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: reviewsNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: previewsNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/previews` : `/previews/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudePreview",
-        types: ["preview"],
-        basePath: "previews",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: previewsNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: nextNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/next` : `/next/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudeNext",
-        types: ["next"],
-        basePath: "next",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: nextNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: fundingNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/funding` : `/funding/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudeFunding",
-        types: ["funding"],
-        basePath: "funding",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: fundingNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: advisorNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/advisor` : `/advisor/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudeAdvisor",
-        types: ["advisor"],
-        basePath: "advisor",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: advisorNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: conNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/convention` : `/convention/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudeCon",
-        types: ["con"],
-        basePath: "convention",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: conNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: interviewNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/interview` : `/interview/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "DudeInterview",
-        types: ["interview"],
-        basePath: "interview",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: interviewNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  Array.from({ length: blogNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-      component: path.resolve("./src/templates/GenericPostList.jsx"),
-      context: {
-        title: "Articoli",
-        types: ["review", "preview", "advisor", "funding", "con", "interview"],
-        basePath: "blog",
-        limit: blogPostPerPage,
-        skip: i * blogPostPerPage,
-        numPages: blogNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
+  const blogNumPages = Math.ceil(
+    (reviewPosts.length +
+      previewPosts.length +
+      nextPosts.length +
+      advisorPosts.length +
+      fundingPosts.length +
+      conPosts.length +
+      interviewPosts.length) /
+      BLOG_POST_PER_PAGE
+  )
+  createIndexPages(
+    blogNumPages,
+    "Articoli",
+    ["review", "preview", "next", "advisor", "funding", "con", "interview"],
+    "blog"
+  )
 
   let mechanismsCounter = {}
   let designersCounter = {}
@@ -520,26 +159,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   const dedupedDesigners = [...Object.keys(designersCounter)].sort()
-  const sortedDesigners = Object.keys(designersCounter).sort(
-    (a, b) => designersCounter[b] - designersCounter[a]
-  )
+  const sortedDesigners = Object.keys(designersCounter).sort((a, b) => designersCounter[b] - designersCounter[a])
 
   const dedupedPublishers = [...Object.keys(publishersCounter)].sort()
-  const sortedPublishers = Object.keys(publishersCounter).sort(
-    (a, b) => publishersCounter[b] - publishersCounter[a]
-  )
+  const sortedPublishers = Object.keys(publishersCounter).sort((a, b) => publishersCounter[b] - publishersCounter[a])
 
   const dedupedMechanisms = [...Object.keys(mechanismsCounter)].sort()
-  const sortedMechanisms = Object.keys(mechanismsCounter).sort(
-    (a, b) => mechanismsCounter[b] - mechanismsCounter[a]
-  )
+  const sortedMechanisms = Object.keys(mechanismsCounter).sort((a, b) => mechanismsCounter[b] - mechanismsCounter[a])
 
   createPage({
     path: `editor`,
     component: require.resolve("./src/templates/Editor.jsx"),
     context: {
+      designers: dedupedDesigners,
+      publishers: dedupedPublishers,
       mechanisms: dedupedMechanisms,
-      // TODO
     },
   })
 
