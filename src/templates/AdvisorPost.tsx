@@ -26,6 +26,7 @@ import { AdvisorBit } from "../components/sections/AdvisorBit"
 import classnames from "classnames"
 import AdvisorIntro from "../components/sections/AdvisorIntro"
 import { DefaultStores } from "../components/sidebar/DefaultStores"
+import { ReviewLink } from "../components/misc/ReviewLink"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -38,7 +39,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
-    Link,
+    Link: ReviewLink,
     RandomLink,
     AdvisorIntro,
     AdvisorBit,

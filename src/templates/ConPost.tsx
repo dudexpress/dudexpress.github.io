@@ -27,6 +27,7 @@ import FundingIntro from "../components/sections/FundingIntro"
 import { ConBit } from "../components/sections/ConBit"
 import PostWriter from "../components/misc/PostWriter"
 import { DefaultStores } from "../components/sidebar/DefaultStores"
+import { ReviewLink } from "../components/misc/ReviewLink"
 
 const ConPost = ({ data, location }: ConPostProps) => {
   const post = data.mdx
@@ -39,7 +40,7 @@ const ConPost = ({ data, location }: ConPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
-    Link,
+    Link: ReviewLink,
     RandomLink,
     FundingIntro,
     ConBit,

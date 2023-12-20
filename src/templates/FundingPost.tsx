@@ -28,6 +28,7 @@ import { FundingBit } from "../components/sections/FundingBit"
 import PostWriter from "../components/misc/PostWriter"
 import FundingLink from "../components/misc/FundingLink"
 import { DefaultStores } from "../components/sidebar/DefaultStores"
+import { ReviewLink } from "../components/misc/ReviewLink"
 
 const BlogPost = ({ data, location }: FundingPostProps) => {
   const post = data.mdx
@@ -40,7 +41,7 @@ const BlogPost = ({ data, location }: FundingPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
-    Link,
+    Link: ReviewLink,
     RandomLink,
     FundingIntro,
     FundingBit,

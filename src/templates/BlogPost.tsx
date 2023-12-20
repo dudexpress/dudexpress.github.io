@@ -28,7 +28,7 @@ import Setting from "../components/sections/Setting"
 import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
 import classNames from "classnames"
-import Disclaimer from "../components/sidebar/Disclainer"
+import { ReviewLink } from "../components/misc/ReviewLink"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -42,7 +42,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     Youtube,
     Instagram,
     OutboundLink,
-    Link,
+    Link: ReviewLink,
     RandomLink,
     BaseSection,
     OriginalReviewLink,

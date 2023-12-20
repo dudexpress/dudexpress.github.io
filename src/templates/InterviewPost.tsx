@@ -19,12 +19,13 @@ import { InterviewItem } from "../components/interview/InterviewItem"
 import InterviewIntro from "../components/interview/InterviewIntro"
 import PostWriter from "../components/misc/PostWriter"
 import { DefaultStores } from "../components/sidebar/DefaultStores"
+import { ReviewLink } from "../components/misc/ReviewLink"
 
 const InterviewPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const shortcodes = {
-    Link,
+    Link: ReviewLink,
     InterviewIntro,
     InterviewItem,
   }

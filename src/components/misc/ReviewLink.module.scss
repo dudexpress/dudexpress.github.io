@@ -1,0 +1,17 @@
+@use "sass:math";
+@use "../../style.scss" as v;
+
+.review-link {
+  border-radius: math.div(v.$border-radius, 2);
+  padding: 0 math.div(v.$spacing-unit, 2);
+  background: v.$white !important;
+  border: 1px solid v.$red;
+  transition: background-color 0.2s ease-out;
+  display: inline-block;
+
+  &,
+  &:hover {
+    text-decoration: none;
+    color: v.$red;
+  }
+}
