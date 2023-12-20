@@ -11,11 +11,7 @@ import HypeBox from "../boxes/HypeBox"
 
 export default class BlogPostBoxes extends React.PureComponent<Frontmatter> {
   private renderScoreBox(): React.ReactNode {
-    if (
-      this.props.gamefound_url != null ||
-      this.props.kickstarter_url != null ||
-      (this.props.weega_future && this.props.weega_url != null)
-    ) {
+    if (["next", "preview"].includes(this.props.type)) {
       return <HypeBox value={this.props.score} />
     }
     return <ScoreBox value={this.props.score} />
@@ -29,19 +25,13 @@ export default class BlogPostBoxes extends React.PureComponent<Frontmatter> {
             {this.renderScoreBox()}
           </Col>
           <Col md={6} xl={3}>
-            <DurationBox
-              value={this.props.playing_time}
-              officialValue={this.props.playing_time_official}
-            />
+            <DurationBox value={this.props.playing_time} officialValue={this.props.playing_time_official} />
           </Col>
           <Col md={6} xl={3}>
             <WeightBox value={this.props.weight} />
           </Col>
           <Col md={6} xl={3}>
-            <PlayerCountBox
-              value={this.props.player_count}
-              officialValue={this.props.player_count_official}
-            />
+            <PlayerCountBox value={this.props.player_count} officialValue={this.props.player_count_official} />
           </Col>
         </Row>
       </Container>

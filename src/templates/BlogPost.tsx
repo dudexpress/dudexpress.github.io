@@ -28,6 +28,7 @@ import Setting from "../components/sections/Setting"
 import Spotify from "../components/misc/Spoify"
 import Youtube from "../components/misc/Youtube"
 import classNames from "classnames"
+import Disclaimer from "../components/sidebar/Disclainer"
 
 const BlogPost = ({ data, location }: BlogPostProps) => {
   const post = data.mdx
@@ -51,9 +52,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
     metaDesciption = `${post.frontmatter.description} | Recensione gioco da tavolo ${data.site.siteMetadata.title}`,
     metaImage =
-      "https://dudexpress.it" +
-      post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
-        .fallback!.src
+      "https://dudexpress.it" + post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!.fallback!.src
 
   const structuredJSON = JSON.stringify({
     "@context": "https://schema.org/",
@@ -111,12 +110,7 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
           <div className={classname}>
             <Container>
               <Row>
-                <Col
-                  xs={12}
-                  md={8}
-                  lg={{ span: 7, offset: 1 }}
-                  className="base-section-column"
-                >
+                <Col xs={12} md={8} lg={{ span: 7, offset: 1 }} className="base-section-column">
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
                 <Col md={{ span: 3, offset: 1 }}>
@@ -124,14 +118,8 @@ const BlogPost = ({ data, location }: BlogPostProps) => {
                 </Col>
               </Row>
               <Row>
-                <Col
-                  lg={{ span: 7, offset: 1 }}
-                  className="base-section-column"
-                >
-                  <PostWriter
-                    writerName={post.frontmatter.writer}
-                    asCard={true}
-                  />
+                <Col lg={{ span: 7, offset: 1 }} className="base-section-column">
+                  <PostWriter writerName={post.frontmatter.writer} asCard={true} />
                 </Col>
               </Row>
             </Container>
@@ -167,16 +155,13 @@ export const pageQuery = graphql`
       body
       slug
       frontmatter {
+        type
         date(formatString: "DD/MM/YYYY")
         writer
         title
         featureImage {
           childImageSharp {
-            gatsbyImageData(
-              width: 330
-              placeholder: BLURRED
-              formats: [JPG, WEBP, AVIF]
-            )
+            gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
           }
         }
         description
@@ -204,9 +189,7 @@ export const pageQuery = graphql`
         blasone_url
         lsgiochi_url
         mse_url
-        pandoragames_url
         weega_url
-        weega_future
         gamefound_url
         kickstarter_url
       }
@@ -223,11 +206,7 @@ export const pageQuery = graphql`
           title
           featureImage {
             childImageSharp {
-              gatsbyImageData(
-                width: 330
-                placeholder: BLURRED
-                formats: [JPG, WEBP, AVIF]
-              )
+              gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
             }
           }
           description

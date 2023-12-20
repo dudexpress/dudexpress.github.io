@@ -18,9 +18,7 @@ interface StoresProps
       | "blasone_url"
       | "lsgiochi_url"
       | "mse_url"
-      | "pandoragames_url"
       | "weega_url"
-      | "weega_future"
       | "kickstarter_url"
       | "gamefound_url"
     >
@@ -34,10 +32,7 @@ export interface StoresState {
   modalShown: StoresWithModal | null
 }
 
-export default class Stores extends React.PureComponent<
-  StoresProps,
-  StoresState
-> {
+export default class Stores extends React.PureComponent<StoresProps, StoresState> {
   constructor(props: StoresProps) {
     super(props)
     this.state = {
@@ -103,9 +98,7 @@ export default class Stores extends React.PureComponent<
       "../../logo/dungeondice.png",
       styles.dungeondice,
       this.props.dungeondice_url,
-      x =>
-        "https://www.awin1.com/cread.php?awinmid=54767&awinaffid=1358029&ued=" +
-        encodeURIComponent(x)
+      x => "https://www.awin1.com/cread.php?awinmid=54767&awinaffid=1358029&ued=" + encodeURIComponent(x)
     )
   }
 
@@ -166,26 +159,7 @@ export default class Stores extends React.PureComponent<
   }
 
   private renderMse(): React.ReactNode {
-    return this.renderStore(
-      "mse",
-      "../../logo/mse.jpg",
-      styles.mse,
-      this.props.mse_url,
-      x => x,
-      "DUDEXPRESS10",
-      0.1
-    )
-  }
-
-  private renderPandoraGames(): React.ReactNode {
-    return null
-    // return this.renderStore(
-    // "pandora",
-    // "../../logo/pandoragames.jpg",
-    // styles.pandora,
-    // this.props.pandoragames_url,
-    // ""
-    // )
+    return this.renderStore("mse", "../../logo/mse.jpg", styles.mse, this.props.mse_url, x => x, "DUDEXPRESS10", 0.1)
   }
 
   private renderWeega(): React.ReactNode {
@@ -209,13 +183,7 @@ export default class Stores extends React.PureComponent<
   }
 
   private renderGamefound(): React.ReactNode {
-    return this.renderStore(
-      "gamefound",
-      "../../logo/gamefound.jpg",
-      styles.gamefound,
-      this.props.gamefound_url,
-      x => x
-    )
+    return this.renderStore("gamefound", "../../logo/gamefound.jpg", styles.gamefound, this.props.gamefound_url, x => x)
   }
 
   public render(): React.ReactNode {
@@ -227,7 +195,6 @@ export default class Stores extends React.PureComponent<
       this.renderLsGiochi(),
       this.renderGetYourFun(),
       this.renderMse(),
-      this.renderPandoraGames(),
       this.renderWeega(),
       this.renderKickstarer(),
       this.renderGamefound(),
@@ -236,10 +203,7 @@ export default class Stores extends React.PureComponent<
       return null
     }
 
-    const className = classnames(
-      styles.stores,
-      "mb-5 text-center text-lg-start"
-    )
+    const className = classnames(styles.stores, "mb-5 text-center text-lg-start")
     return (
       <div className={className}>
         <h5 className="fw-bold">{this.props.label ?? "Acquistalo qui"}</h5>

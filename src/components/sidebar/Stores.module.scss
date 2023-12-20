@@ -46,10 +46,6 @@
       @include store(v.$mseColor);
     }
 
-    &.pandora {
-      @include store(v.$pandoraColor);
-    }
-
     &.lsgiochi {
       @include store(v.$lsgiochiColor);
     }

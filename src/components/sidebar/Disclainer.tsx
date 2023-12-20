@@ -1,20 +1,27 @@
 import React from "react"
-import { Frontmatter } from "../../types"
 
-type DisclaimerProps = Pick<
-  Frontmatter,
-  "kickstarter_url" | "gamefound_url" | "weega_url" | "weega_future"
->
+export default class Disclaimer extends React.PureComponent<{ type: string }> {
+  private getContent(): React.ReactNode {
+    switch (this.props.type) {
+      case "next":
+        return (
+          <>
+            I voti e i giudizi sono relativi solamente alle <strong>informazioni presenti online</strong> analizzate
+            grazie ai nostri sofisticatissimi strumenti di laboratorio!
+          </>
+        )
+      default:
+        return (
+          <>
+            I voti e i giudizi sono relativi solamente alla <strong>copia</strong> analizzata grazie ai nostri
+            sofisticatissimi strumenti di laboratorio!
+          </>
+        )
+    }
+  }
 
-export default class Disclaimer extends React.PureComponent<DisclaimerProps> {
   public render(): React.ReactNode {
-    if (
-      !(
-        this.props.kickstarter_url != null ||
-        this.props.gamefound_url != null ||
-        (this.props.weega_url != null && this.props.weega_future === true)
-      )
-    ) {
+    if (this.props.type === "review") {
       return null
     }
 
@@ -22,11 +29,9 @@ export default class Disclaimer extends React.PureComponent<DisclaimerProps> {
       <div className="disclaimer mb-5">
         <h5>Disclaimer</h5>
         <small>
-          Vi ricordiamo che state leggendo l'anteprima di un gioco non ancora
-          esistente che i vostri Dudes sono andati a recuperare nelle profondità
-          dello spazio! <br />I voti e i giudizi sono relativi solamente alla
-          copia analizzata grazie ai nostri sofisticatissimi strumenti di
-          laboratorio!
+          Vi ricordiamo che state leggendo l'<strong>anteprima</strong> di un gioco non ancora esistente che i vostri
+          Dudes sono andati a recuperare nelle profondità dello spazio! <br />
+          {this.getContent()}
         </small>
       </div>
     )

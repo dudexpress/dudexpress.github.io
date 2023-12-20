@@ -64,14 +64,11 @@ sidebar_votes:
 {{blasoneshop_url}}
 {{lsgiochi_url}}
 # weega_url
-# weega_future
 # gamefound_url
 # kickstarter_url
 ---
 ` +
-    (props.typeContent === "expansion"
-      ? `<OriginalReviewLink slug="{{reviewLink}}" />`
-      : ``) +
+    (props.typeContent === "expansion" ? `<OriginalReviewLink slug="{{reviewLink}}" />` : ``) +
     (props.typeContent === "review"
       ? `
 <Setting>
@@ -101,9 +98,7 @@ sidebar_votes:
 `
 
   const makeSections = text => {
-      const mdWithHtml = draftToMarkdown(
-          convertToRaw(text.getCurrentContent())
-        ),
+      const mdWithHtml = draftToMarkdown(convertToRaw(text.getCurrentContent())),
         htmlTagRegex = /(<([^>]+)>)/gi,
         md = mdWithHtml.replace(htmlTagRegex, ""),
         converter = new showdown.Converter({ simpleLineBreaks: true })
@@ -156,15 +151,9 @@ sidebar_votes:
       text = text.replace(/{{score}}/g, props.score)
       text = text.replace(/{{weight}}/g, props.weight)
       text = text.replace(/{{player_count}}/g, props.playerCount)
-      text = text.replace(
-        /{{player_count_official}}/g,
-        props.playerCountOfficial
-      )
+      text = text.replace(/{{player_count_official}}/g, props.playerCountOfficial)
       text = text.replace(/{{playing_time}}/g, props.playingTime)
-      text = text.replace(
-        /{{playing_time_official}}/g,
-        props.playingTimeOfficial
-      )
+      text = text.replace(/{{playing_time_official}}/g, props.playingTimeOfficial)
       if (props.typeContent === "expansion") {
         text = text.replace(/{{necessity}}/g, props.necessity)
       }
@@ -179,55 +168,37 @@ sidebar_votes:
       text = text.replace(/{{portability}}/g, props.portability)
 
       if (props.fantasiaUrl) {
-        text = text.replace(
-          /{{fantasia_url}}/g,
-          `fantasia_url: ${props.fantasiaUrl}`
-        )
+        text = text.replace(/{{fantasia_url}}/g, `fantasia_url: ${props.fantasiaUrl}`)
       } else {
         text = text.replace(/{{fantasia_url}}/g, "")
       }
 
       if (props.dungeondiceUrl) {
-        text = text.replace(
-          /{{dungeondice_url}}/g,
-          `dungeondice_url: ${props.dungeondiceUrl}`
-        )
+        text = text.replace(/{{dungeondice_url}}/g, `dungeondice_url: ${props.dungeondiceUrl}`)
       } else {
         text = text.replace(/{{dungeondice_url}}/g, "")
       }
 
       if (props.magicmerchantUrl) {
-        text = text.replace(
-          /{{magicmerchant_url}}/g,
-          `magicmerchant_url: ${props.magicmerchantUrl}`
-        )
+        text = text.replace(/{{magicmerchant_url}}/g, `magicmerchant_url: ${props.magicmerchantUrl}`)
       } else {
         text = text.replace(/{{magicmerchant_url}}/g, "")
       }
 
       if (props.getYourFunUrl) {
-        text = text.replace(
-          /{{getyourfun_url}}/g,
-          `getyourfun_url: ${props.getYourFunUrl}`
-        )
+        text = text.replace(/{{getyourfun_url}}/g, `getyourfun_url: ${props.getYourFunUrl}`)
       } else {
         text = text.replace(/{{getyourfun_url}}/g, "")
       }
 
       if (props.blasoneshopUrl) {
-        text = text.replace(
-          /{{blasoneshop_url}}/g,
-          `blasone_url: ${props.blasoneshopUrl}`
-        )
+        text = text.replace(/{{blasoneshop_url}}/g, `blasone_url: ${props.blasoneshopUrl}`)
       } else {
         text = text.replace(/{{blasoneshop_url}}/g, "")
       }
 
       if (props.lsgiochiUrl) {
-        text = text.replace(
-          /{{lsgiochi_url}}/g,
-          `lsgiochi_url: ${props.lsgiochiUrl}`
-        )
+        text = text.replace(/{{lsgiochi_url}}/g, `lsgiochi_url: ${props.lsgiochiUrl}`)
       } else {
         text = text.replace(/{{lsgiochi_url}}/g, "")
       }

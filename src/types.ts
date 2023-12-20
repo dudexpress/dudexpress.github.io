@@ -31,6 +31,7 @@ export interface SimpleFrontmatter {
 export type PostWeigth = 1 | 2 | 3 | 4 | 5
 
 export interface Frontmatter extends SimpleFrontmatter {
+  type: string
   designer: string[]
   publisher: string[]
 
@@ -55,9 +56,7 @@ export interface Frontmatter extends SimpleFrontmatter {
   blasone_url: string
   lsgiochi_url: string
   mse_url: string
-  pandoragames_url: string
   weega_url: string
-  weega_future: boolean
   gamefound_url: string
   kickstarter_url: string
 }

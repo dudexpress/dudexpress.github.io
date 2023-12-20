@@ -12,7 +12,6 @@ export const DefaultStores = () => {
       blasone_url="https://www.blasoneshop.it/"
       lsgiochi_url="https://www.lsgiochi.it/"
       mse_url="https://www.msedizioni.it/"
-      pandoragames_url="https://pandoragames.it/"
       weega_url="https://weega.it/"
       linkToSpecificGame={false}
     />
