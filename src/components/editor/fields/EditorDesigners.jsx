@@ -3,8 +3,8 @@ import Form from "react-bootstrap/Form"
 import CreatableSelect from "react-select/creatable"
 import { getSugesterSyle } from "./Helpers"
 
-export const EditorDesigners = ({ value, setValue }) => {
-  const options = ["Mathias Wigge", "R. Eric Reuss"].map(x => ({
+export const EditorDesigners = ({ value, setValue, allowedValues }) => {
+  const options = allowedValues.map(x => ({
     value: x,
     label: x,
   }))
@@ -20,9 +20,7 @@ export const EditorDesigners = ({ value, setValue }) => {
         placeholder="[Mathias Wigge] [R. Eric Reuss]"
         styles={getSugesterSyle(value)}
       />
-      <Form.Text className="text-muted">
-        Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"
-      </Form.Text>
+      <Form.Text className="text-muted">Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"</Form.Text>
     </Form.Group>
   )
 }

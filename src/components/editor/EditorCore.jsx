@@ -114,114 +114,52 @@ const EditorCore = ({ data, location, pageContext }) => {
             <h1 className="my-5">Nuova contenuto : </h1>
 
             <Form className="mb-5">
-              <EditorTypeContent
-                value={typeContent}
-                setValue={setTypeContent}
-              />
+              <EditorTypeContent value={typeContent} setValue={setTypeContent} />
               {typeContent !== "editor" ? (
                 <>
                   <EditorDate value={date} setValue={setDate} />
 
-                  <EditorWriter
-                    value={writer}
-                    setValue={setWriter}
-                    allowedValues={siteMeta.authors}
-                  />
+                  <EditorWriter value={writer} setValue={setWriter} allowedValues={siteMeta.authors} />
 
                   <h2 className="mt-5">Header</h2>
 
                   <EditorTitle value={title} setValue={setTitle} />
-                  <EditorDesigners value={designers} setValue={setDesigners} />
-                  <EditorPublisher
-                    value={publishers}
-                    setValue={setPublishers}
-                  />
-                  <EditorDescription
-                    value={description}
-                    setValue={setDescription}
-                  />
+                  <EditorDesigners value={designers} setValue={setDesigners} allowedValues={pageContext.designers} />
+                  <EditorPublisher value={publishers} setValue={setPublishers} allowedValues={pageContext.publishers} />
+                  <EditorDescription value={description} setValue={setDescription} />
 
                   <h2 className="mt-5">Box</h2>
                   <EditorScore value={score} setValue={setScore} />
-                  <EditorPlayingTime
-                    value={playingTime}
-                    setValue={setPlayingTime}
-                  />
-                  <EditorPlayingTimeOfficial
-                    value={playingTimeOfficial}
-                    setValue={setPlayingTimeOfficial}
-                  />
+                  <EditorPlayingTime value={playingTime} setValue={setPlayingTime} />
+                  <EditorPlayingTimeOfficial value={playingTimeOfficial} setValue={setPlayingTimeOfficial} />
                   <EditorWeight value={weight} setValue={setWeight} />
-                  <EditorPlayerCount
-                    value={playerCount}
-                    setValue={setPlayerCount}
-                  />
-                  <EditorPlayerCountOfficial
-                    value={playerCountOfficial}
-                    setValue={setPlayerCountOfficial}
-                  />
+                  <EditorPlayerCount value={playerCount} setValue={setPlayerCount} />
+                  <EditorPlayerCountOfficial value={playerCountOfficial} setValue={setPlayerCountOfficial} />
 
                   <h2 className="mt-5">Sidebar</h2>
 
-                  <EditorMechanism
-                    value={mechanisms}
-                    setValue={setMechanisms}
-                    allowedValues={pageContext.mechanisms}
-                  />
+                  <EditorMechanism value={mechanisms} setValue={setMechanisms} allowedValues={pageContext.mechanisms} />
 
-                  <EditorComplexity
-                    setValue={setComplexity}
-                    value={complexity}
-                  />
+                  <EditorComplexity setValue={setComplexity} value={complexity} />
 
-                  <EditorPreparation
-                    setValue={setPreparation}
-                    value={preparation}
-                  />
+                  <EditorPreparation setValue={setPreparation} value={preparation} />
                   {typeContent === "review" ? (
                     <EditorLuck setValue={setLuck} value={luck} />
                   ) : (
-                    <EditorNecessity
-                      setValue={setNecessity}
-                      value={necessity}
-                    />
+                    <EditorNecessity setValue={setNecessity} value={necessity} />
                   )}
                   <EditorLongevity setValue={setLongevity} value={longevity} />
-                  <EditorComponents
-                    setValue={setComponents}
-                    value={components}
-                  />
-                  <EditorPortability
-                    setValue={setPortability}
-                    value={portability}
-                  />
+                  <EditorComponents setValue={setComponents} value={components} />
+                  <EditorPortability setValue={setPortability} value={portability} />
 
                   <h2 className="mt-5">Dove comprare</h2>
 
-                  <EditorFantasia
-                    value={fantasiaUrl}
-                    setValue={setFantasiaUrl}
-                  />
-                  <EditorDungeondice
-                    value={dungeondiceUrl}
-                    setValue={setDungeondiceUrl}
-                  />
-                  <EditorMagicMerchant
-                    value={magicmerchantUrl}
-                    setValue={setmagicmerchantUrl}
-                  />
-                  <EditorGetYourFun
-                    value={getYourFunUrl}
-                    setValue={setGetYourFunUrl}
-                  />
-                  <EditorBlasone
-                    value={blasoneshopUrl}
-                    setValue={setBlasoneshopUrl}
-                  />
-                  <EditorLsgiochi
-                    value={lsgiochiUrl}
-                    setValue={setLsgiochiUrl}
-                  />
+                  <EditorFantasia value={fantasiaUrl} setValue={setFantasiaUrl} />
+                  <EditorDungeondice value={dungeondiceUrl} setValue={setDungeondiceUrl} />
+                  <EditorMagicMerchant value={magicmerchantUrl} setValue={setmagicmerchantUrl} />
+                  <EditorGetYourFun value={getYourFunUrl} setValue={setGetYourFunUrl} />
+                  <EditorBlasone value={blasoneshopUrl} setValue={setBlasoneshopUrl} />
+                  <EditorLsgiochi value={lsgiochiUrl} setValue={setLsgiochiUrl} />
 
                   <h2 className="mt-5">Contenuto</h2>
 

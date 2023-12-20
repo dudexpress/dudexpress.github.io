@@ -3,9 +3,8 @@ import Form from "react-bootstrap/Form"
 import CreatableSelect from "react-select/creatable"
 import { getSugesterSyle } from "./Helpers"
 
-export const EditorPublisher = ({ value, setValue }) => {
-  // TODO dynamic?
-  const options = ["Giochi Uniti", "Cranio Creations", "dV Giochi", "Ghenos"].map(x => ({
+export const EditorPublisher = ({ value, setValue, allowedValues }) => {
+  const options = allowedValues.map(x => ({
     value: x,
     label: x,
   }))
