@@ -35,9 +35,9 @@
   }
 
   h4 {
-    text-transform: uppercase;
     color: v.$gray300;
     font-size: 16px;
+    font-family: v.$font-family-body;
 
     span + span {
       margin-left: 5 * v.$spacing-unit;

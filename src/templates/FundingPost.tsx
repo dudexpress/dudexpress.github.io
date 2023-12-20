@@ -47,17 +47,11 @@ const BlogPost = ({ data, location }: FundingPostProps) => {
     FundingLink,
   }
 
-  const classname = classNames(
-      "main-content",
-      style.blogPost,
-      style.advisorPost
-    ),
+  const classname = classNames("main-content", style.blogPost, style.advisorPost),
     metaTitle = `${post.frontmatter.title} | ${data.site.siteMetadata.title}`,
     metaDesciption = `${post.frontmatter.description} | Nuova uscite kickstarter, backerkit, gamefound.`,
     metaImage =
-      "https://dudexpress.it" +
-      post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!
-        .fallback!.src
+      "https://dudexpress.it" + post.frontmatter!.featureImage!.childImageSharp!.gatsbyImageData!.images!.fallback!.src
 
   const structuredJSON = JSON.stringify({
     "@context": "https://schema.org",
@@ -115,34 +109,18 @@ const BlogPost = ({ data, location }: FundingPostProps) => {
           <div className={classname}>
             <Container>
               <Row>
-                <Col
-                  xs={12}
-                  md={8}
-                  lg={{ span: 7, offset: 1 }}
-                  className="base-section-column"
-                >
+                <Col xs={12} md={8} lg={{ span: 7, offset: 1 }} className="base-section-column">
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
                 <Col md={{ span: 3, offset: 1 }}>
-                  <div
-                    className={classnames(
-                      styleSidebar.blogPostSidebar,
-                      "mt-5 mt-md-0"
-                    )}
-                  >
+                  <div className={classnames(styleSidebar.blogPostSidebar, "mt-5 mt-md-0")}>
                     <DefaultStores />
                   </div>
                 </Col>
               </Row>
               <Row>
-                <Col
-                  lg={{ span: 7, offset: 1 }}
-                  className="base-section-column"
-                >
-                  <PostWriter
-                    writerName={post.frontmatter.writer}
-                    asCard={true}
-                  />
+                <Col lg={{ span: 7, offset: 1 }} className="base-section-column">
+                  <PostWriter writerName={post.frontmatter.writer} asCard={true} />
                 </Col>
               </Row>
             </Container>
@@ -178,16 +156,13 @@ export const pageQuery = graphql`
       body
       slug
       frontmatter {
+        type
         date(formatString: "DD/MM/YYYY")
         writer
         title
         featureImage {
           childImageSharp {
-            gatsbyImageData(
-              width: 330
-              placeholder: BLURRED
-              formats: [JPG, WEBP, AVIF]
-            )
+            gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
           }
         }
         description
@@ -214,11 +189,7 @@ export const pageQuery = graphql`
           title
           featureImage {
             childImageSharp {
-              gatsbyImageData(
-                width: 330
-                placeholder: BLURRED
-                formats: [JPG, WEBP, AVIF]
-              )
+              gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
             }
           }
           description

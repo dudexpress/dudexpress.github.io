@@ -10,7 +10,7 @@ import GameCard from "../components/misc/GameCard"
 import WeegaCard from "../components/misc/WeegaCard"
 import * as style from "./index.module.scss"
 import BlogPostHeader from "../components/blogPostAreas/BlogPostHeader"
-import Mechanisms from "../components/sidebar/Mechanisms"
+import SidebarLinks from "../components/sidebar/SidebarLinks"
 import { DefaultStores } from "../components/sidebar/DefaultStores"
 
 const Index = ({ data, location, pageContext }) => {
@@ -21,10 +21,8 @@ const Index = ({ data, location, pageContext }) => {
   const renderOtherPosts = () => {
     return (
       <div className="text-center">
-        <Link to="/blog">
-          <button className="btn btn-outline-secondary mt-2 mb-5">
-            Scopri altri articoli
-          </button>
+        <Link to="/blog/2">
+          <button className="btn btn-outline-secondary mt-2 mb-5">Scopri altri articoli</button>
         </Link>
       </div>
     )
@@ -46,10 +44,7 @@ const Index = ({ data, location, pageContext }) => {
         "@id": "https://dudexpress.it/#organization",
         name: "dudexpress",
         url: "https://dudexpress.it/",
-        sameAs: [
-          "https://www.facebook.com/dudexpress.review",
-          "https://www.instagram.com/dudexpress.review/",
-        ],
+        sameAs: ["https://www.facebook.com/dudexpress.review", "https://www.instagram.com/dudexpress.review/"],
         logo: {
           "@type": "ImageObject",
           "@id": "https://dudexpress.it/#logo",
@@ -82,29 +77,19 @@ const Index = ({ data, location, pageContext }) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta
-          property="og:image"
-          content={`https://dudexpress.it${withPrefix("logo/logo.png")}`}
-        />
+        <meta property="og:image" content={`https://dudexpress.it${withPrefix("logo/logo.png")}`} />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta
-          name="twitter:image"
-          content={`https://dudexpress.it${withPrefix("logo/logo.png")}`}
-        />
+        <meta name="twitter:image" content={`https://dudexpress.it${withPrefix("logo/logo.png")}`} />
 
         <script type="application/ld+json">{structuredJSON}</script>
       </Helmet>
 
       <div className={style.index}>
         <div className="main-content mb-5">
-          <BlogPostHeader
-            fields={firstPost.fields}
-            frontmatter={firstPost.frontmatter}
-            withLink
-          />
+          <BlogPostHeader fields={firstPost.fields} frontmatter={firstPost.frontmatter} withLink />
           <Container>
             <Row className="game-list">
               <Col lg={8}>
@@ -123,11 +108,13 @@ const Index = ({ data, location, pageContext }) => {
               </Col>
               <Col lg={4}>
                 <DefaultStores />
-
-                <Mechanisms
+                <SidebarLinks type="designers" title="Naviga per autori" values={pageContext.designers} withMore />
+                <SidebarLinks type="publishers" title="Naviga per editori" values={pageContext.publishers} withMore />
+                <SidebarLinks
+                  type="mechanisms"
                   title="Naviga per meccaniche"
                   values={pageContext.mechanisms}
-                  withMore={true}
+                  withMore
                 />
               </Col>
             </Row>
@@ -163,6 +150,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
+          type
           date(formatString: "DD/MM/YYYY")
           writer
           title
@@ -171,11 +159,7 @@ export const pageQuery = graphql`
 
           featureImage {
             childImageSharp {
-              gatsbyImageData(
-                width: 330
-                placeholder: BLURRED
-                formats: [JPG, WEBP, AVIF]
-              )
+              gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
             }
           }
           description

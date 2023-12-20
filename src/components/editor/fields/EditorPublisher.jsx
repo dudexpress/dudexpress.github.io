@@ -5,19 +5,14 @@ import { getSugesterSyle } from "./Helpers"
 
 export const EditorPublisher = ({ value, setValue }) => {
   // TODO dynamic?
-  const options = [
-    "Giochi Uniti",
-    "Cranio Creations",
-    "dV Giochi",
-    "Ghenos",
-  ].map(x => ({
+  const options = ["Giochi Uniti", "Cranio Creations", "dV Giochi", "Ghenos"].map(x => ({
     value: x,
     label: x,
   }))
 
   return (
     <Form.Group className="mb-3">
-      <Form.Label>Case editrici</Form.Label>
+      <Form.Label>Editori</Form.Label>
       <CreatableSelect
         isClearable
         isMulti
@@ -26,9 +21,7 @@ export const EditorPublisher = ({ value, setValue }) => {
         placeholder="[Giochi Uniti] [Ghenos]"
         styles={getSugesterSyle(value)}
       />
-      <Form.Text className="text-muted">
-        Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"
-      </Form.Text>
+      <Form.Text className="text-muted">Scrivi un nome e poi premi &lt;tab&gt; o "Create xxx"</Form.Text>
     </Form.Group>
   )
 }

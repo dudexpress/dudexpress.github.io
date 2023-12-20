@@ -8,7 +8,7 @@ import DurationBox from "../boxes/DurationBox"
 import WeightBox from "../boxes/WeightBox"
 import PlayerCountBox from "../boxes/PlayerCountBox"
 import { PostWeigth } from "../../types"
-import Mechanisms from "../sidebar/Mechanisms"
+import SidebarLinks from "../sidebar/SidebarLinks"
 import BaseBox from "../boxes/BaseBox"
 import ScoreBox from "../boxes/ScoreBox"
 import PublisherBox from "../boxes/PublisherBox"
@@ -58,11 +58,7 @@ export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
               writer
               featureImage {
                 childImageSharp {
-                  gatsbyImageData(
-                    width: 330
-                    placeholder: BLURRED
-                    formats: [JPG, WEBP, AVIF]
-                  )
+                  gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
                 }
               }
             }
@@ -73,9 +69,7 @@ export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
         }
       }
     `)
-    review = data.allMdx.nodes.filter(
-      x => x.fields.slug === `/reviews/${props.slug}/`
-    )[0]
+    review = data.allMdx.nodes.filter(x => x.fields.slug === `/reviews/${props.slug}/`)[0]
   }
 
   function renderAfterTitle(): JSX.Element {
@@ -91,11 +85,7 @@ export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
           {isGdR ? (
             <SystemBox value={props.system!} small />
           ) : (
-            <DurationBox
-              value={props.playing_time!}
-              officialValue={props.playing_time_official!}
-              small
-            />
+            <DurationBox value={props.playing_time!} officialValue={props.playing_time_official!} small />
           )}
         </Col>
         <Col md={6} xl={4} className="p-0">
@@ -105,11 +95,7 @@ export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
           {isGdR ? (
             <FamilyBox value={props.family!} small />
           ) : (
-            <PlayerCountBox
-              value={props.player_count!}
-              officialValue={props.player_count_official!}
-              small
-            />
+            <PlayerCountBox value={props.player_count!} officialValue={props.player_count_official!} small />
           )}
         </Col>
         <Col md={6} xl={4} className="p-0">
@@ -121,7 +107,7 @@ export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
 
         <Col md={12} xl={12} className="p-0">
           <BaseBox title="Meccaniche" small noHeight>
-            <Mechanisms values={props.mechanism} small avoidLinks={isGdR} />
+            <SidebarLinks type="mechanisms" values={props.mechanism} small avoidLinks={isGdR} />
           </BaseBox>
         </Col>
       </Row>
@@ -129,19 +115,9 @@ export const ConBit = (props: React.PropsWithChildren<ConBitProps>) => {
   }
 
   return (
-    <BaseSection
-      title={props.title}
-      trait="pink"
-      className="mb-4"
-      renderAfterTitle={renderAfterTitle}
-    >
+    <BaseSection title={props.title} trait="pink" className="mb-4" renderAfterTitle={renderAfterTitle}>
       <p className="mt-4">{props.children}</p>
-      {review && (
-        <GameCard
-          post={review}
-          className={stylesGameCard.gameCardDark + " mt-5 mb-5"}
-        />
-      )}
+      {review && <GameCard post={review} className={stylesGameCard.gameCardDark + " mt-5 mb-5"} />}
     </BaseSection>
   )
 }

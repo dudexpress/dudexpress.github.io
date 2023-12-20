@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col"
 import DeadlineBox from "../boxes/DeadlineBox"
 import DurationBox from "../boxes/DurationBox"
 import HypeBox from "../boxes/HypeBox"
-import Mechanisms from "../sidebar/Mechanisms"
+import SidebarLinks from "../sidebar/SidebarLinks"
 import PlayerCountBox from "../boxes/PlayerCountBox"
 import { PostWeigth } from "../../types"
 import PriceBox from "../boxes/PriceBox"
@@ -37,28 +37,16 @@ export const FundingBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
           <HypeBox value={props.hype} small />
         </Col>
         <Col md={6} xl={4} className="p-0">
-          <DurationBox
-            value={props.playing_time}
-            officialValue={props.playing_time_official}
-            small
-          />
+          <DurationBox value={props.playing_time} officialValue={props.playing_time_official} small />
         </Col>
         <Col md={6} xl={4} className="p-0">
           <WeightBox value={props.weight} small />
         </Col>
         <Col md={6} xl={4} className="p-0">
-          <PlayerCountBox
-            value={props.player_count}
-            officialValue={props.player_count_official}
-            small
-          />
+          <PlayerCountBox value={props.player_count} officialValue={props.player_count_official} small />
         </Col>
         <Col md={6} xl={4} className="p-0">
-          <DeadlineBox
-            value={props.deadline}
-            deliverylValue={props.delivery}
-            small
-          />
+          <DeadlineBox value={props.deadline} deliverylValue={props.delivery} small />
         </Col>
         <Col md={6} xl={4} className="p-0">
           <PriceBox value={props.price} otherValue={props.otherPrice} small />
@@ -66,7 +54,7 @@ export const FundingBit = (props: React.PropsWithChildren<AdvisorBitProps>) => {
 
         <Col md={12} xl={12} className="p-0">
           <BaseBox title="Meccaniche" small noHeight>
-            <Mechanisms values={props.mechanism} small />
+            <SidebarLinks type="mechanisms" values={props.mechanism} small />
           </BaseBox>
         </Col>
       </Row>

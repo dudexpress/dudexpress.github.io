@@ -2,7 +2,7 @@ import classnames from "classnames"
 import React from "react"
 import { Frontmatter } from "../../types"
 import SidebarValues from "../sidebar/SidebarVotes"
-import Mechanisms from "../sidebar/Mechanisms"
+import SidebarLinks from "../sidebar/SidebarLinks"
 import * as style from "./BlogPostSidebar.module.scss"
 import Sleeves from "../sidebar/Sleeves"
 import Stores from "../sidebar/Stores"
@@ -15,7 +15,9 @@ export default class BlogPostSidebar extends React.PureComponent<Frontmatter> {
     return (
       <div className={className}>
         <Stores {...this.props} linkToSpecificGame={true} />
-        <Mechanisms values={this.props.mechanisms} />
+        <SidebarLinks type="designers" values={this.props.designer} />
+        <SidebarLinks type="publishers" values={this.props.publisher} />
+        <SidebarLinks type="mechanisms" values={this.props.mechanisms} />
         <SidebarValues values={this.props.sidebar_votes} />
         <Sleeves sleeves={this.props.sleeves} />
         <Disclaimer {...this.props} />

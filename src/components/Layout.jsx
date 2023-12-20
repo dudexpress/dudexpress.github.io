@@ -19,66 +19,33 @@ const Layout = ({ location, title, children }) => {
       <Helmet htmlAttributes={{ lang: "it" }} />
       <Helmet>
         <script src={withPrefix("iubenda.js")} type="text/javascript" />
-        <script
-          type="text/javascript"
-          src="//cdn.iubenda.com/cs/iubenda_cs.js"
-          charset="UTF-8"
-          async
-        ></script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
       </Helmet>
 
       <header className={headerClassName}>
         <Container>
           <div className="d-flex w-100 flex-column flex-md-row align-items-center justify-content-between align-items-md-end">
             <Link to="/">
-              <img
-                src={withPrefix("logo/logo-small.svg")}
-                alt="dudexpress small logo"
-                height={50}
-              />
+              <img src={withPrefix("logo/logo-small.svg")} alt="dudexpress small logo" height={50} />
             </Link>
             <div className="d-flex justify-content-between align-items-end mt-2 mt-md-0">
               <NavDropdown title="Rubriche">
-                <NavDropdown.Item
-                  as={Link}
-                  to="/reviews"
-                  className={style.dropdownItem}
-                >
+                <NavDropdown.Item as={Link} to="/reviews" className={style.dropdownItem}>
                   <span className={style.dudeInDropdown}>Dude</span>Review
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="/previews"
-                  className={style.dropdownItem}
-                >
+                <NavDropdown.Item as={Link} to="/previews" className={style.dropdownItem}>
                   <span className={style.dudeInDropdown}>Dude</span>Preview
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="/funding"
-                  className={style.dropdownItem}
-                >
-                  <span className={style.dudeInDropdown}>Dude</span>Funding
+                <NavDropdown.Item as={Link} to="/nexts" className={style.dropdownItem}>
+                  <span className={style.dudeInDropdown}>Dude</span>Next
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="/advisor"
-                  className={style.dropdownItem}
-                >
+                <NavDropdown.Item as={Link} to="/advisor" className={style.dropdownItem}>
                   <span className={style.dudeInDropdown}>Dude</span>Advisor
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="/interview"
-                  className={style.dropdownItem}
-                >
+                <NavDropdown.Item as={Link} to="/interview" className={style.dropdownItem}>
                   <span className={style.dudeInDropdown}>Dude</span>Interview
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="/convention"
-                  className={style.dropdownItem}
-                >
+                <NavDropdown.Item as={Link} to="/convention" className={style.dropdownItem}>
                   <span className={style.dudeInDropdown}>Dude</span>Con
                 </NavDropdown.Item>
               </NavDropdown>

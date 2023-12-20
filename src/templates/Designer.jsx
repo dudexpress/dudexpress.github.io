@@ -26,7 +26,7 @@ const Designer = ({ pageContext, location, data }) => {
             <h6 className="mb-5">
               <Link to="/designers" className="text-muted">
                 <FontAwesomeIcon icon={faAngleLeft} className="me-1" />
-                vedi tutti i designer
+                vedi tutti gli autori
               </Link>
             </h6>
             {data.allMdx.edges.map(post => (
@@ -46,10 +46,7 @@ export const designerQuery = graphql`
         title
       }
     }
-    allMdx(
-      filter: { id: { in: $ids } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    allMdx(filter: { id: { in: $ids } }, sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           fields {
@@ -63,11 +60,7 @@ export const designerQuery = graphql`
             mechanisms
             featureImage {
               childImageSharp {
-                gatsbyImageData(
-                  width: 330
-                  placeholder: BLURRED
-                  formats: [JPG, WEBP, AVIF]
-                )
+                gatsbyImageData(width: 330, placeholder: BLURRED, formats: [JPG, WEBP, AVIF])
               }
             }
           }

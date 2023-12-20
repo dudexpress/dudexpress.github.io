@@ -26,9 +26,7 @@ const GameCard = ({ post, className }: GameCardProps) => {
     )
 
   const mechanisms = post.frontmatter.mechanisms && (
-    <div className={styles.mechanisms}>
-      {post.frontmatter.mechanisms.map(rendermechanism)}
-    </div>
+    <div className={styles.mechanisms}>{post.frontmatter.mechanisms.map(rendermechanism)}</div>
   )
 
   return (
@@ -37,11 +35,7 @@ const GameCard = ({ post, className }: GameCardProps) => {
       <Card.Body className={styles.gameCardBody}>
         <Row className="w-100">
           <Col md={2} className="mb-3 mb-md-0">
-            <GatsbyImage
-              image={getImage(post.frontmatter.featureImage)!}
-              className={styles.gameCardImg}
-              alt="cover"
-            />
+            <GatsbyImage image={getImage(post.frontmatter.featureImage)!} className={styles.gameCardImg} alt="cover" />
           </Col>
           <Col md={10}>
             <div className="d-flex flex-column justify-content-center h-100">
@@ -49,7 +43,7 @@ const GameCard = ({ post, className }: GameCardProps) => {
               {mechanisms}
               <p>{post.frontmatter.description}</p>
               <small>
-                {post.frontmatter.writer} ●{" "}
+                {post.frontmatter.writer} {post.frontmatter.writer && "● "}
                 <span className="release-date">{post.frontmatter.date}</span>
               </small>
             </div>

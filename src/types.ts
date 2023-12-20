@@ -31,7 +31,7 @@ export interface SimpleFrontmatter {
 export type PostWeigth = 1 | 2 | 3 | 4 | 5
 
 export interface Frontmatter extends SimpleFrontmatter {
-  type: string
+  type: "advisor" | "con" | "funding" | "interview" | "review" | "preview" | "next"
   designer: string[]
   publisher: string[]
 

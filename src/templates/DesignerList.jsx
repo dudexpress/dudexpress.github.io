@@ -19,7 +19,7 @@ const DesignerList = ({ data, location, pageContext }) => {
       <Container className="mb-5">
         <Row>
           <Col lg={{ span: 8, offset: 2 }}>
-            <h1 className="my-5">Designer</h1>
+            <h1 className="my-5">Autori</h1>
             <ul>
               {pageContext.designers.map(designer => {
                 return (

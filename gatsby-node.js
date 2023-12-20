@@ -279,6 +279,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     path: "/",
     component: require.resolve("./src/templates/index.jsx"),
     context: {
+      designers: sortedDesigners.slice(0, 10),
+      publishers: sortedPublishers.slice(0, 10),
       mechanisms: sortedMechanisms.slice(0, 10),
     },
   })
