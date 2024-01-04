@@ -146,7 +146,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   let designersCounter = {}
   let publishersCounter = {}
 
-  reviewPosts.forEach(node => {
+  const singleGamePosts = [...reviewPosts, ...previewPosts, ...nextPosts]
+
+  singleGamePosts.forEach(node => {
     node.frontmatter.designer.forEach(m => {
       designersCounter[m] = (designersCounter[m] ?? 0) + 1
     })
@@ -194,7 +196,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Designer.jsx"),
       context: {
         designer,
-        ids: reviewPosts
+        ids: singleGamePosts
           .filter(node => {
             return node.frontmatter.designer.includes(designer)
           })
@@ -220,7 +222,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Publisher.jsx"),
       context: {
         publisher,
-        ids: reviewPosts
+        ids: singleGamePosts
           .filter(node => {
             return node.frontmatter.publisher.includes(publisher)
           })
@@ -246,7 +248,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Mechanism.jsx"),
       context: {
         mechanism,
-        ids: reviewPosts
+        ids: singleGamePosts
           .filter(node => {
             return node.frontmatter.mechanisms.includes(mechanism)
           })
@@ -256,7 +258,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   let dedupedWriters = new Set()
-  reviewPosts.forEach(node => {
+  singleGamePosts.forEach(node => {
     dedupedWriters.add(node.frontmatter.writer)
   })
 
@@ -266,7 +268,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve("./src/templates/Writer.jsx"),
       context: {
         writer,
-        ids: reviewPosts
+        ids: singleGamePosts
           .filter(node => {
             return node.frontmatter.writer === writer
           })
