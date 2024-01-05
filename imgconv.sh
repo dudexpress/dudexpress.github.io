@@ -1,8 +1,9 @@
 #!/bin/bash
+echo $1
 minimumWidth=1500
 minimumHeight=1500
 
-for f in $( find ./content/blog -type f -iname "*.jpg" )
+for f in $( find $1 -type f -iname "*.jpg" )
 do
     imageWidth=$(identify -format "%w" "$f")
     imageHeight=$(identify -format "%h" "$f")
@@ -12,7 +13,7 @@ do
     fi
 done
 
-for f in $( find ./content/blog -type f -iname "*.png" )
+for f in $( find $1 -type f -iname "*.png" )
 do
     imageWidth=$(identify -format "%w" "$f")
     imageHeight=$(identify -format "%h" "$f")
