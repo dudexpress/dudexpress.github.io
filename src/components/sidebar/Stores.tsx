@@ -134,18 +134,6 @@ export default class Stores extends React.PureComponent<StoresProps, StoresState
     )
   }
 
-  private renderBlasone(): React.ReactNode {
-    return this.renderStore(
-      "blasone",
-      "../../logo/blasone.jpg",
-      styles.blasone,
-      this.props.blasone_url,
-      x => x + "?aff=9337a74b51b728bb6e6add6b8eff9ff6",
-      "DUDEXPRESS",
-      0.1
-    )
-  }
-
   private renderLsGiochi(): React.ReactNode {
     return this.renderStore(
       "lsgiochi",
@@ -191,7 +179,6 @@ export default class Stores extends React.PureComponent<StoresProps, StoresState
       this.renderDungeonDice(),
       this.renderMagicMerchant(),
       this.renderFantasia(),
-      this.renderBlasone(),
       this.renderLsGiochi(),
       this.renderGetYourFun(),
       this.renderMse(),
