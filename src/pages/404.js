@@ -14,6 +14,17 @@ const NotFoundPage = ({ data, location }) => {
         <title>{metaTitle}</title>
       </Helmet>
 
+      <Helmet>
+        <script>
+          {`
+          if (document.location.pathname.startsWith('/en/')) {
+            var newUrl = document.location.pathname.replace('/en', '')
+            document.location = "https://dudexpress-it.translate.goog/" + newUrl + "/?_x_tr_sl=auto&_x_tr_tl=en"
+          }
+          `}
+        </script>
+      </Helmet>
+
       <Container className="py-5 d-flex justify-content-center flex-column align-items-center">
         <h1>404: Not Found</h1>
         <p className="text-center">
