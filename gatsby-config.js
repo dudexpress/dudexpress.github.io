@@ -15,7 +15,6 @@ module.exports = {
         image: "alkimisti.jpg",
         instagram_url: "https://www.instagram.com/alkimisti_gdt/",
       },
-
       {
         name: "Angelo",
         summary:
@@ -32,7 +31,6 @@ module.exports = {
           "https://instagram.com/atipicanerd?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr",
         tiktok_url: "https://www.tiktok.com/@atipicanerd?_t=8gMaMHZq3TV&_r=1",
       },
-
       {
         name: "Angelo M Pero",
         summary:
@@ -262,6 +260,12 @@ module.exports = {
           "https://instagram.com/ziroeight.exe?igshid=YmMyMTA2M2Y=",
         tiktok_url: "https://www.tiktok.com/@ziroeight?_t=8YJ9MXws1sU&_r=1",
         youtube_url: "https://YouTube.com/ziroeight",
+      },
+      {
+        name: "Chioennio Fenice",
+        summary:
+          "Mi piacciono solo i giochi belli da vedere, i cooperativi in cui si perde e i competitivi nei quali vinco.",
+        image: "chioennio-fenice.jpg",
       },
     ],
   },
