@@ -10,15 +10,13 @@ module.exports = {
     authors: [
       {
         name: "alKiMisti",
-        summary:
-          "Collezionisti e amanti di german, preferibilmente fuori produzione o introvabili.",
+        summary: "Collezionisti e amanti di german, preferibilmente fuori produzione o introvabili.",
         image: "alkimisti.jpg",
         instagram_url: "https://www.instagram.com/alkimisti_gdt/",
       },
       {
         name: "Angelo",
-        summary:
-          "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
+        summary: "Appassionato di giochi da tavolo. Recensore e pittore di miniature. Che volete di più?",
         image: "angelo.jpg",
         instagram_url: "https://www.instagram.com/giotap_boardgames/",
       },
@@ -27,8 +25,7 @@ module.exports = {
         summary:
           "Sono un’Atipica Nerd appassionata di giochi da tavolo. Lettrice accanita e amante di serie tv. Pensandoci sono una Nerd a tutti gli effetti!",
         image: "atipica-nerd.jpg",
-        instagram_url:
-          "https://instagram.com/atipicanerd?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr",
+        instagram_url: "https://instagram.com/atipicanerd?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr",
         tiktok_url: "https://www.tiktok.com/@atipicanerd?_t=8gMaMHZq3TV&_r=1",
       },
       {
@@ -69,14 +66,12 @@ module.exports = {
           "Mi chiamo Felice i giochi da tavolo e i videogames sono la mia passione, viaggiamo insieme in questo fantastico mondo!",
         image: "felice.jpg",
         instagram_url: "https://www.instragram.com/dancefloor89",
-        tiktok_url:
-          "https://www.tiktok.com/@dancefloor1989?_t=8UmC95Wwz9J&_r=1",
+        tiktok_url: "https://www.tiktok.com/@dancefloor1989?_t=8UmC95Wwz9J&_r=1",
         youtube_url: "https://www.youtube.com/1989Dancefloor1989",
       },
       {
         name: "Dadi-Daddy",
-        summary:
-          "Neopapà costantemente derubato dei dadi di tutti i suoi giochi dal loquace figlio di un anno.",
+        summary: "Neopapà costantemente derubato dei dadi di tutti i suoi giochi dal loquace figlio di un anno.",
         image: "dadi.jpg",
       },
       {
@@ -102,14 +97,12 @@ module.exports = {
       },
       {
         name: "Filippo",
-        summary:
-          "Preferisco giocare a Root dopo 1500 metri di dislivello piuttosto che a Monopoly nello scantinato.",
+        summary: "Preferisco giocare a Root dopo 1500 metri di dislivello piuttosto che a Monopoly nello scantinato.",
         image: "filippo.jpg",
       },
       {
         name: "Fora",
-        summary:
-          "Amante dei coop che ogni tanto si perde così tanto nei giochi che non scrive le biografie in tempo.",
+        summary: "Amante dei coop che ogni tanto si perde così tanto nei giochi che non scrive le biografie in tempo.",
         image: "fora.jpg",
         instagram_url: "https://www.instagram.com/francescoforadori/",
       },
@@ -142,8 +135,7 @@ module.exports = {
       },
       {
         name: "LadyBugMeeple",
-        summary:
-          "Una italiana e uno spagnolo che si sono trovati grazie all'amore per i giochi da tavolo.",
+        summary: "Una italiana e uno spagnolo che si sono trovati grazie all'amore per i giochi da tavolo.",
         image: "ladybug.jpg",
         instagram_url: "https://www.instagram.com/ladybugmeeple/",
       },
@@ -155,8 +147,7 @@ module.exports = {
       },
       {
         name: "L'intavolatrice",
-        summary:
-          "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
+        summary: "Appasionata di giochi da tavolo sin da piccola, non ha intenzione di smettere.",
         image: "intavolatrice.png",
       },
       {
@@ -225,15 +216,13 @@ module.exports = {
       },
       {
         name: "Tia",
-        summary:
-          "Godo nel mescolare le carte appena imbustate. Annuso fumetti. A volte ho del tempo libero.",
+        summary: "Godo nel mescolare le carte appena imbustate. Annuso fumetti. A volte ho del tempo libero.",
         image: "tia.jpg",
         instagram_url: "https://www.instagram.com/mattialarentis/",
       },
       {
         name: "True Dice - Veronica",
-        summary:
-          "Mi piace parlare, riparlare e straparlare di giochi da tavolo!",
+        summary: "Mi piace parlare, riparlare e straparlare di giochi da tavolo!",
         image: "truedice.jpg",
         instagram_url: "https://www.instagram.com/true.dice/",
         tiktok_url: "https://vm.tiktok.com/ZMNVJsFQf/",
@@ -246,6 +235,12 @@ module.exports = {
         tiktok_url: "https://www.tiktok.com/@un_meeple_per_due",
       },
       {
+        name: "unerd_gram",
+        summary: "Sono un nerd e mi piacciono i giochi da tavolo. Ecco tutto.",
+        image: "unerd.png",
+        instagram_url: "https://www.instagram.com/unerd_gram/",
+      },
+      {
         name: "Zio Hal & La Locandiera",
         summary:
           "Lui: Devoto agli scritti di Tolkien e veterano dei giochi di ruolo presiede il Club Dado Giallo di Biella in maniera impeccabile. “Giocare è una cosa seria”. Lei: Scrittrice, pittrice ed ottima cuoca; dal connubio irresistibile di cucina e GdR è nata My Fantasy Kitchen, una pagina Ig di ricette a tema GdR.",
@@ -256,8 +251,7 @@ module.exports = {
         summary:
           "Sono Alessio, ma potete chiamarmi Zirø. Appassionato di: Giochi da tavolo, librigame, videogiochi e di tante altre cose che però non entrano in questa bio",
         image: "ziro.jpg",
-        instagram_url:
-          "https://instagram.com/ziroeight.exe?igshid=YmMyMTA2M2Y=",
+        instagram_url: "https://instagram.com/ziroeight.exe?igshid=YmMyMTA2M2Y=",
         tiktok_url: "https://www.tiktok.com/@ziroeight?_t=8YJ9MXws1sU&_r=1",
         youtube_url: "https://YouTube.com/ziroeight",
       },
