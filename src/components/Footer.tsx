@@ -19,10 +19,10 @@ const Footer = () => {
         <FontAwesomeIcon icon={faCogs} className="ms-3" />
         <small className="d-none d-md-inline-block ms-1">Meccaniche</small>
       </Link>
-      <Link to="/trova-sconti">
-        <FontAwesomeIcon icon={faPiggyBank} className="ms-3" />
-        <small className="d-none d-md-inline-block ms-1">Trova sconti</small>
-      </Link>
+      {/*<Link to="/trova-sconti">*/}
+      {/*  <FontAwesomeIcon icon={faPiggyBank} className="ms-3" />*/}
+      {/*  <small className="d-none d-md-inline-block ms-1">Trova sconti</small>*/}
+      {/*</Link>*/}
       <Link to="/credits">
         <FontAwesomeIcon icon={faIcons} className="ms-3" />
         <small className="d-none d-md-inline-block ms-1">Credits</small>

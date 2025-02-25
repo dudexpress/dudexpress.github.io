@@ -176,11 +176,11 @@ export default class Stores extends React.PureComponent<StoresProps, StoresState
 
   public render(): React.ReactNode {
     const stores = [
-      this.renderDungeonDice(),
-      this.renderMagicMerchant(),
+      // this.renderDungeonDice(),
+      // this.renderMagicMerchant(),
       this.renderFantasia(),
-      this.renderLsGiochi(),
-      this.renderGetYourFun(),
+      // this.renderLsGiochi(),
+      // this.renderGetYourFun(),
       this.renderMse(),
       this.renderWeega(),
       this.renderKickstarer(),
@@ -195,13 +195,13 @@ export default class Stores extends React.PureComponent<StoresProps, StoresState
       <div className={className}>
         <h5 className="fw-bold">{this.props.label ?? "Acquistalo qui"}</h5>
         <ul className="list-unstyled mb-2">{stores}</ul>
-        <small className="d-block mb-2">
-          Stai cercando un gioco?
-          <br />I vostri dude troveranno lo sconto migliore!
-        </small>
-        <Link to="/trova-sconti">
-          <LinkCtaBtn slug="/trova-sconti" title="Trova sconti" />
-        </Link>
+        {/*<small className="d-block mb-2">*/}
+        {/*  Stai cercando un gioco?*/}
+        {/*  <br />I vostri dude troveranno lo sconto migliore!*/}
+        {/*</small>*/}
+        {/*<Link to="/trova-sconti">*/}
+        {/*  <LinkCtaBtn slug="/trova-sconti" title="Trova sconti" />*/}
+        {/*</Link>*/}
       </div>
     )
   }
