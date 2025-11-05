@@ -50,10 +50,6 @@ const Layout = ({ location, title, children }) => {
                 </NavDropdown.Item>
               </NavDropdown>
 
-              {/*<Link to="/trova-sconti" className={headerItemsSpacingClassName}>*/}
-              {/*  <span className="d-inline-block me-1">Trova sconti</span>*/}
-              {/*</Link>*/}
-
               <Link to="/search" className={headerItemsSpacingClassName}>
                 <span className="d-inline-block me-1">
                   Cerca <FontAwesomeIcon icon={faSearch} />

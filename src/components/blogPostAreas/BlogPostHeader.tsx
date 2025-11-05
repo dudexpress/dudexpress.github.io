@@ -7,7 +7,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import * as style from "./BlogPostHeader.module.scss"
 import LinkCtaBtn from "../misc/LinkCtaBtn"
-import DudeLink from "../misc/DudeLink"
 
 export interface BlogPostHeaderProps {
   frontmatter: Frontmatter
